@@ -6,7 +6,20 @@
 
 const TINTS = ["#E6F3EA", "#E5EDF9", "#FBE7E7", "#FBF2DC"];
 
+/** Same tab icon on every page (older pages still link the previous logo). */
+function useSiteIcons() {
+  const set = (rel, href, type) => {
+    let link = document.head.querySelector(`link[rel="${rel}"]`);
+    if (!link) { link = document.createElement("link"); link.rel = rel; document.head.appendChild(link); }
+    link.href = href;
+    if (type) link.type = type;
+  };
+  set("icon", "/dissipl-preview/assets/images/favicon-32.png", "image/png");
+  set("apple-touch-icon", "/dissipl-preview/assets/images/apple-touch-icon.png");
+}
+
 export function initHeaderFx(root = document) {
+  useSiteIcons();
   const header = root.querySelector("#dxHeader");
   if (!header) return;
 

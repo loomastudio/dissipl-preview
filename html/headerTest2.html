@@ -26,7 +26,8 @@
 .dx-header.is-scrolled .dx-bar { height: 62px; box-shadow: 0 16px 44px rgba(29, 34, 69, .14); }
 
 /* Logo (cropped from the square PNG) */
-.dx-logo { flex: none; display: block; width: 150px; height: 64px; background: url("/dissipl-preview/assets/images/logodissiplpng.png") no-repeat; background-size: 225px 225px; background-position: -31px -78px; transition: transform .45s var(--dx-spring); }
+.dx-logo { flex: none; display: block; width: 147px; height: 65px; background: url("/dissipl-preview/assets/images/logo-dissipl.png") no-repeat left center / contain; transition: transform .45s var(--dx-spring), width .35s var(--dx-ease), height .35s var(--dx-ease); }
+.dx-header.is-scrolled .dx-logo { width: 129px; height: 57px; }
 .dx-logo:hover { transform: rotate(-3deg) scale(1.05); }
 
 /* Nav + sliding glider */
@@ -135,7 +136,7 @@
 @media (max-width: 520px) {
   .dx-header { top: 10px; }
   .dx-bar { height: 62px; padding-inline: 10px 8px; gap: 8px; }
-  .dx-logo { width: 126px; height: 56px; background-size: 190px 190px; background-position: -26px -65px; }
+  .dx-logo { width: 116px; height: 52px; }
   .dx-lang-btn { padding: 0 9px; }
   .dx-lang-btn .dx-caret { display: none; }
 }
