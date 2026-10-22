@@ -500,12 +500,12 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
       <p class="reveal" data-i18n="video.text">Découvrez comment les élèves manipulent les outils en classe et à la maison, et pourquoi les enseignants spécialisés les utilisent chaque jour.</p>
     </div>
     <div class="player reveal" id="player">
-      <video id="intro" src="/dissipl-preview/assets/images/DISSIPL.mp4#t=12" preload="metadata" playsinline></video>
+      <video id="intro" src="/dissipl-preview/assets/videos/dissipl-intro.mp4#t=15" preload="metadata" playsinline></video>
       <button class="vplay" type="button" id="play" aria-label="Lire la vidéo de présentation" data-i18n-attr="aria-label:video.play">
         <span class="vplay-ring" aria-hidden="true"></span>
         <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" fill="#fff"/></svg>
       </button>
-      <span class="duration" aria-hidden="true">1:34</span>
+      <span class="duration" id="introDur" aria-hidden="true"></span>
     </div>
   </div>
 </section>
@@ -588,9 +588,10 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
       <span class="eyebrow reveal" data-i18n="langs.eyebrow">International</span>
       <h2 id="langs-title" class="reveal" data-i18n="langs.title">Un site et des outils en 9 langues</h2>
       <p class="reveal" data-i18n="langs.text">Chaque outil suit la langue choisie : le clavier, les consignes et les exercices. L'arabe s'écrit de droite à gauche, le hindi en devanagari, le chinois en pinyin avec les tons.</p>
-      <div class="lang-chips reveal" id="langChips"></div>
+      <!-- translate="no": browser translators (e.g. Chrome) must not turn "Hello" into "Bonjour" or "HI" into "SALUT" -->
+      <div class="lang-chips reveal notranslate" id="langChips" translate="no"></div>
     </div>
-    <div class="orbit-wrap reveal" aria-hidden="true">
+    <div class="orbit-wrap reveal notranslate" aria-hidden="true" translate="no">
       <div class="orbit" id="orbit"></div>
       <div class="hello-orb"><div><div class="hello-word" id="helloWord">Bonjour</div><small id="helloLang">Français</small></div></div>
     </div>
@@ -752,7 +753,7 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="module" src="/dissipl-preview/js/core/header.js?v=20261022"></script>
+<script type="module" src="/dissipl-preview/js/core/header.js?v=20261022d"></script>
 
 <script>
 (function () {
@@ -956,6 +957,11 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
     player.classList.add('playing'); intro.controls = true; intro.currentTime = 0; intro.play();
   });
   intro.addEventListener('ended', function () { player.classList.remove('playing'); intro.controls = false; });
+  function showDuration() {
+    var s = Math.round(intro.duration);
+    if (isFinite(s)) document.getElementById('introDur').textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }
+  if (intro.readyState >= 1) showDuration(); else intro.addEventListener('loadedmetadata', showDuration);
 
   /* Prices in the visitor's number format (always in euros) */
   function formatPrices() {

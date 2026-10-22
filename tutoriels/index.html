@@ -1,170 +1,361 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DISSIPL - Tutoriels vidéo pour apprendre à manipuler le boulier numérique.">
-    <title>Tutoriels - DISSIPL</title>
-        <link
-      rel="icon"
-      type="image/png"
-      href="/dissipl-preview/assets/Images/disableFallDamage.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="/dissipl-preview/assets/Images/disableFallDamage.png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/dissipl-preview/css/stylestest.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vidéos et tutoriels - DISSIPL</title>
+<meta name="description" content="Vidéos de démonstration de chaque outil DISSIPL et tutoriels pas à pas.">
+<link rel="icon" href="/dissipl-preview/assets/images/logodissipl.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Lexend:wght@400;500;600&display=swap">
+<!-- Bootstrap : seulement pour les fenêtres de connexion / inscription du header -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Site stylesheet: needed by the shared footer -->
+<link rel="stylesheet" href="/dissipl-preview/css/stylestest.css">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* Video library. Same tokens as the homepage (Montessori place-value colours). */
+:root {
+  --paper: #F6F7FB; --ink: #1D2245; --ink-soft: #565C80; --line: #DDE0EC;
+  --red: #D3343A; --red-dark: #B5262C; --blue: #2C68BE; --green: #3B9257; --gold: #E5B33F;
+  --tint-red: #FBE7E7; --tint-blue: #E5EDF9; --tint-green: #E6F3EA; --tint-gold: #FBF2DC;
+  --display: "Fredoka", "Trebuchet MS", sans-serif;
+  --body: "Lexend", Verdana, sans-serif;
+  --ease: cubic-bezier(.22, 1, .36, 1); --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+html[lang="ar"] { --display: "Noto Sans Arabic", sans-serif; --body: "Noto Sans Arabic", sans-serif; }
+html[lang="hi"] { --display: "Noto Sans Devanagari", sans-serif; --body: "Noto Sans Devanagari", sans-serif; }
+html[lang="zh"] { --display: "Noto Sans SC", sans-serif; --body: "Noto Sans SC", sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-align: start; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; margin: 0; color: inherit; }
+p { margin: 0; }
+a:hover { text-decoration: none; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+html[lang="ar"] .eyebrow, html[lang="hi"] .eyebrow, html[lang="zh"] .eyebrow { letter-spacing: 0; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-block: 132px 40px; }
+.hero::before { content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -120px; border-radius: 50%; background: rgba(229, 179, 63, .28); filter: blur(70px); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 460px; height: 460px; left: -160px; top: 40px; border-radius: 50%; background: rgba(44, 104, 190, .18); filter: blur(70px); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; gap: 14px; max-width: 1200px; }
+.hero h1 { font-size: clamp(38px, 5.4vw, 60px); }
+.hero p { color: var(--ink-soft); font-size: 19px; max-width: 40em; }
+
+/* Player */
+.stage { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 26px; }
+.screen { position: relative; border-radius: 26px; overflow: hidden; background: var(--ink); aspect-ratio: 16 / 9; box-shadow: 0 30px 80px rgba(29, 34, 69, .2); }
+.screen video { width: 100%; height: 100%; display: block; object-fit: contain; background: #0E1129; }
+.now { display: grid; gap: 14px; align-content: start; background: #fff; border: 1px solid var(--line); border-radius: 26px; padding: 26px; }
+.now h2 { font-size: 28px; }
+.now p { color: var(--ink-soft); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 13px; font-weight: 500; padding: 4px 12px; border-radius: 99px; background: var(--paper); border: 1px solid var(--line); }
+.chip.free { background: var(--tint-green); border-color: transparent; }
+.chip.premium { background: var(--tint-gold); border-color: transparent; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 22px; border-radius: 15px; font: 500 16px/1.2 var(--body); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .35s var(--spring), background .25s, color .25s; }
+.btn:hover { transform: translateY(-3px); }
+.btn.red, .btn.red:hover { background: var(--red); color: #fff; box-shadow: 0 10px 24px rgba(211, 52, 58, .28); }
+.btn.red:hover { background: var(--red-dark); }
+.btn.line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn.line:hover { background: var(--ink); color: #fff; }
+.btn .arrow { display: inline-block; transition: transform .35s var(--spring); }
+.btn:hover .arrow { transform: translateX(4px); }
+[dir="rtl"] .arrow { transform: scaleX(-1); }
+.up-next { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 14px; }
+.up-next button { display: flex; align-items: center; gap: 12px; width: 100%; text-align: start; background: none; border: 0; padding: 8px; border-radius: 12px; font: 500 15px/1.3 var(--body); color: var(--ink); cursor: pointer; }
+.up-next button:hover { background: var(--paper); }
+.up-next .dot { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 4px var(--t); }
+
+/* Filters */
+.filters { position: sticky; top: 96px; z-index: 20; display: flex; gap: 8px; overflow-x: auto; padding: 10px; margin: 46px 0 26px; background: rgba(255, 255, 255, .86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 18px; scrollbar-width: none; }
+.filters::-webkit-scrollbar { display: none; }
+.filters button { flex: none; display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px; border-radius: 12px; border: 0; background: none; font: 500 15px/1 var(--body); color: var(--ink); cursor: pointer; transition: background .25s, color .25s; }
+.filters button i { width: 10px; height: 10px; border-radius: 50%; background: var(--c, var(--ink)); }
+.filters button:hover { background: var(--paper); }
+.filters button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+/* Grids */
+.group { display: grid; gap: 18px; margin-bottom: 54px; }
+.group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.group-head h2 { font-size: clamp(26px, 3.2vw, 34px); }
+.group-head p { color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.card { position: relative; display: flex; flex-direction: column; text-align: start; background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; padding: 0; cursor: pointer; font: inherit; color: var(--ink); transition: transform .5s var(--spring), box-shadow .5s var(--ease), border-color .3s; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 24px 54px rgba(29, 34, 69, .13); }
+.card.active { border-color: var(--red); box-shadow: 0 0 0 3px rgba(211, 52, 58, .18); }
+.thumb { position: relative; aspect-ratio: 16 / 9; background: var(--t, var(--tint-blue)); overflow: hidden; }
+.thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.card:hover .thumb video { transform: scale(1.05); }
+.play { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; background: rgba(255, 255, 255, .92); display: grid; place-items: center; box-shadow: 0 10px 26px rgba(0, 0, 0, .25); transition: transform .45s var(--spring), background .25s; }
+.play svg { margin-inline-start: 3px; }
+.card:hover .play { transform: scale(1.12); background: var(--red); }
+.card:hover .play path { fill: #fff; }
+.dur { position: absolute; inset-inline-end: 10px; bottom: 10px; background: rgba(14, 17, 41, .78); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 99px; font-variant-numeric: tabular-nums; }
+.badge { position: absolute; inset-inline-start: 10px; top: 10px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: #fff; }
+.badge.premium { background: var(--gold); color: var(--ink); }
+.badge.free { background: var(--green); color: #fff; }
+.num { position: absolute; inset-inline-start: 12px; top: 10px; font-family: var(--display); font-weight: 700; font-size: 30px; color: #fff; text-shadow: 0 2px 10px rgba(0, 0, 0, .35); }
+.card-body { display: grid; gap: 6px; padding: 16px 18px 18px; }
+.card-body h3 { font-size: 19px; }
+.card-body p { font-size: 14px; color: var(--ink-soft); }
+.card-tool { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+.card-tool i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.missing .thumb { display: grid; place-items: center; }
+.missing .thumb span { font-size: 13px; color: var(--ink-soft); }
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--i, 0) * 70ms); }
+.js .reveal.in { opacity: 1; transform: none; }
+[hidden] { display: none !important; }
+
+@media (max-width: 980px) {
+  .stage { grid-template-columns: minmax(0, 1fr); }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .filters { top: 84px; }
+}
+@media (max-width: 620px) {
+  .hero { padding-block: 104px 24px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .screen { border-radius: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+}
+</style>
 </head>
-<body class="d-flex flex-column min-vh-100">
-    <div id="header-placeholder"></div>
+<body>
+<div id="header-placeholder"></div>
 
-    <main>
-        <!-- Page Hero -->
-        <section class="page-hero">
-            <h1>Tutoriels</h1>
-            <p class="page-subtitle">Découvrez les différentes vidéos tutoriels pour apprendre à manipuler le boulier.</p>
-        </section>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Ressources</span>
+      <h1>Vidéos et tutoriels</h1>
+      <p>Regardez chaque outil en action, dans sa version gratuite et sa version Premium, puis suivez les tutoriels pas à pas.</p>
 
-        <!-- Tutorials Content -->
-        <div class="page-content">
-            <div class="tutorial-video-player is-collapsed" id="tutorialVideoSection">
-                <h2 class="tutorial-video-title" id="tutorialVideoTitle">Tutoriel vidéo</h2>
-                <video id="tutorialVideoPlayer" class="tutorial-video" controls preload="metadata" playsinline>
-                    Votre navigateur ne prend pas en charge la lecture vidéo.
-                </video>
-            </div>
+      <div class="stage">
+        <div class="screen"><video id="player" controls playsinline preload="metadata"></video></div>
+        <aside class="now" aria-live="polite">
+          <div class="chips" id="nowChips"></div>
+          <h2 id="nowTitle">Boulier</h2>
+          <p id="nowText"></p>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px">
+            <a class="btn red" id="nowTry" href="/dissipl-preview/abacus-free"><span>Ouvrir l'outil</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="up-next">
+            <span class="eyebrow">Ensuite</span>
+            <div id="upNext"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
 
-            <div class="tutorials-grid">
+  <div class="wrap">
+    <div class="filters" role="toolbar" aria-label="Filtrer les vidéos" id="filters"></div>
 
-                <a href="#" class="tutorial-card tutorial-card-1" data-video="/dissipl-preview/assets/Images/TutorialsVideos/Tutorials_01.mp4" data-title="Manipuler le boulier numérique">
-                    <div class="tutorial-number">01</div>
-                    <div class="tutorial-icon">🧮</div>
-                    <div class="tutorial-info">
-                        <h3>Manipuler le boulier numérique</h3>
-                        <p>Apprenez les bases de la manipulation du boulier en ligne.</p>
-                    </div>
-                    <span class="tutorial-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-                    </span>
-                </a>
+    <section class="group" data-group="demos">
+      <div class="group-head">
+        <h2>Démos des outils</h2>
+        <p>Chaque outil en version gratuite et en version Premium.</p>
+      </div>
+      <div class="grid" id="demoGrid"></div>
+    </section>
 
-                <a href="#" class="tutorial-card tutorial-card-2" data-video="/dissipl-preview/assets/Images/TutorialsVideos/Tutorials_02.mp4" data-title="L'échange de perles">
-                    <div class="tutorial-number">02</div>
-                    <div class="tutorial-icon">🔄</div>
-                    <div class="tutorial-info">
-                        <h3>L'échange de perles</h3>
-                        <p>Découvrez le principe de l'échange de perles sur le boulier.</p>
-                    </div>
-                    <span class="tutorial-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-                    </span>
-                </a>
+    <section class="group" data-group="tutorials">
+      <div class="group-head">
+        <h2>Tutoriels pas à pas</h2>
+        <p>Apprenez à utiliser le boulier, étape par étape.</p>
+      </div>
+      <div class="grid" id="tutoGrid"></div>
+    </section>
+  </div>
+</main>
 
-                <a href="#" class="tutorial-card tutorial-card-3" data-video="/dissipl-preview/assets/Images/TutorialsVideos/Tutorials_03.mp4" data-title="Lire et écrire des nombres">
-                    <div class="tutorial-number">03</div>
-                    <div class="tutorial-icon">🔢</div>
-                    <div class="tutorial-info">
-                        <h3>Lire et écrire des nombres</h3>
-                        <p>Apprenez à lire et écrire les nombres grâce au boulier.</p>
-                    </div>
-                    <span class="tutorial-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-                    </span>
-                </a>
+<div id="footer-placeholder"></div>
 
-                <a href="#" class="tutorial-card tutorial-card-4" data-video="/dissipl-preview/assets/Images/TutorialsVideos/Tutorials_04.mp4" data-title="Lire et écrire des grands nombres">
-                    <div class="tutorial-number">04</div>
-                    <div class="tutorial-icon">📈</div>
-                    <div class="tutorial-info">
-                        <h3>Lire et écrire des grands nombres</h3>
-                        <p>Maîtrisez les grands nombres avec le boulier numérique.</p>
-                    </div>
-                    <span class="tutorial-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-                    </span>
-                </a>
+<script src="/dissipl-preview/js/core/footer.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="module" src="/dissipl-preview/js/core/header.js?v=20261022d"></script>
 
-                <a href="#" class="tutorial-card tutorial-card-5" data-video="/dissipl-preview/assets/Images/TutorialsVideos/Tutorials_05.mp4" data-title="Écrire des nombres encore plus grands">
-                    <div class="tutorial-number">05</div>
-                    <div class="tutorial-icon">🚀</div>
-                    <div class="tutorial-info">
-                        <h3>Écrire des nombres encore plus grands</h3>
-                        <p>Allez encore plus loin avec les très grands nombres.</p>
-                    </div>
-                    <span class="tutorial-arrow">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-                    </span>
-                </a>
+<script>
+(function () {
+  // French is the source text; other languages come from /i18n/pages/<lang>.json (same French text as key).
+  function T(fr) { var i = window.DissiplI18n; return (i && i.translatePhrase && i.translatePhrase(fr)) || fr; }
 
-            </div>
+  var TOOLS = {
+    abacus:    { name: 'Boulier',              c: '#D3343A', t: '#FBE7E7', page: 'abacus',           text: 'Compter, dénombrer, faire des calculs et des opérations en déplaçant les perles.' },
+    multiplix: { name: 'Multiplix',            c: '#2C68BE', t: '#E5EDF9', page: 'multiplix',        text: 'La table de Pythagore pour comprendre le sens de la multiplication.' },
+    alpha:     { name: "Alpha'Mobile",         c: '#E5B33F', t: '#FBF2DC', page: 'alpha-mobile',     text: 'Construire des lettres, des sons, des syllabes et des mots.' },
+    cards:     { name: 'Banque de perles',     c: '#3B9257', t: '#E6F3EA', page: 'number-card',      text: 'Composer et décomposer les petits et les grands nombres avec les cartes et les perles.' },
+    fractions: { name: 'Cercles de fractions', c: '#7A4FC0', t: '#EEE7FA', page: 'fraction-circles', text: 'Voir, partager et comparer les fractions en manipulant des parts.' }
+  };
+  var ORDER = ['abacus', 'multiplix', 'alpha', 'cards', 'fractions'];
 
-            <div class="tutorials-cta">
-                <p>Cliquez sur un tutoriel pour lire la vidéo directement sur cette page.</p>
-            </div>
+  // Demo videos recorded from each Unity tool (Basic = free version)
+  var DEMOS = [];
+  ORDER.forEach(function (k) {
+    ['free', 'premium'].forEach(function (ed) {
+      DEMOS.push({ id: k + '-' + ed, tool: k, edition: ed, src: '/dissipl-preview/assets/videos/demos/' + TOOLS[k].page + '-' + ed + '.mp4' });
+    });
+  });
+  // Existing step-by-step abacus tutorials
+  var TUTOS = [
+    { n: '01', title: 'Manipuler le boulier numérique', text: 'Apprenez les bases de la manipulation du boulier en ligne.' },
+    { n: '02', title: "L'échange de perles", text: "Découvrez le principe de l'échange de perles sur le boulier." },
+    { n: '03', title: 'Lire et écrire des nombres', text: 'Apprenez à lire et écrire les nombres grâce au boulier.' },
+    { n: '04', title: 'Lire et écrire des grands nombres', text: 'Maîtrisez les grands nombres avec le boulier numérique.' },
+    { n: '05', title: 'Écrire des nombres encore plus grands', text: 'Allez encore plus loin avec les très grands nombres.' }
+  ].map(function (t, i) { return Object.assign({ id: 'tuto-' + t.n, tool: 'abacus', edition: 'tuto', src: '/dissipl-preview/assets/images/TutorialsVideos/Tutorials_0' + (i + 1) + '.mp4' }, t); });
+  var ALL = DEMOS.concat(TUTOS);
 
-            <!-- EdTech France Membership -->
-            <div class="content-card accent-blue edtech-member-section">
-              <h2><span class="section-icon blue">🏆</span> Membre EdTech France</h2>
-              <p>
-                DISSIPL est fier d'être membre de l'EdTech France, l'association qui représente et fédère les entreprises françaises de technologies éducatives.
-              </p>
-              <div class="edtech-member-logo-container">
-                <img src="/dissipl-preview/assets/images/Logo_EdTech_Membre_RVB.png" alt="Membre EdTech France" class="edtech-member-logo">
-              </div>
-            </div>
-        </div>
-    </main>
+  var player = document.getElementById('player');
+  var cards = {};
+  var current = null;
 
-    <div id="footer-placeholder"></div>
-    <script src="/dissipl-preview/js/core/footer.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type="module" src="/dissipl-preview/js/core/header.js?v=20260916-mobile"></script>
-    <script src="/dissipl-preview/js/pages/interactEffectsUI.js"></script>
-    <script>
-        const tutorialCards = document.querySelectorAll('.tutorial-card');
-        const tutorialVideo = document.getElementById('tutorialVideoPlayer');
-        const tutorialTitle = document.getElementById('tutorialVideoTitle');
-        const tutorialSection = document.getElementById('tutorialVideoSection');
+  function fmt(s) { if (!isFinite(s)) return ''; s = Math.round(s); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function edLabel(v) { return v.edition === 'free' ? T('Version gratuite') : v.edition === 'premium' ? T('Version Premium') : T('Tutoriel') + ' ' + v.n; }
+  function titleOf(v) { return v.edition === 'tuto' ? T(v.title) : T(TOOLS[v.tool].name); }
+  function textOf(v) { return v.edition === 'tuto' ? T(v.text) : T(TOOLS[v.tool].text); }
 
-        tutorialCards.forEach((card) => {
-            card.addEventListener('click', (event) => {
-                event.preventDefault();
+  function makeCard(v, i) {
+    var tool = TOOLS[v.tool];
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'card reveal'; b.style.setProperty('--i', i % 3);
+    b.style.setProperty('--c', tool.c); b.style.setProperty('--t', tool.t);
+    b.dataset.tool = v.tool; b.dataset.kind = v.edition === 'tuto' ? 'tutorials' : 'demos';
+    var thumb = document.createElement('div'); thumb.className = 'thumb';
+    var vid = document.createElement('video');
+    vid.muted = true; vid.playsInline = true; vid.preload = 'metadata'; vid.loop = true;
+    vid.src = v.src + '#t=4';
+    var play = document.createElement('span'); play.className = 'play'; play.setAttribute('aria-hidden', 'true');
+    play.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" fill="#1D2245"/></svg>';
+    var dur = document.createElement('span'); dur.className = 'dur';
+    thumb.append(vid, play, dur);
+    if (v.edition === 'tuto') { var num = document.createElement('span'); num.className = 'num'; num.textContent = v.n; thumb.appendChild(num); }
+    else { var badge = document.createElement('span'); badge.className = 'badge ' + v.edition; badge.textContent = v.edition === 'free' ? T('Gratuit') : 'Premium'; thumb.appendChild(badge); }
+    var body = document.createElement('div'); body.className = 'card-body';
+    var toolLine = document.createElement('span'); toolLine.className = 'card-tool';
+    var dot = document.createElement('i'); toolLine.append(dot, document.createTextNode(T(tool.name)));
+    var h = document.createElement('h3'); h.textContent = v.edition === 'tuto' ? T(v.title) : edLabel(v);
+    var p = document.createElement('p'); p.textContent = v.edition === 'tuto' ? T(v.text) : T(tool.text);
+    body.append(toolLine, h, p);
+    b.append(thumb, body);
+    b.setAttribute('aria-label', titleOf(v) + ' · ' + edLabel(v));
 
-                const videoSrc = card.dataset.video;
-                const videoTitle = card.dataset.title;
+    vid.addEventListener('loadedmetadata', function () { dur.textContent = fmt(vid.duration); });
+    vid.addEventListener('error', function () { b.classList.add('missing'); b.disabled = true; dur.textContent = T('Bientôt'); vid.remove(); });
+    // Preview on hover (muted)
+    b.addEventListener('mouseenter', function () { if (vid.isConnected) { vid.currentTime = 4; vid.play().catch(function () {}); } });
+    b.addEventListener('mouseleave', function () { if (vid.isConnected) { vid.pause(); } });
+    b.addEventListener('click', function () { select(v, true); });
+    cards[v.id] = b;
+    return b;
+  }
 
-                if (!videoSrc || !tutorialVideo) {
-                    return;
-                }
+  function select(v, play) {
+    current = v;
+    player.src = v.src;
+    if (play) { player.play().catch(function () {}); document.querySelector('.stage').scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    Object.keys(cards).forEach(function (id) { cards[id].classList.toggle('active', id === v.id); });
+    renderNow();
+    try { history.replaceState(null, '', '#' + v.id); } catch (e) {}
+  }
 
-                tutorialSection?.classList.remove('is-collapsed');
-                tutorialVideo.src = videoSrc;
-                tutorialVideo.load();
-                tutorialVideo.play().catch(() => {});
+  function renderNow() {
+    var v = current, tool = TOOLS[v.tool];
+    var chips = document.getElementById('nowChips');
+    chips.innerHTML = '';
+    var c1 = document.createElement('span'); c1.className = 'chip'; c1.textContent = T(tool.name);
+    var c2 = document.createElement('span'); c2.className = 'chip ' + v.edition; c2.textContent = edLabel(v);
+    chips.append(c1, c2);
+    document.getElementById('nowTitle').textContent = titleOf(v);
+    document.getElementById('nowText').textContent = textOf(v);
+    var tryBtn = document.getElementById('nowTry');
+    tryBtn.href = '/' + tool.page + (v.edition === 'premium' ? '-premium' : '-free');
+    tryBtn.firstElementChild.textContent = v.edition === 'premium' ? T('Ouvrir la version Premium') : T("Ouvrir l'outil");
+    // Up next: the following three available videos
+    var list = document.getElementById('upNext');
+    list.innerHTML = '';
+    var start = ALL.indexOf(v), shown = 0;
+    for (var k = 1; k < ALL.length && shown < 3; k++) {
+      var n = ALL[(start + k) % ALL.length];
+      if (cards[n.id] && cards[n.id].disabled) continue;
+      var btn = document.createElement('button'); btn.type = 'button';
+      btn.style.setProperty('--c', TOOLS[n.tool].c); btn.style.setProperty('--t', TOOLS[n.tool].t);
+      var d = document.createElement('span'); d.className = 'dot';
+      btn.append(d, document.createTextNode(titleOf(n) + ' · ' + edLabel(n)));
+      btn.addEventListener('click', (function (x) { return function () { select(x, true); }; })(n));
+      list.appendChild(btn); shown++;
+    }
+  }
 
-                if (tutorialTitle && videoTitle) {
-                    tutorialTitle.textContent = videoTitle;
-                }
+  // Autoplay the next video when one ends
+  player.addEventListener('ended', function () {
+    var i = ALL.indexOf(current);
+    for (var k = 1; k < ALL.length; k++) {
+      var n = ALL[(i + k) % ALL.length];
+      if (!(cards[n.id] && cards[n.id].disabled)) { select(n, true); return; }
+    }
+  });
 
-                tutorialCards.forEach((item) => item.classList.remove('active'));
-                card.classList.add('active');
+  // Filters
+  var FILTERS = [{ key: 'all', label: 'Toutes les vidéos' }].concat(ORDER.map(function (k) { return { key: k, label: TOOLS[k].name, c: TOOLS[k].c }; }), [{ key: 'tutorials', label: 'Tutoriels pas à pas' }]);
+  var bar = document.getElementById('filters');
+  function renderFilters(active) {
+    bar.innerHTML = '';
+    FILTERS.forEach(function (f) {
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-pressed', f.key === active ? 'true' : 'false');
+      if (f.c) { var i = document.createElement('i'); i.style.setProperty('--c', f.c); b.appendChild(i); }
+      b.appendChild(document.createTextNode(T(f.label)));
+      b.addEventListener('click', function () { applyFilter(f.key); });
+      bar.appendChild(b);
+    });
+  }
+  var activeFilter = 'all';
+  function applyFilter(key) {
+    activeFilter = key;
+    renderFilters(key);
+    Object.keys(cards).forEach(function (id) {
+      var c = cards[id];
+      c.hidden = !(key === 'all' || c.dataset.tool === key || c.dataset.kind === key);
+    });
+    document.querySelectorAll('.group').forEach(function (g) {
+      g.hidden = !g.querySelector('.card:not([hidden])');
+    });
+  }
 
-                tutorialSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-    </script>
+  // Build
+  var demoGrid = document.getElementById('demoGrid'), tutoGrid = document.getElementById('tutoGrid');
+  DEMOS.forEach(function (v, i) { demoGrid.appendChild(makeCard(v, i)); });
+  TUTOS.forEach(function (v, i) { tutoGrid.appendChild(makeCard(v, i)); });
+  renderFilters('all');
+  var fromHash = ALL.filter(function (v) { return '#' + v.id === location.hash; })[0];
+  select(fromHash || DEMOS[1], false);
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  // Language change: rebuild the texts made by this script
+  window.addEventListener('dissipl:lang', function () {
+    Object.keys(cards).forEach(function (id) { cards[id].remove(); });
+    cards = {};
+    DEMOS.forEach(function (v, i) { var c = makeCard(v, i); c.classList.add('in'); demoGrid.appendChild(c); });
+    TUTOS.forEach(function (v, i) { var c = makeCard(v, i); c.classList.add('in'); tutoGrid.appendChild(c); });
+    applyFilter(activeFilter);
+    Object.keys(cards).forEach(function (id) { cards[id].classList.toggle('active', current && id === current.id); });
+    renderNow();
+  });
+})();
+</script>
 
 <div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
   Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
 </div>
 </body>
 </html>
-
-
