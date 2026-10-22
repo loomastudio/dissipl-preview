@@ -162,11 +162,11 @@
 
       // Configuration Unity
       const buildUrl = "/dissipl-preview/webgl/Abaccus_Free/Build";
-      const loaderUrl = buildUrl + "/dissipl-preview/Abaccus_Free.loader.js";
+      const loaderUrl = buildUrl + "/Abaccus_Free.loader.js";
       const config = {
-        dataUrl: buildUrl + "/dissipl-preview/Abaccus_Free.data.gz",
-        frameworkUrl: buildUrl + "/dissipl-preview/Abaccus_Free.framework.js.gz",
-        codeUrl: buildUrl + "/dissipl-preview/Abaccus_Free.wasm.gz",
+        dataUrl: buildUrl + "/Abaccus_Free.data.gz",
+        frameworkUrl: buildUrl + "/Abaccus_Free.framework.js.gz",
+        codeUrl: buildUrl + "/Abaccus_Free.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Sylvain Héliou",
         productName: "Boulier",

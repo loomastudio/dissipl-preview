@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
-      .replace(/"/dissipl-preview/g, "&quot;")
-      .replace(/'/dissipl-preview/g, "&#039;");
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
   function moveToNextCard() {
