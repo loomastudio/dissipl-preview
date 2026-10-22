@@ -1,0 +1,476 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light custom-bg">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar-brand m-0 p-0">
+        <img
+          src="../assets/images/disableFallDamage.PNG"
+          alt="DISSIPL - Apprenez par vos sens"
+          class="header-image"
+        />
+      </a>
+
+      <!-- Bouton burger -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menus -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Liens centraux -->
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item" id="nav-accueil">
+            <a class="nav-link" href="/index.html">Accueil</a>
+          </li>
+
+          <li class="nav-item dropdown" id="nav-tools">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownOutils"
+              role="button"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Outils gratuits
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownOutils">
+              <li><a class="dropdown-item" href="Jeu1.html">Boulier</a></li>
+              <li><a class="dropdown-item" href="Jeu2.html">Cartes des nombres</a></li>
+              <li><a class="dropdown-item" href="Jeu3.html">Alphabet mobile</a></li>
+              <li><a class="dropdown-item" href="Jeu4.html">Formes géométriques</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown" id="nav-tools-premium">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownOutilsPremium"
+              role="button"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Outils premium
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownOutilsPremium">
+              <li>
+                <a class="gp-link dropdown-item" href="GP1.html" data-premium="true">
+                  Boulier
+                </a>
+              </li>
+              <li>
+                <a class="gp-link dropdown-item premium-link" href="GP2.html" data-premium="true">
+                  Cartes des nombres
+                </a>
+              </li>
+              <li>
+                <a class="gp-link dropdown-item premium-link" href="GP3.html" data-premium="true">
+                  Alphabet mobile
+                </a>
+              </li>
+              <li>
+                <a class="gp-link dropdown-item premium-link" href="GP4.html" data-premium="true">
+                  Formes géométriques
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item" id="nav-tutoriels">
+            <a class="nav-link" href="/tutoriels.html">Tutoriels/Formations</a>
+          </li>
+          <li class="nav-item" id="nav-apropos">
+            <a class="nav-link" href="/about.html">À propos</a>
+          </li>
+          <li class="nav-item" id="nav-tarifs">
+            <a class="nav-link" href="/price.html">Nos offres</a>
+          </li>
+        </ul>
+
+        <!-- Liens à droite (auth) -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Inscription -->
+          <li class="nav-item" id="signupNavItem">
+            <a
+              class="nav-link"
+              href="#"
+              data-toggle="modal"
+              data-target="#signupModal"
+            >
+              Inscription
+            </a>
+          </li>
+
+          <!-- Connexion -->
+          <li class="nav-item" id="loginNavItem">
+            <a
+              class="nav-link"
+              href="#"
+              data-toggle="modal"
+              data-target="#loginModal"
+            >
+              Connexion
+            </a>
+          </li>
+
+          <!-- Profil (adulte) -->
+          <li class="nav-item" id="profileNavItem" style="display: none">
+            <a class="nav-link" href="/profile.html">Mon Profil</a>
+          </li>
+
+          <!-- Déconnexion adulte -->
+          <li class="nav-item" id="logoutNavItem" style="display: none">
+            <button
+              id="logoutButton"
+              class="nav-link btn btn-link"
+              type="button"
+            >
+              Déconnexion
+            </button>
+          </li>
+
+          <!-- Déconnexion élève -->
+          <li class="nav-item" id="logoutStudentNavItem" style="display: none">
+            <button
+              id="logoutStudentButton"
+              class="nav-link btn btn-link"
+              type="button"
+            >
+              Déconnexion
+            </button>
+          </li>
+
+          <!-- FAQ -->
+          <li class="nav-item" id="nav-faq">
+            <a class="nav-link" href="FAQ.html">FAQ</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<!-- Inscription Modal -->
+<div
+  class="modal fade"
+  id="signupModal"
+  tabindex="-1"
+  aria-labelledby="signupModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Inscription</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="signupForm">
+          <div class="form-group">
+            <label for="signupEmail">Adresse email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="signupEmail"
+              placeholder="Entrez votre email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Mot de passe</label>
+            <input
+              type="password"
+              class="form-control"
+              id="signupPassword"
+              placeholder="Mot de passe"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupConfirmPassword">Confirmez le mot de passe</label>
+            <input
+              type="password"
+              class="form-control"
+              id="signupConfirmPassword"
+              placeholder="Confirmez le mot de passe"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signupRole">Type de compte</label>
+            <select class="form-control" id="signupRole" required>
+              <option value="user">Compte utilisateur</option>
+              <option value="professeur">Professeur</option>
+              <option value="directeur">
+                Directeur / Responsable d'établissement
+              </option>
+            </select>
+          </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="acceptCGU"
+              required
+            />
+            <label class="form-check-label" for="acceptCGU">
+              J'accepte les
+              <a href="/cgu.html" target="_blank"
+                >conditions générales d'utilisation</a
+              >.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">S'inscrire</button>
+        </form>
+        <div
+          id="signupError"
+          class="alert alert-danger mt-2"
+          style="display: none"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Connexion -->
+<div
+  class="modal fade"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="loginModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Connexion</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Fermer"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginIdentifiant">Email ou identifiant</label>
+            <input
+              type="text"
+              class="form-control"
+              id="loginIdentifiant"
+              placeholder="ex: prof@ecole.fr ou MmeMartin4B"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Mot de passe</label>
+            <input
+              type="password"
+              class="form-control"
+              id="loginPassword"
+              placeholder="Votre mot de passe"
+              required
+            />
+          </div>
+
+          <div
+            id="loginError"
+            class="alert alert-danger mt-2"
+            style="display: none"
+          ></div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Se connecter
+          </button>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="forgotPasswordButton" class="btn btn-link">
+          Mot de passe oublié ?
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Connexion Élève -->
+<div
+  class="modal fade"
+  id="studentLoginModal"
+  tabindex="-1"
+  aria-labelledby="studentLoginModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentLoginModalLabel">Connexion Élève</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="studentLoginForm">
+          <div class="form-group">
+            <label for="studentUsername">Identifiant (username)</label>
+            <input
+              type="text"
+              class="form-control"
+              id="studentUsername"
+              placeholder="Ex: bob4567"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="studentPassword">Mot de passe</label>
+            <input
+              type="password"
+              class="form-control"
+              id="studentPassword"
+              placeholder="Mot de passe"
+              required
+            />
+          </div>
+          <div
+            id="studentLoginError"
+            class="alert alert-danger mt-2"
+            style="display: none"
+          ></div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Se connecter
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Mot de Passe Oublié -->
+<div
+  class="modal fade"
+  id="forgotPasswordModal"
+  tabindex="-1"
+  aria-labelledby="forgotPasswordModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="forgotPasswordModalLabel">
+          Mot de passe oublié
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="forgotPasswordForm">
+          <p>
+            Entrez votre adresse email pour recevoir un lien de réinitialisation
+            :
+          </p>
+          <input
+            type="email"
+            id="forgotPasswordEmail"
+            class="form-control"
+            placeholder="Votre email"
+            required
+          />
+          <div
+            id="forgotPasswordError"
+            class="text-danger mt-2"
+            style="display: none"
+          ></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Annuler
+            </button>
+            <button
+              type="submit"
+              id="forgotPasswordSubmit"
+              class="btn btn-primary"
+            >
+              Envoyer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal blocage redirection no cnx no prem -->
+<div
+  class="modal fade"
+  id="premiumRequiredModal"
+  tabindex="-1"
+  aria-labelledby="premiumRequiredModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="premiumRequiredModalLabel">
+          🔒 Accès réservé aux abonnés Premium
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Fermer"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <p>
+          🚫 Merci d'être connecté avec un
+          <strong>abonnement Premium</strong> pour accéder à cette page.
+        </p>
+        <p>
+          📌 Découvrez nos offres ici :
+          <a href="price.html" class="btn btn-primary">Voir les abonnements</a>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

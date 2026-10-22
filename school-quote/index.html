@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande de Devis Établissement - DISSIPL</title>
+    <link rel="icon" type="image/png" href="/dissipl-preview/assets/Images/disableFallDamage.png" />
+    <link rel="apple-touch-icon" href="/dissipl-preview/assets/Images/disableFallDamage.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/dissipl-preview/css/stylestest.css" />
+    <style>
+        .quote-form {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .quote-form h2 {
+            color: #2E7D32;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px 16px;
+            transition: all 0.2s ease;
+        }
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        }
+        .info-box {
+            background: #E8F5E9;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .info-box h4 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+        .info-box ul {
+            margin-bottom: 0;
+        }
+        .info-box li {
+            margin-bottom: 8px;
+        }
+        .btn-submit {
+            background: #4CAF50;
+            border: none;
+            padding: 14px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn-submit:hover {
+            background: #45a049;
+        }
+        .btn-submit:disabled {
+            background: #ccc;
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        /* Package selection styles */
+        .pricing-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .pricing-card.selected {
+            border-color: #28a745;
+            background-color: #f0fff4;
+        }
+        .pricing-card .badge-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .tier-radio {
+            display: none;
+        }
+        .tier-radio:checked + .pricing-card {
+            border-color: #28a745;
+            background-color: #f0fff4;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Validation feedback styling */
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            background-color: #fff8f8;
+        }
+        .form-control.is-invalid:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+        select.form-control.is-invalid {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5.6 8v-1l5.8-3.4z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 12px 12px;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="page-hero">
+            <h1>Demande de Devis Établissement</h1>
+            <p class="page-subtitle">Choisissez le forfait adapté à votre établissement</p>
+        </section>
+
+        <div class="page-content">
+            <!-- Quote Form -->
+            <div class="quote-form" id="quote-form">
+                <h2>🏫 Demandez votre devis établissement</h2>
+
+                <div class="info-box">
+                    <h4>Devenir directeur vous donne accès à :</h4>
+                    <ul>
+                        <li>✓ Créer et gérer vos comptes enseignants</li>
+                        <li>✓ Chaque enseignant peut créer jusqu'à 30 comptes élèves</li>
+                        <li>✓ Outils premium illimités (GP1, GP2, GP3, GP4)</li>
+                        <li>✓ Gestion centralisée par le directeur</li>
+                        <li>✓ Support prioritaire dédié</li>
+                        <li>✓ Facturation simplifiée</li>
+                    </ul>
+                </div>
+
+                <!-- Package Selection -->
+                <h3 class="text-center mb-4">Choisissez votre forfait</h3>
+                <div class="row mb-4">
+                    <!-- Basic Tier -->
+                    <div class="col-md-6 mb-4">
+                        <label>
+                            <input type="radio" name="pricingTier" class="tier-radio" value="basic" required />
+                            <div class="card pricing-card h-100">
+                                <div class="card-header bg-success text-white text-center">
+                                    <h3 class="mb-0">Forfait Basic</h3>
+                                </div>
+                                <div class="card-body text-center">
+                                    <p class="text-muted">Pour les petits établissements</p>
+                                    <div class="badge-price">200€<span class="text-muted">/an</span></div>
+                                    <hr>
+                                    <h5 class="text-primary">Jusqu'à 15 professeurs</h5>
+                                    <ul class="feature-list text-left">
+                                        <li>15 comptes professeurs inclus</li>
+                                        <li>30 élèves par professeur</li>
+                                        <li>Accès complet aux jeux éducatifs</li>
+                                        <li>Support par email</li>
+                                        <li>Tableau de bord directeur</li>
+                                        <li>Gestion des comptes professeurs</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-light">
+                                    <small class="text-muted">Cliquez pour sélectionner</small>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Premium Tier -->
+                    <div class="col-md-6 mb-4">
+                        <label>
+                            <input type="radio" name="pricingTier" class="tier-radio" value="premium" />
+                            <div class="card pricing-card h-100">
+                                <div class="card-header bg-warning text-dark text-center">
+                                    <h3 class="mb-0">Forfait Premium ⭐</h3>
+                                </div>
+                                <div class="card-body text-center">
+                                    <p class="text-muted">Pour les grands établissements</p>
+                                    <div class="badge-price">400€<span class="text-muted">/an</span></div>
+                                    <hr>
+                                    <h5 class="text-primary">Jusqu'à 30 professeurs</h5>
+                                    <ul class="feature-list text-left">
+                                        <li>30 comptes professeurs inclus</li>
+                                        <li>30 élèves par professeur</li>
+                                        <li>Accès complet aux jeux éducatifs</li>
+                                        <li>Support prioritaire</li>
+                                        <li>Tableau de bord directeur avancé</li>
+                                        <li>Gestion des comptes professeurs</li>
+                                        <li>🎁 Bonus: Ressources pédagogiques</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-light">
+                                    <small class="text-muted">Cliquez pour sélectionner</small>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Selected Tier Display -->
+                <div class="alert alert-info" id="selectedTierInfo" style="display: none;">
+                    <strong>Forfait sélectionné :</strong>
+                    <span id="tierName">-</span> -
+                    <span id="tierPrice">-</span> /an
+                    (<span id="tierTeachers">-</span> professeurs)
+                </div>
+
+                <hr>
+
+                <form id="school-quote-form">
+                    <div class="form-group">
+                        <label for="schoolName">Nom de l'établissement *</label>
+                        <input type="text" class="form-control" id="schoolName" required aria-required="true" placeholder="Ex: École Primaire Jean Jaurès">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="schoolType">Type d'établissement *</label>
+                        <select class="form-control" id="schoolType" required aria-required="true">
+                            <option value="">-- Sélectionnez un type d'établissement --</option>
+                            <option value="ecole_maternelle">École Maternelle</option>
+                            <option value="ecole_primaire">École Primaire</option>
+                            <option value="college">Collège</option>
+                            <option value="lycee">Lycée</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactName">Nom du contact *</label>
+                        <input type="text" class="form-control" id="contactName" required aria-required="true" placeholder="Ex: Marie Dupont">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Email *</label>
+                        <input type="email" class="form-control" id="contactEmail" required aria-required="true" placeholder="Ex: direction@ecole-exemple.fr">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactPhone">Téléphone</label>
+                        <input type="tel" class="form-control" id="contactPhone" placeholder="Ex: 01 23 45 67 89">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message (optionnel)</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Décrivez vos besoins spécifiques, questions..."></textarea>
+                    </div>
+
+                    <div id="quoteError" class="alert alert-danger" style="display: none"></div>
+                    <div id="quoteSuccess" class="alert alert-success" style="display: none"></div>
+
+                    <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                        📩 Envoyer ma demande de devis
+                    </button>
+                </form>
+
+                <div class="text-center mt-4">
+                    <a href="/dissipl-preview/price" class="btn btn-secondary">← Retour aux offres</a>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="quote-form success-message" id="success-message">
+                <div class="success-icon">✅</div>
+                <h2>Demande envoyée avec succès !</h2>
+                <p class="text-muted">Nous avons bien reçu votre demande de devis.</p>
+                <p>Nous vous recontacterons dans les plus brefs délais.</p>
+                <p class="mt-4">
+                    <strong>À très bientôt !</strong><br>
+                    L'équipe DISSIPL
+                </p>
+                <div class="mt-4">
+                    <a href="/dissipl-preview/" class="btn btn-primary">Retour à l'accueil</a>
+                    <a href="/dissipl-preview/price" class="btn btn-secondary ml-2">Retour aux offres</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/dissipl-preview/js/core/footer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="/dissipl-preview/js/pages/school-quote.js?v=20260810-1"></script>
+    <script type="module" src="/dissipl-preview/js/core/header.js?v=20260916-mobile"></script>
+    <script src="/dissipl-preview/js/pages/interactEffectsUI.js"></script>
+
+<div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
+  Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
+</div>
+</body>
+</html>

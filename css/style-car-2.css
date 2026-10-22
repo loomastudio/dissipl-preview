@@ -1,0 +1,293 @@
+/* Styles de base pour le body et centrage */
+/* Ces règles sont maintenant MINIMALES et ne devraient pas affecter la mise en page globale */
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  overflow-x: hidden; /* Important pour éviter le scroll horizontal non désiré */
+  color: #333;
+}
+
+/* Le conteneur principal de la section du carrousel dans index.html */
+/* Il est déjà géré par les classes Bootstrap (py-5 bg-light) dans l'HTML */
+/* Pas besoin de styles CSS supplémentaires ici si Bootstrap fait le travail */
+
+/* Conteneur principal du carrousel - LA FENÊTRE VISIBLE */
+.carousel-container {
+  position: relative;
+  width: 90%; /* Prend 90% de la largeur de son parent (.container) */
+  max-width: 800px; /* Limite la largeur du carrousel */
+  margin: 0 auto; /* Centre le carrousel dans le .container de Bootstrap */
+  overflow: hidden; /* Cache les cartes non visibles */
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Ombre principale plus légère et diffuse */
+  background-color: #ffffff;
+  padding: 0; /* Pas de padding ici, le padding interne est sur les cartes */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25px; /* Espace pour la pagination */
+}
+
+/* Conteneur de la piste des cartes - GÈRE LE DÉFILEMENT */
+.carousel-track-container {
+  width: 100%;
+  overflow: hidden; /* C'est lui qui masque les cartes sur les côtés */
+  position: relative;
+  height: 350px; /* Hauteur fixe pour le conteneur de piste */
+  /* Ceci doit être suffisant pour la plus grande carte */
+}
+
+/* La piste qui contient toutes les cartes */
+.carousel-track {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute; /* Les cartes seront positionnées absolument à l'intérieur */
+  width: 100%; /* S'étend sur toute la largeur du track-container */
+  height: 100%; /* S'étend sur toute la hauteur du track-container */
+}
+
+/* Chaque carte du carrousel */
+.carousel-card {
+  position: absolute; /* Positionnement absolu pour le chevauchement */
+  top: 0;
+  left: 0;
+  width: 100%; /* Chaque carte prend toute la largeur du track-container */
+  height: 100%; /* Chaque carte prend toute la hauteur du track-container */
+  box-sizing: border-box;
+  padding: 40px; /* Padding interne généreux pour le texte */
+  background-color: #ffffff;
+  border-radius: 15px; /* Bords arrondis pour les cartes */
+  border: 1px solid #e0e0e0; /* Bordure fine et claire */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Ombre très légère */
+
+  opacity: 0;
+  transform: scale(0.95); /* Légèrement réduite pour l'effet d'entrée/sortie */
+  pointer-events: none; /* Inactives non cliquables */
+
+  transition:
+    opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s ease-out;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre le contenu verticalement dans la carte */
+  align-items: center; /* Centre le contenu horizontalement si nécessaire */
+}
+
+/* Styles pour la carte active et visible */
+.carousel-card.is-visible {
+  opacity: 1; /* Pleinement visible */
+  transform: scale(1); /* Taille réelle */
+  pointer-events: auto; /* Active cliquable */
+  z-index: 5; /* Assure qu'elle est au-dessus des autres cartes */
+}
+
+/* Styles pour la carte actuellement centrée (active) */
+.carousel-card.is-active {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Ombre plus prononcée pour l'active */
+  border-color: #d0d0d0; /* Bordure légèrement plus foncée */
+  z-index: 10; /* La carte active est au top */
+}
+
+/* Styles du contenu dans les cartes */
+.card-details {
+  width: 100%;
+  text-align: left; /* REVIENT À GAUCHE */
+  margin-bottom: 20px;
+}
+
+.card-details p {
+  margin: 3px 0;
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.4;
+}
+
+.card-details .card-name {
+  font-weight: 700;
+  color: #3b82f6;
+  font-size: 1.25em;
+  margin-bottom: 8px;
+}
+
+.card-comment {
+  width: 100%;
+  text-align: justify; /* TEXTE JUSTIFIÉ */
+  line-height: 1.8;
+  font-size: 1.05em;
+  color: #333;
+  max-height: none; /* Laisse le commentaire s'étirer */
+  overflow-y: visible;
+  flex-grow: 1; /* Prend l'espace restant dans la carte */
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+/* Boutons de navigation */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 1;
+  z-index: 20;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-button--left {
+  left: -40px; /* Déplacé un peu plus à l'extérieur du carousel-container */
+}
+
+.carousel-button--right {
+  right: -40px; /* Déplacé un peu plus à l'extérieur du carousel-container */
+}
+
+/* Media Queries pour ajuster les boutons sur petits écrans */
+@media (max-width: 768px) {
+  .carousel-button--left {
+    left: 5px; /* Rapproche les boutons du bord du carrousel */
+  }
+  .carousel-button--right {
+    right: 5px; /* Rapproche les boutons du bord du carrousel */
+  }
+  .carousel-container {
+    width: 100%; /* Prend toute la largeur sur mobile */
+    border-radius: 0; /* Pas de bords arrondis sur les bords de l'écran */
+  }
+}
+
+/* Pagination */
+.carousel-pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px; /* Espace pour la pagination */
+  gap: 15px;
+}
+
+.pagination-dot {
+  width: 16px;
+  height: 16px;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.pagination-dot.active {
+  background-color: #3b82f6;
+  transform: scale(1.3);
+  border-color: #a3cbf7;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Styles pour la Fenêtre Modale */
+.modal {
+  display: none; /* Toujours cachée par défaut */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Permet le défilement si le contenu est trop grand */
+  /*    background-color: rgba(0,0,0,0.6);*/
+  justify-content: center; /* Centre horizontalement le contenu de la modale */
+  align-items: center; /* Centre verticalement le contenu de la modale */
+}
+.modal-content {
+  background-color: #fefefe;
+  /* margin: auto; <-- Supprime cette ligne */
+  padding: 30px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative; /* Keep this for positioning the close button */
+
+  /* Ces propriétés sont très importantes pour le centrage vertical dans la fenêtre,
+       quand le parent (.modal) est un flex container avec align-items: center; */
+  max-height: 90vh; /* La hauteur maximale est 90% de la hauteur de la vue */
+  overflow-y: auto; /* Ajoute une barre de défilement si le contenu dépasse max-height */
+
+  /* Optionnel: Ajoutez ceci si vous voulez une petite animation lors de l'apparition */
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+/* Et ajoutez ce style pour l'animation quand la modale est affichée par JS */
+.modal.show .modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+.modal-fonction {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-comment {
+  color: #444;
+  line-height: 1.6;
+  text-align: justify;
+  white-space: pre-wrap; /* Permet aux retours à la ligne de s'afficher comme dans le JSON */
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 38px;
+  font-weight: bold;
+  position: absolute; /* Positionne le bouton de fermeture */
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Style pour le lien "Lire la suite..." */
+.read-more {
+  color: #007bff; /* Couleur typique pour un lien */
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-left: 5px; /* Petit espace après le texte tronqué */
+}
+
+.read-more:hover {
+  color: #0056b3;
+}

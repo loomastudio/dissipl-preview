@@ -1,0 +1,86 @@
+// js/modules/header.loader.20260302-3.js
+/**
+ * Rôle : charge /html/headerTest2.html dans le placeholder,
+ * puis initialise les sous-modules (auth, nav, premium, refresh).
+ */
+
+import {
+  setupSignupForm,
+  setupLoginForm,
+  setupForgotPasswordForm,
+} from "./header.auth.js";
+import { attachLogoutEvent, checkAuthStatus } from "./header.nav.js";
+import { blockRedirectIfNotPremium } from "./header.premium.js";
+import { initTokenRefresh } from "./header.refresh.js";
+
+const HEADER_HTML_VERSION = "20260302-3"; // change cette valeur quand tu modifies headerTest2.html
+
+export function initHeader() {
+  console.log("✅ header.loader.js initialisé !");
+  const headerPlaceholder = document.getElementById("header-placeholder");
+
+  if (!headerPlaceholder) {
+    console.error("❌ Élément #header-placeholder introuvable !");
+    return;
+  }
+
+  // Charger le fragment HTML du header (versionné pour contourner le cache)
+  fetch(`/html/headerTest2.html?v=${HEADER_HTML_VERSION}`)
+    .then((response) => {
+      if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+      return response.text();
+    })
+    .then((data) => {
+      headerPlaceholder.innerHTML = data;
+      console.log("✅ /html/headerTest2.html injecté !");
+
+      // Exposer les fonctions globales requises par onclick="..."
+      // (car le header est chargé via un module JS)
+      if (typeof window.toggleMobileMenu !== "function") {
+        window.toggleMobileMenu = function toggleMobileMenu() {
+          const btn = document.querySelector(".mobile-menu-toggle");
+          const nav = document.getElementById("mainNav");
+          if (!btn || !nav) return;
+
+          const open = !nav.classList.contains("mobile-open");
+          nav.classList.toggle("mobile-open", open);
+          btn.classList.toggle("is-active", open);
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+          document.body.classList.toggle("mobile-menu-active", open);
+
+          if (!open) {
+            nav
+              .querySelectorAll(".nav-item-dropdown.sub-open")
+              .forEach((li) => li.classList.remove("sub-open"));
+          }
+        };
+      }
+
+      if (typeof window.toggleSubMenu !== "function") {
+        window.toggleSubMenu = function toggleSubMenu(anchorEl) {
+          const nav = document.getElementById("mainNav");
+          const li = anchorEl?.closest?.(".nav-item-dropdown");
+          if (!nav || !li) return;
+
+          // Ferme les autres dropdowns (comportement accordéon sur mobile)
+          nav.querySelectorAll(".nav-item-dropdown.sub-open").forEach((other) => {
+            if (other !== li) other.classList.remove("sub-open");
+          });
+
+          li.classList.toggle("sub-open");
+        };
+      }
+
+      // Initialisation des sous-modules
+      attachLogoutEvent();
+      setupSignupForm();
+      setupLoginForm();
+      setupForgotPasswordForm();
+      blockRedirectIfNotPremium();
+      checkAuthStatus();
+      initTokenRefresh();
+    })
+    .catch((error) =>
+      console.error("❌ Erreur lors du chargement du header :", error)
+    );
+}

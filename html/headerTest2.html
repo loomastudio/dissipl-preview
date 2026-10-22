@@ -1,0 +1,434 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500;600&display=swap">
+<style>
+/* ===== DISSIPL header (dx-). Montessori place-value colours: units green, tens blue, hundreds red. ===== */
+.dx-header {
+  --dx-ink: #1D2245; --dx-soft: #565C80; --dx-line: #DDE0EC; --dx-paper: #F6F7FB;
+  --dx-red: #D3343A; --dx-red-dark: #B5262C; --dx-blue: #2C68BE; --dx-green: #3B9257; --dx-gold: #E5B33F;
+  --dx-ease: cubic-bezier(.22, 1, .36, 1); --dx-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --dx-font: "Lexend", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans SC", Verdana, sans-serif;
+  position: fixed; top: 14px; left: 0; right: 0; z-index: 1030;
+  padding-left: max(14px, env(safe-area-inset-left, 0px)); padding-right: max(14px, env(safe-area-inset-right, 0px));
+  font-family: var(--dx-font); pointer-events: none;
+  transition: transform .5s var(--dx-ease);
+}
+.dx-header *, .dx-header *::before, .dx-header *::after { box-sizing: border-box; }
+.dx-header.is-hidden { transform: translateY(-130%); }
+.dx-bar {
+  pointer-events: auto; position: relative; max-width: 1200px; height: 70px; margin: 0 auto;
+  display: flex; align-items: center; gap: 12px; padding-inline: 16px 12px;
+  background: rgba(255, 255, 255, .86); border: 1px solid rgba(221, 224, 236, .9); border-radius: 22px;
+  -webkit-backdrop-filter: blur(16px) saturate(1.5); backdrop-filter: blur(16px) saturate(1.5);
+  box-shadow: 0 10px 34px rgba(29, 34, 69, .08);
+  transition: height .35s var(--dx-ease), box-shadow .35s var(--dx-ease), border-radius .35s;
+  animation: dxDrop .9s var(--dx-spring) both;
+}
+@keyframes dxDrop { from { opacity: 0; transform: translateY(-26px) scale(.98); } }
+.dx-header.is-scrolled .dx-bar { height: 62px; box-shadow: 0 16px 44px rgba(29, 34, 69, .14); }
+
+/* Logo (cropped from the square PNG) */
+.dx-logo { flex: none; display: block; width: 150px; height: 64px; background: url("/dissipl-preview/assets/images/logodissiplpng.png") no-repeat; background-size: 225px 225px; background-position: -31px -78px; transition: transform .45s var(--dx-spring); }
+.dx-logo:hover { transform: rotate(-3deg) scale(1.05); }
+
+/* Nav + sliding glider */
+.dx-nav { position: relative; flex: 1; display: flex; justify-content: center; }
+.dx-list { position: relative; display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0; }
+.dx-glider { position: absolute; top: 50%; left: 0; height: 42px; margin-top: -21px; width: 0; border-radius: 13px; background: #EEF2FB; opacity: 0; pointer-events: none; transition: transform .5s var(--dx-spring), width .5s var(--dx-spring), opacity .25s; }
+.dx-glider.on { opacity: 1; }
+.dx-list > li { position: relative; }
+.dx-list > li.dx-mega { position: static; }
+.dx-link { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; height: 42px; padding: 0 14px; border: 0; background: none; border-radius: 13px; color: var(--dx-ink) !important; font: 500 15px/1 var(--dx-font); text-decoration: none !important; cursor: pointer; white-space: nowrap; }
+.dx-link:focus-visible, .dx-header button:focus-visible, .dx-header a:focus-visible { outline: 3px solid var(--dx-gold); outline-offset: 2px; }
+.dx-caret { transition: transform .4s var(--dx-spring); }
+.dx-has-panel.open > .dx-link .dx-caret { transform: rotate(180deg); }
+/* Active page: three little beads */
+.dx-link.is-active::after { content: ""; position: absolute; left: 50%; bottom: 3px; width: 22px; height: 6px; margin-left: -11px; background: radial-gradient(circle, var(--dx-green) 2.6px, transparent 3px) 0 0 / 7.3px 6px no-repeat, radial-gradient(circle, var(--dx-blue) 2.6px, transparent 3px) 50% 0 / 7.3px 6px no-repeat, radial-gradient(circle, var(--dx-red) 2.6px, transparent 3px) 100% 0 / 7.3px 6px no-repeat; animation: dxBeads 1s var(--dx-spring) both .5s; }
+@keyframes dxBeads { from { transform: scaleX(0); opacity: 0; } }
+
+/* Drop panels */
+.dx-panel { position: absolute; top: calc(100% + 12px); left: 50%; z-index: 5; min-width: 250px; padding: 10px; background: #fff; border: 1px solid var(--dx-line); border-radius: 22px; box-shadow: 0 30px 70px rgba(29, 34, 69, .18); opacity: 0; visibility: hidden; transform: translate(-50%, 12px) scale(.97); transform-origin: 50% 0; transition: opacity .3s var(--dx-ease), transform .45s var(--dx-spring), visibility 0s .3s; }
+.dx-has-panel.open > .dx-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition: opacity .3s var(--dx-ease), transform .45s var(--dx-spring), visibility 0s; }
+.dx-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+.dx-mega > .dx-panel { width: min(680px, calc(100vw - 32px)); padding: 18px; }
+.dx-panel-lead { margin: 0 6px 12px; color: var(--dx-soft); font-size: 14px; }
+.dx-tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.dx-tool, .dx-sub { display: flex; align-items: center; gap: 14px; padding: 10px 12px; border-radius: 16px; color: var(--dx-ink) !important; text-decoration: none !important; opacity: 0; transform: translateY(8px); transition: background .25s, opacity .4s var(--dx-ease), transform .5s var(--dx-spring); transition-delay: 0s; }
+.dx-has-panel.open .dx-tool, .dx-has-panel.open .dx-sub { opacity: 1; transform: none; transition-delay: calc(var(--i, 0) * 45ms + 60ms); }
+.dx-tool:hover, .dx-sub:hover { background: var(--dx-paper); }
+.dx-ticon { flex: none; width: 52px; height: 52px; border-radius: 15px; display: flex; align-items: center; justify-content: center; white-space: nowrap; background: var(--t); transition: transform .5s var(--dx-spring); }
+.dx-tool:hover .dx-ticon { transform: rotate(-8deg) scale(1.08); }
+.dx-tool b { display: block; font-family: "Fredoka", var(--dx-font); font-weight: 600; font-size: 17px; line-height: 1.2; }
+.dx-tool small { display: block; color: var(--dx-soft); font-size: 13px; line-height: 1.4; margin-top: 2px; }
+.dx-panel-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 12px 8px 2px; border-top: 1px solid var(--dx-line); font-size: 14px; font-weight: 500; }
+.dx-panel-foot a { color: var(--dx-blue) !important; text-decoration: none !important; }
+.dx-sub { padding: 12px 14px; font-size: 15px; font-weight: 500; gap: 12px; }
+.dx-sub i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 4px var(--t); }
+
+/* Right side */
+.dx-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.dx-btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 14px; border: 2px solid transparent; font: 500 15px/1 var(--dx-font); text-decoration: none !important; cursor: pointer; white-space: nowrap; transition: transform .35s var(--dx-spring), background .25s, box-shadow .3s, color .25s; }
+.dx-btn:hover { transform: translateY(-2px); }
+.dx-btn-red { background: var(--dx-red); color: #fff !important; box-shadow: 0 8px 20px rgba(211, 52, 58, .28); }
+.dx-btn-red:hover { background: var(--dx-red-dark); }
+.dx-btn-ghost { background: transparent; color: var(--dx-ink) !important; }
+.dx-btn-ghost:hover { background: #EEF2FB; }
+#profileNavItem .dx-btn { max-width: 220px; overflow: hidden; text-overflow: ellipsis; border-color: var(--dx-line); }
+
+/* Language picker */
+.dx-lang { position: relative; }
+.dx-lang-btn { display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 12px; border-radius: 14px; border: 1px solid var(--dx-line); background: #fff; color: var(--dx-ink); font: 600 14px/1 var(--dx-font); cursor: pointer; transition: background .25s, border-color .25s; }
+.dx-lang-btn:hover, .dx-lang.open .dx-lang-btn { background: #EEF2FB; border-color: #C9D5EE; }
+.dx-globe { transition: transform .8s var(--dx-spring); }
+.dx-lang-btn:hover .dx-globe, .dx-lang.open .dx-globe { transform: rotate(200deg); }
+.dx-lang.open .dx-caret { transform: rotate(180deg); }
+.dx-lang-menu { position: absolute; top: calc(100% + 12px); inset-inline-end: 0; z-index: 6; width: 250px; margin: 0; padding: 8px; list-style: none; background: #fff; border: 1px solid var(--dx-line); border-radius: 20px; box-shadow: 0 30px 70px rgba(29, 34, 69, .18); opacity: 0; visibility: hidden; transform: translateY(10px) scale(.97); transform-origin: 90% 0; transition: opacity .3s var(--dx-ease), transform .45s var(--dx-spring), visibility 0s .3s; }
+.dx-lang.open .dx-lang-menu { opacity: 1; visibility: visible; transform: none; transition: opacity .3s var(--dx-ease), transform .45s var(--dx-spring), visibility 0s; }
+.dx-lang-opt { width: 100%; display: flex; align-items: center; gap: 12px; padding: 9px 10px; border: 0; border-radius: 12px; background: none; color: var(--dx-ink); font: 500 15px/1.2 var(--dx-font); text-align: start; cursor: pointer; opacity: 0; transform: translateX(-8px); transition: background .2s, opacity .35s var(--dx-ease), transform .45s var(--dx-spring); }
+[dir="rtl"] .dx-lang-opt { transform: translateX(8px); }
+.dx-lang.open .dx-lang-opt { opacity: 1; transform: none; transition-delay: calc(var(--i) * 30ms + 40ms); }
+.dx-lang-opt:hover { background: var(--dx-paper); }
+.dx-lang-opt .code { flex: none; width: 34px; height: 26px; border-radius: 8px; display: grid; place-items: center; font-size: 12px; font-weight: 600; letter-spacing: .04em; background: var(--t); color: var(--dx-ink); }
+.dx-lang-opt .hello { margin-inline-start: auto; font-size: 13px; color: var(--dx-soft); opacity: 0; transform: translateY(4px); transition: opacity .25s, transform .35s var(--dx-spring); }
+.dx-lang-opt:hover .hello, .dx-lang-opt[aria-selected="true"] .hello { opacity: 1; transform: none; }
+.dx-lang-opt[aria-selected="true"] { background: #EEF2FB; }
+.dx-lang-opt[aria-selected="true"] .code { background: var(--dx-ink); color: #fff; }
+
+/* Burger */
+.dx-burger { display: none; position: relative; width: 46px; height: 46px; border-radius: 14px; border: 1px solid var(--dx-line); background: #fff; cursor: pointer; align-items: center; justify-content: center; }
+.dx-burger span, .dx-burger span::before, .dx-burger span::after { display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--dx-ink); transition: transform .45s var(--dx-spring), background .2s, top .3s; }
+.dx-burger span { position: relative; }
+.dx-burger span::before, .dx-burger span::after { content: ""; position: absolute; left: 0; }
+.dx-burger span::before { top: -7px; } .dx-burger span::after { top: 7px; }
+.dx-burger[aria-expanded="true"] span { background: transparent; }
+.dx-burger[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
+.dx-burger[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
+.dx-mobile-actions { display: none; }
+
+/* Tablet & phone: full-screen menu revealed from the burger */
+@media (max-width: 1100px) {
+  /* No transform / backdrop-filter on ancestors, or the fixed full-screen menu would be trapped inside the bar */
+  .dx-header, .dx-header.is-hidden { transform: none; transition: none; }
+  .dx-bar { animation: none; -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(255, 255, 255, .97); }
+  .dx-burger { display: inline-flex; }
+  .dx-actions #signupNavItem, .dx-actions #loginNavItem, .dx-actions #profileNavItem, .dx-actions #logoutNavItem, .dx-actions #logoutStudentNavItem { display: none !important; }
+  .dx-actions { margin-inline-start: auto; }
+  .dx-nav { position: fixed; inset: 0; z-index: -1; display: block; padding: 104px max(20px, env(safe-area-inset-left, 0px)) 32px; overflow-y: auto; background: #fff; pointer-events: auto; clip-path: circle(0 at calc(100% - 44px) 48px); visibility: hidden; transition: clip-path .7s var(--dx-ease), visibility 0s .7s; }
+  [dir="rtl"] .dx-nav { clip-path: circle(0 at 44px 48px); }
+  .dx-nav.open { clip-path: circle(150% at calc(100% - 44px) 48px); visibility: visible; transition: clip-path .7s var(--dx-ease), visibility 0s; }
+  [dir="rtl"] .dx-nav.open { clip-path: circle(150% at 44px 48px); }
+  .dx-glider { display: none; }
+  .dx-list { flex-direction: column; align-items: stretch; gap: 4px; max-width: 560px; margin: 0 auto; }
+  .dx-list > li, .dx-list > li.dx-mega { position: relative; opacity: 0; transform: translateY(18px); transition: opacity .4s var(--dx-ease), transform .6s var(--dx-spring); }
+  .dx-nav.open .dx-list > li { opacity: 1; transform: none; transition-delay: calc(var(--i, 0) * 60ms + 200ms); }
+  .dx-link { width: 100%; height: 58px; justify-content: space-between; padding: 0 8px; font-family: "Fredoka", var(--dx-font); font-weight: 600; font-size: 24px; border-radius: 0; border-bottom: 1px solid var(--dx-line); }
+  .dx-link.is-active::after { left: auto; inset-inline-end: 8px; bottom: 50%; margin: 0 0 -3px; }
+  .dx-panel, .dx-mega > .dx-panel { position: static; width: auto; min-width: 0; padding: 0; border: 0; box-shadow: none; border-radius: 0; opacity: 1; visibility: visible; transform: none; display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--dx-ease); }
+  .dx-panel > .dx-panel-inner { overflow: hidden; }
+  .dx-has-panel.open > .dx-panel { transform: none; grid-template-rows: 1fr; }
+  .dx-panel::before { display: none; }
+  .dx-tools { grid-template-columns: minmax(0, 1fr); padding: 8px 0; }
+  .dx-panel-lead { display: none; }
+  .dx-mobile-actions { display: flex; flex-wrap: wrap; gap: 10px; max-width: 560px; margin: 26px auto 0; opacity: 0; transform: translateY(18px); transition: opacity .4s var(--dx-ease), transform .6s var(--dx-spring); }
+  .dx-nav.open .dx-mobile-actions { opacity: 1; transform: none; transition-delay: .62s; }
+  .dx-mobile-actions .dx-btn { flex: 1 1 140px; height: 52px; font-size: 16px; }
+  #mobileProfileLink.dx-btn { border-color: var(--dx-line); }
+}
+@media (max-width: 520px) {
+  .dx-header { top: 10px; }
+  .dx-bar { height: 62px; padding-inline: 10px 8px; gap: 8px; }
+  .dx-logo { width: 126px; height: 56px; background-size: 190px 190px; background-position: -26px -65px; }
+  .dx-lang-btn { padding: 0 9px; }
+  .dx-lang-btn .dx-caret { display: none; }
+}
+body.dx-lock { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .dx-header *, .dx-header *::before, .dx-header *::after, .dx-bar { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+}
+
+/* Modals (Bootstrap 4) in the same style */
+#signupModal .modal-content, #loginModal .modal-content, #studentLoginModal .modal-content, #forgotPasswordModal .modal-content, #premiumRequiredModal .modal-content { border: 0; border-radius: 24px; box-shadow: 0 40px 90px rgba(29, 34, 69, .25); font-family: "Lexend", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans SC", Verdana, sans-serif; overflow: hidden; }
+#signupModal .modal-header, #loginModal .modal-header, #studentLoginModal .modal-header, #forgotPasswordModal .modal-header, #premiumRequiredModal .modal-header { border: 0; padding: 22px 26px 6px; }
+#signupModal .modal-title, #loginModal .modal-title, #studentLoginModal .modal-title, #forgotPasswordModal .modal-title, #premiumRequiredModal .modal-title { font-family: "Fredoka", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans SC", sans-serif; font-weight: 600; font-size: 26px; color: #1D2245; }
+#signupModal .modal-body, #loginModal .modal-body, #studentLoginModal .modal-body, #forgotPasswordModal .modal-body, #premiumRequiredModal .modal-body { padding: 10px 26px 24px; }
+#signupModal .form-control, #loginModal .form-control, #studentLoginModal .form-control, #forgotPasswordModal .form-control { height: 48px; border-radius: 14px; border-color: #DDE0EC; }
+#signupModal .btn-primary, #loginModal .btn-primary, #studentLoginModal .btn-primary, #forgotPasswordModal .btn-primary, #premiumRequiredModal .btn-primary { background: #D3343A; border-color: #D3343A; border-radius: 14px; min-height: 48px; font-weight: 500; }
+.modal.fade .modal-dialog { transition: transform .45s cubic-bezier(.34, 1.56, .64, 1), opacity .3s; transform: translateY(30px) scale(.96); }
+.modal.show .modal-dialog { transform: none; }
+</style>
+
+<header class="dx-header" id="dxHeader">
+  <div class="dx-bar">
+    <a href="/dissipl-preview/" class="dx-logo" aria-label="DISSIPL"></a>
+
+    <nav class="dx-nav" id="mainNav" aria-label="Menu principal">
+      <span class="dx-glider" aria-hidden="true"></span>
+      <ul class="dx-list">
+        <li style="--i:0"><a class="dx-link" href="/dissipl-preview/" data-match="/,/index,/index.html" data-i18n="nav.home">Accueil</a></li>
+
+        <li class="dx-has-panel dx-mega" style="--i:1">
+          <button class="dx-link" type="button" aria-expanded="false" aria-controls="dxToolsPanel" data-match="/tools,/tools.html,/abacus-free,/multiplix-free,/alpha-mobile-free,/number-card-free,/fraction-circles-free">
+            <span data-i18n="nav.tools">Outils</span>
+            <svg class="dx-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="dx-panel" id="dxToolsPanel">
+            <div class="dx-panel-inner">
+              <p class="dx-panel-lead" data-i18n="nav.toolsLead">Manipuler pour comprendre, gratuit pour commencer.</p>
+              <div class="dx-tools">
+                <a class="dx-tool" href="/dissipl-preview/abacus-free" style="--i:0; --t:#FBE7E7">
+                  <span class="dx-ticon"><svg width="30" height="26" viewBox="0 0 30 26" aria-hidden="true"><path d="M1 4h28M1 13h28M1 22h28" stroke="#B98E5C" stroke-width="2"/><circle cx="5" cy="4" r="3.6" fill="#D3343A"/><circle cx="12" cy="4" r="3.6" fill="#D3343A"/><circle cx="12" cy="13" r="3.6" fill="#2C68BE"/><circle cx="19" cy="13" r="3.6" fill="#2C68BE"/><circle cx="25" cy="22" r="3.6" fill="#3B9257"/></svg></span>
+                  <span><b data-i18n="tool.abacus.name">Boulier</b><small data-i18n="tool.abacus.desc">Compter, dénombrer, faire des calculs et des opérations.</small></span>
+                </a>
+                <a class="dx-tool" href="/dissipl-preview/multiplix-free" style="--i:1; --t:#E5EDF9">
+                  <span class="dx-ticon"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><g fill="#2C68BE"><rect x="1" y="1" width="7" height="7" rx="2"/><rect x="10.5" y="1" width="7" height="7" rx="2"/><rect x="20" y="1" width="7" height="7" rx="2" opacity=".25"/><rect x="1" y="10.5" width="7" height="7" rx="2"/><rect x="10.5" y="10.5" width="7" height="7" rx="2"/><rect x="20" y="10.5" width="7" height="7" rx="2" opacity=".25"/><rect x="1" y="20" width="7" height="7" rx="2" opacity=".25"/><rect x="10.5" y="20" width="7" height="7" rx="2" opacity=".25"/><rect x="20" y="20" width="7" height="7" rx="2" opacity=".25"/></g></svg></span>
+                  <span><b data-i18n="tool.multiplix.name">Multiplix</b><small data-i18n="tool.multiplix.desc">La table de Pythagore pour comprendre le sens de la multiplication.</small></span>
+                </a>
+                <a class="dx-tool" href="/dissipl-preview/alpha-mobile-free" style="--i:2; --t:#FBF2DC">
+                  <span class="dx-ticon" style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 26px; line-height: 1"><span style="color:#2C68BE">a</span><span style="color:#D3343A">b</span></span>
+                  <span><b data-i18n="tool.alpha.name">Alpha'Mobile</b><small data-i18n="tool.alpha.desc">Construire des lettres, des sons, des syllabes et des mots.</small></span>
+                </a>
+                <a class="dx-tool" href="/dissipl-preview/number-card-free" style="--i:3; --t:#E6F3EA">
+                  <span class="dx-ticon" style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: 20px; line-height: 1"><span style="color:#D3343A">3</span><span style="color:#2C68BE">5</span><span style="color:#3B9257">2</span></span>
+                  <span><b data-i18n="tool.cards.name">Banque de perles</b><small data-i18n="tool.cards.desc">Les cartes des nombres pour composer et décomposer les petits et les grands nombres.</small></span>
+                </a>
+                <a class="dx-tool" href="/dissipl-preview/fraction-circles-free" style="--i:4; --t:#FBE7E7">
+                  <span class="dx-ticon"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="13" fill="#fff"/><path d="M15 15V2a13 13 0 0 1 13 13Z" fill="#D3343A"/><path d="M15 15h13a13 13 0 0 1-13 13Z" fill="#2C68BE"/><path d="M15 15v13A13 13 0 0 1 2 15Z" fill="#E5B33F"/><circle cx="15" cy="15" r="13" fill="none" stroke="#1D2245" stroke-opacity=".2" stroke-width="1.5"/></svg></span>
+                  <span><b data-i18n="tool.fractions.name">Cercles de fractions</b><small data-i18n="tool.fractions.desc">Voir, partager et comparer les fractions en manipulant des parts.</small></span>
+                </a>
+                <a class="dx-tool" href="/dissipl-preview/premium-tools" style="--i:5; --t:#1D2245">
+                  <span class="dx-ticon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9Z" fill="#E5B33F"/></svg></span>
+                  <span><b data-i18n="nav.premium">Premium</b><small data-i18n="tools.text">La version gratuite permet de manipuler librement. La version Premium ajoute des exercices intégrés selon les niveaux de compétences.</small></span>
+                </a>
+              </div>
+              <div class="dx-panel-foot">
+                <a href="/dissipl-preview/tools" data-i18n="nav.toolsAll">Tous les outils</a>
+                <a href="/dissipl-preview/tutoriels" data-i18n="nav.tutorials">Tutoriels et formations</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li style="--i:2"><a class="dx-link" href="/dissipl-preview/premium-tools" data-match="/premium-tools,/premium-tools.html" data-i18n="nav.premium">Premium</a></li>
+        <li style="--i:3"><a class="dx-link" href="/dissipl-preview/price" data-match="/price,/price.html,/subscribe,/school-quote" data-i18n="nav.pricing">Tarifs</a></li>
+
+        <li class="dx-has-panel" style="--i:4">
+          <button class="dx-link" type="button" aria-expanded="false" aria-controls="dxResPanel" data-match="/pedagogic,/pedagogic.html,/tutoriels,/tutoriels.html,/FAQ,/FAQ.html">
+            <span data-i18n="nav.resources">Ressources</span>
+            <svg class="dx-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="dx-panel" id="dxResPanel">
+            <div class="dx-panel-inner">
+              <a class="dx-sub" href="/dissipl-preview/pedagogic" style="--i:0; --c:#3B9257; --t:#E6F3EA"><i></i><span data-i18n="nav.pedagogy">Notre pédagogie</span></a>
+              <a class="dx-sub" href="/dissipl-preview/tutoriels" style="--i:1; --c:#2C68BE; --t:#E5EDF9"><i></i><span data-i18n="nav.tutorials">Tutoriels et formations</span></a>
+              <a class="dx-sub" href="/dissipl-preview/FAQ" style="--i:2; --c:#D3343A; --t:#FBE7E7"><i></i><span data-i18n="nav.faq">FAQ</span></a>
+              <a class="dx-sub" href="/dissipl-preview/contact" style="--i:3; --c:#E5B33F; --t:#FBF2DC"><i></i><span data-i18n="nav.contact">Contact</span></a>
+            </div>
+          </div>
+        </li>
+
+        <li style="--i:5"><a class="dx-link" href="/dissipl-preview/about" data-match="/about,/about.html" data-i18n="nav.about">À propos</a></li>
+      </ul>
+
+      <!-- Mobile: compte (IDs pilotés par header.nav.js) -->
+      <div class="dx-mobile-actions">
+        <a href="javascript:void(0)" class="dx-btn dx-btn-ghost" id="mobileSignupBtn" data-toggle="modal" data-target="#signupModal" role="button" style="border-color:#DDE0EC" data-i18n="auth.signup">Inscription</a>
+        <a href="javascript:void(0)" class="dx-btn dx-btn-red" id="mobileLoginBtn" data-toggle="modal" data-target="#loginModal" role="button" data-i18n="auth.login">Connexion</a>
+        <a href="/dissipl-preview/profile" class="dx-btn dx-btn-ghost" id="mobileProfileLink" style="display:none;" data-i18n="auth.profile">Mon profil</a>
+        <a href="javascript:void(0)" class="dx-btn dx-btn-red" id="mobileLogoutBtn" style="display:none;" role="button" data-i18n="auth.logout">Déconnexion</a>
+      </div>
+    </nav>
+
+    <div class="dx-actions">
+      <div class="dx-lang" id="dxLang">
+        <button class="dx-lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="dxLangMenu" aria-label="Choisir la langue" data-i18n-attr="aria-label:nav.chooseLanguage">
+          <svg class="dx-globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5s-1.3 6.7-3.9 9.5c-2.6-2.8-3.9-6-3.9-9.5s1.3-6.7 3.9-9.5Z"/></svg>
+          <span class="dx-lang-code" id="dxLangCode">FR</span>
+          <svg class="dx-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ul class="dx-lang-menu" id="dxLangMenu" role="listbox" aria-label="Langue" data-i18n-attr="aria-label:nav.language"></ul>
+      </div>
+
+      <!-- IMPORTANT : header.nav.js pilote ces blocs par leur ID -->
+      <div id="signupNavItem">
+        <a href="javascript:void(0)" class="dx-btn dx-btn-ghost" data-toggle="modal" data-target="#signupModal" role="button" data-i18n="auth.signup">Inscription</a>
+      </div>
+      <div id="loginNavItem">
+        <a href="javascript:void(0)" class="dx-btn dx-btn-red" data-toggle="modal" data-target="#loginModal" role="button" data-i18n="auth.login">Connexion</a>
+      </div>
+      <!-- IMPORTANT : header.nav.js écrit le nom de l'utilisateur dans "a.nav-link" -->
+      <div id="profileNavItem" style="display:none;">
+        <a href="/dissipl-preview/profile" class="dx-btn dx-btn-ghost nav-link">Mon profil</a>
+      </div>
+      <div id="logoutNavItem" style="display:none;">
+        <button id="logoutButton" class="dx-btn dx-btn-red" type="button" data-i18n="auth.logout">Déconnexion</button>
+      </div>
+      <div id="logoutStudentNavItem" style="display:none;">
+        <button id="logoutStudentButton" class="dx-btn dx-btn-ghost" type="button" data-i18n="auth.logout">Déconnexion</button>
+      </div>
+
+      <button class="dx-burger" id="dxBurger" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Ouvrir le menu" data-i18n-attr="aria-label:nav.menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MODALS ============ -->
+
+<!-- Inscription -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel" data-i18n="m.signup.title">Inscription</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer" data-i18n-attr="aria-label:m.close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form id="signupForm">
+          <div class="form-group">
+            <label for="signupEmail" data-i18n="m.email">Adresse email</label>
+            <input type="email" class="form-control" id="signupEmail" placeholder="Entrez votre email" data-i18n-attr="placeholder:m.email.ph" required />
+          </div>
+          <div class="form-group">
+            <label for="signupPassword" data-i18n="m.password">Mot de passe</label>
+            <div style="position: relative;">
+              <input type="password" class="form-control" id="signupPassword" placeholder="Mot de passe" data-i18n-attr="placeholder:m.password.ph" required style="padding-inline-end: 44px;" />
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('signupPassword')" style="position: absolute; inset-inline-end: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 5px;" aria-label="Afficher le mot de passe" data-i18n-attr="aria-label:m.showpw">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signupConfirmPassword" data-i18n="m.confirm">Confirmez le mot de passe</label>
+            <div style="position: relative;">
+              <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirmez le mot de passe" data-i18n-attr="placeholder:m.confirm.ph" required style="padding-inline-end: 44px;" />
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('signupConfirmPassword')" style="position: absolute; inset-inline-end: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 5px;" aria-label="Afficher le mot de passe" data-i18n-attr="aria-label:m.showpw">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signupRole" data-i18n="m.role">Type de compte</label>
+            <select class="form-control" id="signupRole" required>
+              <option value="user" data-i18n="m.role.user">Compte parent</option>
+              <option value="professeur" data-i18n="m.role.teacher">Professeur</option>
+              <option value="directeur" data-i18n="m.role.director">Directeur / Responsable d'établissement</option>
+            </select>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="acceptCGU" required />
+            <label class="form-check-label" for="acceptCGU">
+              <span data-i18n="m.cgu.before">J'accepte les</span>
+              <a href="/dissipl-preview/cgu.html" target="_blank" data-i18n="m.cgu.link">conditions générales d'utilisation</a>.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block mt-3" data-i18n="m.signup.submit">S'inscrire</button>
+        </form>
+        <div id="signupError" class="alert alert-danger mt-2" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Connexion -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel" data-i18n="m.login.title">Connexion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer" data-i18n-attr="aria-label:m.close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginIdentifiant" data-i18n="m.login.id">Email ou identifiant</label>
+            <input type="text" class="form-control" id="loginIdentifiant" placeholder="ex : prof@ecole.fr ou MmeMartin4B" data-i18n-attr="placeholder:m.login.id.ph" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword" data-i18n="m.password">Mot de passe</label>
+            <div style="position: relative;">
+              <input type="password" class="form-control" id="loginPassword" placeholder="Votre mot de passe" data-i18n-attr="placeholder:m.login.pw.ph" required style="padding-inline-end: 44px;" />
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword')" style="position: absolute; inset-inline-end: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 5px;" aria-label="Afficher le mot de passe" data-i18n-attr="aria-label:m.showpw">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+          </div>
+          <div id="loginError" class="alert alert-danger mt-2" style="display:none;"></div>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="m.login.submit">Se connecter</button>
+        </form>
+      </div>
+      <div class="modal-footer" style="border:0; justify-content:center;">
+        <button type="button" id="forgotPasswordButton" class="btn btn-link" data-i18n="m.forgot">Mot de passe oublié ?</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Connexion élève -->
+<div class="modal fade" id="studentLoginModal" tabindex="-1" aria-labelledby="studentLoginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentLoginModalLabel" data-i18n="m.student.title">Connexion élève</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer" data-i18n-attr="aria-label:m.close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form id="studentLoginForm">
+          <div class="form-group">
+            <label for="studentUsername" data-i18n="m.student.id">Identifiant</label>
+            <input type="text" class="form-control" id="studentUsername" placeholder="Ex : bob4567" data-i18n-attr="placeholder:m.student.id.ph" required />
+          </div>
+          <div class="form-group">
+            <label for="studentPassword" data-i18n="m.password">Mot de passe</label>
+            <div style="position: relative;">
+              <input type="password" class="form-control" id="studentPassword" placeholder="Mot de passe" data-i18n-attr="placeholder:m.password.ph" required style="padding-inline-end: 44px;" />
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('studentPassword')" style="position: absolute; inset-inline-end: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 5px;" aria-label="Afficher le mot de passe" data-i18n-attr="aria-label:m.showpw">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+          </div>
+          <div id="studentLoginError" class="alert alert-danger mt-2" style="display:none;"></div>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="m.login.submit">Se connecter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mot de passe oublié -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="forgotPasswordModalLabel" data-i18n="m.forgot.title">Mot de passe oublié</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer" data-i18n-attr="aria-label:m.close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form id="forgotPasswordForm">
+          <p data-i18n="m.forgot.text">Entrez votre adresse email pour recevoir un lien de réinitialisation :</p>
+          <input type="email" id="forgotPasswordEmail" class="form-control" placeholder="Votre email" data-i18n-attr="placeholder:m.forgot.ph" required />
+          <div id="forgotPasswordError" class="text-danger mt-2" style="display:none;"></div>
+          <div class="modal-footer" style="border:0; padding-inline: 0;">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius:14px" data-i18n="m.cancel">Annuler</button>
+            <button type="submit" id="forgotPasswordSubmit" class="btn btn-primary" data-i18n="m.send">Envoyer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Premium requis -->
+<div class="modal fade" id="premiumRequiredModal" tabindex="-1" aria-labelledby="premiumRequiredModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="premiumRequiredModalLabel" data-i18n="m.premium.title">Accès réservé aux abonnés Premium</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer" data-i18n-attr="aria-label:m.close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body text-center">
+        <p data-i18n-html="m.premium.text">Connectez-vous avec un <strong>abonnement Premium</strong> pour accéder à cette page.</p>
+        <p><span data-i18n="m.premium.offers">Découvrez nos offres :</span> <a href="/dissipl-preview/price" class="btn btn-primary" data-i18n="m.premium.cta">Voir les abonnements</a></p>
+      </div>
+      <div class="modal-footer" style="border:0;">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius:14px" data-i18n="m.close">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

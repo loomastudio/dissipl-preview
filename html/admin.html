@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - DISSIPL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/dissipl-preview/css/stylestest.css">
+  <style>
+    .admin-dashboard {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .stat-card h3 {
+      font-size: 32px;
+      margin: 10px 0;
+      color: #4CAF50;
+    }
+    .stat-card-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .stat-card-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+      color: inherit;
+    }
+    .stat-card .label {
+      color: #666;
+      font-size: 14px;
+    }
+    .table-container {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+    }
+    .badge-plan {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+    .badge-parent { background: #E8F5E9; color: #2E7D32; }
+    .badge-teacher { background: #FFF3E0; color: #EF6C00; }
+    .sub-status-badge {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .sub-status-badge.active { background: #E8F5E9; color: #2E7D32; }
+    .sub-status-badge.cancelled { background: #FFF8E1; color: #F57F17; }
+
+    /* Custom Modal Styles */
+    .custom-modal {
+      display: none;
+      position: fixed;
+      z-index: 1050;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .custom-modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .custom-modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .custom-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .custom-modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+    .custom-modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      line-height: 1;
+    }
+    .custom-modal-close:hover {
+      color: #333;
+    }
+    .custom-modal-body {
+      white-space: pre-wrap;
+      color: #555;
+      line-height: 1.6;
+    }
+    .custom-modal-footer {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    /* Quote requests – action buttons */
+    .quote-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .quote-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      line-height: 1;
+      padding: 0;
+    }
+    .quote-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    }
+    .quote-btn-view { background: #E3F2FD; color: #1565C0; border-color: #BBDEFB; }
+    .quote-btn-view:hover { background: #BBDEFB; }
+    .quote-btn-approve { background: #E8F5E9; color: #2E7D32; border-color: #C8E6C9; }
+    .quote-btn-approve:hover { background: #C8E6C9; }
+    .quote-btn-reject { background: #FFF3E0; color: #E65100; border-color: #FFE0B2; }
+    .quote-btn-reject:hover { background: #FFE0B2; }
+    .quote-btn-delete { background: #FFEBEE; color: #C62828; border-color: #FFCDD2; }
+    .quote-btn-delete:hover { background: #FFCDD2; }
+    .quote-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .quote-status-approved { background: #E8F5E9; color: #2E7D32; }
+    .quote-status-rejected { background: #FFEBEE; color: #C62828; }
+    .quote-status-pending { background: #FFF8E1; color: #F57F17; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <div id="header-placeholder"></div>
+
+  <main class="flex-fill">
+    <section class="page-hero">
+      <h1>Admin Dashboard</h1>
+      <p class="page-subtitle">Gestion des abonnements et des utilisateurs</p>
+    </section>
+
+    <div class="admin-dashboard">
+      <!-- Stats Cards -->
+      <div class="row">
+        <div class="col-md-3">
+          <a href="/dissipl-preview/all-users" class="stat-card stat-card-link" title="Gérer les utilisateurs et leurs abonnements">
+            <div class="label">Total Utilisateurs</div>
+            <h3 id="total-users">-</h3>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card" title="Comptes avec un abonnement premium actif (tous rôles)">
+            <div class="label">Abonnements Actifs</div>
+            <h3 id="active-subscribers">-</h3>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <a href="/dissipl-preview/all-parents" class="stat-card stat-card-link" title="Voir et gérer tous les comptes Parents">
+            <div class="label">Parents</div>
+            <h3 id="parent-subs">-</h3>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card" title="Comptes Professeurs valides">
+            <div class="label">Professeurs</div>
+            <h3 id="teacher-subs">-</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revenue Card -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="stat-card">
+            <div class="label">Revenu Mensuel (Estimé)</div>
+            <h3 id="monthly-revenue">-</h3>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="stat-card">
+            <div class="label">Revenu Annuel (Estimé)</div>
+            <h3 id="annual-revenue">-</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subscribers Table -->
+      <div class="table-container">
+        <h4>Abonnés Actifs</h4>
+        <div id="subscribers-loading" class="loading">Chargement...</div>
+        <div class="table-responsive" id="subscribers-table" style="display: none;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Pseudo</th>
+                <th>Plan</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody id="subscribers-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Quote Requests Table -->
+      <div class="table-container mt-4">
+        <h4>📋 Demandes de Devis Établissement</h4>
+        <div id="quotes-loading" class="loading">Chargement...</div>
+        <div class="table-responsive" id="quotes-table" style="display: none;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Établissement</th>
+                <th>Type</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Enseignants</th>
+                <th>Taille</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="quotes-body">
+            </tbody>
+          </table>
+        </div>
+        <div id="quotes-empty" class="text-center text-muted py-4" style="display: none;">
+          Aucune demande de devis
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Quote Message Modal -->
+  <div class="custom-modal" id="quoteMessageModal">
+    <div class="custom-modal-content">
+      <div class="custom-modal-header">
+        <div class="custom-modal-title">💬 Message de la demande</div>
+        <button class="custom-modal-close" onclick="closeQuoteModal()">&times;</button>
+      </div>
+      <div class="custom-modal-body" id="quoteMessageBody"></div>
+      <div class="custom-modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeQuoteModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script src="/dissipl-preview/js/core/footer.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="module" src="/dissipl-preview/js/core/header.js?v=20260916-mobile"></script>
+
+  <script>
+    (function() {
+      // Check authentication (admin only)
+      fetch('/api/session/status', { credentials: 'include' })
+        .then(response => response.json())
+        .then(data => {
+          if (!data.authenticated || data.user?.role !== 'admin') {
+            window.location.href = '/dissipl-preview/price';
+            return;
+          }
+          loadAdminData();
+        })
+        .catch(() => window.location.href = '/dissipl-preview/price');
+
+      function formatDateFR(value) {
+        if (!value) return '-';
+        const date = new Date(String(value).trim().replace(' ', 'T'));
+        if (isNaN(date.getTime())) return value;
+        return date.toLocaleDateString('fr-FR');
+      }
+
+      function loadAdminData() {
+        // Load stats
+        fetch('/api/admin/stats')
+          .then(r => r.json())
+          .then(stats => {
+            document.getElementById('total-users').textContent = stats.total_users || 0;
+            document.getElementById('active-subscribers').textContent = stats.active_subscribers || 0;
+            document.getElementById('parent-subs').textContent = stats.total_parents || 0;
+            document.getElementById('teacher-subs').textContent = stats.total_teachers || 0;
+          });
+
+        // Load revenue
+        fetch('/api/admin/revenue')
+          .then(r => r.json())
+          .then(revenue => {
+            document.getElementById('monthly-revenue').textContent = revenue.monthlyRevenue + '€';
+            document.getElementById('annual-revenue').textContent = revenue.annualRevenue + '€';
+          });
+
+        // Load subscribers
+        fetch('/api/admin/subscribers')
+          .then(r => r.json())
+          .then(subscribers => {
+            const tbody = document.getElementById('subscribers-body');
+            tbody.innerHTML = '';
+
+            if (subscribers.length === 0) {
+              tbody.innerHTML = '<tr><td colspan="6" class="text-center">Aucun abonné</td></tr>';
+            } else {
+              subscribers.forEach(sub => {
+                const statusBadge = sub.is_cancel
+                  ? '<span class="sub-status-badge cancelled">Annulé</span>'
+                  : '<span class="sub-status-badge active">Actif</span>';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                  <td>${sub.email || '-'}</td>
+                  <td>${sub.pseudo || '-'}</td>
+                  <td><span class="badge-plan badge-${sub.current_plan}">${sub.current_plan}</span></td>
+                  <td>${formatDateFR(sub.premium_start_date)}</td>
+                  <td>${formatDateFR(sub.premium_end_date)}</td>
+                  <td>${statusBadge}</td>
+                `;
+                tbody.appendChild(row);
+              });
+            }
+
+            document.getElementById('subscribers-loading').style.display = 'none';
+            document.getElementById('subscribers-table').style.display = 'block';
+          });
+
+        // Load quote requests
+        fetch('/api/admin/quote-requests')
+          .then(r => r.json())
+          .then(data => {
+            const quotes = Array.isArray(data) ? data : [];
+            const tbody = document.getElementById('quotes-body');
+            tbody.innerHTML = '';
+
+            if (quotes.length === 0) {
+              document.getElementById('quotes-empty').style.display = 'block';
+              document.getElementById('quotes-table').style.display = 'none';
+            } else {
+              document.getElementById('quotes-empty').style.display = 'none';
+              quotes.forEach(quote => {
+                const row = document.createElement('tr');
+                const date = new Date(quote.created_at).toLocaleDateString('fr-FR');
+                const schoolTypeLabels = {
+                  'ecole_maternelle': 'École Maternelle',
+                  'ecole_primaire': 'École Primaire',
+                  'college': 'Collège',
+                  'lycee': 'Lycée',
+                  'autre': 'Autre'
+                };
+                const schoolSizeLabels = {
+                  'petit': 'Petit',
+                  'moyen': 'Moyen',
+                  'grand': 'Grand'
+                };
+
+                row.innerHTML = `
+                  <td>${date}</td>
+                  <td><strong>${quote.school_name}</strong></td>
+                  <td>${schoolTypeLabels[quote.school_type] || quote.school_type || '-'}</td>
+                  <td>${quote.contact_name || '-'}</td>
+                  <td><a href="mailto:${quote.contact_email}">${quote.contact_email}</a></td>
+                  <td>${quote.teacher_count || '-'}</td>
+                  <td>${schoolSizeLabels[quote.school_size] || quote.school_size || '-'}</td>
+                  <td>
+                    <div class="quote-actions">
+                      ${quote.message ? `<button class="quote-btn quote-btn-view" data-message="${encodeURIComponent(quote.message)}" data-action="view-message" title="Voir le message" aria-label="Voir le message">💬</button>` : ''}
+                      ${quote.status === 'pending' ? `
+                        <button class="quote-btn quote-btn-approve" data-quote-id="${quote.id}" data-action="approve-quote" title="Approuver" aria-label="Approuver">✅</button>
+                        <button class="quote-btn quote-btn-reject" data-quote-id="${quote.id}" data-action="reject-quote" title="Rejeter" aria-label="Rejeter">❌</button>
+                      ` : `
+                        <span class="quote-status ${quote.status === 'approved' ? 'quote-status-approved' : quote.status === 'rejected' ? 'quote-status-rejected' : 'quote-status-pending'}" title="${quote.status === 'approved' ? 'Approuvé' : quote.status === 'rejected' ? 'Rejeté' : quote.status}">${quote.status === 'approved' ? '✅ Approuvé' : quote.status === 'rejected' ? '❌ Rejeté' : '⏳ En attente'}</span>
+                      `}
+                      <button class="quote-btn quote-btn-delete" data-quote-id="${quote.id}" data-action="delete-quote" title="Supprimer" aria-label="Supprimer">🗑️</button>
+                    </div>
+                  </td>
+                `;
+                tbody.appendChild(row);
+              });
+            }
+
+            document.getElementById('quotes-loading').style.display = 'none';
+            document.getElementById('quotes-table').style.display = quotes.length > 0 ? 'block' : 'none';
+          });
+      }
+
+      // Event delegation for quote request actions
+      document.addEventListener('click', function(e) {
+        const actionEl = e.target.closest('[data-action]');
+        if (!actionEl) return;
+        const action = actionEl.dataset.action;
+
+        // View message button
+        if (action === 'view-message') {
+          const message = decodeURIComponent(actionEl.dataset.message);
+          document.getElementById('quoteMessageBody').textContent = message;
+          document.getElementById('quoteMessageModal').classList.add('show');
+          e.preventDefault();
+        }
+
+        // Approve button
+        if (action === 'approve-quote') {
+          const quoteId = actionEl.dataset.quoteId;
+          if (confirm('Approuver cette demande de devis ? L\'utilisateur deviendra Directeur.')) {
+            fetch(`/api/admin/quote-requests/${quoteId}/approve`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              credentials: 'include'
+            })
+            .then(r => r.json())
+            .then(data => {
+              if (data.success) {
+                alert('Demande approuvée ! Utilisateur promu Directeur.');
+                loadAdminData();
+              } else {
+                alert('Erreur: ' + (data.error || 'Échec de l\'approbation'));
+              }
+            })
+            .catch(err => alert('Erreur: ' + err.message));
+          }
+        }
+
+        // Reject button
+        if (action === 'reject-quote') {
+          const quoteId = actionEl.dataset.quoteId;
+          const reason = prompt('Raison du rejet (optionnel) :');
+          fetch(`/api/admin/quote-requests/${quoteId}/reject`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ reason: reason || '' }),
+            credentials: 'include'
+          })
+            .then(r => r.json())
+            .then(data => {
+              if (data.success) {
+                alert('Demande rejetée.');
+                loadAdminData();
+              } else {
+                alert('Erreur: ' + (data.error || 'Échec du rejet'));
+              }
+            })
+            .catch(err => alert('Erreur: ' + err.message));
+        }
+
+        // Delete button
+        if (action === 'delete-quote') {
+          const quoteId = actionEl.dataset.quoteId;
+          if (confirm('Êtes-vous sûr de vouloir supprimer cette demande de devis ?')) {
+            fetch(`/api/admin/quote-requests/${quoteId}`, {
+              method: 'DELETE',
+              credentials: 'include'
+            })
+            .then(r => r.json())
+            .then(data => {
+              if (data.success) {
+                loadAdminData();
+              } else {
+                alert('Erreur lors de la suppression');
+              }
+            })
+            .catch(() => alert('Erreur lors de la suppression'));
+          }
+        }
+      });
+
+      // Close modal function
+      window.closeQuoteModal = function() {
+        document.getElementById('quoteMessageModal').classList.remove('show');
+      };
+
+      // Close modal on background click
+      document.getElementById('quoteMessageModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeQuoteModal();
+        }
+      });
+    })();
+  </script>
+
+<div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
+  Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
+</div>
+</body>
+</html>

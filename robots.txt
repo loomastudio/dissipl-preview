@@ -1,0 +1,19 @@
+# robots.txt for DISSIPL
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.dissipl.fr/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin
+Disallow: /api/
+
+# Disallow private areas
+Disallow: /profile
+Disallow: /student-profile
+Disallow: /school-quote
+
+# Crawl-delay (optional, prevents server overload)
+Crawl-delay: 1

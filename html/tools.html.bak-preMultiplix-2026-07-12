@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DISSIPL - Découvrez nos outils numériques pédagogiques pour l'apprentissage."
+    />
+    <title>Outils numériques - DISSIPL</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/Images/disableFallDamage.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../assets/Images/disableFallDamage.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/stylestest.css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <div id="header-placeholder"></div>
+
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <h1>Nos outils numériques</h1>
+        <p class="page-subtitle">
+          Explorez notre collection d'outils d'apprentissage interactifs conçus
+          pour tous les âges.
+        </p>
+      </section>
+
+      <!-- Tools Grid -->
+      <div class="page-content">
+        <div class="tools-grid">
+          <!-- Boulier -->
+          <a href="Jeu1.html" class="tool-link-card">
+            <div
+              class="tool-icon"
+              style="background: linear-gradient(135deg, #ffd93d, #ffc107)"
+            >
+              🧮
+            </div>
+            <div>
+              <h3>Boulier</h3>
+              <p>
+                Outil de manipulation pour compter, lire et écrire les nombres.
+              </p>
+            </div>
+            <span class="tool-arrow">→</span>
+          </a>
+
+          <!-- Cartes des nombres -->
+          <a href="Jeu2.html" class="tool-link-card">
+            <div
+              class="tool-icon"
+              style="background: linear-gradient(135deg, #64b5f6, #42a5f5)"
+            >
+              🔢
+            </div>
+            <div>
+              <h3>Cartes des nombres</h3>
+              <p>Découvrez la correspondance entre symboles et quantités.</p>
+            </div>
+            <span class="tool-arrow">→</span>
+          </a>
+
+          <!-- Alphabet mobile -->
+          <a href="Jeu3.html" class="tool-link-card">
+            <div
+              class="tool-icon"
+              style="background: linear-gradient(135deg, #81c784, #66bb6a)"
+            >
+              🔤
+            </div>
+            <div>
+              <h3>Alphabet mobile</h3>
+              <p>
+                Construisez des mots et développez vos compétences en lecture.
+              </p>
+            </div>
+            <span class="tool-arrow">→</span>
+          </a>
+
+          <!-- Formes géométriques -->
+          <a href="Jeu4.html" class="tool-link-card">
+            <div
+              class="tool-icon"
+              style="background: linear-gradient(135deg, #ba68c8, #ab47bc)"
+            >
+              📐
+            </div>
+            <div>
+              <h3>Formes géométriques</h3>
+              <p>Manipulez les formes et développez votre pensée spatiale.</p>
+            </div>
+            <span class="tool-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="../js/core/footer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="../js/core/header.js?v=20260302-3"></script>
+    <script src="../js/pages/interactEffectsUI.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="fr" data-i18n-title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DISSIPL - L'apprentissage sensoriel pour les élèves à besoins particuliers</title>
+<meta name="description" content="Outils numériques inspirés du matériel Montessori, créés par des enseignants spécialisés pour les élèves DYS, TDAH et à besoins éducatifs particuliers. Disponibles en 9 langues." data-i18n-attr="content:meta.description">
+<meta name="keywords" content="DISSIPL, élèves à besoins particuliers, dyslexie, dyscalculie, TDAH, troubles cognitifs, enseignement spécialisé, Montessori, outils pédagogiques, apprentissage sensoriel">
+<meta name="author" content="DISSIPL">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dissipl.fr/">
+<meta property="og:title" content="DISSIPL - L'apprentissage sensoriel pour les élèves à besoins particuliers">
+<meta property="og:description" content="Outils numériques inspirés du matériel Montessori, créés par des enseignants spécialisés. Disponibles en 9 langues.">
+<meta property="og:image" content="https://www.dissipl.fr/assets/images/logodissiplpng.png">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DISSIPL - L'apprentissage sensoriel pour les élèves à besoins particuliers">
+<meta name="twitter:description" content="Outils numériques inspirés du matériel Montessori, pour les élèves à besoins éducatifs particuliers.">
+<meta name="twitter:image" content="https://www.dissipl.fr/assets/images/logodissiplpng.png">
+<link rel="canonical" href="https://www.dissipl.fr/">
+<link rel="icon" href="/dissipl-preview/assets/images/logodissipl.ico">
+<link rel="apple-touch-icon" href="/dissipl-preview/assets/images/disableFallDamage.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Lexend:wght@400;500;600&display=swap">
+<!-- Bootstrap : seulement pour les fenêtres de connexion / inscription du header -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* DISSIPL home. Palette = Montessori place-value colours (units green, tens blue, hundreds red) + golden bead. */
+:root {
+  --paper: #F6F7FB;
+  --ink: #1D2245;
+  --ink-soft: #565C80;
+  --line: #DDE0EC;
+  --red: #D3343A;
+  --red-dark: #B5262C;
+  --blue: #2C68BE;
+  --green: #3B9257;
+  --gold: #E5B33F;
+  --tint-red: #FBE7E7;
+  --tint-blue: #E5EDF9;
+  --tint-green: #E6F3EA;
+  --tint-gold: #FBF2DC;
+  --display: "Fredoka", "Baloo 2", "Trebuchet MS", sans-serif;
+  --body: "Lexend", "Atkinson Hyperlegible", Verdana, sans-serif;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+  --shadow: 0 18px 50px rgba(29, 34, 69, .10);
+}
+html[lang="ar"] { --display: "Noto Sans Arabic", sans-serif; --body: "Noto Sans Arabic", sans-serif; }
+html[lang="hi"] { --display: "Noto Sans Devanagari", sans-serif; --body: "Noto Sans Devanagari", sans-serif; }
+html[lang="zh"] { --display: "Noto Sans SC", sans-serif; --body: "Noto Sans SC", sans-serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; text-align: start; }
+img { max-width: 100%; display: block; }
+a { color: var(--blue); }
+a:hover { text-decoration: none; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; color: inherit; }
+p, figure, blockquote, ul { margin: 0; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+html[lang="ar"] .eyebrow, html[lang="hi"] .eyebrow, html[lang="zh"] .eyebrow { letter-spacing: 0; }
+.section { padding-block: 104px; }
+.section-head { display: grid; gap: 14px; max-width: 680px; margin-bottom: 48px; }
+.section-head h2 { font-size: clamp(32px, 4.2vw, 46px); }
+.section-head p { color: var(--ink-soft); font-size: 18px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 2000; }
+.skip:focus { left: 12px; color: #fff; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 16px; font-family: var(--body); font-weight: 500; font-size: 17px; line-height: 1.2; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .35s var(--spring), box-shadow .35s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-3px); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn:focus { box-shadow: none; }
+.btn.btn-red, .btn.btn-red:hover { background: var(--red); color: #fff; box-shadow: 0 10px 24px rgba(211, 52, 58, .28); }
+.btn.btn-red:hover { background: var(--red-dark); box-shadow: 0 16px 32px rgba(211, 52, 58, .34); }
+.btn.btn-line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn.btn-line:hover { background: var(--ink); color: #fff; }
+.btn .arrow { display: inline-block; transition: transform .35s var(--spring); }
+.btn:hover .arrow { transform: translateX(4px); }
+[dir="rtl"] .arrow { transform: scaleX(-1); }
+[dir="rtl"] .btn:hover .arrow { transform: scaleX(-1) translateX(4px); }
+
+/* Reveal on scroll (content is visible without JS) */
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* Scroll progress (thin bead-coloured line) */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 4px; width: 100%; z-index: 1040; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--green) 0 33%, var(--blue) 33% 66%, var(--red) 66%); }
+[dir="rtl"] .scroll-progress { transform-origin: 100% 50%; }
+
+/* Hero */
+.hero { position: relative; padding-block: 140px 84px; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.hero-copy { display: grid; gap: 26px; position: relative; z-index: 2; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 99px; background: #fff; border: 1px solid var(--line); }
+.hero h1 { font-size: clamp(44px, 6.4vw, 78px); letter-spacing: -.01em; }
+html[lang="ar"] .hero h1, html[lang="hi"] .hero h1 { line-height: 1.35; letter-spacing: 0; }
+.hero h1 .word { display: inline-block; }
+.js .hero h1 .word { opacity: 0; transform: translateY(40px) rotate(4deg); animation: wordIn .9s var(--spring) forwards; animation-delay: calc(var(--w) * 140ms + 300ms); }
+@keyframes wordIn { to { opacity: 1; transform: none; } }
+.hero h1 .hl { position: relative; color: var(--red); white-space: nowrap; }
+.hero h1 .hl svg { position: absolute; left: -2%; bottom: -.18em; width: 104%; height: .4em; overflow: visible; }
+.hero h1 .hl path { stroke: var(--gold); stroke-width: 7; fill: none; stroke-linecap: round; stroke-dasharray: 320; stroke-dashoffset: 320; }
+.js .hero h1 .hl path { animation: draw 1.1s var(--ease) 1.2s forwards; }
+html:not(.js) .hero h1 .hl path { stroke-dashoffset: 0; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.ch { display: inline-block; transition: transform .45s var(--spring), color .3s; }
+.ch:hover { transform: translateY(-10px) rotate(-8deg) scale(1.08); color: var(--blue); }
+.hl .ch:hover { color: var(--gold); }
+.hero .lead { font-size: 19px; font-weight: 400; color: var(--ink-soft); max-width: 34em; margin: 0; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note { font-size: 14px; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
+.hero-note::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px var(--tint-green); }
+
+/* Soft colour glow behind the hero */
+.blobs { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.blobs i { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; animation: drift 22s ease-in-out infinite alternate; }
+.blobs i:nth-child(1) { width: 520px; height: 520px; left: -160px; top: -60px; background: rgba(44, 104, 190, .28); }
+.blobs i:nth-child(2) { width: 460px; height: 460px; right: -120px; top: 100px; background: rgba(229, 179, 63, .38); animation-duration: 26s; }
+.blobs i:nth-child(3) { width: 420px; height: 420px; left: 35%; bottom: -220px; background: rgba(211, 52, 58, .2); animation-duration: 30s; }
+@keyframes drift { to { transform: translate(60px, 40px) scale(1.12); } }
+
+/* Floating Montessori pieces */
+.floaters { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.fl { position: absolute; transform: translate(calc(var(--mx, 0) * var(--d, 10px)), calc(var(--my, 0) * var(--d, 10px))); transition: transform .6s var(--ease); }
+.fl > * { animation: bob var(--t, 7s) ease-in-out infinite; }
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-16px) rotate(calc(var(--r, 0deg) + 6deg)); } }
+.tile { width: 58px; height: 58px; border-radius: 14px; background: #fff; box-shadow: var(--shadow); display: grid; place-items: center; font-family: "Fredoka", sans-serif; font-size: 34px; font-weight: 600; }
+.ncard { width: 64px; height: 78px; border-radius: 10px; background: #FFFCF4; box-shadow: var(--shadow); display: grid; place-items: center; font-family: "Fredoka", sans-serif; font-size: 36px; color: var(--green); font-weight: 600; }
+.gbead { width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 32% 30%, #FFF1C2, var(--gold) 55%, #B98516); box-shadow: 0 6px 14px rgba(185, 133, 22, .35); }
+
+/* Abacus */
+.abacus-card { position: relative; z-index: 2; background: #fff; border-radius: 32px; padding: 26px; box-shadow: 0 30px 80px rgba(29, 34, 69, .14); border: 1px solid var(--line); }
+.abacus-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+.hint { font-size: 14px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+.hint svg { flex: none; animation: tap 1.8s ease-in-out infinite; }
+@keyframes tap { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.number { display: flex; gap: 2px; font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 64px; line-height: 1; font-variant-numeric: tabular-nums; }
+.digit { display: inline-block; min-width: .62em; text-align: center; }
+.digit.bump { animation: bump .45s var(--spring); }
+@keyframes bump { 40% { transform: translateY(-8px) scale(1.12); } }
+.d-h { color: var(--red); } .d-t { color: var(--blue); } .d-u { color: var(--green); }
+.frame { background: linear-gradient(180deg, #F3E3C3, #E9D1A4); border-radius: 22px; padding: 18px 14px; display: grid; gap: 14px; box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .06); }
+.rod-row { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: center; }
+.rod-label { font-family: var(--display); font-weight: 600; font-size: 16px; text-align: center; }
+.rod { position: relative; height: 34px; --b: 28px; }
+.rod::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px; border-radius: 2px; background: #B98E5C; }
+.bead { position: absolute; top: 3px; width: var(--b); height: var(--b); border-radius: 50%; border: 0; padding: 0; cursor: pointer; transition: left .55s var(--spring); background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, .75), var(--c) 46%, var(--cd)); box-shadow: 0 4px 8px rgba(0, 0, 0, .18); }
+.bead:hover { filter: brightness(1.08); }
+.bead:active { transform: scale(.92); }
+.rod.h .bead { --c: var(--red); --cd: #8E1D22; }
+.rod.t .bead { --c: var(--blue); --cd: #173F78; }
+.rod.u .bead { --c: var(--green); --cd: #1F5A33; }
+.say { margin-top: 16px; min-height: 28px; font-size: 16px; color: var(--ink-soft); }
+.say b { font-weight: 600; }
+.challenge { margin-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: var(--tint-gold); border-radius: 16px; padding: 10px 10px 10px 16px; transition: background .4s, transform .5s var(--spring); }
+.challenge-label { font-weight: 500; }
+.challenge-label b { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 24px; }
+.abacus-card.win .challenge { background: var(--tint-green); transform: scale(1.03); }
+.abacus-card.win { animation: glow 1.2s var(--ease); }
+@keyframes glow { 0% { box-shadow: 0 30px 80px rgba(29, 34, 69, .14), 0 0 0 0 rgba(59, 146, 87, .5); } 60% { box-shadow: 0 30px 80px rgba(29, 34, 69, .14), 0 0 0 18px rgba(59, 146, 87, 0); } }
+.burst { position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; z-index: 5; }
+.burst i { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; }
+.abacus-foot { margin-top: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.soft-btn { font: inherit; font-size: 15px; font-weight: 500; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; cursor: pointer; min-height: 44px; transition: background .2s; }
+.soft-btn:hover { background: var(--tint-blue); }
+.challenge .soft-btn { background: #fff; }
+.abacus-foot a { font-weight: 500; text-decoration: none; }
+.abacus-foot a:hover { color: var(--ink); }
+
+/* Wave + trust strip */
+.wave { display: block; width: 100%; height: 70px; margin-bottom: -1px; }
+.trust { background: var(--ink); color: #fff; padding-block: 34px; }
+.trust-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: center; }
+.trust-item { display: flex; align-items: center; gap: 14px; font-weight: 500; }
+.trust-item .ico { flex: none; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; }
+.trust-edtech { background: #fff; border-radius: 14px; padding: 8px 14px; justify-self: start; }
+.trust-edtech img { height: 44px; width: auto; }
+
+/* Intro video */
+.video-sec { padding-bottom: 0; }
+.video-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: center; }
+.video-copy { display: grid; gap: 16px; }
+.video-copy h2 { font-size: clamp(32px, 4.2vw, 46px); }
+.video-copy p { color: var(--ink-soft); font-size: 18px; }
+.player { position: relative; border-radius: 28px; overflow: hidden; background: var(--ink); aspect-ratio: 16 / 9; max-width: 100%; box-shadow: 0 30px 80px rgba(29, 34, 69, .18); }
+.player video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vplay { position: absolute; left: 50%; top: 50%; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; border: 0; background: var(--red); cursor: pointer; display: grid; place-items: center; box-shadow: 0 16px 40px rgba(211, 52, 58, .45); transition: transform .45s var(--spring), opacity .3s; }
+.vplay svg { margin-left: 4px; }
+.vplay:hover { transform: scale(1.08); }
+.vplay-ring { position: absolute; inset: 0; border-radius: 50%; border: 3px solid rgba(255, 255, 255, .8); animation: ring 2.2s var(--ease) infinite; }
+@keyframes ring { from { transform: scale(1); opacity: .9; } to { transform: scale(1.6); opacity: 0; } }
+.duration { position: absolute; right: 16px; bottom: 14px; background: rgba(29, 34, 69, .75); color: #fff; font-size: 14px; font-weight: 500; padding: 4px 10px; border-radius: 99px; font-variant-numeric: tabular-nums; transition: opacity .3s; }
+.player.playing .vplay, .player.playing .duration { opacity: 0; pointer-events: none; }
+
+/* Tools */
+.tools-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
+.tool { grid-column: span 2; position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; text-decoration: none; color: var(--ink); transition: transform .5s var(--spring), box-shadow .5s var(--ease); }
+.tool:hover { color: var(--ink); text-decoration: none; }
+.tool:nth-child(4), .tool:nth-child(5) { grid-column: span 3; }
+.tool:hover { transform: translateY(-8px) rotate(-.4deg); box-shadow: 0 28px 60px rgba(29, 34, 69, .14); }
+.tool-vis { height: 200px; position: relative; display: grid; place-items: center; overflow: hidden; direction: ltr; }
+.tool-body { padding: 22px 24px 24px; display: grid; gap: 8px; flex-grow: 1; align-content: start; }
+.tool-body h3 { font-size: 26px; }
+.tool-body p { color: var(--ink-soft); font-size: 16px; }
+.tool-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 8px; }
+.pill { font-size: 13px; font-weight: 500; padding: 4px 12px; border-radius: 99px; }
+.try { font-weight: 600; color: var(--blue); display: inline-flex; align-items: center; gap: 6px; }
+.try .arrow { display: inline-block; transition: transform .35s var(--spring); }
+.tool:hover .try .arrow { transform: translateX(5px); }
+[dir="rtl"] .try .arrow { transform: scaleX(-1); }
+[dir="rtl"] .tool:hover .try .arrow { transform: scaleX(-1) translateX(5px); }
+/* mini animations: start state, then .play */
+.mini-abacus { display: grid; gap: 14px; width: 270px; }
+.mini-rod { position: relative; height: 18px; }
+.mini-rod::before { content: ""; position: absolute; left: 0; right: 0; top: 8px; height: 3px; background: #B98E5C; border-radius: 2px; }
+.mini-rod i { position: absolute; top: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--c); right: calc((9 - var(--n)) * 20px); transition: right .7s var(--spring); transition-delay: calc(var(--n) * 50ms); }
+.tool.play .mini-rod i.m { right: calc(270px - (var(--n) + 1) * 20px); }
+.mini-grid { display: grid; grid-template-columns: repeat(6, 24px); gap: 5px; }
+.mini-grid i { width: 24px; height: 24px; border-radius: 6px; background: rgba(44, 104, 190, .14); transform: scale(.6); transition: transform .5s var(--spring), background .4s; transition-delay: calc(var(--n) * 35ms); }
+.tool.play .mini-grid i { transform: none; }
+.tool.play .mini-grid i.m { background: var(--blue); }
+.mini-word { display: flex; gap: 10px; }
+.mini-word b { width: 56px; height: 66px; border-radius: 14px; background: #fff; box-shadow: 0 10px 22px rgba(29, 34, 69, .12); display: grid; place-items: center; font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 40px; transform: translateY(70px) rotate(-12deg); opacity: 0; transition: transform .7s var(--spring), opacity .4s; transition-delay: calc(var(--n) * 120ms); }
+.tool.play .mini-word b { transform: none; opacity: 1; }
+.mini-cards { position: relative; width: 102px; height: 96px; }
+.mini-cards b { position: absolute; top: 0; right: 0; height: 96px; padding: 0 6px; border-radius: 10px; background: #FFFCF4; box-shadow: 0 10px 22px rgba(29, 34, 69, .12); display: flex; align-items: center; font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 44px; transition: transform .8s var(--spring); transition-delay: calc(var(--n) * 140ms); }
+.mini-cards b span { width: 30px; text-align: center; }
+.mini-cards .c3 { color: var(--red); transform: translateX(-70px) rotate(-8deg); }
+.mini-cards .c5 { color: var(--blue); transform: translate(10px, -26px) rotate(6deg); }
+.mini-cards .c2 { color: var(--green); transform: translate(70px, 18px) rotate(12deg); }
+.tool.play .mini-cards b { transform: none; }
+.mini-pie { width: 130px; height: 130px; transform: rotate(-90deg); }
+.mini-pie circle.s { fill: none; stroke-width: 54; stroke-dasharray: 0 400; transition: stroke-dasharray .9s var(--ease); transition-delay: calc(var(--n) * 220ms); }
+.tool.play .mini-pie circle.s { stroke-dasharray: var(--len) 400; }
+
+/* 9 languages */
+.langs { background: var(--ink); color: #fff; overflow: hidden; position: relative; }
+.langs .eyebrow { color: #AEB4D6; }
+.langs-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.langs-copy { display: grid; gap: 18px; }
+.langs-copy h2 { font-size: clamp(32px, 4.2vw, 46px); }
+.langs-copy p { color: #C9CDE3; font-size: 18px; }
+.lang-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.lang-chip { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 16px 0 8px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .18); background: rgba(255, 255, 255, .06); color: #fff; font: 500 15px/1 var(--body); cursor: pointer; transition: transform .35s var(--spring), background .25s, border-color .25s; }
+.lang-chip:hover { transform: translateY(-3px); background: rgba(255, 255, 255, .14); }
+.lang-chip .code { width: 32px; height: 28px; border-radius: 9px; display: grid; place-items: center; font-size: 12px; font-weight: 600; background: rgba(255, 255, 255, .14); }
+.lang-chip[aria-pressed="true"] { background: #fff; color: var(--ink); border-color: #fff; }
+.lang-chip[aria-pressed="true"] .code { background: var(--gold); color: var(--ink); }
+.orbit-wrap { position: relative; aspect-ratio: 1; max-width: 460px; width: 100%; justify-self: center; }
+.orbit { position: absolute; inset: 0; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, .18); animation: spin 60s linear infinite; }
+.orbit .o-bead { position: absolute; left: 50%; top: 50%; width: 56px; height: 56px; margin: -28px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; font-size: 14px; color: #fff; background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, .6), var(--c) 50%, var(--cd)); box-shadow: 0 10px 24px rgba(0, 0, 0, .3); transform: rotate(var(--a)) translate(var(--R, 200px)) rotate(calc(-1 * var(--a))); }
+.orbit .o-bead span { animation: spin 60s linear infinite reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.hello-orb { position: absolute; inset: 22%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #2B3166, #161A38); display: grid; place-items: center; text-align: center; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1), 0 30px 80px rgba(0, 0, 0, .35); overflow: hidden; }
+.hello-word { font-family: "Fredoka", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans SC", sans-serif; font-weight: 600; font-size: clamp(30px, 4.6vw, 48px); line-height: 1.2; padding: 0 12px; }
+.hello-word.swap { animation: helloIn .7s var(--spring); }
+@keyframes helloIn { from { opacity: 0; transform: translateY(30px) scale(.9); filter: blur(6px); } }
+.hello-orb small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 14px; color: #AEB4D6; }
+
+/* Story band */
+.story-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.collage { position: relative; height: 520px; }
+.collage figure { position: absolute; margin: 0; overflow: hidden; border-radius: 28px; box-shadow: var(--shadow); will-change: transform; }
+.collage img { width: 100%; height: 100%; object-fit: cover; }
+.collage .p1 { left: 0; top: 30px; width: 64%; height: 380px; border-radius: 44% 56% 48% 52% / 40% 42% 58% 60%; }
+.collage .p2 { right: 0; top: 0; width: 42%; height: 220px; }
+.collage .p3 { right: 4%; bottom: 0; width: 48%; height: 230px; }
+.story-copy { display: grid; gap: 22px; }
+.story-copy h2 { font-size: clamp(32px, 4.2vw, 46px); }
+.story-copy p { color: var(--ink-soft); font-size: 18px; }
+.ticks { list-style: none; padding: 0; display: grid; gap: 12px; }
+.ticks li { display: flex; gap: 12px; align-items: flex-start; }
+.ticks li::before { content: ""; flex: none; margin-top: 6px; width: 16px; height: 16px; border-radius: 50%; background: var(--c, var(--green)); box-shadow: 0 0 0 4px var(--t, var(--tint-green)); }
+
+/* Method */
+.method { background: #fff; }
+.steps { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.rail { position: absolute; left: 6%; right: 6%; top: 44px; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.rail i { position: absolute; inset: 0; transform-origin: 0 50%; transform: scaleX(var(--p, 0)); background: linear-gradient(90deg, var(--green), var(--blue), var(--red)); }
+[dir="rtl"] .rail i { transform-origin: 100% 50%; }
+.step { position: relative; display: grid; gap: 14px; justify-items: start; }
+.step .num { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 40px; color: #fff; background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .55), var(--c) 50%, var(--cd)); box-shadow: 0 14px 30px rgba(29, 34, 69, .18), 0 0 0 10px #fff; transition: transform .6s var(--spring); }
+.step:hover .num { transform: scale(1.08) rotate(-8deg); }
+.step h3 { font-size: 30px; margin-top: 8px; }
+.step p { color: var(--ink-soft); }
+
+/* Plans */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: stretch; }
+.plan { position: relative; display: flex; flex-direction: column; gap: 16px; background: #fff; border: 1px solid var(--line); border-radius: 28px; padding: 34px 30px; transition: transform .5s var(--spring), box-shadow .5s var(--ease); }
+.plan:hover { transform: translateY(-8px); box-shadow: 0 28px 60px rgba(29, 34, 69, .12); }
+.plan.pop { border: 2px solid var(--red); box-shadow: 0 24px 60px rgba(211, 52, 58, .14); }
+.plan .ribbon { position: absolute; top: -15px; inset-inline-start: 30px; background: var(--red); color: #fff; font-size: 13px; font-weight: 600; line-height: 1.4; padding: 5px 14px; border-radius: 99px; }
+.plan .who { display: flex; align-items: center; gap: 12px; }
+.plan .who .ico { flex: none; width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; }
+.plan h3 { font-size: 28px; }
+.plan ul { list-style: none; padding: 0; display: grid; gap: 10px; flex-grow: 1; }
+.plan li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; }
+.plan li svg { flex: none; margin-top: 4px; }
+.price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+.price b { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 46px; line-height: 1; }
+.price span { color: var(--ink-soft); }
+.plans-note { margin-top: 26px; color: var(--ink-soft); font-size: 15px; text-align: center; }
+
+/* Testimonials marquee */
+.voices { background: #fff; overflow: hidden; }
+.marquee { display: grid; gap: 22px; direction: ltr; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.track { display: flex; gap: 22px; width: max-content; animation: slide var(--dur, 60s) linear infinite; }
+.track.rev { animation-direction: reverse; }
+.marquee:hover .track { animation-play-state: paused; }
+@keyframes slide { to { transform: translateX(calc(-50% - 11px)); } }
+.quote { width: 380px; flex: none; margin: 0; background: var(--paper); border-radius: 24px; padding: 26px; display: grid; gap: 16px; align-content: space-between; }
+.quote blockquote { margin: 0; font-size: 17px; line-height: 1.55; }
+.quote blockquote::before { content: "“"; display: block; font-family: "Fredoka", sans-serif; font-size: 56px; line-height: .6; color: var(--c, var(--blue)); margin-bottom: 6px; }
+.quote figcaption { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-soft); }
+.avatar { flex: none; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; font-family: "Fredoka", sans-serif; font-weight: 600; color: #fff; background: var(--c, var(--blue)); }
+.quote strong { display: block; color: var(--ink); font-weight: 600; font-size: 15px; }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.faq-list { display: grid; gap: 12px; }
+.qa { background: #fff; border: 1px solid var(--line); border-radius: 20px; transition: box-shadow .3s; }
+.qa.open { box-shadow: var(--shadow); }
+.qa > button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-align: start; padding: 22px 24px; font: inherit; font-weight: 500; font-size: 18px; color: var(--ink); background: none; border: 0; cursor: pointer; border-radius: 20px; }
+.qa .plus { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--tint-blue); position: relative; transition: transform .45s var(--spring), background .3s; }
+.qa .plus::before, .qa .plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; margin: -1px 0 0 -7px; background: var(--ink); border-radius: 2px; }
+.qa .plus::after { transform: rotate(90deg); transition: transform .45s var(--spring); }
+.qa.open .plus { background: var(--gold); transform: rotate(180deg); }
+.qa.open .plus::after { transform: rotate(0); }
+.qa .ans { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
+.qa.open .ans { grid-template-rows: 1fr; }
+.qa .ans > div { overflow: hidden; }
+.qa .ans p { padding: 0 24px 22px; color: var(--ink-soft); }
+
+/* CTA */
+.cta { position: relative; overflow: hidden; background: var(--ink); color: #fff; border-radius: 36px; padding: 72px 56px; display: grid; gap: 22px; justify-items: start; }
+.cta h2 { font-size: clamp(32px, 4.4vw, 52px); max-width: 15em; position: relative; z-index: 1; }
+.cta p { color: #C9CDE3; font-size: 18px; position: relative; z-index: 1; }
+.cta .hero-ctas { position: relative; z-index: 1; }
+.cta .btn.btn-line { border-color: #fff; color: #fff; }
+.cta .btn.btn-line:hover { background: #fff; color: var(--ink); }
+.rain { position: absolute; inset: 0; pointer-events: none; }
+.rain i { position: absolute; top: -40px; width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); opacity: .9; animation: fall var(--t) linear infinite; animation-delay: var(--dl); }
+@keyframes fall { to { transform: translateY(560px) rotate(180deg); } }
+
+/* Footer */
+footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--line); }
+.foot-grid { display: grid; grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 40px; padding-block: 64px 40px; }
+.foot-grid h4 { margin: 0 0 14px; font-size: 18px; }
+.foot-grid ul { list-style: none; padding: 0; display: grid; gap: 10px; }
+.foot-grid a { color: var(--ink); text-decoration: none; }
+.foot-grid a:hover { color: var(--blue); }
+.foot-logo { display: block; width: 182px; height: 82px; background: url("/dissipl-preview/assets/images/logodissiplpng.png") no-repeat; background-size: 270px 270px; background-position: -36px -92px; }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; }
+.socials a { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--paper); border: 1px solid var(--line); transition: transform .35s var(--spring), background .25s; }
+.socials a:hover { transform: translateY(-3px); background: var(--tint-blue); }
+.legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-block: 22px 30px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
+.legal nav { display: flex; flex-wrap: wrap; gap: 18px; }
+.legal a { color: var(--ink-soft); }
+.legal a:hover { color: var(--ink); }
+
+/* Phone: sticky call to action once the hero is passed */
+.sticky-cta { display: none; }
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .hero-grid, .story-grid, .faq-grid, .video-grid, .langs-grid { grid-template-columns: minmax(0, 1fr); }
+  .video-grid { gap: 28px; }
+  .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tool, .tool:nth-child(4), .tool:nth-child(5) { grid-column: span 1; }
+  .tool:nth-child(5) { grid-column: span 2; }
+  .plans { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
+  .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .orbit-wrap { max-width: 380px; }
+}
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .section { padding-block: 72px; }
+  .hero { padding-block: 108px 64px; }
+  .hero h1 { font-size: 46px; }
+  .tools-grid { grid-template-columns: minmax(0, 1fr); }
+  .tool:nth-child(5) { grid-column: span 1; }
+  .trust-row { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .rail { left: 44px; right: auto; top: 20px; bottom: 20px; width: 6px; height: auto; }
+  [dir="rtl"] .rail { left: auto; right: 44px; }
+  .rail i, [dir="rtl"] .rail i { transform-origin: 50% 0; transform: scaleY(var(--p, 0)); }
+  .step { grid-template-columns: 92px minmax(0, 1fr); column-gap: 20px; }
+  .step .num { grid-row: span 2; }
+  .step h3 { margin-top: 18px; }
+  .collage { height: 380px; }
+  .collage .p1 { height: 280px; }
+  .collage .p2 { height: 150px; }
+  .collage .p3 { height: 160px; }
+  .cta { padding: 48px 24px; border-radius: 28px; }
+  .quote { width: 300px; }
+  .foot-grid { grid-template-columns: minmax(0, 1fr); }
+  .number { font-size: 52px; }
+  .rod { --b: 18px; }
+  .bead { top: 8px; }
+  .fl { display: none; }
+  .abacus-card { padding: 20px; }
+  .mini-abacus { width: 250px; }
+  .tool.play .mini-rod i.m { right: calc(250px - (var(--n) + 1) * 20px); }
+  .orbit .o-bead { width: 44px; height: 44px; margin: -22px; font-size: 12px; }
+  .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(255, 255, 255, .92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .5s var(--ease); }
+  .sticky-cta.show { transform: none; }
+  .sticky-cta .btn { width: 100%; }
+  footer.site { padding-bottom: 80px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
+  .track { animation: none; flex-wrap: wrap; width: auto; }
+  .track [aria-hidden="true"] { display: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+<div class="scroll-progress" id="progress" aria-hidden="true"></div>
+
+<div id="header-placeholder"></div>
+
+<main id="main">
+
+<section class="hero" id="hero">
+  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="floaters" aria-hidden="true">
+    <div class="fl" style="left: 3%; top: 16%; --d: 18px"><div class="tile" style="color: var(--blue); --t: 7s; --r: -8deg">a</div></div>
+    <div class="fl" style="left: 44%; top: 14%; --d: -14px"><div class="tile" style="color: var(--red); --t: 8.5s; --r: 10deg">b</div></div>
+    <div class="fl" style="left: 40%; bottom: 8%; --d: 22px"><div class="ncard" style="--t: 9s; --r: -6deg">7</div></div>
+    <div class="fl" style="right: 3%; top: 16%; --d: -20px"><div class="gbead" style="--t: 6s"></div></div>
+    <div class="fl" style="right: 7%; bottom: 6%; --d: 16px"><div style="--t: 10s; --r: 12deg"><svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="32" fill="#fff"/><path d="M35 35 L35 3 A32 32 0 0 1 67 35 Z" fill="#E5B33F"/><circle cx="35" cy="35" r="32" fill="none" stroke="#1D2245" stroke-opacity=".15" stroke-width="2"/></svg></div></div>
+    <div class="fl" style="left: 8%; bottom: 6%; --d: -12px"><div class="gbead" style="--t: 7.5s; width: 18px; height: 18px"></div></div>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="chips reveal" style="--i: 0">
+        <span class="chip" data-i18n="chip.dys">DYS</span><span class="chip" data-i18n="chip.adhd">TDAH</span><span class="chip" data-i18n="chip.cognitive">Troubles cognitifs</span><span class="chip" data-i18n="chip.learning">Difficultés scolaires</span>
+      </div>
+      <h1 id="headline"><span class="word" style="--w: 0"><span class="wt" data-i18n="hero.w1">Toucher,</span></span> <span class="word" style="--w: 1"><span class="wt" data-i18n="hero.w2">déplacer,</span></span> <span class="word hl" style="--w: 2"><span class="wt" data-i18n="hero.w3">comprendre.</span><svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 70 4, 150 4, 296 12"/></svg></span></h1>
+      <p class="lead reveal" style="--i: 3" data-i18n="hero.lead">Des outils numériques inspirés du matériel Montessori, créés par des enseignants spécialisés et testés en classe avec des élèves à besoins éducatifs particuliers.</p>
+      <div class="hero-ctas reveal" style="--i: 4">
+        <a class="btn btn-red" href="#outils"><span data-i18n="hero.cta1">Essayer un outil gratuit</span> <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="#offres" data-i18n="hero.cta2">Voir les offres</a>
+      </div>
+      <p class="hero-note reveal" style="--i: 5" data-i18n="hero.note">Versions gratuites accessibles sans inscription · 9 langues</p>
+    </div>
+
+    <div class="abacus-card reveal" style="--i: 2" id="abacus">
+      <div class="abacus-top">
+        <div>
+          <div class="eyebrow" data-i18n="abacus.eyebrow">Le boulier · à toi de jouer</div>
+          <div class="number" dir="ltr" aria-live="polite" aria-atomic="true"><span class="digit d-h" id="dh">0</span><span class="digit d-t" id="dt">0</span><span class="digit d-u" id="du">0</span></div>
+        </div>
+        <span class="hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5a2 2 0 0 1 4 0v6"/><path d="M13 9a2 2 0 0 1 4 0v3"/><path d="M17 11a2 2 0 0 1 3 1.7V15a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L4 15.5a2 2 0 0 1 3.3-2.2L9 15"/></svg><span data-i18n="abacus.hint">Touche une perle</span></span>
+      </div>
+      <div class="frame" dir="ltr">
+        <div class="rod-row"><span class="rod-label d-h" data-i18n="abacus.hLetter">c</span><div class="rod h" data-place="h" role="group" aria-label="Centaines" data-i18n-attr="aria-label:abacus.hundreds"></div></div>
+        <div class="rod-row"><span class="rod-label d-t" data-i18n="abacus.tLetter">d</span><div class="rod t" data-place="t" role="group" aria-label="Dizaines" data-i18n-attr="aria-label:abacus.tens"></div></div>
+        <div class="rod-row"><span class="rod-label d-u" data-i18n="abacus.uLetter">u</span><div class="rod u" data-place="u" role="group" aria-label="Unités" data-i18n-attr="aria-label:abacus.units"></div></div>
+      </div>
+      <p class="say" id="say">&nbsp;</p>
+      <div class="challenge">
+        <span class="challenge-label"><span data-i18n="abacus.challenge">Défi : fais le nombre</span> <b id="target" dir="ltr">125</b></span>
+        <button class="soft-btn" type="button" id="newTarget" data-i18n="abacus.newChallenge">Nouveau défi</button>
+      </div>
+      <div class="burst" id="burst" aria-hidden="true"></div>
+      <div class="abacus-foot">
+        <button class="soft-btn" type="button" id="reset" data-i18n="abacus.reset">Remettre à zéro</button>
+        <a href="/dissipl-preview/abacus-free" data-i18n="abacus.open">Ouvrir le vrai boulier →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 44 C 180 8 360 8 540 34 S 900 70 1080 40 S 1320 6 1440 30 V70 H0 Z" fill="#1D2245"/></svg>
+<section class="trust" aria-label="DISSIPL">
+  <div class="wrap trust-row">
+    <div class="trust-item reveal" style="--i: 0"><span class="ico" style="background: var(--green)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span data-i18n="trust.1">Créé par des enseignants spécialisés</span></div>
+    <div class="trust-item reveal" style="--i: 1"><span class="ico" style="background: var(--blue)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span data-i18n="trust.2">Testé en classe avec des élèves en difficulté</span></div>
+    <div class="trust-item reveal" style="--i: 2"><span class="ico" style="background: var(--red)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6.5a2.5 2.5 0 0 0 0 5H20"/></svg></span><span data-i18n="trust.3">Aligné sur les programmes scolaires</span></div>
+    <div class="trust-edtech reveal" style="--i: 3"><img src="/dissipl-preview/assets/images/Logo_EdTech_Membre_RVB.png" alt="Membre EdTech France" data-i18n-attr="alt:trust.edtech"></div>
+  </div>
+</section>
+
+<section class="section video-sec" aria-labelledby="video-title">
+  <div class="wrap video-grid">
+    <div class="video-copy">
+      <span class="eyebrow reveal" data-i18n="video.eyebrow">En vidéo</span>
+      <h2 id="video-title" class="reveal" data-i18n="video.title">DISSIPL en une minute et demie</h2>
+      <p class="reveal" data-i18n="video.text">Découvrez comment les élèves manipulent les outils en classe et à la maison, et pourquoi les enseignants spécialisés les utilisent chaque jour.</p>
+    </div>
+    <div class="player reveal" id="player">
+      <video id="intro" src="/dissipl-preview/assets/images/DISSIPL.mp4#t=12" preload="metadata" playsinline></video>
+      <button class="vplay" type="button" id="play" aria-label="Lire la vidéo de présentation" data-i18n-attr="aria-label:video.play">
+        <span class="vplay-ring" aria-hidden="true"></span>
+        <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" fill="#fff"/></svg>
+      </button>
+      <span class="duration" aria-hidden="true">1:34</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="outils">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="tools.eyebrow">Nos outils</span>
+      <h2 data-i18n="tools.title">Cinq outils à manipuler, gratuits pour commencer</h2>
+      <p data-i18n="tools.text">La version gratuite permet de manipuler librement. La version Premium ajoute des exercices intégrés selon les niveaux de compétences.</p>
+    </div>
+    <div class="tools-grid">
+      <a class="tool reveal" style="--i: 0" href="/dissipl-preview/abacus-free">
+        <div class="tool-vis" style="background: var(--tint-red)">
+          <div class="mini-abacus" aria-hidden="true">
+            <div class="mini-rod" style="--c: var(--red)"><i class="m" style="--n:0"></i><i class="m" style="--n:1"></i><i class="m" style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:8"></i><i style="--n:9"></i></div>
+            <div class="mini-rod" style="--c: var(--blue)"><i class="m" style="--n:0"></i><i class="m" style="--n:1"></i><i class="m" style="--n:2"></i><i class="m" style="--n:3"></i><i class="m" style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:8"></i><i style="--n:9"></i></div>
+            <div class="mini-rod" style="--c: var(--green)"><i class="m" style="--n:0"></i><i class="m" style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:8"></i><i style="--n:9"></i></div>
+          </div>
+        </div>
+        <div class="tool-body">
+          <h3 data-i18n="tool.abacus.name">Boulier</h3>
+          <p data-i18n="tool.abacus.desc">Compter, dénombrer, faire des calculs et des opérations.</p>
+          <div class="tool-meta"><span class="pill" style="background: var(--tint-green)" data-i18n="tool.free">Gratuit</span><span class="try"><span data-i18n="tool.try">Essayer</span> <span class="arrow" aria-hidden="true">→</span></span></div>
+        </div>
+      </a>
+      <a class="tool reveal" style="--i: 1" href="/dissipl-preview/multiplix-free">
+        <div class="tool-vis" style="background: var(--tint-blue)"><div class="mini-grid" aria-hidden="true" id="mgrid"></div></div>
+        <div class="tool-body">
+          <h3 data-i18n="tool.multiplix.name">Multiplix</h3>
+          <p data-i18n="tool.multiplix.desc">La table de Pythagore pour comprendre le sens de la multiplication.</p>
+          <div class="tool-meta"><span class="pill" style="background: var(--tint-green)" data-i18n="tool.free">Gratuit</span><span class="try"><span data-i18n="tool.try">Essayer</span> <span class="arrow" aria-hidden="true">→</span></span></div>
+        </div>
+      </a>
+      <a class="tool reveal" style="--i: 2" href="/dissipl-preview/alpha-mobile-free">
+        <div class="tool-vis" style="background: var(--tint-gold)">
+          <div class="mini-word" aria-hidden="true"><b style="--n:0; color: var(--red)">l</b><b style="--n:1; color: var(--blue)">u</b><b style="--n:2; color: var(--red)">n</b><b style="--n:3; color: var(--blue)">e</b></div>
+        </div>
+        <div class="tool-body">
+          <h3 data-i18n="tool.alpha.name">Alpha'Mobile</h3>
+          <p data-i18n="tool.alpha.desc">Construire des lettres, des sons, des syllabes et des mots.</p>
+          <div class="tool-meta"><span class="pill" style="background: var(--tint-green)" data-i18n="tool.free">Gratuit</span><span class="try"><span data-i18n="tool.try">Essayer</span> <span class="arrow" aria-hidden="true">→</span></span></div>
+        </div>
+      </a>
+      <a class="tool reveal" style="--i: 0" href="/dissipl-preview/number-card-free">
+        <div class="tool-vis" style="background: var(--tint-green)">
+          <div class="mini-cards" aria-hidden="true"><b class="c3" style="--n:0"><span>3</span><span>0</span><span>0</span></b><b class="c5" style="--n:1"><span>5</span><span>0</span></b><b class="c2" style="--n:2"><span>2</span></b></div>
+        </div>
+        <div class="tool-body">
+          <h3 data-i18n="tool.cards.name">Banque de perles</h3>
+          <p data-i18n="tool.cards.desc">Les cartes des nombres pour composer et décomposer les petits et les grands nombres.</p>
+          <div class="tool-meta"><span class="pill" style="background: var(--tint-green)" data-i18n="tool.free">Gratuit</span><span class="try"><span data-i18n="tool.try">Essayer</span> <span class="arrow" aria-hidden="true">→</span></span></div>
+        </div>
+      </a>
+      <a class="tool reveal" style="--i: 1" href="/dissipl-preview/fraction-circles-free">
+        <div class="tool-vis" style="background: var(--tint-red)">
+          <svg class="mini-pie" viewBox="0 0 130 130" aria-hidden="true">
+            <circle cx="65" cy="65" r="60" fill="#fff"/>
+            <circle class="s" cx="65" cy="65" r="27" stroke="#E5B33F" style="--n:0; --len: 127.2"/>
+            <circle class="s" cx="65" cy="65" r="27" stroke="#2C68BE" style="--n:1; --len: 84.8"/>
+            <circle class="s" cx="65" cy="65" r="27" stroke="#D3343A" style="--n:2; --len: 42.4"/>
+            <circle cx="65" cy="65" r="60" fill="none" stroke="#1D2245" stroke-opacity=".12" stroke-width="2"/>
+            <path d="M65 5 V125 M5 65 H125" stroke="#1D2245" stroke-opacity=".18" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="tool-body">
+          <h3 data-i18n="tool.fractions.name">Cercles de fractions</h3>
+          <p data-i18n="tool.fractions.desc">Voir, partager et comparer les fractions en manipulant des parts.</p>
+          <div class="tool-meta"><span class="pill" style="background: var(--tint-green)" data-i18n="tool.free">Gratuit</span><span class="try"><span data-i18n="tool.try">Essayer</span> <span class="arrow" aria-hidden="true">→</span></span></div>
+        </div>
+      </a>
+    </div>
+    <div style="margin-top: 36px" class="reveal"><a class="btn btn-line" href="/dissipl-preview/premium-tools"><span data-i18n="tools.premiumCta">Découvrir les outils Premium</span> <span class="arrow" aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+
+<section class="section langs" aria-labelledby="langs-title">
+  <div class="wrap langs-grid">
+    <div class="langs-copy">
+      <span class="eyebrow reveal" data-i18n="langs.eyebrow">International</span>
+      <h2 id="langs-title" class="reveal" data-i18n="langs.title">Un site et des outils en 9 langues</h2>
+      <p class="reveal" data-i18n="langs.text">Chaque outil suit la langue choisie : le clavier, les consignes et les exercices. L'arabe s'écrit de droite à gauche, le hindi en devanagari, le chinois en pinyin avec les tons.</p>
+      <div class="lang-chips reveal" id="langChips"></div>
+    </div>
+    <div class="orbit-wrap reveal" aria-hidden="true">
+      <div class="orbit" id="orbit"></div>
+      <div class="hello-orb"><div><div class="hello-word" id="helloWord">Bonjour</div><small id="helloLang">Français</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="story-title">
+  <div class="wrap story-grid">
+    <div class="collage" id="collage">
+      <figure class="p1" data-speed="-0.06"><img src="/dissipl-preview/assets/images/Emplacement_1.jpeg" alt="Deux enfants manipulent un boulier en classe" data-i18n-attr="alt:story.alt1" loading="lazy"></figure>
+      <figure class="p2" data-speed="0.08"><img src="/dissipl-preview/assets/images/alphabet.jpeg" alt="Alphabet mobile Montessori en bois, consonnes rouges et voyelles bleues" data-i18n-attr="alt:story.alt2" loading="lazy"></figure>
+      <figure class="p3" data-speed="0.03"><img src="/dissipl-preview/assets/images/number_cards.jpeg" alt="Cartes des nombres Montessori et perles dorées" data-i18n-attr="alt:story.alt3" loading="lazy"></figure>
+    </div>
+    <div class="story-copy">
+      <span class="eyebrow reveal" data-i18n="story.eyebrow">Né dans une classe</span>
+      <h2 id="story-title" class="reveal" data-i18n="story.title">Le matériel de la classe, sur l'ordinateur et la tablette</h2>
+      <p class="reveal" data-i18n="story.text">DISSIPL est un groupe d'enseignants spécialisés. Nos outils reprennent le matériel de manipulation que nous utilisons chaque jour avec des élèves qui ont des besoins éducatifs particuliers. D'après notre expérience, ils servent à tous les élèves.</p>
+      <ul class="ticks">
+        <li class="reveal" style="--i: 0; --c: var(--green); --t: var(--tint-green)" data-i18n="story.t1">Pour les élèves : apprendre autrement, à son rythme</li>
+        <li class="reveal" style="--i: 1; --c: var(--blue); --t: var(--tint-blue)" data-i18n="story.t2">Pour les enseignants : un support à projeter et à utiliser en groupe</li>
+        <li class="reveal" style="--i: 2; --c: var(--red); --t: var(--tint-red)" data-i18n="story.t3">Pour les parents : mieux comprendre les exercices de l'école</li>
+      </ul>
+      <div class="reveal"><a class="btn btn-line" href="/dissipl-preview/pedagogic"><span data-i18n="story.cta">Lire notre pédagogie</span> <span class="arrow" aria-hidden="true">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section method" id="methode">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="method.eyebrow">Notre méthode</span>
+      <h2 data-i18n="method.title">On apprend d'abord avec les mains</h2>
+      <p data-i18n="method.text">Une approche issue des pédagogies actives, où l'enfant est au centre de son apprentissage.</p>
+    </div>
+    <div class="steps" id="steps">
+      <div class="rail" aria-hidden="true"><i id="rail"></i></div>
+      <div class="step reveal" style="--i: 0"><span class="num" style="--c: var(--green); --cd: #1F5A33">1</span><h3 data-i18n="method.s1.title">Manipuler</h3><p data-i18n="method.s1.text">L'élève déplace les perles, les lettres, les cartes ou les parts, comme avec le matériel en classe.</p></div>
+      <div class="step reveal" style="--i: 1"><span class="num" style="--c: var(--blue); --cd: #173F78">2</span><h3 data-i18n="method.s2.title">Comprendre</h3><p data-i18n="method.s2.text">Il voit ce que représentent les nombres, les sons et les fractions, sans être pressé.</p></div>
+      <div class="step reveal" style="--i: 2"><span class="num" style="--c: var(--red); --cd: #8E1D22">3</span><h3 data-i18n="method.s3.title">S'entraîner</h3><p data-i18n="method.s3.text">Les exercices Premium suivent les compétences des programmes, niveau par niveau.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="offres">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="plans.eyebrow">Nos offres</span>
+      <h2 data-i18n="plans.title">Pour la maison, la classe et l'établissement</h2>
+      <p data-i18n="plans.text">Choisissez l'offre qui correspond à votre enfant, votre classe ou votre école.</p>
+    </div>
+    <div class="plans">
+      <article class="plan reveal" style="--i: 0">
+        <div class="who"><span class="ico" style="background: var(--tint-green)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg></span><h3 data-i18n="plans.parent.title">Parents</h3></div>
+        <div class="price"><b data-price="5.99">5,99 €</b><span data-i18n="plans.perMonth">/ mois</span></div>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.parent.f1">Accès illimité aux outils Premium</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.parent.f2">Sans engagement, résiliable à tout moment</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.parent.f3">Support prioritaire</span></li>
+        </ul>
+        <a class="btn btn-line" href="/dissipl-preview/price" data-i18n="plans.parent.cta">Choisir l'offre Parent</a>
+      </article>
+      <article class="plan pop reveal" style="--i: 1">
+        <span class="ribbon" data-i18n="plans.popular">Populaire</span>
+        <div class="who"><span class="ico" style="background: var(--tint-red)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><h3 data-i18n="plans.teacher.title">Enseignants</h3></div>
+        <div class="price"><b data-price="9.99">9,99 €</b><span data-i18n="plans.perMonth">/ mois</span></div>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.teacher.f1">Tout l'abonnement Parent</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.teacher.f2">Jusqu'à 30 comptes élèves</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.teacher.f3">Tableaux de bord avancés</span></li>
+        </ul>
+        <a class="btn btn-red" href="/dissipl-preview/price" data-i18n="plans.teacher.cta">Choisir l'offre Enseignant</a>
+      </article>
+      <article class="plan reveal" style="--i: 2">
+        <div class="who"><span class="ico" style="background: var(--tint-blue)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2C68BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span><h3 data-i18n="plans.school.title">Établissements</h3></div>
+        <div class="price"><span data-i18n="plans.from">dès</span><b data-price="200" data-price-whole="1">200 €</b><span data-i18n="plans.perYear">/ an</span></div>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2C68BE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.school.f1">Jusqu'à 30 comptes enseignants</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2C68BE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.school.f2">Gestion centralisée par la direction</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2C68BE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.school.f3">Facturation personnalisée et accompagnement dédié</span></li>
+        </ul>
+        <a class="btn btn-line" href="/dissipl-preview/school-quote" data-i18n="plans.school.cta">Demander un devis</a>
+      </article>
+    </div>
+    <p class="plans-note reveal" data-i18n="plans.note">Abonnement annuel : économisez jusqu'à 30 %.</p>
+  </div>
+</section>
+
+<section class="section voices" aria-labelledby="voices-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="voices.eyebrow">Témoignages</span>
+      <h2 id="voices-title" data-i18n="voices.title">Ce qu'en disent les élèves et les enseignants</h2>
+    </div>
+  </div>
+  <div class="marquee">
+    <div class="track" id="trackA" style="--dur: 70s"></div>
+    <div class="track rev" id="trackB" style="--dur: 80s"></div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap faq-grid">
+    <div class="section-head reveal" style="margin-bottom: 0">
+      <span class="eyebrow" data-i18n="faq.eyebrow">Questions fréquentes</span>
+      <h2 data-i18n="faq.title">Vous vous posez une question ?</h2>
+      <p data-i18n-html="faq.text">Écrivez-nous à <a href="mailto:contact@dissipl.fr">contact@dissipl.fr</a> ou consultez toute la FAQ.</p>
+      <div style="margin-top: 8px"><a class="btn btn-line" href="/dissipl-preview/FAQ"><span data-i18n="faq.all">Voir toute la FAQ</span> <span class="arrow" aria-hidden="true">→</span></a></div>
+    </div>
+    <div class="faq-list">
+      <div class="qa open reveal" style="--i: 0"><button type="button" aria-expanded="true" aria-controls="a1" id="q1"><span data-i18n="faq.q1">Qu'offre DISSIPL ?</span><span class="plus" aria-hidden="true"></span></button><div class="ans" id="a1" role="region" aria-labelledby="q1"><div><p data-i18n="faq.a1">L'apprentissage par la manipulation en ligne. Nos outils reprennent du matériel pédagogique réel, que nous utilisons au quotidien avec des élèves ayant des besoins éducatifs particuliers.</p></div></div></div>
+      <div class="qa reveal" style="--i: 1"><button type="button" aria-expanded="false" aria-controls="a2" id="q2"><span data-i18n="faq.q2">Les outils sont-ils gratuits ?</span><span class="plus" aria-hidden="true"></span></button><div class="ans" id="a2" role="region" aria-labelledby="q2"><div><p data-i18n="faq.a2">Chaque outil a une version gratuite pour manipuler. Les versions complètes, avec exercices intégrés selon les niveaux de compétences, sont réservées aux abonnés Premium.</p></div></div></div>
+      <div class="qa reveal" style="--i: 2"><button type="button" aria-expanded="false" aria-controls="a3" id="q3"><span data-i18n="faq.q3">Pour quels élèves ?</span><span class="plus" aria-hidden="true"></span></button><div class="ans" id="a3" role="region" aria-labelledby="q3"><div><p data-i18n="faq.a3">Les outils sont pensés pour les élèves DYS, TDAH ou avec des troubles cognitifs. D'après notre expérience dans l'enseignement, ils peuvent être utilisés par tous les élèves.</p></div></div></div>
+      <div class="qa reveal" style="--i: 3"><button type="button" aria-expanded="false" aria-controls="a4" id="q4"><span data-i18n="faq.q4">Dans quelles langues ?</span><span class="plus" aria-hidden="true"></span></button><div class="ans" id="a4" role="region" aria-labelledby="q4"><div><p data-i18n="faq.a4">Le site et les outils sont disponibles en 9 langues : français, anglais, allemand, espagnol, italien, portugais, arabe, hindi et chinois. Choisissez la vôtre en haut de la page.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="rain" id="rain" aria-hidden="true"></div>
+      <h2 id="cta-title" data-i18n="cta.title">Prêt à transformer l'apprentissage de vos élèves ?</h2>
+      <p data-i18n="cta.text">Rejoignez les enseignants spécialisés qui utilisent DISSIPL. Commencez avec un outil gratuit.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-red" href="#outils"><span data-i18n="cta.try">Essayer gratuitement</span> <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="/dissipl-preview/contact" data-i18n="cta.contact">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="sticky-cta" id="stickyCta"><a class="btn btn-red" href="#outils"><span data-i18n="cta.try">Essayer gratuitement</span> <span class="arrow" aria-hidden="true">→</span></a></div>
+
+<footer class="site">
+  <div class="wrap foot-grid">
+    <div style="display: grid; gap: 16px; align-content: start">
+      <a class="foot-logo" href="/dissipl-preview/" aria-label="DISSIPL"></a>
+      <p style="color: var(--ink-soft); max-width: 22em" data-i18n="footer.tagline">L'apprentissage sensoriel pour les élèves à besoins particuliers.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/dissipl.fr/" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D2245" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#1D2245"/></svg></a>
+        <a href="https://www.linkedin.com/in/dissipl" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D2245" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-7M12 13a3 3 0 0 1 6 0v4"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61578865796648" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D2245" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2Z"/></svg></a>
+        <a href="http://www.youtube.com/@Dissipl-y9e" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D2245" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3Z" fill="#1D2245"/></svg></a>
+        <a href="https://www.tiktok.com/@dissipl" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D2245" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 3v12a4 4 0 1 1-4-4M14 3c0 3 2 5 5 5"/></svg></a>
+      </div>
+    </div>
+    <div><h4 data-i18n="footer.tools">Outils</h4><ul><li><a href="/dissipl-preview/tools" data-i18n="footer.allTools">Tous les outils</a></li><li><a href="/dissipl-preview/premium-tools" data-i18n="footer.premium">Outils Premium</a></li><li><a href="/dissipl-preview/price" data-i18n="footer.pricing">Tarifs</a></li></ul></div>
+    <div><h4 data-i18n="footer.resources">Ressources</h4><ul><li><a href="/dissipl-preview/pedagogic" data-i18n="nav.pedagogy">Notre pédagogie</a></li><li><a href="/dissipl-preview/tutoriels" data-i18n="nav.tutorials">Tutoriels et formations</a></li><li><a href="/dissipl-preview/FAQ" data-i18n="nav.faq">FAQ</a></li></ul></div>
+    <div><h4>DISSIPL</h4><ul><li><a href="/dissipl-preview/about" data-i18n="nav.about">À propos</a></li><li><a href="/dissipl-preview/contact" data-i18n="nav.contact">Contact</a></li><li><a href="/dissipl-preview/school-quote" data-i18n="footer.quote">Devis établissement</a></li></ul></div>
+  </div>
+  <div class="wrap legal">
+    <span>© DISSIPL</span>
+    <nav aria-label="Legal"><a href="/dissipl-preview/legalNotice" data-i18n="footer.legal">Mentions légales</a><a href="/dissipl-preview/confidentiality" data-i18n="footer.privacy">Confidentialité</a><a href="/dissipl-preview/cgu" data-i18n="footer.cgu">CGU</a></nav>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="module" src="/dissipl-preview/js/core/header.js?v=20261022"></script>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Translation helper: page script runs before the i18n module, so look it up at call time */
+  function T(key, fallback, vars) {
+    var i = window.DissiplI18n, s = i && i.t(key, vars);
+    if (s != null) return s;
+    return vars ? fallback.replace(/\{(\w+)\}/g, function (_, k) { return vars[k]; }) : fallback;
+  }
+  function lang() { return (window.DissiplI18n && window.DissiplI18n.lang) || 'fr'; }
+
+  /* Scroll: progress line, method rail, collage parallax, sticky phone button */
+  var progress = document.getElementById('progress');
+  var rail = document.getElementById('rail');
+  var steps = document.getElementById('steps');
+  var collage = document.getElementById('collage');
+  var figs = collage ? collage.querySelectorAll('figure') : [];
+  var stickyCta = document.getElementById('stickyCta');
+  var heroEl = document.getElementById('hero'), ctaEl = document.querySelector('.cta');
+  var ticking = false;
+  function onScroll() {
+    var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    progress.style.transform = 'scaleX(' + (h > 0 ? y / h : 0) + ')';
+    var r = steps.getBoundingClientRect();
+    var p = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.3)));
+    rail.style.setProperty('--p', p.toFixed(3));
+    stickyCta.classList.toggle('show', heroEl.getBoundingClientRect().bottom < 0 && ctaEl.getBoundingClientRect().top > innerHeight);
+    if (!reduce && collage) {
+      var c = collage.getBoundingClientRect(), mid = c.top + c.height / 2 - innerHeight / 2;
+      figs.forEach(function (f) { f.style.transform = 'translateY(' + (mid * parseFloat(f.dataset.speed)).toFixed(1) + 'px)'; });
+    }
+    ticking = false;
+  }
+  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  /* Reveal on scroll, then hand control back to each element */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      el.classList.add('in');
+      if (el.classList.contains('tool')) setTimeout(function () { el.classList.add('play'); }, 250);
+      io.unobserve(el);
+      var wait = 900 + (parseInt(getComputedStyle(el).getPropertyValue('--i'), 10) || 0) * 90;
+      setTimeout(function () { el.classList.remove('reveal', 'in'); }, reduce ? 0 : wait);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  /* Tool cards: replay the mini animation on hover + gentle 3D tilt */
+  var finePointer = matchMedia('(pointer: fine)').matches;
+  document.querySelectorAll('.tool').forEach(function (t) {
+    t.addEventListener('mouseenter', function () {
+      if (reduce) return;
+      t.classList.remove('play'); void t.offsetWidth;
+      requestAnimationFrame(function () { t.classList.add('play'); });
+    });
+    if (reduce || !finePointer) return;
+    t.addEventListener('pointermove', function (e) {
+      if (t.classList.contains('reveal')) return;
+      var b = t.getBoundingClientRect();
+      var x = (e.clientX - b.left) / b.width - 0.5, y = (e.clientY - b.top) / b.height - 0.5;
+      t.style.transition = 'transform .2s ease-out, box-shadow .5s cubic-bezier(.22,1,.36,1)';
+      t.style.transform = 'perspective(900px) rotateX(' + (-y * 6).toFixed(2) + 'deg) rotateY(' + (x * 6).toFixed(2) + 'deg) translateY(-8px)';
+    });
+    t.addEventListener('pointerleave', function () { t.style.transition = ''; t.style.transform = ''; });
+  });
+
+  /* Multiplix mini grid: 3 x 4 highlighted in a 6 x 4 grid */
+  var g = document.getElementById('mgrid');
+  for (var r = 0; r < 4; r++) for (var c = 0; c < 6; c++) {
+    var cell = document.createElement('i');
+    cell.style.setProperty('--n', r * 6 + c);
+    if (c < 4 && r < 3) cell.className = 'm';
+    g.appendChild(cell);
+  }
+
+  /* Headline: bouncy letters (Latin and Chinese scripts only; Arabic and Devanagari letters must stay joined) */
+  function splitHeadline() {
+    var noSplit = lang() === 'ar' || lang() === 'hi';
+    document.querySelectorAll('#headline .wt').forEach(function (w) {
+      var text = w.textContent;
+      w.textContent = '';
+      if (noSplit) { w.textContent = text; return; }
+      Array.prototype.forEach.call(text, function (ch) {
+        var s = document.createElement('span'); s.className = 'ch'; s.textContent = ch; s.setAttribute('aria-hidden', 'true');
+        w.appendChild(s);
+      });
+    });
+    var h1 = document.getElementById('headline');
+    h1.setAttribute('aria-label', h1.textContent.replace(/\s+/g, ' ').trim());
+  }
+  splitHeadline();
+
+  /* Hero parallax on pointer */
+  var hero = document.getElementById('hero');
+  if (!reduce && finePointer) {
+    hero.addEventListener('pointermove', function (e) {
+      var b = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', ((e.clientX - b.left) / b.width - 0.5).toFixed(3));
+      hero.style.setProperty('--my', ((e.clientY - b.top) / b.height - 0.5).toFixed(3));
+    });
+  }
+
+  /* Interactive abacus */
+  var FR = { h: ['centaine', 'centaines'], t: ['dizaine', 'dizaines'], u: ['unité', 'unités'] };
+  function placeName(p, n) { return n > 1 ? T('abacus.' + p + 'N', FR[p][1]) : T('abacus.' + p + '1', FR[p][0]); }
+  var state = { h: 0, t: 0, u: 0 };
+  var rods = {};
+  document.querySelectorAll('.rod').forEach(function (rod) {
+    var place = rod.dataset.place, beads = [];
+    for (var k = 0; k < 10; k++) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bead';
+      (function (k) { b.addEventListener('click', function () { set(place, state[place] > k ? k : k + 1, true); }); })(k);
+      rod.appendChild(b); beads.push(b);
+    }
+    rods[place] = { el: rod, beads: beads };
+  });
+  function layout(place, stagger) {
+    var rod = rods[place], n = state[place];
+    var size = parseFloat(getComputedStyle(rod.el).getPropertyValue('--b')) || 28;
+    var step = size + 2, w = rod.el.clientWidth;
+    rod.beads.forEach(function (b, k) {
+      var x = k < n ? k * step : w - (10 - k) * step;
+      b.style.transitionDelay = stagger ? (Math.abs(k - n) * 40) + 'ms' : '0ms';
+      b.style.left = x + 'px';
+      var count = k < n ? k : k + 1;
+      b.setAttribute('aria-label', (k < n ? T('abacus.remove', 'Enlever') : T('abacus.count', 'Compter')) + ' : ' + count + ' ' + placeName(place, count));
+    });
+  }
+  var digits = { h: document.getElementById('dh'), t: document.getElementById('dt'), u: document.getElementById('du') };
+  var say = document.getElementById('say');
+  function total() { return state.h * 100 + state.t * 10 + state.u; }
+  function words() {
+    if (won) { say.innerHTML = ''; var b = document.createElement('b'); b.className = 'd-u'; b.textContent = T('abacus.bravo', 'Bravo !'); say.append(b, ' ', T('abacus.youMade', 'Tu as fait {n}.', { n: goal })); return; }
+    say.innerHTML = '';
+    var parts = ['h', 't', 'u'].filter(function (p) { return state[p] > 0; });
+    if (!parts.length) { say.textContent = T('abacus.start', 'Touche une perle pour compter.'); return; }
+    parts.forEach(function (p, i) {
+      if (i) say.append(lang() === 'zh' ? '，' : lang() === 'ar' ? '، ' : ', ');
+      var b = document.createElement('b'); b.className = 'd-' + p;
+      b.textContent = state[p] + ' ' + placeName(p, state[p]);
+      say.appendChild(b);
+    });
+    say.append(' = ' + total());
+  }
+  var abCard = document.getElementById('abacus'), targetEl = document.getElementById('target');
+  var goal = null, won = false;
+  function newGoal() {
+    var gl; do { gl = 10 + Math.floor(Math.random() * 990); } while (gl === total());
+    goal = gl; won = false; targetEl.textContent = gl;
+    abCard.classList.remove('win');
+    words();
+  }
+  function celebrate() {
+    won = true;
+    abCard.classList.remove('win'); void abCard.offsetWidth; abCard.classList.add('win');
+    words();
+    if (reduce) return;
+    var burst = document.getElementById('burst'), num = abCard.querySelector('.number');
+    var cb = abCard.getBoundingClientRect(), nb = num.getBoundingClientRect();
+    burst.style.left = (nb.left - cb.left + nb.width / 2) + 'px';
+    burst.style.top = (nb.top - cb.top + nb.height / 2) + 'px';
+    var cs = ['#D3343A', '#2C68BE', '#3B9257', '#E5B33F'];
+    for (var k = 0; k < 26; k++) {
+      var b = document.createElement('i'), a = Math.random() * Math.PI * 2, rr = 90 + Math.random() * 130;
+      b.style.background = cs[k % 4];
+      burst.appendChild(b);
+      b.animate([
+        { transform: 'translate(0,0) scale(.4)', opacity: 1 },
+        { transform: 'translate(' + Math.cos(a) * rr + 'px,' + (Math.sin(a) * rr - 40) + 'px) scale(1)', opacity: 1, offset: .6 },
+        { transform: 'translate(' + Math.cos(a) * rr * 1.1 + 'px,' + (Math.sin(a) * rr + 60) + 'px) scale(.6)', opacity: 0 }
+      ], { duration: 1100 + Math.random() * 500, easing: 'cubic-bezier(.22,1,.36,1)' }).onfinish = (function (el) { return function () { el.remove(); }; })(b);
+    }
+  }
+  function set(place, n, stagger) {
+    if (state[place] === n) return;
+    state[place] = n; layout(place, stagger);
+    var d = digits[place]; d.textContent = n;
+    d.classList.remove('bump'); void d.offsetWidth; d.classList.add('bump');
+    if (won) { won = false; abCard.classList.remove('win'); }
+    words();
+    if (goal !== null && !won && total() === goal) celebrate();
+  }
+  ['h', 't', 'u'].forEach(function (p) { layout(p, false); });
+  words();
+  addEventListener('resize', function () { ['h', 't', 'u'].forEach(function (p) { layout(p, false); }); });
+  document.getElementById('reset').addEventListener('click', function () { set('h', 0, true); set('t', 0, true); set('u', 0, true); });
+  document.getElementById('newTarget').addEventListener('click', newGoal);
+  var target = { h: 3, t: 5, u: 2 }, delay = reduce ? 0 : 1100;
+  ['h', 't', 'u'].forEach(function (p, idx) { setTimeout(function () { set(p, target[p], true); }, delay + idx * 450); });
+  setTimeout(function () { goal = 125; targetEl.textContent = goal; }, delay + 1000);
+
+  /* Intro video: play on click, native controls once started */
+  var intro = document.getElementById('intro'), player = document.getElementById('player');
+  document.getElementById('play').addEventListener('click', function () {
+    player.classList.add('playing'); intro.controls = true; intro.currentTime = 0; intro.play();
+  });
+  intro.addEventListener('ended', function () { player.classList.remove('playing'); intro.controls = false; });
+
+  /* Prices in the visitor's number format (always in euros) */
+  function formatPrices() {
+    document.querySelectorAll('[data-price]').forEach(function (el) {
+      var whole = el.hasAttribute('data-price-whole');
+      try {
+        el.textContent = new Intl.NumberFormat(lang(), { style: 'currency', currency: 'EUR', minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: whole ? 0 : 2 }).format(parseFloat(el.dataset.price));
+      } catch (err) { /* keep the French text */ }
+    });
+  }
+
+  /* 9 languages: chips switch the site language, an orbit of beads, and a cycling greeting */
+  var LANGS = [
+    ['fr', 'Français', 'Bonjour !'], ['en', 'English', 'Hello!'], ['de', 'Deutsch', 'Hallo!'],
+    ['es', 'Español', '¡Hola!'], ['it', 'Italiano', 'Ciao!'], ['pt', 'Português', 'Olá!'],
+    ['ar', 'العربية', 'مرحبا!'], ['hi', 'हिन्दी', 'नमस्ते!'], ['zh', '中文', '你好！']
+  ];
+  var BEADS = [['#3B9257', '#1F5A33'], ['#2C68BE', '#173F78'], ['#D3343A', '#8E1D22'], ['#E5B33F', '#9C7416']];
+  var chips = document.getElementById('langChips'), orbit = document.getElementById('orbit');
+  LANGS.forEach(function (l, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'lang-chip'; b.setAttribute('lang', l[0]); b.setAttribute('aria-pressed', 'false');
+    var code = document.createElement('span'); code.className = 'code'; code.textContent = l[0].toUpperCase();
+    var name = document.createElement('span'); name.textContent = l[1];
+    b.append(code, name);
+    b.addEventListener('click', function () { if (window.DissiplI18n) window.DissiplI18n.setLang(l[0]); });
+    chips.appendChild(b);
+    var o = document.createElement('div'); o.className = 'o-bead';
+    o.style.setProperty('--a', (i * 40) + 'deg');
+    o.style.setProperty('--c', BEADS[i % 4][0]); o.style.setProperty('--cd', BEADS[i % 4][1]);
+    var s = document.createElement('span'); s.textContent = l[0].toUpperCase(); o.appendChild(s);
+    orbit.appendChild(o);
+  });
+  function sizeOrbit() { orbit.style.setProperty('--R', (orbit.clientWidth / 2 - 1) + 'px'); }
+  sizeOrbit(); addEventListener('resize', sizeOrbit);
+  var helloWord = document.getElementById('helloWord'), helloLang = document.getElementById('helloLang'), hi = 0;
+  function showHello(i) {
+    helloWord.textContent = LANGS[i][2]; helloWord.setAttribute('lang', LANGS[i][0]);
+    helloWord.dir = LANGS[i][0] === 'ar' ? 'rtl' : 'ltr';
+    helloLang.textContent = LANGS[i][1];
+    helloWord.classList.remove('swap'); void helloWord.offsetWidth; helloWord.classList.add('swap');
+  }
+  if (!reduce) setInterval(function () { if (!document.hidden) { hi = (hi + 1) % LANGS.length; showHello(hi); } }, 2200);
+
+  /* Testimonials (real quotes from dissipl.fr; names kept, text translated) */
+  var Q = [
+    [1, 'Nathan', 'u'], [2, 'Mélanie', 'h'], [3, 'Yanice', 't'], [4, 'Romain', 'u'], [5, 'Sonia', 'h'], [6, 'Marie', 't'], [7, 'Ajar', 'u']
+  ];
+  var Q2 = [[8, 'Wafa', 'h'], [9, 'Gabriel', 't'], [10, 'Laurent', 'u'], [11, 'Zoé', 'h'], [12, 'Anne', 't'], [13, 'Frédéric', 'u']];
+  var QFR = {
+    1: ["Le boulier numérique me permet de mieux comprendre les nombres car en cours normal, je n'arrive pas toujours à suivre quand mon prof parle.", 'Élève de 6e SEGPA (TDAH)'],
+    2: ["Ce site est très pratique pour mes élèves de 6e qui ont des difficultés notamment en maths. Le boulier numérique s'avère être un outil puissant.", 'Enseignante spécialisée en SEGPA'],
+    3: ["Les maths, c'est un peu difficile pour moi. Mais quand je les fais sur ordinateur en m'amusant, c'est top !", 'Élève de CM2, dyscalculie'],
+    4: ['Mes élèves ont des troubles cognitifs parfois sévères et certains réussissent à travailler sur Dissipl avec enthousiasme.', 'Enseignant spécialisé en IME'],
+    5: ["J'aime bien utiliser l'application car c'est comme des jeux mais pour apprendre.", 'Élève de CM2'],
+    6: ["Je dois sans cesse adapter les supports pédagogiques pour faciliter les apprentissages. Dissipl m'aide énormément.", "Coordinatrice d'un dispositif ULIS"],
+    7: ["La maîtresse utilise des fois le boulier numérique. Elle l'affiche au tableau et on échange dans les groupes puis on corrige les problèmes.", 'Élève de CM2, dyspraxie'],
+    8: ["Quelle idée géniale d'avoir des outils de pédagogie active comme celle de Montessori mais en ligne ! J'utilise Dissipl en complément du matériel physique.", 'Enseignante, école Montessori'],
+    9: ["Je suis bon en maths. Mais j'aime utiliser DISSIPL surtout pour les exercices interactifs.", 'Élève de 6e SEGPA'],
+    10: ['Certains de mes élèves de 6e doivent revoir les bases et Dissipl les aide beaucoup.', 'Professeur de collège'],
+    11: ["Quand on se rend en salle informatique pour utiliser le site, on ne s'ennuie pas. J'apprends mieux comme ça.", 'Élève de 6e'],
+    12: ['Dissipl favorise grandement le travail collaboratif.', 'Professeure des écoles CE1/CM2'],
+    13: ["J'aime bien aller sur DISSIPL car ça permet de travailler autrement.", 'Élève de 6e']
+  };
+  var col = { h: 'var(--red)', t: 'var(--blue)', u: 'var(--green)' };
+  function card(q) {
+    var f = document.createElement('figure'); f.className = 'quote'; f.style.setProperty('--c', col[q[2]]);
+    f.setAttribute('dir', document.documentElement.dir || 'ltr');
+    var bq = document.createElement('blockquote'); bq.textContent = T('q' + q[0], QFR[q[0]][0]);
+    var fc = document.createElement('figcaption');
+    var av = document.createElement('span'); av.className = 'avatar'; av.textContent = q[1].charAt(0); av.setAttribute('aria-hidden', 'true');
+    var who = document.createElement('span'); var s = document.createElement('strong'); s.textContent = q[1];
+    who.appendChild(s); who.appendChild(document.createTextNode(T('r' + q[0], QFR[q[0]][1])));
+    fc.appendChild(av); fc.appendChild(who); f.appendChild(bq); f.appendChild(fc);
+    return f;
+  }
+  function fill(track, list) {
+    track.innerHTML = '';
+    var a = document.createElement('div'), b = document.createElement('div');
+    a.style.cssText = b.style.cssText = 'display:flex;gap:22px';
+    list.forEach(function (q) { a.appendChild(card(q)); b.appendChild(card(q)); });
+    b.setAttribute('aria-hidden', 'true');
+    track.appendChild(a); track.appendChild(b);
+  }
+  function renderQuotes() { fill(document.getElementById('trackA'), Q); fill(document.getElementById('trackB'), Q2); }
+  renderQuotes();
+
+  /* FAQ accordion */
+  document.querySelectorAll('.qa > button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var qa = btn.parentElement, open = !qa.classList.contains('open');
+      qa.classList.toggle('open', open); btn.setAttribute('aria-expanded', open);
+    });
+  });
+
+  /* Bead rain in the final call to action */
+  if (!reduce) {
+    var rain = document.getElementById('rain'), cs = ['#3B9257', '#2C68BE', '#D3343A', '#E5B33F'];
+    for (var n = 0; n < 22; n++) {
+      var bead = document.createElement('i'), s2 = 10 + Math.random() * 16;
+      bead.style.cssText = 'left:' + (Math.random() * 100) + '%;--s:' + s2 + 'px;--c:' + cs[n % 4] + ';--t:' + (7 + Math.random() * 8) + 's;--dl:-' + (Math.random() * 12) + 's;opacity:' + (0.25 + Math.random() * 0.4);
+      rain.appendChild(bead);
+    }
+  }
+
+  /* Language changes: redraw everything built by script */
+  function onLang() {
+    splitHeadline();
+    ['h', 't', 'u'].forEach(function (p) { layout(p, false); });
+    words();
+    renderQuotes();
+    formatPrices();
+    var cur = lang();
+    chips.querySelectorAll('.lang-chip').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('lang') === cur ? 'true' : 'false'); });
+    var idx = LANGS.findIndex(function (l) { return l[0] === cur; });
+    if (idx >= 0) { hi = idx; showHello(idx); }
+  }
+  window.addEventListener('dissipl:lang', onLang);
+})();
+</script>
+
+<div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
+  Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
+</div>
+</body>
+</html>

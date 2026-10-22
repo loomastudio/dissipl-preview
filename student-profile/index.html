@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DISSIPL - Mon Profil Élève</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="/dissipl-preview/assets/Images/disableFallDamage.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/dissipl-preview/assets/Images/disableFallDamage.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dissipl-preview/css/stylestest.css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <div id="header-placeholder"></div>
+
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <h1>Mon Profil Élève</h1>
+        <p class="page-subtitle">
+          Consultez vos informations et celles de votre professeur.
+        </p>
+      </section>
+
+      <!-- Content -->
+      <div class="page-content">
+        <div class="content-card">
+          <!-- Student Information Card -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-info text-white">
+              <h5 class="card-title mb-0">🎓 Mes Informations</h5>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <p>
+                    <strong>Nom d'utilisateur :</strong>
+                    <span id="studentUsername">Chargement...</span>
+                  </p>
+                  <p>
+                    <strong>Nom complet :</strong>
+                    <span id="studentName">Chargement...</span>
+                  </p>
+                  <p>
+                    <strong>Email :</strong>
+                    <span id="studentEmail">Chargement...</span>
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <p>
+                    <strong>Statut Premium :</strong>
+                    <span id="studentPremiumStatus" class="badge">Chargement...</span>
+                  </p>
+                  <p>
+                    <strong>Date d'expiration :</strong>
+                    <span id="studentExpiryDate">Chargement...</span>
+                  </p>
+                  <p>
+                    <strong>Date de création :</strong>
+                    <span id="studentCreatedAt">Chargement...</span>
+                  </p>
+                </div>
+              </div>
+              <div class="alert alert-info mt-3">
+                <small>ℹ️ Pour modifier vos informations, contactez votre professeur.</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Professor Information Card -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">👨‍🏫 Mon Professeur</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                <strong>Nom du professeur :</strong>
+                <span id="professorName">Chargement...</span>
+              </p>
+              <p>
+                <strong>Email du professeur :</strong>
+                <span id="professorEmail">Chargement...</span>
+              </p>
+              <div class="alert alert-secondary mt-3">
+                <small>📧 Pour toute question concernant votre compte, contactez votre professeur.</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Premium Access Card -->
+          <div class="card shadow-sm" id="premiumAccessCard">
+            <div class="card-header bg-success text-white">
+              <h5 class="card-title mb-0">🎮 Accès aux Jeux</h5>
+            </div>
+            <div class="card-body">
+              <div id="premiumActiveContent">
+                <p class="text-success">
+                  <strong>✅ Vous avez un accès Premium aux jeux !</strong>
+                </p>
+                <p>Vous pouvez accéder à tous les jeux gratuits et premium.</p>
+                <a href="/dissipl-preview/index#tools-section" class="btn btn-success">
+                  🎮 Accéder aux jeux
+                </a>
+              </div>
+              <div id="premiumInactiveContent" style="display: none;">
+                <p class="text-warning">
+                  <strong>⚠️ Votre accès Premium a expiré.</strong>
+                </p>
+                <p>Contactez votre professeur pour renouveler l'accès.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/dissipl-preview/js/core/footer.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Header -->
+    <script type="module" src="/dissipl-preview/js/core/header.js"></script>
+    <script type="module" src="/dissipl-preview/js/modules/header.premium.js"></script>
+    <script type="module" src="/dissipl-preview/js/modules/header.nav.js"></script>
+
+    <!-- Student Profile Page -->
+    <script type="module" src="/dissipl-preview/js/pages/student-profile.js"></script>
+  
+<div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
+  Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
+</div>
+</body>
+</html>

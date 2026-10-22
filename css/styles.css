@@ -1,0 +1,340 @@
+/* =========================================
+   1. Base / Typographie
+   ========================================= */
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+/* =========================================
+   2. Header / Navbar
+   ========================================= */
+
+/* Couleur de fond de la navbar */
+.navbar-light.custom-bg,
+.custom-bg {
+  background-color: #d6d6d6 !important;
+}
+
+/* Logo : ratio respecté, jamais déformé */
+.header-image {
+  display: block;
+  height: 60px;       /* hauteur souhaitée pour le logo */
+  width: auto;        /* largeur auto pour garder le ratio */
+  object-fit: contain;
+}
+
+/* Évite que le flex Bootstrap ne compresse le logo */
+.navbar-brand {
+  flex-shrink: 0;
+}
+
+/* Menu central : occupe l’espace et centre les liens */
+.navbar-nav.mx-auto {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/* Taille des liens du menu */
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+}
+
+/* Navbar en mode burger (mobile) */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-nav .dropdown-menu {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* =========================================
+   3. Layout / Cartes / Titres
+   ========================================= */
+
+/* Centrer le conteneur Unity */
+#unity-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+/* Taille et couleur des titres de cartes */
+.card-title {
+  color: #b01e27;
+  font-size: 1.8rem;
+}
+
+/* Hauteur auto des cartes */
+.card {
+  height: fit-content;
+}
+
+/* Ajustements des tailles de texte des cartes selon la hauteur écran */
+@media (min-height: 300px) {
+  .card-body {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-height: 400px) {
+  .card-body {
+    font-size: 1rem;
+  }
+}
+
+@media (min-height: 500px) {
+  .card-body {
+    font-size: 1.1rem;
+  }
+}
+
+/* Ajustements généraux des titres */
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+.card-body {
+  font-size: 1rem;
+  /* text-align: justify; */
+}
+
+/* =========================================
+   4. Footer et vidéo de fond
+   ========================================= */
+
+footer {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* au-dessus de la vidéo */
+}
+
+#video-behind-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;      /* derrière le footer */
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+/* =========================================
+   5. Index : vidéo principale
+   ========================================= */
+
+/* Rendre la vidéo dans la page index plus petite */
+#index-video {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: cover;
+}
+
+/* =========================================
+   6. Page tutoriels : style des boutons
+   ========================================= */
+
+.page-tutoriels .btn.btn-primary {
+  background-color: #ffdab9;
+  border-color: #ffdab9;
+  color: black;
+}
+
+.page-tutoriels .btn.btn-primary:hover,
+.page-tutoriels .btn.btn-primary:focus,
+.page-tutoriels .btn.btn-primary:active {
+  background-color: #ffc7a2;
+  border-color: #ffc7a2;
+  color: black;
+}
+
+/* =========================================
+   7. Alertes / Notifications
+   ========================================= */
+
+/* Animation pour les alertes (apparition + disparition) */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Style général des alertes */
+.alert {
+  display: none;
+  position: relative;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Succès */
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 5px solid #28a745;
+  animation: fadeInOut 4s ease-in-out;
+}
+
+/* Erreur */
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 5px solid #dc3545;
+  animation: fadeInOut 4s ease-in-out;
+}
+
+/* Avertissement */
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 5px solid #ffc107;
+  animation: fadeInOut 4s ease-in-out;
+}
+
+/* Information */
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-left: 5px solid #17a2b8;
+  animation: fadeInOut 4s ease-in-out;
+}
+
+/* Animation d’apparition avec slide pour .alert.show */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.alert.show {
+  display: block;
+  animation: slideIn 0.5s ease-out;
+}
+
+/* =====================*
+/* --- Amélioration header sur grands écrans --- */
+
+/* Logo normal */
+.header-image {
+  height: 60px;
+}
+
+/* Logo plus grand sur grands écrans */
+@media (min-width: 1400px) {
+  .header-image {
+    height: 80px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .header-image {
+    height: 100px;
+  }
+}
+
+/* Taille du texte de la navbar */
+.navbar-nav .nav-link {
+  font-size: 1.2rem;
+}
+
+@media (min-width: 1400px) {
+  .navbar-nav .nav-link {
+    font-size: 1.35rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .navbar-nav .nav-link {
+    font-size: 1.45rem;
+  }
+}
+
+/* Espacement horizontal entre les liens centraux */
+.navbar-nav.mx-auto .nav-item {
+  margin: 0 18px;
+}
+
+@media (min-width: 1400px) {
+  .navbar-nav.mx-auto .nav-item {
+    margin: 0 28px;
+  }
+}
+
+
+/* Smaller action buttons for student table */
+.action-btn {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.btn-xs {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+
+
+/* Action icons for student table */
+.action-icon {
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.action-icon:hover {
+  opacity: 0.7;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+

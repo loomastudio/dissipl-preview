@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Gestion Utilisateurs - Admin DISSIPL</title>
+  <link rel="icon" type="image/png" href="/dissipl-preview/assets/Images/disableFallDamage.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/dissipl-preview/css/stylestest.css">
+  <style>
+    .admin-dashboard {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .table-container {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .loading {
+      text-align: center;
+      padding: 40px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #1565C0;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .role-badge {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .role-user { background: #E8F5E9; color: #2E7D32; }
+    .role-professeur { background: #FFF3E0; color: #EF6C00; }
+    .role-directeur { background: #E3F2FD; color: #1565C0; }
+    .sub-badge {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .sub-free { background: #ECEFF1; color: #546E7A; }
+    .sub-active { background: #E8F5E9; color: #2E7D32; }
+    .sub-expired { background: #FFF8E1; color: #F57F17; }
+    .sub-cancelled { background: #FFEBEE; color: #C62828; }
+    .user-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .user-btn {
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .user-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    }
+    .user-btn-premium { background: #E8F5E9; color: #2E7D32; border-color: #C8E6C9; }
+    .user-btn-premium:hover { background: #C8E6C9; }
+    .user-btn-free { background: #FFEBEE; color: #C62828; border-color: #FFCDD2; }
+    .user-btn-free:hover { background: #FFCDD2; }
+    .managed-label {
+      font-size: 12px;
+      color: #78909C;
+      font-style: italic;
+      white-space: nowrap;
+    }
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .search-bar input {
+      flex: 1;
+      min-width: 200px;
+      border: 1px solid #CFD8DC;
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 14px;
+    }
+    .search-bar input:focus {
+      outline: none;
+      border-color: #1565C0;
+      box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.12);
+    }
+    .search-bar select {
+      border: 1px solid #CFD8DC;
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 14px;
+      color: #37474F;
+      background: white;
+      cursor: pointer;
+    }
+    .search-bar select:focus {
+      outline: none;
+      border-color: #1565C0;
+      box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.12);
+    }
+    .btn-blue {
+      background: #E3F2FD;
+      color: #1565C0;
+      border: 1px solid #BBDEFB;
+      border-radius: 10px;
+      font-weight: 600;
+      padding: 9px 18px;
+    }
+    .btn-blue:hover { background: #BBDEFB; }
+    .pager {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .pager button {
+      border: 1px solid #CFD8DC;
+      background: white;
+      border-radius: 10px;
+      padding: 7px 16px;
+      font-weight: 600;
+      color: #37474F;
+    }
+    .pager button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .pager button:not(:disabled):hover {
+      background: #ECEFF1;
+    }
+    .pager span {
+      font-size: 14px;
+      color: #546E7A;
+      font-weight: 600;
+    }
+    .custom-modal {
+      display: none;
+      position: fixed;
+      z-index: 1050;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .custom-modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .custom-modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 440px;
+      width: 90%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .custom-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .custom-modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+    .custom-modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+      line-height: 1;
+    }
+    .custom-modal-close:hover { color: #333; }
+    .duration-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .duration-options label {
+      border: 1px solid #CFD8DC;
+      border-radius: 10px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: #37474F;
+    }
+    .duration-options input {
+      display: none;
+    }
+    .duration-options input:checked + span {
+      color: #2E7D32;
+    }
+    .duration-options label:has(input:checked) {
+      background: #E8F5E9;
+      border-color: #C8E6C9;
+    }
+    .custom-date-row {
+      display: none;
+      margin-bottom: 12px;
+    }
+    .custom-date-row input {
+      border: 1px solid #CFD8DC;
+      border-radius: 10px;
+      padding: 8px 12px;
+      width: 100%;
+    }
+    .alert-msg {
+      display: none;
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2000;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    }
+    .alert-msg.ok { background: #E8F5E9; color: #2E7D32; }
+    .alert-msg.err { background: #FFEBEE; color: #C62828; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <div id="header-placeholder"></div>
+
+  <main class="flex-fill">
+    <section class="page-hero">
+      <h1 id="pageTitle">Gestion des Utilisateurs</h1>
+      <p class="page-subtitle" id="pageSubtitle">Activez ou retirez l'abonnement premium de chaque compte — sans paiement.</p>
+    </section>
+
+    <div class="admin-dashboard">
+      <a href="/dissipl-preview/admin" class="back-link">← Retour au dashboard</a>
+
+      <div class="table-container">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="🔍 Rechercher par email..." />
+          <select id="roleFilterSelect">
+            <option value="">Tous les rôles</option>
+            <option value="user">Parent</option>
+            <option value="professeur">Professeur</option>
+            <option value="directeur">Directeur</option>
+          </select>
+          <select id="subFilterSelect">
+            <option value="">Tous les abonnements</option>
+            <option value="premium">Premium actif</option>
+            <option value="free">Gratuit</option>
+            <option value="expired">Expiré</option>
+            <option value="cancelled">Annulé</option>
+          </select>
+          <button class="btn btn-blue" id="searchBtn">Soumettre</button>
+        </div>
+
+        <div id="users-loading" class="loading">Chargement...</div>
+
+        <div class="table-responsive" id="users-table" style="display: none;">
+          <table class="table table-sm align-middle">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Rôle</th>
+                <th>Abonnement</th>
+                <th>Fin premium</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-body"></tbody>
+          </table>
+        </div>
+
+        <div id="users-empty" class="text-center text-muted py-4" style="display: none;">
+          Aucun utilisateur trouvé.
+        </div>
+
+        <div class="pager" id="users-pager" style="display: none;">
+          <button id="prevBtn">← Précédent</button>
+          <span id="pageInfo"></span>
+          <button id="nextBtn">Suivant →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Grant premium modal -->
+  <div class="custom-modal" id="grantModal">
+    <div class="custom-modal-content">
+      <div class="custom-modal-header">
+        <div class="custom-modal-title">⭐ Activer premium</div>
+        <button class="custom-modal-close" onclick="closeGrantModal()">&times;</button>
+      </div>
+      <p id="grantUserEmail" style="color: #546E7A; margin-bottom: 14px;"></p>
+      <div class="duration-options" id="durationOptions">
+        <label><input type="radio" name="duration" value="7" /><span>7 jours</span></label>
+        <label><input type="radio" name="duration" value="30" checked /><span>30 jours</span></label>
+        <label><input type="radio" name="duration" value="90" /><span>90 jours</span></label>
+        <label><input type="radio" name="duration" value="365" /><span>1 an</span></label>
+        <label><input type="radio" name="duration" value="custom" /><span>Date précise…</span></label>
+      </div>
+      <div class="custom-date-row" id="customDateRow">
+        <input type="date" id="customDate" />
+      </div>
+      <div style="text-align: right;">
+        <button class="btn btn-secondary" onclick="closeGrantModal()">Annuler</button>
+        <button class="btn btn-success" onclick="confirmGrant()">Activer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-msg" id="alertMsg"></div>
+
+  <div id="footer-placeholder"></div>
+  <script src="/dissipl-preview/js/core/footer.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="module" src="/dissipl-preview/js/core/header.js?v=20260916-mobile"></script>
+
+  <script>
+    // Parents-only mode when served from /all-parents
+    const isParentsOnly = window.location.pathname === "/dissipl-preview/all-parents";
+    if (isParentsOnly) {
+      document.getElementById("pageTitle").textContent = "Gestion des Parents";
+      document.getElementById("pageSubtitle").textContent =
+        "Tous les comptes Parents enregistrés — activez ou retirez leur abonnement premium sans paiement.";
+    }
+
+    let currentPage = 1;
+    let totalPages = 1;
+    let searchQuery = "";
+    let filterRole = "";
+    let filterSub = "";
+    let grantTargetId = null;
+    const lockedRoleParam = isParentsOnly ? "&role=user" : "";
+    if (isParentsOnly) {
+      // Parents page is already role-locked — hide the role dropdown
+      document.getElementById("roleFilterSelect").style.display = "none";
+    }
+
+    const roleLabels = { user: "Parent", professeur: "Professeur", directeur: "Directeur" };
+    const planByRole = { user: "parent", professeur: "teacher", directeur: "director" };
+
+    function showAlert(msg, ok = true) {
+      const el = document.getElementById("alertMsg");
+      el.textContent = msg;
+      el.className = "alert-msg " + (ok ? "ok" : "err");
+      el.style.display = "block";
+      setTimeout(() => { el.style.display = "none"; }, 3500);
+    }
+
+    function todayStr() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function formatDateFR(value) {
+      if (!value) return null;
+      const date = new Date(String(value).trim().replace(" ", "T"));
+      if (isNaN(date.getTime())) return value;
+      return date.toLocaleDateString("fr-FR");
+    }
+
+    function subBadge(user) {
+      const end = user.premium_end_date;
+      const endFR = formatDateFR(end);
+      const inheritedEnd = user.inherited_premium_end; // set when the teacher's director has an active premium
+      const inheritedFR = formatDateFR(inheritedEnd);
+      const plan = user.current_plan || "";
+      const dateActive = !!(end && end >= todayStr() && !user.is_cancel);
+
+      // 1) Active institutional subscription (directors, quote-based) — managed manually, no toggle
+      if (["director", "Institutional Subscription"].includes(plan) && dateActive) {
+        return {
+          badge: `<span class="sub-badge sub-active">⭐ ${plan}</span>`,
+          fin: endFR,
+          noActions: true,
+          actionsLabel: "Abonnement institutionnel",
+          canRevoke: false
+        };
+      }
+
+      // 2) Own paid/admin-granted Parent/Teacher subscription
+      if (plan && dateActive) {
+        return {
+          badge: `<span class="sub-badge sub-active">⭐ ${plan}</span>`,
+          fin: endFR,
+          noActions: false,
+          actionsLabel: null,
+          canRevoke: true
+        };
+      }
+
+      // 3) Premium inherited from the director's institutional subscription
+      if (inheritedEnd) {
+        return {
+          badge: `<span class="sub-badge sub-active">⭐ Institutionnel (via directeur)</span>`,
+          fin: inheritedFR,
+          noActions: true,
+          actionsLabel: "Via le directeur",
+          canRevoke: false
+        };
+      }
+
+      // 4) No active premium — only the Premium (grant) action makes sense
+      const stateBadge = !plan
+        ? `<span class="sub-badge sub-free">Gratuit</span>`
+        : user.is_cancel
+          ? `<span class="sub-badge sub-cancelled">Annulé${endFR ? " (" + endFR + ")" : ""}</span>`
+          : `<span class="sub-badge sub-expired">Expiré${endFR ? " (" + endFR + ")" : ""}</span>`;
+      return {
+        badge: stateBadge,
+        fin: endFR,
+        noActions: false,
+        actionsLabel: null,
+        canRevoke: false
+      };
+    }
+
+    async function loadUsers() {
+      const loading = document.getElementById("users-loading");
+      loading.style.display = "block";
+      document.getElementById("users-table").style.display = "none";
+      document.getElementById("users-empty").style.display = "none";
+      document.getElementById("users-pager").style.display = "none";
+
+      try {
+        const res = await fetch(
+          `/api/admin/users?page=${currentPage}&limit=20${lockedRoleParam}${filterRole ? "&role=" + encodeURIComponent(filterRole) : ""}${filterSub ? "&sub=" + encodeURIComponent(filterSub) : ""}${searchQuery ? "&search=" + encodeURIComponent(searchQuery) : ""}`,
+          { credentials: "include" }
+        );
+        if (res.status === 401 || res.status === 403) {
+          showAlert("Accès refusé — connectez-vous avec le compte administrateur.", false);
+          loading.style.display = "none";
+          return;
+        }
+        const data = await res.json();
+        const users = data.users || [];
+        totalPages = data.pages || 1;
+
+        loading.style.display = "none";
+
+        if (users.length === 0) {
+          document.getElementById("users-empty").style.display = "block";
+          return;
+        }
+
+        const tbody = document.getElementById("users-body");
+        tbody.innerHTML = "";
+        users.forEach((u) => {
+          const pd = subBadge(u);
+          const actionsHtml = pd.noActions
+            ? `<span class="managed-label">${pd.actionsLabel}</span>`
+            : `<div class="user-actions">
+                <button class="user-btn user-btn-premium" data-action="grant" data-id="${u.id}" data-email="${u.email}">⭐ Premium</button>
+                ${pd.canRevoke ? `<button class="user-btn user-btn-free" data-action="revoke" data-id="${u.id}" data-email="${u.email}">🚫 Gratuit</button>` : ""}
+              </div>`;
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><strong>${u.email}</strong></td>
+            <td><span class="role-badge role-${u.role}">${roleLabels[u.role] || u.role}</span></td>
+            <td>${pd.badge}</td>
+            <td>${pd.fin || "-"}</td>
+            <td>${actionsHtml}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        document.getElementById("users-table").style.display = "block";
+
+        const pager = document.getElementById("users-pager");
+        pager.style.display = "flex";
+        document.getElementById("pageInfo").textContent = `Page ${data.page} / ${totalPages} (${data.total} utilisateurs)`;
+        document.getElementById("prevBtn").disabled = data.page <= 1;
+        document.getElementById("nextBtn").disabled = data.page >= totalPages;
+      } catch (e) {
+        loading.style.display = "none";
+        showAlert("Erreur de chargement : " + e.message, false);
+      }
+    }
+
+    // Soumettre = apply all three filters together (search text + role + subscription)
+    function applyFilters() {
+      searchQuery = document.getElementById("searchInput").value.trim();
+      filterRole = document.getElementById("roleFilterSelect").value;
+      filterSub = document.getElementById("subFilterSelect").value;
+      currentPage = 1;
+      loadUsers();
+    }
+    document.getElementById("searchBtn").addEventListener("click", applyFilters);
+    document.getElementById("searchInput").addEventListener("keyup", (e) => {
+      if (e.key === "Enter") applyFilters();
+    });
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      if (currentPage > 1) { currentPage--; loadUsers(); }
+    });
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      if (currentPage < totalPages) { currentPage++; loadUsers(); }
+    });
+
+    // Actions (event delegation)
+    document.addEventListener("click", function (e) {
+      const el = e.target.closest("[data-action]");
+      if (!el) return;
+      const id = el.dataset.id;
+      const email = el.dataset.email;
+
+      if (el.dataset.action === "grant") {
+        grantTargetId = id;
+        document.getElementById("grantUserEmail").textContent = "Compte : " + email;
+        document.getElementById("customDateRow").style.display = "none";
+        document.getElementById("grantModal").classList.add("show");
+      }
+
+      if (el.dataset.action === "revoke") {
+        if (confirm(`Retirer l'abonnement premium de ${email} ? Le compte redeviendra gratuit.`)) {
+          fetch(`/api/admin/users/${id}/revoke-premium`, {
+            method: "POST",
+            credentials: "include",
+          })
+            .then((r) => r.json())
+            .then((data) => {
+              if (data.success) {
+                showAlert("✅ " + email + " est maintenant gratuit.");
+                loadUsers();
+              } else {
+                showAlert("Erreur : " + (data.error || "Échec"), false);
+              }
+            })
+            .catch((err) => showAlert("Erreur : " + err.message, false));
+        }
+      }
+    });
+
+    // Duration radio → show/hide custom date
+    document.getElementById("durationOptions").addEventListener("change", (e) => {
+      document.getElementById("customDateRow").style.display =
+        e.target.value === "custom" ? "block" : "none";
+    });
+
+    function closeGrantModal() {
+      document.getElementById("grantModal").classList.remove("show");
+    }
+
+    function confirmGrant() {
+      const selected = document.querySelector('input[name="duration"]:checked');
+      if (!selected) return;
+      let body;
+      if (selected.value === "custom") {
+        const d = document.getElementById("customDate").value;
+        if (!d) {
+          showAlert("Choisissez une date.", false);
+          return;
+        }
+        body = { until: d };
+      } else {
+        body = { days: parseInt(selected.value, 10) };
+      }
+
+      fetch(`/api/admin/users/${grantTargetId}/grant-premium`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(body),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          if (data.success) {
+            showAlert(`⭐ Premium activé jusqu'au ${data.premium_end_date}.`);
+            closeGrantModal();
+            loadUsers();
+          } else {
+            showAlert("Erreur : " + (data.error || "Échec"), false);
+          }
+        })
+        .catch((err) => showAlert("Erreur : " + err.message, false));
+    }
+
+    loadUsers();
+  </script>
+
+<div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
+  Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
+</div>
+</body>
+</html>

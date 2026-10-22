@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DISSIPL - Souscription</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="/dissipl-preview/assets/Images/disableFallDamage.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/dissipl-preview/assets/Images/disableFallDamage.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dissipl-preview/css/stylestest.css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <div id="header-placeholder"></div>
+    
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <h1>Finalisez votre abonnement</h1>
+        <p class="page-subtitle">
+          Confirmez votre choix d'abonnement et procédez au paiement sécurisé.
+        </p>
+      </section>
+
+      <!-- Content -->
+      <div class="page-content">
+        <div class="content-card" style="max-width: 600px; margin: 0 auto">
+          <div id="subscription-info" class="text-center p-3">
+            <p class="text-muted">Chargement des informations...</p>
+          </div>
+
+          <div id="subscription-card" class="d-none">
+            <div class="card shadow-sm" id="subscriptionContainer">
+              <div class="card-header text-center" id="subscriptionHeader">
+                <h4 id="subscriptionTitle">Chargement...</h4>
+              </div>
+              <div class="card-body text-center">
+                <p>
+                  <strong>Type d'abonnement :</strong>
+                  <span id="subscriptionType">-</span>
+                </p>
+                <p>
+                  <strong>Tarif :</strong>
+                  <span id="subscriptionPrice">-</span> / mois
+                </p>
+              </div>
+              <div class="card-footer text-center">
+                <button id="subscribe-btn" class="btn btn-lg">S'abonner</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <a href="price.html" class="btn btn-secondary"
+              >🔙 Retour aux offres</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/dissipl-preview/js/core/footer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="/dissipl-preview/js/core/header.js?v=20260916-mobile"></script>
+    <script src="/dissipl-preview/js/pages/interactEffectsUI.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var subscriptionInfo = document.getElementById("subscription-info");
+        var subscriptionCard = document.getElementById("subscription-card");
+        var subscriptionContainer = document.getElementById(
+          "subscriptionContainer",
+        );
+        var subscriptionHeader = document.getElementById("subscriptionHeader");
+        var subscriptionTitle = document.getElementById("subscriptionTitle");
+        var subscriptionType = document.getElementById("subscriptionType");
+        var subscriptionPrice = document.getElementById("subscriptionPrice");
+        var subscribeBtn = document.getElementById("subscribe-btn");
+
+        var params = new URLSearchParams(location.search);
+        var planParam = (params.get("plan") || "").toLowerCase();
+
+        fetch("/api/session/status", {
+          credentials: "include",
+          headers: { Accept: "application/json" },
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error("Erreur serveur");
+            return res.json();
+          })
+          .then(function (data) {
+            if (!data.authenticated || !data.user) {
+              subscriptionInfo.innerHTML =
+                "<p class='text-danger'>Veuillez vous inscrire pour vous abonner.</p>";
+              return;
+            }
+            var user = data.user;
+            if (user.must_change_password) {
+              window.location.href = "change-password.html";
+              return;
+            }
+
+            var role = String(user.role || "").toLowerCase();
+            var isProfessor = role === "professeur";
+            var plan = "classic";
+
+            if (planParam === "prof") {
+              if (!isProfessor) {
+                subscriptionInfo.classList.remove("d-none");
+                subscriptionInfo.innerHTML =
+                  "<p class='text-warning'>Cet abonnement est réservé aux comptes Professeur. Vous êtes connecté en rôle: <strong>" +
+                  role +
+                  "</strong>.</p>";
+                return;
+              }
+              plan = "prof";
+            } else if (planParam === "classic" || planParam === "discover") {
+              plan = "classic";
+            } else {
+              plan = isProfessor ? "prof" : "classic";
+            }
+
+            var ui =
+              plan === "prof"
+                ? {
+                    title: "🎓 Abonnement Professeur",
+                    priceText: "2,99€",
+                    headerBg: "bg-warning text-dark",
+                    borderClass: "border-warning",
+                    btnClass: "btn-warning",
+                    productId: "prod_Rqrt7VHQuEp3Td",
+                  }
+                : {
+                    title: "🌟 Abonnement Classique",
+                    priceText: "0,99€",
+                    headerBg: "bg-success text-white",
+                    borderClass: "border-success",
+                    btnClass: "btn-success",
+                    productId: "prod_RqrrGg17NxdTq3",
+                  };
+
+            subscriptionInfo.classList.add("d-none");
+            subscriptionCard.classList.remove("d-none");
+            ui.headerBg.split(" ").forEach(function (c) {
+              subscriptionHeader.classList.add(c);
+            });
+            subscriptionContainer.classList.add(ui.borderClass);
+            subscriptionTitle.textContent = ui.title;
+            subscriptionType.textContent = ui.title;
+            subscriptionPrice.textContent = ui.priceText;
+            subscribeBtn.classList.add(ui.btnClass);
+
+            subscribeBtn.onclick = function () {
+              fetch("/api/payment/create-checkout-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({
+                  plan: plan,
+                  role: role,
+                  productId: ui.productId,
+                }),
+              })
+                .then(function (res) {
+                  return res.json();
+                })
+                .then(function (sessionData) {
+                  if (sessionData.error) {
+                    alert("Erreur: " + sessionData.error);
+                    return;
+                  }
+                  window.location.href = sessionData.checkoutUrl;
+                })
+                .catch(function () {
+                  alert(
+                    "Une erreur est survenue lors de la création du paiement.",
+                  );
+                });
+            };
+          })
+          .catch(function () {
+            subscriptionInfo.innerHTML =
+              "<p class='text-danger'>Impossible de récupérer votre session.</p>";
+          });
+      });
+    </script>
+  
+<div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
+  Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
+</div>
+</body>
+</html>
+

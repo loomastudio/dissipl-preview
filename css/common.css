@@ -1,0 +1,179 @@
+/* ======================= */
+/* BASE TYPO + GÉNÉRAUX   */
+/* ======================= */
+
+body {
+  font-size: 1rem;
+  font-family: "Nunito", sans-serif;
+}
+
+.font-mvboli {
+  font-family: "Nunito", sans-serif;
+}
+
+main {
+  padding-bottom: 60px;
+}
+
+.card {
+  height: fit-content;
+}
+
+.card-body {
+  font-size: 0.8rem;
+  text-align: justify;
+}
+
+@media (min-height: 300px) {
+  .card-body {
+    font-size: 0.9rem;
+  }
+}
+@media (min-height: 400px) {
+  .card-body {
+    font-size: 1rem;
+  }
+}
+@media (min-height: 500px) {
+  .card-body {
+    font-size: 1.1rem;
+  }
+}
+
+/* ======================= */
+/* HEADER & NAVBAR */
+/* ======================= */
+
+.header-image {
+  height: 120px;
+  width: auto;
+}
+
+.navbar-nav.mx-auto {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.navbar-nav.ml-auto {
+  justify-content: flex-end;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.2rem;
+}
+
+.navbar-nav.mx-auto .nav-item:not(:last-child) {
+  margin-right: 50px;
+}
+
+@media (max-width: 576px) {
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    justify-content: center;
+  }
+  .navbar-nav {
+    text-align: center;
+  }
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
+  }
+}
+
+/* ======================= */
+/* FOOTER & CONTENEURS */
+/* ======================= */
+
+footer {
+  background-color: #f8f9fa;
+  color: #212529;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+#unity-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+#video-behind-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+/* ======================= */
+/* TITRES & PARAGRAPHES */
+/* ======================= */
+
+h2 {
+  font-size: 3.2rem;
+  line-height: 1.2;
+  font-weight: bold;
+  color: #b9121b;
+  text-align: left;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.9;
+  text-align: justify;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* ======================= */
+/* BOUTONS & LISTES */
+/* ======================= */
+
+.btn {
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+ul.list-unstyled li {
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.8;
+}
+ul.list-unstyled li span {
+  font-size: 1.8rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.icon-emoji {
+  display: inline-block;
+  width: 2.2rem;
+  text-align: center;
+  font-size: 1.8rem;
+  vertical-align: middle;
+}

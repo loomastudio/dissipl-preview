@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DISSIPL - Apprenez par vos sens. Plateforme pédagogique moderne avec outils numériques innovants.">
+    <title>DISSIPL - Apprenez par vos sens</title>
+    <link rel="icon" type="image/png" href="../assets/Images/disableFallDamage.png">
+    <link rel="apple-touch-icon" href="../assets/Images/disableFallDamage.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../css/stylestest.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-bg-blob"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1><span class="welcome-text">Bienvenue :</span> Apprenez par vos sens.</h1>
+                    <p>Découvrez une plateforme d'apprentissage révolutionnaire qui transforme l'éducation en une expérience sensorielle riche et engageante. Nos outils numériques innovants répondent aux programmes de l'Éducation nationale tout en rendant l'apprentissage ludique et mémorable.</p>
+                    <a href="#tools-section" class="btn btn-primary magnetic" id="magneticBtn">Découvrir les outils →</a>
+                </div>
+                <div class="hero-video">
+                    <video controls playsinline preload="auto" poster="../assets/Images/thumbnail.png">
+                        <source src="../assets/Images/DISSIPL.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blob Divider -->
+        <div class="blob-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0 C300,100 900,20 1200,60 L1200,120 L0,120 Z" fill="rgba(255, 255, 255, 0.1)"/>
+            </svg>
+        </div>
+
+        <div class="container">
+            <!-- Features Section -->
+            <section class="mt-5">
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-6">
+                        <div class="image-container">
+                            <img src="../assets/Images/teach.jpg" alt="DISSIPL pédagogie">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ps-md-4">
+                        <h2>Une approche pédagogique innovante</h2>
+                        <p>DISSIPL a pour but d'offrir à tous, particuliers comme professionnels de l'éducation, enseignants comme élèves, la possibilité d'utiliser les outils numériques pour apprendre autrement.</p>
+                        <p>Ces outils permettent une multitude d'apprentissages. Ils répondent parfaitement aux compétences proposées dans les programmes de l'Éducation nationale.</p>
+                        <a href="pedagogic.html" class="btn btn-secondary">En savoir plus</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Digital Tools Grid Section -->
+            <section id="tools-section" class="mt-5 pt-5">
+                <div class="text-center mb-5">
+                    <h2>Nos outils numériques</h2>
+                    <p class="text-secondary fs-lg">Explorez notre collection d'outils d'apprentissage interactifs conçus pour tous les âges</p>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Boulier Card -->
+                    <a href="Jeu1.html" class="card gp-link" data-premium="true" style="text-decoration:none;color:inherit;">
+                        <div class="card-body-center">
+                            <div class="circle-icon" style="background: linear-gradient(135deg, #FFD93D 0%, #FFC107 100%);">
+                                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;">
+                                    <rect x="15" y="25" width="50" height="30" rx="3" fill="#fff" opacity="0.9"/>
+                                    <line x1="18" y1="32" x2="62" y2="32" stroke="#FFB300" stroke-width="2"/>
+                                    <line x1="18" y1="40" x2="62" y2="40" stroke="#FFB300" stroke-width="2"/>
+                                    <line x1="18" y1="48" x2="62" y2="48" stroke="#FFB300" stroke-width="2"/>
+                                    <circle cx="25" cy="32" r="3" fill="#FF6B35"/><circle cx="35" cy="32" r="3" fill="#FFD700"/><circle cx="45" cy="32" r="3" fill="#4CAF50"/>
+                                    <circle cx="23" cy="40" r="3" fill="#FF1744"/><circle cx="33" cy="40" r="3" fill="#2196F3"/><circle cx="43" cy="40" r="3" fill="#9C27B0"/>
+                                    <circle cx="25" cy="48" r="3" fill="#00BCD4"/><circle cx="35" cy="48" r="3" fill="#FF9800"/><circle cx="45" cy="48" r="3" fill="#8BC34A"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title-center">Boulier</h3>
+                            <svg class="card-arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Cartes des nombres Card -->
+                    <a href="GP2.html" class="card gp-link" data-premium="true" style="text-decoration:none;color:inherit;">
+                        <div class="card-body-center">
+                            <div class="circle-icon" style="background: linear-gradient(135deg, #64B5F6 0%, #42A5F5 100%);">
+                                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;">
+                                    <rect x="20" y="22" width="18" height="26" rx="2" fill="#fff" opacity="0.95" transform="rotate(-8 29 35)"/>
+                                    <text x="29" y="40" font-size="16" font-weight="bold" fill="#1976D2" text-anchor="middle" font-family="Montserrat">1</text>
+                                    <rect x="42" y="22" width="18" height="26" rx="2" fill="#fff" opacity="0.95" transform="rotate(8 51 35)"/>
+                                    <text x="51" y="40" font-size="16" font-weight="bold" fill="#1976D2" text-anchor="middle" font-family="Montserrat">2</text>
+                                </svg>
+                            </div>
+                            <h3 class="card-title-center">Cartes des Nombres</h3>
+                            <svg class="card-arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Alphabet Mobile Card -->
+                    <a href="GP3.html" class="card gp-link" data-premium="true" style="text-decoration:none;color:inherit;">
+                        <div class="card-body-center">
+                            <div class="circle-icon" style="background: linear-gradient(135deg, #81C784 0%, #66BB6A 100%);">
+                                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;">
+                                    <rect x="18" y="28" width="13" height="18" rx="2" fill="#fff" opacity="0.95" transform="rotate(-10 24.5 37)"/>
+                                    <text x="24.5" y="41" font-size="12" font-weight="bold" fill="#388E3C" text-anchor="middle" font-family="Montserrat">A</text>
+                                    <rect x="33.5" y="25" width="13" height="18" rx="2" fill="#fff" opacity="0.95"/>
+                                    <text x="40" y="38" font-size="12" font-weight="bold" fill="#388E3C" text-anchor="middle" font-family="Montserrat">B</text>
+                                    <rect x="49" y="28" width="13" height="18" rx="2" fill="#fff" opacity="0.95" transform="rotate(10 55.5 37)"/>
+                                    <text x="55.5" y="41" font-size="12" font-weight="bold" fill="#388E3C" text-anchor="middle" font-family="Montserrat">C</text>
+                                </svg>
+                            </div>
+                            <h3 class="card-title-center">Alphabet Mobile</h3>
+                            <svg class="card-arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Formes Géométriques Card -->
+                    <a href="GP4.html" class="card gp-link" data-premium="true" style="text-decoration:none;color:inherit;">
+                        <div class="card-body-center">
+                            <div class="circle-icon" style="background: linear-gradient(135deg, #BA68C8 0%, #AB47BC 100%);">
+                                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;">
+                                    <circle cx="30" cy="38" r="10" fill="#fff" opacity="0.95"/>
+                                    <rect x="42" y="28" width="16" height="16" rx="2" fill="#fff" opacity="0.95"/>
+                                    <polygon points="50,52 42,64 58,64" fill="#fff" opacity="0.95"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title-center">Formes Géométriques</h3>
+                            <svg class="card-arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="testimonials-section" class="testimonials-section mt-5 pt-5">
+                <div class="text-center mb-4">
+                    <h2>Ce qu'ils disent de DISSIPL</h2>
+                    <p class="text-secondary fs-lg">Découvrez les témoignages de nos utilisateurs satisfaits :</p>
+                </div>
+                <div class="testimonial-carousel">
+                    <div class="carousel-progress"><div class="carousel-progress-bar"></div></div>
+                    <div class="testimonial-carousel-inner">
+                        <div class="testimonial-slide active" data-color="blue">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Le boulier numérique me permet de mieux comprendre les nombres car en cours normal, je n'arrive pas toujours à suivre quand mon prof parle</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #E3F2FD; --avatar-color: #1565C0;">N</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Nathan</span>
+                                        <span class="t-role">Elève de 6ème SEGPA, (TDAH)</span>
+                                    </div>
+                                    <span class="t-badge t-badge-student">&#127891; Élève</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="green">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Je suis bon en maths. Mais j'aime utiliser DISSIPL surtout pour les exercices interactifs</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #E8F5E9; --avatar-color: #2E7D32;">G</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Gabriel</span>
+                                        <span class="t-role">Elève de 6ème SEGPA</span>
+                                    </div>
+                                    <span class="t-badge t-badge-student">&#127891; Élève</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="amber">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Les maths, c'est un peu difficile pour moi. Mais quand je les fais sur ordinateur en m'amusant, c'est top!</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #FFF8E1; --avatar-color: #F57F17;">Y</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Yanice</span>
+                                        <span class="t-role">Elève de CM2, Dyscalculie</span>
+                                    </div>
+                                    <span class="t-badge t-badge-student">&#127891; Élève</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="purple">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">La maitresse utilise des fois le boulier numérique. Elle l'affiche au tableau et on échange dans les groupes puis on corrige les problèmes</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #F3E5F5; --avatar-color: #7B1FA2;">A</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Ajar</span>
+                                        <span class="t-role">Elève de CM2, Dyspraxie</span>
+                                    </div>
+                                    <span class="t-badge t-badge-student">&#127891; Élève</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="red">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Ce site est très pratique pour mes élèves de 6ème qui ont des difficultés notamment en maths. Le boulier numérique s'avère être un outil puissant.</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #FFEBEE; --avatar-color: #C62828;">M</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Mélanie</span>
+                                        <span class="t-role">Enseignante spécialisée en SEGPA</span>
+                                    </div>
+                                    <span class="t-badge t-badge-teacher">&#129489;&#8205;&#127979; Enseignant</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="teal">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">J'aime bien utiliser l'application car c'est comme des jeux mais pour apprendre</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #E0F2F1; --avatar-color: #00695C;">S</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Sonia</span>
+                                        <span class="t-role">Elève de CM2, (difficultés scolaires sévères)</span>
+                                    </div>
+                                    <span class="t-badge t-badge-student">&#127891; Élève</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="blue">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Je suis professeur de maths au collège et je dois dire que je suis assez surpris par la performance de cet outil. Certains de mes élèves de 6ème doivent revoir les bases et Dissipl les aide beaucoup.</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #E3F2FD; --avatar-color: #1565C0;">L</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Laurent</span>
+                                        <span class="t-role">Professeur de collège</span>
+                                    </div>
+                                    <span class="t-badge t-badge-teacher">&#129489;&#8205;&#127979; Enseignant</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="green">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Dissipl est une plateforme éducative remarquable. Mes élèves ont des troubles cognitifs parfois sévères et certains réussissent à travailler sur Dissipl avec enthousiasme.</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #E8F5E9; --avatar-color: #2E7D32;">R</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Romain</span>
+                                        <span class="t-role">Enseignant spécialisé en IME</span>
+                                    </div>
+                                    <span class="t-badge t-badge-teacher">&#129489;&#8205;&#127979; Enseignant</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="purple">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Je travaille avec des élèves ayant des troubles cognitifs. Je dois sans cesse adapter les supports pédagogiques pour faciliter les apprentissages. Dissipl m'aide énormément.</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #F3E5F5; --avatar-color: #7B1FA2;">M</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Marie</span>
+                                        <span class="t-role">Coordinatrice d'un dispositif Ulis</span>
+                                    </div>
+                                    <span class="t-badge t-badge-teacher">&#129489;&#8205;&#127979; Enseignant</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="amber">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Quelle idée géniale d'avoir des outils de pédagogie active comme celle de Montessori mais en ligne! J'utilise Dissipl en complément du matériel physique.</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #FFF8E1; --avatar-color: #F57F17;">W</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Wafa</span>
+                                        <span class="t-role">Enseignante accompagnatrice, Ecole privée Montessori</span>
+                                    </div>
+                                    <span class="t-badge t-badge-teacher">&#129489;&#8205;&#127979; Enseignant</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="red">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Je suis enseignante primaire sur 2 niveaux. Dissipl favorise grandement le travail collaboratif. D'habitude, je fonctionne en consacrant un temps aux CM2 et un temps aux CE1.</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #FFEBEE; --avatar-color: #C62828;">A</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Anne</span>
+                                        <span class="t-role">Professeur des écoles CE1/CM2</span>
+                                    </div>
+                                    <span class="t-badge t-badge-teacher">&#129489;&#8205;&#127979; Enseignant</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="teal">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">Quand on se rend en salle informatique pour utiliser le site, on ne s'ennuie pas. J'apprends mieux comme ça.</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #E0F2F1; --avatar-color: #00695C;">Z</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Zoé</span>
+                                        <span class="t-role">Elève de 6ème</span>
+                                    </div>
+                                    <span class="t-badge t-badge-student">&#127891; Élève</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-color="blue">
+                            <div class="t-card">
+                                <div class="t-quote-icon">&#10077;</div>
+                                <p class="t-text">J'aime bien aller sur DISSIPL car ça permet de travailler autrement</p>
+                                <div class="t-author">
+                                    <div class="t-avatar" style="--avatar-bg: #E3F2FD; --avatar-color: #1565C0;">F</div>
+                                    <div class="t-info">
+                                        <span class="t-name">Frédéric</span>
+                                        <span class="t-role">Elève de 6ème</span>
+                                    </div>
+                                    <span class="t-badge t-badge-student">&#127891; Élève</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-prev" onclick="changeTestimonial(-1)" aria-label="Précédent">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <button class="carousel-arrow carousel-next" onclick="changeTestimonial(1)" aria-label="Suivant">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+                    </button>
+                    <div class="carousel-nav">
+                        <span class="carousel-counter" id="carouselCounter">1 / 13</span>
+                        <div class="carousel-dots" id="carouselDots"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section id="pricing" class="pricing-section mt-5 pt-5">
+                <div class="text-center mb-4">
+                    <h2>Nos offres d'abonnement</h2>
+                    <p class="text-secondary fs-lg">Choisissez l'offre qui correspond à votre classe ou votre établissement.</p>
+                </div>
+                <div class="pricing-grid">
+                    <article class="pricing-card pricing-green">
+                        <div class="pricing-header">
+                            <h3>Premium Classique</h3>
+                        </div>
+                        <span class="pricing-price">0,99€ <small>/mois</small></span>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li>Support prioritaire</li>
+                            <li>Accès aux outils essentiels</li>
+                            <li>Mises à jour mensuelles</li>
+                        </ul>
+                        <button class="btn pricing-btn" disabled>S'abonner</button>
+                    </article>
+                    <article class="pricing-card pricing-yellow popular">
+                        <div class="pricing-badge">Populaire</div>
+                        <div class="pricing-header">
+                            <h3>Premium Professeur</h3>
+                        </div>
+                        <span class="pricing-price">2,99€ <small>/mois</small></span>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li>Jusqu'à 30 comptes élèves</li>
+                            <li>Tableaux de bord avancés</li>
+                            <li>Support prioritaire</li>
+                        </ul>
+                        <button class="btn pricing-btn" disabled>S'abonner</button>
+                    </article>
+                    <article class="pricing-card pricing-blue">
+                        <div class="pricing-header">
+                            <h3>Abonnement Directeur</h3>
+                        </div>
+                        <span class="pricing-price">Sur devis</span>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li>Gestion multi-enseignants</li>
+                            <li>Suivi multi-classes</li>
+                            <li>Onboarding dédié</li>
+                        </ul>
+                        <a class="btn pricing-btn" href="mailto:contact@dissipl.fr">Contactez-nous</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Call to Action Section -->
+            <section class="text-center mt-5 pt-5">
+                <h2>Prêt à commencer votre apprentissage ?</h2>
+                <p class="text-secondary fs-lg mb-4">Rejoignez des milliers d'apprenants qui transforment leur éducation</p>
+                <div>
+                    <a href="contact.html" class="btn btn-primary me-3">Nous contacter</a>
+                    <a href="FAQ.html" class="btn btn-secondary">Voir la FAQ</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+        <script src="../js/core/footer.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+        <script type="module" src="../js/core/header.js?v=20260302-3"></script>
+    <script src="../js/pages/interactEffectsUI.js"></script>
+
+</body>
+</html>
+

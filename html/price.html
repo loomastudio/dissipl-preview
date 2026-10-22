@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DISSIPL - Abonnements</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="/dissipl-preview/assets/Images/disableFallDamage.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/dissipl-preview/assets/Images/disableFallDamage.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dissipl-preview/css/stylestest.css" />
+    <style>
+      /* Pricing Toggle Styles */
+      .pricing-toggle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0 40px;
+        gap: 15px;
+      }
+      .pricing-toggle-container .toggle-label {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+      .pricing-toggle-container .toggle-label.active {
+        color: #4CAF50;
+      }
+      .pricing-toggle-container .toggle-switch {
+        position: relative;
+        width: 56px;
+        height: 30px;
+        background: #ddd;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .pricing-toggle-container .toggle-switch::before {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background: white;
+        border-radius: 50%;
+        top: 3px;
+        left: 3px;
+        transition: transform 0.3s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      }
+      .pricing-toggle-container .toggle-switch.active {
+        background: #4CAF50;
+      }
+      .pricing-toggle-container .toggle-switch.active::before {
+        transform: translateX(28px);
+      }
+      .savings-badge {
+        background: #ff5722;
+        color: white;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      .annual-price {
+        display: none;
+      }
+      .annual-price.active {
+        display: inline;
+      }
+      .monthly-price {
+        display: inline;
+      }
+      .monthly-price.hidden {
+        display: none;
+      }
+      .no-commitment-badge {
+        text-align: center;
+        color: #666;
+        font-size: 13px;
+        margin: 12px 0;
+        padding: 8px;
+        background: #f5f5f5;
+        border-radius: 8px;
+      }
+      .savings-highlight {
+        display: none;
+        text-align: center;
+        color: #ff5722;
+        font-weight: 600;
+        font-size: 14px;
+        margin: 8px 0;
+      }
+      .subscribed-message {
+        color: #4CAF50;
+        font-weight: 600;
+        text-align: center;
+        margin: 10px 0;
+        display: none;
+      }
+      .btn-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <div id="header-placeholder"></div>
+
+    <main class="flex-fill">
+      <section class="page-hero">
+        <h1>Nos offres d'abonnement</h1>
+        <p class="page-subtitle">
+          Choisissez l'offre qui correspond à votre classe ou votre
+          établissement.
+        </p>
+      </section>
+
+      <div class="page-content-wide">
+        <!-- Billing Toggle -->
+        <div class="pricing-toggle-container">
+          <span id="monthly-label" class="toggle-label active">Mensuel</span>
+          <div id="billing-toggle" class="toggle-switch"></div>
+          <span id="annual-label" class="toggle-label">
+            Annuel <span class="savings-badge">Économisez jusqu'à 30%</span>
+          </span>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Abonnement Parent -->
+          <article class="pricing-card pricing-green">
+            <div class="pricing-header">
+              <h3>Abonnement Parent</h3>
+            </div>
+            <span class="pricing-price">
+              <span class="monthly-price">5,99€ <small>/mois</small></span>
+              <span class="annual-price">50€ <small>/an</small></span>
+            </span>
+            <div class="savings-highlight">Économisez 22€ par an !</div>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+              <li>Accès illimité aux 4 outils premium</li>
+              <li>Sans engagement</li>
+              <li>Résiliable à tout moment</li>
+              <li>Support prioritaire</li>
+              <li>Mises à jour automatiques</li>
+            </ul>
+            <div class="no-commitment-badge">Sans engagement - Résiliable à tout moment</div>
+            <button class="btn pricing-btn subscribe-btn" data-plan="parent" data-billing="monthly" disabled>
+              S'abonner
+            </button>
+            <div class="subscribed-message">✓ Vous êtes déjà abonné</div>
+          </article>
+
+          <!-- Abonnement Professeur -->
+          <article class="pricing-card pricing-yellow popular">
+            <div class="pricing-badge">Populaire</div>
+            <div class="pricing-header">
+              <h3>Abonnement Professeur</h3>
+            </div>
+            <span class="pricing-price">
+              <span class="monthly-price">9,99€ <small>/mois</small></span>
+              <span class="annual-price">90€ <small>/an</small></span>
+            </span>
+            <div class="savings-highlight">Économisez 30€ par an !</div>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+              <li>Tout l'abonnement Parent</li>
+              <li>Jusqu'à 30 comptes élèves</li>
+              <li>Comptes élèves valables 12h</li>
+              <li>Tableaux de bord avancés</li>
+              <li>Support prioritaire</li>
+            </ul>
+            <div class="no-commitment-badge">Sans engagement - Résiliable à tout moment</div>
+            <button class="btn pricing-btn subscribe-btn" data-plan="teacher" data-billing="monthly" disabled>
+              S'abonner
+            </button>
+            <div class="subscribed-message">✓ Vous êtes déjà abonné</div>
+          </article>
+
+          <!-- Abonnement Établissement -->
+          <article class="pricing-card pricing-blue">
+            <div class="pricing-header">
+              <h3>Abonnement Établissement</h3>
+            </div>
+            <span class="pricing-price">Sur devis</span>
+            <div class="pricing-divider"></div>
+            <ul class="pricing-features">
+              <li>À partir de 200€/an (petit établissement)</li>
+              <li>Jusqu'à 400€/an (grand établissement)</li>
+              <li>Jusqu'à 30 comptes enseignants</li>
+              <li>Gestion centralisée par le directeur</li>
+              <li>Facturation personnalisée</li>
+              <li>Onboarding dédié</li>
+            </ul>
+            <div class="no-commitment-badge">Sur devis - Contactez-nous</div>
+            <div id="quote-button-container">
+              <a class="btn pricing-btn" href="/dissipl-preview/school-quote">Demander un devis</a>
+            </div>
+            <div id="quote-subscribed-message" style="display: none;" class="alert alert-warning mt-2">
+              <strong>Vous avez déjà un abonnement actif.</strong><br>
+              Votre abonnement expire le <span id="active-expiry-date">-</span>.<br>
+              <small>Tous les packages sont désactivés pour les utilisateurs avec un abonnement actif.</small>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-5">
+          <p class="text-secondary">
+            Des questions ?
+            <a href="contact.html"><strong>Contactez-nous</strong></a> ou
+            consultez notre <a href="FAQ.html"><strong>FAQ</strong></a>.
+          </p>
+        </div>
+
+        <!-- EdTech France Membership -->
+        <div class="content-card accent-blue edtech-member-section">
+          <h2><span class="section-icon blue">🏆</span> Membre EdTech France</h2>
+          <p>
+            DISSIPL est fier d'être membre de l'EdTech France, l'association qui représente et fédère les entreprises françaises de technologies éducatives.
+          </p>
+          <div class="edtech-member-logo-container">
+            <img src="/dissipl-preview/assets/images/Logo_EdTech_Membre_RVB.png" alt="Membre EdTech France" class="edtech-member-logo">
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/dissipl-preview/js/core/footer.js?v=20260816"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="/dissipl-preview/js/core/header.js?v=20260916-mobile"></script>
+    <script src="/dissipl-preview/js/pages/interactEffectsUI.js"></script>
+
+    <!-- Pricing Toggle & Payment Logic -->
+    <script>
+      (function() {
+        // Billing toggle functionality
+        const toggle = document.getElementById('billing-toggle');
+        const monthlyLabel = document.getElementById('monthly-label');
+        const annualLabel = document.getElementById('annual-label');
+        let isAnnual = false;
+
+        toggle.addEventListener('click', function() {
+          isAnnual = !isAnnual;
+          toggle.classList.toggle('active', isAnnual);
+          monthlyLabel.classList.toggle('active', !isAnnual);
+          annualLabel.classList.toggle('active', isAnnual);
+
+          // Toggle prices
+          document.querySelectorAll('.monthly-price').forEach(el => {
+            el.classList.toggle('hidden', isAnnual);
+          });
+          document.querySelectorAll('.annual-price').forEach(el => {
+            el.classList.toggle('active', isAnnual);
+          });
+
+          // Update savings badges
+          document.querySelectorAll('.savings-highlight').forEach(el => {
+            el.style.display = isAnnual ? 'block' : 'none';
+          });
+
+          // Update button data-billing attribute
+          document.querySelectorAll('.subscribe-btn').forEach(btn => {
+            btn.setAttribute('data-billing', isAnnual ? 'annual' : 'monthly');
+          });
+        });
+
+        // Fetch session status and update buttons accordingly
+        fetch('/api/session/status', {
+          credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(data => {
+          const subscribeButtons = document.querySelectorAll('.subscribe-btn');
+
+          // If not authenticated, enable all buttons with registration check
+          if (!data.authenticated || !data.user) {
+            subscribeButtons.forEach(btn => {
+              btn.disabled = false;
+              btn.textContent = "S'abonner";
+              btn.classList.remove('btn-disabled');
+              const message = btn.parentElement.querySelector('.subscribed-message');
+              if (message) message.style.display = 'none';
+
+              // Add click handler - show registration alert
+              btn.onclick = function(e) {
+                e.preventDefault();
+                alert("Veuillez vous inscrire pour vous abonner.");
+                window.location.href = '/dissipl-preview/?login_required=true&t=' + Date.now();
+              };
+            });
+            return;
+          }
+
+          // Check if user has active premium subscription
+          const hasActivePremium = data.user?.premium_active;
+          const isDirector = data.user?.role === 'directeur';
+          const currentPlan = data.user?.current_plan; // "parent" or "teacher" or "director" or null
+
+          // If user has active premium subscription, disable Parent and Teacher packages only
+          // Directors without premium can still subscribe to school quote
+          if (hasActivePremium) {
+            const premiumEndDate = data.user?.premium_end_date;
+            const planName = currentPlan === 'parent' ? 'Parent' :
+                            currentPlan === 'teacher' ? 'Professeur' :
+                            (currentPlan === 'director' || currentPlan === 'Institutional Subscription') ? 'Directeur' : 'Premium';
+
+            subscribeButtons.forEach(btn => {
+              const plan = btn.getAttribute('data-plan');
+              // Only disable parent and teacher packages for users with active premium
+              // School quote is handled separately
+              if (plan === 'parent' || plan === 'teacher') {
+                btn.disabled = true;
+                btn.textContent = 'Abonnement actif';
+                btn.classList.add('btn-disabled');
+                const message = btn.parentElement.querySelector('.subscribed-message');
+                if (message) {
+                  message.textContent = `✓ Vous avez déjà un abonnement ${planName} actif`;
+                  message.style.display = 'block';
+                }
+              }
+            });
+
+            // Only hide quote button if user already has director subscription
+            const quoteButtonContainer = document.getElementById('quote-button-container');
+            const quoteSubscribedMessage = document.getElementById('quote-subscribed-message');
+            const activeExpiryDate = document.getElementById('active-expiry-date');
+
+            if (currentPlan === 'director' || currentPlan === 'Institutional Subscription') {
+              // User already has school quote subscription
+              if (quoteButtonContainer) quoteButtonContainer.style.display = 'none';
+              if (quoteSubscribedMessage) {
+                quoteSubscribedMessage.style.display = 'block';
+                if (activeExpiryDate && premiumEndDate) {
+                  const formattedDate = new Date(premiumEndDate).toLocaleDateString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  });
+                  activeExpiryDate.textContent = formattedDate;
+                }
+              }
+            }
+
+            return; // Exit early - Parent/Teacher packages are disabled
+          }
+
+          // User doesn't have active premium - enable all buttons
+          subscribeButtons.forEach(btn => {
+            btn.disabled = false;
+            btn.textContent = "S'abonner";
+            btn.classList.remove('btn-disabled');
+            const message = btn.parentElement.querySelector('.subscribed-message');
+            if (message) message.style.display = 'none';
+
+              // Add click handler for Mollie checkout
+              btn.onclick = async function(e) {
+                e.preventDefault();
+                const plan = this.getAttribute('data-plan');
+                const billing = this.getAttribute('data-billing'); // 'monthly' or 'annual'
+                const originalText = this.textContent;
+
+                // Show loading state
+                this.textContent = 'Chargement...';
+                this.disabled = true;
+
+                try {
+                  const response = await fetch('/api/payment/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                      plan,
+                      billing,
+                      amount: billing === 'annual'
+                        ? (plan === 'parent' ? '50.00' : '90.00')
+                        : (plan === 'parent' ? '5.99' : '9.99')
+                    }),
+                  });
+
+                  const session = await response.json();
+
+                  // Check for errors from server
+                  if (session.error) {
+                    throw new Error(session.error);
+                  }
+
+                  // Handle mock mode redirect
+                  if (session.mockMode && session.redirect) {
+                    console.log('Mock mode: redirecting to success page');
+                    window.location.href = session.redirectUrl;
+                    return;
+                  }
+
+                  // Normal Mollie checkout
+                  if (session.checkoutUrl) {
+                    // Redirect to Mollie Checkout
+                    window.location.href = session.checkoutUrl;
+                  } else if (session.subscriptionId) {
+                    // Has subscription but no checkout URL (shouldn't happen but handle it)
+                    throw new Error('Abonnement créé mais pas d\'URL de paiement');
+                  } else if (session.paymentId) {
+                    throw new Error('Paiement créé mais pas d\'URL de paiement');
+                  } else {
+                    throw new Error('Réponse invalide du serveur');
+                  }
+                } catch (error) {
+                  console.error('Checkout error:', error);
+                  this.textContent = originalText;
+                  this.disabled = false;
+
+                  // Show detailed error
+                  const errorMsg = error.message || "Erreur lors de la création de la session de paiement. Veuillez réessayer.";
+                  alert('Erreur: ' + errorMsg);
+                }
+              };
+            });
+        })
+        .catch(err => {
+          console.error('Error fetching session status:', err);
+          // On error, enable buttons by default
+          const subscribeButtons = document.querySelectorAll('.subscribe-btn');
+          subscribeButtons.forEach(btn => {
+            btn.disabled = false;
+            btn.textContent = "S'abonner";
+          });
+        });
+      })();
+    </script>
+  
+<div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
+  Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
+</div>
+</body>
+</html>

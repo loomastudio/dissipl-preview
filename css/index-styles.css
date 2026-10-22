@@ -1,0 +1,225 @@
+/* ===============================
+   INDEX PAGE — DISSIPL
+   =============================== */
+
+/* --- Section principale --- */
+main {
+  background-color: #f8f9fa;
+}
+
+/* --- Titres --- */
+h2,
+h5 {
+  font-weight: 700;
+}
+
+/* --- Cartes des offres --- */
+.card {
+  border-radius: 0.5rem;
+}
+
+.card-header {
+  font-weight: 600;
+}
+
+.card-footer {
+  font-weight: 500;
+}
+
+/* --- Boutons d'abonnement --- */
+#subscribeClassic,
+#subscribeProf {
+  font-weight: 600;
+}
+
+/* --- Animation du bloc offres --- */
+#offersSection {
+  display: none;
+  transition: all 0.4s ease;
+}
+
+#offersSection.show {
+  display: block;
+}
+
+/* ===============================
+   VIDÉO DE PRÉSENTATION
+   =============================== */
+
+/* Harmonisation image / vidéo */
+#index-video,
+#index-video-poster {
+  width: 100%;
+  max-height: 50vh; /* garde le même rendu que ta vidéo d’origine */
+  object-fit: cover;
+  border-radius: 0.5rem;
+  display: block;
+}
+
+/* Rendre l'image cliquable */
+#index-video-poster {
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+/* Optionnel : petit effet hover */
+#index-video-poster:hover {
+  opacity: 0.9;
+}
+
+/* ===============================
+   CARROUSEL TÉMOIGNAGES
+   =============================== */
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-card {
+  flex: 0 0 100%;
+  list-style: none;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-card.is-active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+  padding: 0.25rem 0.6rem;
+}
+
+.carousel-button--left {
+  left: 0.5rem;
+}
+
+.carousel-button--right {
+  right: 0.5rem;
+}
+
+.carousel-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.pagination-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-dot.active {
+  background-color: #007bff;
+}
+
+/* ===============================
+   YOUTUBE SECTION
+   =============================== */
+
+.youtube-social-icon {
+  transition: transform 0.3s ease;
+}
+
+.youtube-social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 768px) {
+  #index-video,
+  #index-video-poster {
+    max-height: 40vh;
+  }
+
+  .carousel-card {
+    padding: 1.5rem;
+  }
+
+  .carousel-button {
+    font-size: 1.5rem;
+  }
+}
+
+/* === Bloc conteneur vidéo (ratio fixe 16/9) === */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16/9 = 9 / 16 = 0.5625 */
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+/* Image et vidéo remplissent parfaitement le conteneur */
+.video-wrapper img,
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+/* Fix ordre d'empilement Bootstrap sur index */
+.modal {
+  z-index: 1060 !important;
+} /* au-dessus du backdrop */
+.modal-backdrop {
+  z-index: 1050 !important;
+} /* sous la modale */
+
+/* Sécurité : éviter de créer des stacking contexts au-dessus de la modale */
+.video-wrapper {
+  z-index: auto;
+}
+
+/* ====================================
+   SECTION VIDÉO D'ACCUEIL
+   ==================================== */
+#index-video,
+#index-video-poster {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  display: block;
+}
+
+#index-video-poster {
+  cursor: pointer;
+}
