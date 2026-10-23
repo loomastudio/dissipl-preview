@@ -307,6 +307,17 @@ html:not(.js) .hero h1 .hl path { stroke-dashoffset: 0; }
 .price b { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 46px; line-height: 1; }
 .price span { color: var(--ink-soft); }
 .plans-note { margin-top: 26px; color: var(--ink-soft); font-size: 15px; text-align: center; }
+/* Founder offer (first 100 monthly subscribers): shown while places remain */
+.founder-only { display: none; }
+.founder-on .founder-only { display: flex; }
+.founder-on .price .founder-only { display: inline; }
+.founder-tag { align-items: center; gap: 10px; align-self: flex-start; padding: 6px 14px 6px 6px; border-radius: 99px; background: #FFF4D6; border: 1px solid #E5B33F; }
+.founder-tag .seal { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #FFE7A3, #E5B33F 60%, #B98516); box-shadow: 0 4px 10px rgba(185, 133, 22, .35); }
+.founder-tag b { display: block; font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 16px; color: #8A5A00; line-height: 1.1; }
+.founder-tag small { display: block; font-size: 12px; color: #8A6A2A; }
+.price s { color: #9A9A9A; font-size: 22px; font-weight: 600; text-decoration-thickness: 2px; }
+.founder-note { flex-direction: column; gap: 2px; margin: -4px 0 0; padding: 10px 12px; border-radius: 14px; background: #FFF7E0; border: 1px dashed #E5B33F; color: #6B4E12; font-size: 14px; }
+.founder-note strong { color: var(--red); }
 
 /* Testimonials marquee */
 .voices { background: #fff; overflow: hidden; }
@@ -646,7 +657,9 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
     <div class="plans">
       <article class="plan reveal" style="--i: 0">
         <div class="who"><span class="ico" style="background: var(--tint-green)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg></span><h3 data-i18n="plans.parent.title">Parents</h3></div>
-        <div class="price"><b data-price="5.99">5,99 €</b><span data-i18n="plans.perMonth">/ mois</span></div>
+        <div class="founder-tag founder-only"><span class="seal" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9Z" fill="#fff"/></svg></span><span><b data-i18n="founder.badge">Offre Fondateur</b><small data-i18n="founder.first">100 premiers abonnés</small></span></div>
+        <div class="price"><s class="founder-only" data-price="5.99">5,99 €</s><b data-price="5.99" data-founder-price="3.99">5,99 €</b><span data-i18n="plans.perMonth">/ mois</span></div>
+        <p class="founder-note founder-only"><span data-i18n="founder.note">Prix garanti tant que votre abonnement continue.</span><strong><span data-i18n="founder.left">Places restantes :</span> <span class="founder-left">100</span></strong></p>
         <ul>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.parent.f1">Accès illimité aux outils Premium</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.parent.f2">Sans engagement, résiliable à tout moment</span></li>
@@ -657,7 +670,9 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
       <article class="plan pop reveal" style="--i: 1">
         <span class="ribbon" data-i18n="plans.popular">Populaire</span>
         <div class="who"><span class="ico" style="background: var(--tint-red)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><h3 data-i18n="plans.teacher.title">Enseignants</h3></div>
-        <div class="price"><b data-price="9.99">9,99 €</b><span data-i18n="plans.perMonth">/ mois</span></div>
+        <div class="founder-tag founder-only"><span class="seal" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9Z" fill="#fff"/></svg></span><span><b data-i18n="founder.badge">Offre Fondateur</b><small data-i18n="founder.first">100 premiers abonnés</small></span></div>
+        <div class="price"><s class="founder-only" data-price="9.99">9,99 €</s><b data-price="9.99" data-founder-price="6.99">9,99 €</b><span data-i18n="plans.perMonth">/ mois</span></div>
+        <p class="founder-note founder-only"><span data-i18n="founder.note">Prix garanti tant que votre abonnement continue.</span><strong><span data-i18n="founder.left">Places restantes :</span> <span class="founder-left">100</span></strong></p>
         <ul>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.teacher.f1">Tout l'abonnement Parent</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.teacher.f2">Jusqu'à 30 comptes élèves</span></li>
@@ -754,7 +769,7 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="module" src="/dissipl-preview/js/core/header.js?v=20261023e"></script>
+<script type="module" src="/dissipl-preview/js/core/header.js?v=20261023f"></script>
 
 <script>
 (function () {
@@ -973,6 +988,19 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
       } catch (err) { /* keep the French text */ }
     });
   }
+
+  /* Founder offer: the founder price on the Parent and Teacher plans while places remain */
+  function showFounder(f) {
+    if (!f || !f.active) return;
+    document.querySelectorAll('[data-founder-price]').forEach(function (el) { el.dataset.price = el.dataset.founderPrice; });
+    document.querySelectorAll('.founder-left').forEach(function (el) { el.textContent = f.remaining; });
+    document.querySelector('.plans').classList.add('founder-on');
+    formatPrices();
+  }
+  fetch('/api/payment/founder').then(function (r) { return r.json(); }).then(showFounder).catch(function () {
+    // static preview (no server): show the offer as it starts
+    if (window.DISSIPL_PREVIEW) showFounder({ active: true, remaining: 100 });
+  });
 
   /* 9 languages: chips switch the site language, an orbit of beads, and a cycling greeting */
   var LANGS = [

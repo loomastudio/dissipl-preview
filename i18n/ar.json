@@ -214,5 +214,9 @@
   "footer.quote": "عرض سعر للمدارس",
   "footer.legal": "إشعار قانوني",
   "footer.privacy": "الخصوصية",
-  "footer.cgu": "شروط الاستخدام"
+  "footer.cgu": "شروط الاستخدام",
+  "founder.badge": "عرض المؤسِّسين",
+  "founder.first": "أول 100 مشترك",
+  "founder.note": "سعر مضمون ما دام اشتراككم مستمرًّا.",
+  "founder.left": "الأماكن المتبقية:"
 }
