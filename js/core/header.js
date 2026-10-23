@@ -1,6 +1,6 @@
-﻿// js/core/header.js
+// js/core/header.js
 
-import { initI18n } from "/dissipl-preview/js/modules/i18n.js?v=20261022d";
+import { initI18n } from "/dissipl-preview/js/modules/i18n.js?v=20261023a";
 
 // Traduction : démarre tout de suite (le français reste dans le HTML)
 initI18n();
