@@ -1,9 +1,8 @@
 {
   "_lang": "中文",
   "meta.title": "DISSIPL - 为有特殊教育需要的学生提供动手学习",
-  "meta.description": "受蒙台梭利教具启发的数字工具，由特殊教育教师设计，适合有阅读障碍、计算障碍、多动症（ADHD）及其他特殊教育需要的学生。提供 9 种语言。",
+  "meta.description": "受蒙台梭利教具启发的数字工具，由一位特殊教育教师为有阅读障碍、计算障碍、多动症（ADHD）及其他特殊教育需要的学生设计。提供 9 种语言。",
   "skip": "跳到正文",
-
   "nav.home": "首页",
   "nav.tools": "工具",
   "nav.toolsAll": "全部工具",
@@ -20,12 +19,10 @@
   "nav.close": "关闭菜单",
   "nav.language": "语言",
   "nav.chooseLanguage": "选择语言",
-
   "auth.signup": "注册",
   "auth.login": "登录",
   "auth.profile": "我的资料",
   "auth.logout": "退出登录",
-
   "m.signup.title": "注册",
   "m.email": "电子邮箱",
   "m.email.ph": "请输入你的邮箱",
@@ -60,7 +57,6 @@
   "m.premium.cta": "查看订阅方案",
   "m.close": "关闭",
   "m.showpw": "显示密码",
-
   "tool.abacus.name": "计数器",
   "tool.abacus.desc": "数数、比较数量，做加法和各种运算。",
   "tool.multiplix.name": "Multiplix",
@@ -73,7 +69,6 @@
   "tool.fractions.desc": "移动小块，看一看、分一分、比一比分数。",
   "tool.free": "免费",
   "tool.try": "试一试",
-
   "chip.dys": "阅读障碍与计算障碍",
   "chip.adhd": "多动症（ADHD）",
   "chip.cognitive": "认知障碍",
@@ -81,11 +76,10 @@
   "hero.w1": "摸一摸，",
   "hero.w2": "动一动，",
   "hero.w3": "就懂了。",
-  "hero.lead": "受蒙台梭利教具启发的数字工具，由特殊教育教师设计，并在课堂上和有特殊教育需要的学生一起检验过。",
+  "hero.lead": "受蒙台梭利教具启发的数字工具，由一位特殊教育教师设计，并在课堂上和有特殊教育需要的学生一起检验过。",
   "hero.cta1": "试用免费工具",
   "hero.cta2": "查看方案",
   "hero.note": "免费版本无需注册 · 9 种语言",
-
   "abacus.eyebrow": "计数器 · 轮到你了",
   "abacus.hint": "点一颗珠子",
   "abacus.hLetter": "百",
@@ -109,30 +103,25 @@
   "abacus.youMade": "你拨出了 {n}。",
   "abacus.reset": "清零",
   "abacus.open": "打开完整的计数器 →",
-
-  "trust.1": "由特殊教育教师设计",
+  "trust.1": "由一位特殊教育教师设计",
   "trust.2": "在课堂上和有学习困难的学生一起检验",
   "trust.3": "与学校课程标准一致",
   "trust.edtech": "EdTech France 成员",
-
   "video.eyebrow": "看视频",
   "video.title": "一分半钟了解 DISSIPL",
   "video.text": "看看学生在课堂上和家里怎样使用这些工具，以及特殊教育教师为什么每天都在用。",
   "video.play": "播放介绍视频",
-
   "tools.eyebrow": "我们的工具",
   "tools.title": "五个动手工具，免费开始",
   "tools.text": "免费版让孩子自由探索。Premium 版增加了按能力水平设计的内置练习。",
   "tools.premiumCta": "了解 Premium 工具",
-
   "langs.eyebrow": "国际化",
   "langs.title": "网站和工具支持 9 种语言",
   "langs.text": "每个工具都会跟随所选语言：键盘、说明和练习都会改变。阿拉伯语从右往左书写，印地语使用天城文，中文使用带声调的拼音。",
   "langs.hello": "你好！",
-
   "story.eyebrow": "诞生于课堂",
   "story.title": "把教室里的教具搬到电脑和平板上",
-  "story.text": "DISSIPL 是一群特殊教育教师。我们的工具再现了我们每天和有特殊教育需要的学生一起使用的动手教具。根据我们的经验，它们对每个学生都有帮助。",
+  "story.text": "DISSIPL 诞生于一位特殊教育教师的课堂。我们的工具再现了每天和有特殊教育需要的学生一起使用的动手教具。这些经验表明，它们对每个学生都有帮助。",
   "story.t1": "对学生：换一种方式，按自己的节奏学习",
   "story.t2": "对教师：可以投影、适合小组使用的教学资源",
   "story.t3": "对家长：更好地理解学校的练习",
@@ -140,7 +129,6 @@
   "story.alt1": "两个孩子在课堂上使用计数器",
   "story.alt2": "蒙台梭利木制活动字母，红色辅音和蓝色元音",
   "story.alt3": "蒙台梭利数字卡片和金色珠子",
-
   "method.eyebrow": "我们的方法",
   "method.title": "学习从双手开始",
   "method.text": "源自主动学习理念的方法，以孩子为中心。",
@@ -150,7 +138,6 @@
   "method.s2.text": "他们能看到数字、读音和分数代表什么，不用着急。",
   "method.s3.title": "练习",
   "method.s3.text": "Premium 练习按照课程标准中的能力要求，一级一级循序渐进。",
-
   "plans.eyebrow": "方案",
   "plans.title": "适合家庭、班级和整个学校",
   "plans.text": "选择适合你的孩子、你的班级或你的学校的方案。",
@@ -174,7 +161,6 @@
   "plans.school.f3": "定制发票和专人协助上手",
   "plans.school.cta": "申请报价",
   "plans.note": "按年订阅：最多可省 30%。",
-
   "voices.eyebrow": "用户评价",
   "voices.title": "学生和老师怎么说",
   "q1": "数字计数器让我更明白数字，因为平时上课的时候，老师讲话我不是每次都能跟上。",
@@ -203,7 +189,6 @@
   "r12": "小学教师，二年级和五年级",
   "q13": "我喜欢上 DISSIPL，因为可以换一种方式学习。",
   "r13": "六年级学生",
-
   "faq.eyebrow": "常见问题",
   "faq.title": "有问题吗？",
   "faq.text": "请写信到 <a href=\"mailto:contact@dissipl.fr\">contact@dissipl.fr</a>，或查看完整的常见问题。",
@@ -216,12 +201,10 @@
   "faq.a3": "这些工具是为有阅读障碍、计算障碍、多动症（ADHD）或认知障碍的学生设计的。根据我们的教学经验，每个学生都可以使用。",
   "faq.q4": "有哪些语言？",
   "faq.a4": "网站和工具提供 9 种语言：法语、英语、德语、西班牙语、意大利语、葡萄牙语、阿拉伯语、印地语和中文。请在页面顶部选择你的语言。",
-
   "cta.title": "准备好改变学生的学习方式了吗？",
   "cta.text": "加入正在使用 DISSIPL 的特殊教育教师。从一个免费工具开始。",
   "cta.try": "免费试用",
   "cta.contact": "联系我们",
-
   "footer.tagline": "为有特殊教育需要的学生提供动手学习。",
   "footer.tools": "工具",
   "footer.resources": "资源",

@@ -1,9 +1,8 @@
 {
   "_lang": "Français",
   "meta.title": "DISSIPL - L'apprentissage sensoriel pour les élèves à besoins particuliers",
-  "meta.description": "Outils numériques inspirés du matériel Montessori, créés par des enseignants spécialisés pour les élèves DYS, TDAH et à besoins éducatifs particuliers. Disponibles en 9 langues.",
+  "meta.description": "Outils numériques inspirés du matériel Montessori, créés par un enseignant spécialisé pour les élèves DYS, TDAH et à besoins éducatifs particuliers. Disponibles en 9 langues.",
   "skip": "Aller au contenu",
-
   "nav.home": "Accueil",
   "nav.tools": "Outils",
   "nav.toolsAll": "Tous les outils",
@@ -20,12 +19,10 @@
   "nav.close": "Fermer le menu",
   "nav.language": "Langue",
   "nav.chooseLanguage": "Choisir la langue",
-
   "auth.signup": "Inscription",
   "auth.login": "Connexion",
   "auth.profile": "Mon profil",
   "auth.logout": "Déconnexion",
-
   "m.signup.title": "Inscription",
   "m.email": "Adresse email",
   "m.email.ph": "Entrez votre email",
@@ -60,7 +57,6 @@
   "m.premium.cta": "Voir les abonnements",
   "m.close": "Fermer",
   "m.showpw": "Afficher le mot de passe",
-
   "tool.abacus.name": "Boulier",
   "tool.abacus.desc": "Compter, dénombrer, faire des calculs et des opérations.",
   "tool.multiplix.name": "Multiplix",
@@ -73,7 +69,6 @@
   "tool.fractions.desc": "Voir, partager et comparer les fractions en manipulant des parts.",
   "tool.free": "Gratuit",
   "tool.try": "Essayer",
-
   "chip.dys": "DYS",
   "chip.adhd": "TDAH",
   "chip.cognitive": "Troubles cognitifs",
@@ -81,11 +76,10 @@
   "hero.w1": "Toucher,",
   "hero.w2": "déplacer,",
   "hero.w3": "comprendre.",
-  "hero.lead": "Des outils numériques inspirés du matériel Montessori, créés par des enseignants spécialisés et testés en classe avec des élèves à besoins éducatifs particuliers.",
+  "hero.lead": "Des outils numériques inspirés du matériel Montessori, créés par un enseignant spécialisé et testés en classe avec des élèves à besoins éducatifs particuliers.",
   "hero.cta1": "Essayer un outil gratuit",
   "hero.cta2": "Voir les offres",
   "hero.note": "Versions gratuites accessibles sans inscription · 9 langues",
-
   "abacus.eyebrow": "Le boulier · à toi de jouer",
   "abacus.hint": "Touche une perle",
   "abacus.hLetter": "c",
@@ -109,30 +103,25 @@
   "abacus.youMade": "Tu as fait {n}.",
   "abacus.reset": "Remettre à zéro",
   "abacus.open": "Ouvrir le vrai boulier →",
-
-  "trust.1": "Créé par des enseignants spécialisés",
+  "trust.1": "Créé par un enseignant spécialisé",
   "trust.2": "Testé en classe avec des élèves en difficulté",
   "trust.3": "Aligné sur les programmes scolaires",
   "trust.edtech": "Membre EdTech France",
-
   "video.eyebrow": "En vidéo",
   "video.title": "DISSIPL en une minute et demie",
   "video.text": "Découvrez comment les élèves manipulent les outils en classe et à la maison, et pourquoi les enseignants spécialisés les utilisent chaque jour.",
   "video.play": "Lire la vidéo de présentation",
-
   "tools.eyebrow": "Nos outils",
   "tools.title": "Cinq outils à manipuler, gratuits pour commencer",
   "tools.text": "La version gratuite permet de manipuler librement. La version Premium ajoute des exercices intégrés selon les niveaux de compétences.",
   "tools.premiumCta": "Découvrir les outils Premium",
-
   "langs.eyebrow": "International",
   "langs.title": "Un site et des outils en 9 langues",
   "langs.text": "Chaque outil suit la langue choisie : le clavier, les consignes et les exercices. L'arabe s'écrit de droite à gauche, le hindi en devanagari, le chinois en pinyin avec les tons.",
   "langs.hello": "Bonjour !",
-
   "story.eyebrow": "Né dans une classe",
   "story.title": "Le matériel de la classe, sur l'ordinateur et la tablette",
-  "story.text": "DISSIPL est un groupe d'enseignants spécialisés. Nos outils reprennent le matériel de manipulation que nous utilisons chaque jour avec des élèves qui ont des besoins éducatifs particuliers. D'après notre expérience, ils servent à tous les élèves.",
+  "story.text": "DISSIPL est né dans la classe d'un enseignant spécialisé. Nos outils reprennent le matériel de manipulation utilisé chaque jour avec des élèves qui ont des besoins éducatifs particuliers. D'après cette expérience, ils servent à tous les élèves.",
   "story.t1": "Pour les élèves : apprendre autrement, à son rythme",
   "story.t2": "Pour les enseignants : un support à projeter et à utiliser en groupe",
   "story.t3": "Pour les parents : mieux comprendre les exercices de l'école",
@@ -140,7 +129,6 @@
   "story.alt1": "Deux enfants manipulent un boulier en classe",
   "story.alt2": "Alphabet mobile Montessori en bois, consonnes rouges et voyelles bleues",
   "story.alt3": "Cartes des nombres Montessori et perles dorées",
-
   "method.eyebrow": "Notre méthode",
   "method.title": "On apprend d'abord avec les mains",
   "method.text": "Une approche issue des pédagogies actives, où l'enfant est au centre de son apprentissage.",
@@ -150,7 +138,6 @@
   "method.s2.text": "Il voit ce que représentent les nombres, les sons et les fractions, sans être pressé.",
   "method.s3.title": "S'entraîner",
   "method.s3.text": "Les exercices Premium suivent les compétences des programmes, niveau par niveau.",
-
   "plans.eyebrow": "Nos offres",
   "plans.title": "Pour la maison, la classe et l'établissement",
   "plans.text": "Choisissez l'offre qui correspond à votre enfant, votre classe ou votre école.",
@@ -174,7 +161,6 @@
   "plans.school.f3": "Facturation personnalisée et accompagnement dédié",
   "plans.school.cta": "Demander un devis",
   "plans.note": "Abonnement annuel : économisez jusqu'à 30 %.",
-
   "voices.eyebrow": "Témoignages",
   "voices.title": "Ce qu'en disent les élèves et les enseignants",
   "q1": "Le boulier numérique me permet de mieux comprendre les nombres car en cours normal, je n'arrive pas toujours à suivre quand mon prof parle.",
@@ -203,7 +189,6 @@
   "r12": "Professeure des écoles CE1/CM2",
   "q13": "J'aime bien aller sur DISSIPL car ça permet de travailler autrement.",
   "r13": "Élève de 6e",
-
   "faq.eyebrow": "Questions fréquentes",
   "faq.title": "Vous vous posez une question ?",
   "faq.text": "Écrivez-nous à <a href=\"mailto:contact@dissipl.fr\">contact@dissipl.fr</a> ou consultez toute la FAQ.",
@@ -216,12 +201,10 @@
   "faq.a3": "Les outils sont pensés pour les élèves DYS, TDAH ou avec des troubles cognitifs. D'après notre expérience dans l'enseignement, ils peuvent être utilisés par tous les élèves.",
   "faq.q4": "Dans quelles langues ?",
   "faq.a4": "Le site et les outils sont disponibles en 9 langues : français, anglais, allemand, espagnol, italien, portugais, arabe, hindi et chinois. Choisissez la vôtre en haut de la page.",
-
   "cta.title": "Prêt à transformer l'apprentissage de vos élèves ?",
   "cta.text": "Rejoignez les enseignants spécialisés qui utilisent DISSIPL. Commencez avec un outil gratuit.",
   "cta.try": "Essayer gratuitement",
   "cta.contact": "Nous contacter",
-
   "footer.tagline": "L'apprentissage sensoriel pour les élèves à besoins particuliers.",
   "footer.tools": "Outils",
   "footer.resources": "Ressources",

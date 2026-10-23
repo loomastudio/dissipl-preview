@@ -1,9 +1,8 @@
 {
   "_lang": "English",
   "meta.title": "DISSIPL - Hands-on learning for students with special educational needs",
-  "meta.description": "Digital tools inspired by Montessori materials, created by special education teachers for students with dyslexia, dyscalculia, ADHD and other special educational needs. Available in 9 languages.",
+  "meta.description": "Digital tools inspired by Montessori materials, created by a special education teacher for students with dyslexia, dyscalculia, ADHD and other special educational needs. Available in 9 languages.",
   "skip": "Skip to content",
-
   "nav.home": "Home",
   "nav.tools": "Tools",
   "nav.toolsAll": "All tools",
@@ -20,12 +19,10 @@
   "nav.close": "Close menu",
   "nav.language": "Language",
   "nav.chooseLanguage": "Choose language",
-
   "auth.signup": "Sign up",
   "auth.login": "Log in",
   "auth.profile": "My profile",
   "auth.logout": "Log out",
-
   "m.signup.title": "Sign up",
   "m.email": "Email address",
   "m.email.ph": "Enter your email",
@@ -60,7 +57,6 @@
   "m.premium.cta": "View subscriptions",
   "m.close": "Close",
   "m.showpw": "Show password",
-
   "tool.abacus.name": "Abacus",
   "tool.abacus.desc": "Count, compare quantities, and do sums and operations.",
   "tool.multiplix.name": "Multiplix",
@@ -73,7 +69,6 @@
   "tool.fractions.desc": "See, share and compare fractions by moving the pieces.",
   "tool.free": "Free",
   "tool.try": "Try it",
-
   "chip.dys": "Dyslexia & dyscalculia",
   "chip.adhd": "ADHD",
   "chip.cognitive": "Cognitive disorders",
@@ -81,11 +76,10 @@
   "hero.w1": "Touch,",
   "hero.w2": "move,",
   "hero.w3": "understand.",
-  "hero.lead": "Digital tools inspired by Montessori materials, created by special education teachers and tested in class with students who have special educational needs.",
+  "hero.lead": "Digital tools inspired by Montessori materials, created by a special education teacher and tested in class with students who have special educational needs.",
   "hero.cta1": "Try a free tool",
   "hero.cta2": "See plans",
   "hero.note": "Free versions, no sign-up needed · 9 languages",
-
   "abacus.eyebrow": "The abacus · your turn",
   "abacus.hint": "Tap a bead",
   "abacus.hLetter": "H",
@@ -109,30 +103,25 @@
   "abacus.youMade": "You made {n}.",
   "abacus.reset": "Reset",
   "abacus.open": "Open the real abacus →",
-
-  "trust.1": "Created by special education teachers",
+  "trust.1": "Created by a special education teacher",
   "trust.2": "Tested in class with struggling students",
   "trust.3": "Aligned with school curricula",
   "trust.edtech": "Member of EdTech France",
-
   "video.eyebrow": "Watch",
   "video.title": "DISSIPL in a minute and a half",
   "video.text": "See how students use the tools in class and at home, and why special education teachers use them every day.",
   "video.play": "Play the introduction video",
-
   "tools.eyebrow": "Our tools",
   "tools.title": "Five hands-on tools, free to start",
   "tools.text": "The free version lets children explore freely. The Premium version adds built-in exercises by skill level.",
   "tools.premiumCta": "Discover the Premium tools",
-
   "langs.eyebrow": "International",
   "langs.title": "A website and tools in 9 languages",
   "langs.text": "Every tool follows the chosen language: the keyboard, the instructions and the exercises. Arabic is written right to left, Hindi in Devanagari, and Chinese in pinyin with tones.",
   "langs.hello": "Hello!",
-
   "story.eyebrow": "Born in a classroom",
   "story.title": "Classroom materials, on the computer and tablet",
-  "story.text": "DISSIPL is a group of special education teachers. Our tools recreate the hands-on materials we use every day with students who have special educational needs. In our experience, they help every student.",
+  "story.text": "DISSIPL was born in the classroom of a special education teacher. Our tools recreate the hands-on materials used every day with students who have special educational needs. That experience shows they help every student.",
   "story.t1": "For students: learn differently, at their own pace",
   "story.t2": "For teachers: a resource to project and use in groups",
   "story.t3": "For parents: understand school exercises better",
@@ -140,7 +129,6 @@
   "story.alt1": "Two children using an abacus in class",
   "story.alt2": "Wooden Montessori moveable alphabet, red consonants and blue vowels",
   "story.alt3": "Montessori number cards and golden beads",
-
   "method.eyebrow": "Our method",
   "method.title": "Learning starts with the hands",
   "method.text": "An approach rooted in active learning, with the child at the center.",
@@ -150,7 +138,6 @@
   "method.s2.text": "They see what numbers, sounds and fractions represent, without being rushed.",
   "method.s3.title": "Practice",
   "method.s3.text": "Premium exercises follow curriculum skills, level by level.",
-
   "plans.eyebrow": "Plans",
   "plans.title": "For home, the classroom and the whole school",
   "plans.text": "Choose the plan that fits your child, your class or your school.",
@@ -174,7 +161,6 @@
   "plans.school.f3": "Custom invoicing and dedicated onboarding",
   "plans.school.cta": "Request a quote",
   "plans.note": "Annual plan: save up to 30%.",
-
   "voices.eyebrow": "Testimonials",
   "voices.title": "What students and teachers say",
   "q1": "The digital abacus helps me understand numbers better, because in normal lessons I can't always follow when my teacher talks.",
@@ -203,7 +189,6 @@
   "r12": "Primary school teacher, grades 2 and 5",
   "q13": "I like going on DISSIPL because it lets me work differently.",
   "r13": "Grade 6 student",
-
   "faq.eyebrow": "FAQ",
   "faq.title": "Have a question?",
   "faq.text": "Write to us at <a href=\"mailto:contact@dissipl.fr\">contact@dissipl.fr</a> or read the full FAQ.",
@@ -216,12 +201,10 @@
   "faq.a3": "The tools are designed for students with dyslexia, dyscalculia, ADHD or cognitive disorders. In our teaching experience, every student can use them.",
   "faq.q4": "Which languages are available?",
   "faq.a4": "The website and the tools are available in 9 languages: French, English, German, Spanish, Italian, Portuguese, Arabic, Hindi and Chinese. Choose yours at the top of the page.",
-
   "cta.title": "Ready to transform how your students learn?",
   "cta.text": "Join the special education teachers who use DISSIPL. Start with a free tool.",
   "cta.try": "Try it free",
   "cta.contact": "Contact us",
-
   "footer.tagline": "Hands-on learning for students with special educational needs.",
   "footer.tools": "Tools",
   "footer.resources": "Resources",

@@ -1,9 +1,8 @@
 {
   "_lang": "Deutsch",
   "meta.title": "DISSIPL - Lernen mit den Händen für Kinder mit besonderem Förderbedarf",
-  "meta.description": "Digitale Werkzeuge nach dem Vorbild des Montessori-Materials, entwickelt von Förderlehrkräften für Kinder mit Legasthenie, Dyskalkulie, ADHS und anderem besonderem Förderbedarf. In 9 Sprachen verfügbar.",
+  "meta.description": "Digitale Werkzeuge nach dem Vorbild des Montessori-Materials, entwickelt von einer Förderlehrkraft für Kinder mit LRS, Dyskalkulie, ADHS und anderem besonderem Förderbedarf. In 9 Sprachen.",
   "skip": "Zum Inhalt springen",
-
   "nav.home": "Startseite",
   "nav.tools": "Werkzeuge",
   "nav.toolsAll": "Alle Werkzeuge",
@@ -20,12 +19,10 @@
   "nav.close": "Menü schließen",
   "nav.language": "Sprache",
   "nav.chooseLanguage": "Sprache wählen",
-
   "auth.signup": "Registrieren",
   "auth.login": "Anmelden",
   "auth.profile": "Mein Profil",
   "auth.logout": "Abmelden",
-
   "m.signup.title": "Registrieren",
   "m.email": "E-Mail-Adresse",
   "m.email.ph": "Ihre E-Mail-Adresse",
@@ -60,7 +57,6 @@
   "m.premium.cta": "Abos ansehen",
   "m.close": "Schließen",
   "m.showpw": "Passwort anzeigen",
-
   "tool.abacus.name": "Abakus",
   "tool.abacus.desc": "Zählen, Mengen vergleichen, rechnen und Aufgaben lösen.",
   "tool.multiplix.name": "Multiplix",
@@ -73,7 +69,6 @@
   "tool.fractions.desc": "Brüche sehen, teilen und vergleichen, indem man die Teile verschiebt.",
   "tool.free": "Kostenlos",
   "tool.try": "Ausprobieren",
-
   "chip.dys": "Legasthenie & Dyskalkulie",
   "chip.adhd": "ADHS",
   "chip.cognitive": "Kognitive Beeinträchtigungen",
@@ -81,11 +76,10 @@
   "hero.w1": "Anfassen,",
   "hero.w2": "bewegen,",
   "hero.w3": "verstehen.",
-  "hero.lead": "Digitale Werkzeuge nach dem Vorbild des Montessori-Materials, entwickelt von Förderlehrkräften und im Unterricht mit Kindern mit besonderem Förderbedarf erprobt.",
+  "hero.lead": "Digitale Werkzeuge nach dem Vorbild des Montessori-Materials, entwickelt von einer Förderlehrkraft und im Unterricht mit Kindern mit besonderem Förderbedarf erprobt.",
   "hero.cta1": "Kostenlos ausprobieren",
   "hero.cta2": "Angebote ansehen",
   "hero.note": "Kostenlose Versionen ohne Anmeldung · 9 Sprachen",
-
   "abacus.eyebrow": "Der Abakus · du bist dran",
   "abacus.hint": "Tippe auf eine Perle",
   "abacus.hLetter": "H",
@@ -109,30 +103,25 @@
   "abacus.youMade": "Du hast {n} gelegt.",
   "abacus.reset": "Zurücksetzen",
   "abacus.open": "Zum richtigen Abakus →",
-
-  "trust.1": "Entwickelt von Förderlehrkräften",
+  "trust.1": "Entwickelt von einer Förderlehrkraft",
   "trust.2": "Im Unterricht mit lernschwachen Kindern erprobt",
   "trust.3": "Passend zu den Lehrplänen",
   "trust.edtech": "Mitglied von EdTech France",
-
   "video.eyebrow": "Im Video",
   "video.title": "DISSIPL in anderthalb Minuten",
   "video.text": "Sehen Sie, wie Kinder die Werkzeuge in der Schule und zu Hause nutzen und warum Förderlehrkräfte jeden Tag damit arbeiten.",
   "video.play": "Vorstellungsvideo abspielen",
-
   "tools.eyebrow": "Unsere Werkzeuge",
   "tools.title": "Fünf Werkzeuge zum Anfassen, kostenlos zum Einstieg",
   "tools.text": "In der kostenlosen Version können Kinder frei ausprobieren. Die Premium-Version bietet zusätzlich eingebaute Übungen nach Kompetenzstufen.",
   "tools.premiumCta": "Die Premium-Werkzeuge entdecken",
-
   "langs.eyebrow": "International",
   "langs.title": "Website und Werkzeuge in 9 Sprachen",
   "langs.text": "Jedes Werkzeug passt sich der gewählten Sprache an: Tastatur, Anleitungen und Übungen. Arabisch wird von rechts nach links geschrieben, Hindi in Devanagari und Chinesisch in Pinyin mit Tönen.",
   "langs.hello": "Hallo!",
-
   "story.eyebrow": "Entstanden im Klassenzimmer",
   "story.title": "Das Material aus der Klasse, auf Computer und Tablet",
-  "story.text": "DISSIPL ist eine Gruppe von Förderlehrkräften. Unsere Werkzeuge bilden das Anschauungsmaterial nach, mit dem wir jeden Tag mit Kindern mit besonderem Förderbedarf arbeiten. Unserer Erfahrung nach helfen sie allen Kindern.",
+  "story.text": "DISSIPL ist im Klassenzimmer einer Förderlehrkraft entstanden. Unsere Werkzeuge bilden das Anschauungsmaterial nach, das dort jeden Tag mit Kindern mit besonderem Förderbedarf genutzt wird. Diese Erfahrung zeigt: Sie helfen allen Kindern.",
   "story.t1": "Für Kinder: anders lernen, im eigenen Tempo",
   "story.t2": "Für Lehrkräfte: zum Projizieren und für die Gruppenarbeit",
   "story.t3": "Für Eltern: die Hausaufgaben besser verstehen",
@@ -140,7 +129,6 @@
   "story.alt1": "Zwei Kinder arbeiten im Unterricht mit einem Abakus",
   "story.alt2": "Bewegliches Montessori-Alphabet aus Holz, rote Konsonanten und blaue Vokale",
   "story.alt3": "Montessori-Zahlenkarten und goldene Perlen",
-
   "method.eyebrow": "Unsere Methode",
   "method.title": "Lernen beginnt mit den Händen",
   "method.text": "Ein Ansatz aus der aktiven Pädagogik, bei dem das Kind im Mittelpunkt steht.",
@@ -150,7 +138,6 @@
   "method.s2.text": "Sie sehen, wofür Zahlen, Laute und Brüche stehen, ganz ohne Zeitdruck.",
   "method.s3.title": "Üben",
   "method.s3.text": "Die Premium-Übungen folgen den Kompetenzen des Lehrplans, Stufe für Stufe.",
-
   "plans.eyebrow": "Angebote",
   "plans.title": "Für zu Hause, die Klasse und die ganze Schule",
   "plans.text": "Wählen Sie das Angebot, das zu Ihrem Kind, Ihrer Klasse oder Ihrer Schule passt.",
@@ -174,7 +161,6 @@
   "plans.school.f3": "Individuelle Abrechnung und persönliche Einführung",
   "plans.school.cta": "Angebot anfragen",
   "plans.note": "Jahresabo: bis zu 30 % sparen.",
-
   "voices.eyebrow": "Erfahrungen",
   "voices.title": "Was Kinder und Lehrkräfte sagen",
   "q1": "Mit dem digitalen Abakus verstehe ich Zahlen besser, weil ich im normalen Unterricht nicht immer mitkomme, wenn mein Lehrer redet.",
@@ -203,7 +189,6 @@
   "r12": "Grundschullehrerin, 2. und 5. Klasse",
   "q13": "Ich gehe gern auf DISSIPL, weil ich da anders arbeiten kann.",
   "r13": "Schüler, 6. Klasse",
-
   "faq.eyebrow": "FAQ",
   "faq.title": "Haben Sie eine Frage?",
   "faq.text": "Schreiben Sie uns an <a href=\"mailto:contact@dissipl.fr\">contact@dissipl.fr</a> oder lesen Sie die ganze FAQ.",
@@ -216,12 +201,10 @@
   "faq.a3": "Die Werkzeuge sind für Kinder mit Legasthenie, Dyskalkulie, ADHS oder kognitiven Beeinträchtigungen entwickelt. Nach unserer Erfahrung im Unterricht können alle Kinder sie nutzen.",
   "faq.q4": "Welche Sprachen gibt es?",
   "faq.a4": "Die Website und die Werkzeuge gibt es in 9 Sprachen: Französisch, Englisch, Deutsch, Spanisch, Italienisch, Portugiesisch, Arabisch, Hindi und Chinesisch. Wählen Sie Ihre Sprache oben auf der Seite.",
-
   "cta.title": "Bereit, das Lernen Ihrer Schüler zu verändern?",
   "cta.text": "Schließen Sie sich den Förderlehrkräften an, die DISSIPL nutzen. Beginnen Sie mit einem kostenlosen Werkzeug.",
   "cta.try": "Kostenlos ausprobieren",
   "cta.contact": "Kontakt aufnehmen",
-
   "footer.tagline": "Lernen mit den Händen für Kinder mit besonderem Förderbedarf.",
   "footer.tools": "Werkzeuge",
   "footer.resources": "Materialien",

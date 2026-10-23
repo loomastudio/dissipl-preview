@@ -2833,13 +2833,17 @@ a:focus-visible {
     border: none;
     background: none;
     width: 100%;
-    text-align: left;
+    text-align: start;
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--color-text-dark);
     transition: color 0.2s ease;
 }
+
+/* No black box after a mouse click; keyboard users still see where they are */
+.faq-question:focus { outline: none; }
+.faq-question:focus-visible { outline: 3px solid #E5B33F; outline-offset: -3px; border-radius: 16px; }
 
 .faq-question:hover {
     color: var(--color-primary);

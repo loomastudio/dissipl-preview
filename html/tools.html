@@ -1,172 +1,264 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="DISSIPL - Découvrez nos outils numériques pédagogiques pour l'apprentissage."
-    />
-    <title>Outils numériques - DISSIPL</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="/dissipl-preview/assets/Images/disableFallDamage.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="/dissipl-preview/assets/Images/disableFallDamage.png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/dissipl-preview/css/stylestest.css" />
-  </head>
-  <body class="d-flex flex-column min-vh-100">
-    <div id="header-placeholder"></div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outils numériques - DISSIPL</title>
+<meta name="description" content="DISSIPL - Découvrez nos outils numériques pédagogiques pour l'apprentissage.">
+<link rel="icon" type="image/png" href="/dissipl-preview/assets/images/favicon-32.png">
+<link rel="apple-touch-icon" href="/dissipl-preview/assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Lexend:wght@400;500;600&display=swap">
+<!-- Bootstrap : seulement pour les fenêtres de connexion / inscription du header -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Site stylesheet: needed by the shared footer -->
+<link rel="stylesheet" href="/dissipl-preview/css/stylestest.css?v=20261023">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* Tools. Same tokens as the homepage (Montessori place-value colours). */
+:root {
+  --paper: #F6F7FB; --ink: #1D2245; --ink-soft: #565C80; --line: #DDE0EC;
+  --red: #D3343A; --red-dark: #B5262C; --gold: #E5B33F;
+  --display: "Fredoka", "Trebuchet MS", sans-serif;
+  --body: "Lexend", Verdana, sans-serif;
+  --ease: cubic-bezier(.22, 1, .36, 1); --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+html[lang="ar"] { --display: "Noto Sans Arabic", sans-serif; --body: "Noto Sans Arabic", sans-serif; }
+html[lang="hi"] { --display: "Noto Sans Devanagari", sans-serif; --body: "Noto Sans Devanagari", sans-serif; }
+html[lang="zh"] { --display: "Noto Sans SC", sans-serif; --body: "Noto Sans SC", sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-align: start; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; margin: 0; color: inherit; }
+p, ul { margin: 0; }
+main p, main li, main span { font-family: var(--body); }
+a:hover { text-decoration: none; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 
-    <main>
-      <!-- Page Hero -->
-      <section class="page-hero">
-        <h1>Nos outils numériques</h1>
-        <p class="page-subtitle">
-          Explorez notre collection d'outils d'apprentissage interactifs conçus
-          pour tous les âges.
-        </p>
-      </section>
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 18px; border-radius: 14px; font: 500 15px/1.2 var(--body); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .35s var(--spring), background .25s, color .25s, box-shadow .3s; }
+.btn:hover { transform: translateY(-3px); }
+.btn.red, .btn.red:hover { background: var(--red); color: #fff; box-shadow: 0 10px 24px rgba(211, 52, 58, .25); }
+.btn.red:hover { background: var(--red-dark); }
+.btn.line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn.line:hover { background: var(--ink); color: #fff; }
+.btn.big { min-height: 52px; padding: 0 24px; font-size: 17px; border-radius: 16px; }
+.btn .arrow { display: inline-block; transition: transform .35s var(--spring); }
+.btn:hover .arrow { transform: translateX(4px); }
+[dir="rtl"] .arrow { transform: scaleX(-1); }
 
-      <!-- Tools Grid -->
-      <div class="page-content">
-        <div class="card-grid">
-          <!-- Boulier Card -->
-          <a href="/dissipl-preview/abacus-free" class="card gp-link" style="text-decoration:none;color:inherit;">
-            <div class="card-body-center">
-              <div class="circle-icon" style="background: linear-gradient(135deg, #FFD93D 0%, #FFC107 100%);">
-                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;">
-                  <rect x="15" y="25" width="50" height="30" rx="3" fill="#fff" opacity="0.9"/>
-                  <line x1="18" y1="32" x2="62" y2="32" stroke="#FFB300" stroke-width="2"/>
-                  <line x1="18" y1="40" x2="62" y2="40" stroke="#FFB300" stroke-width="2"/>
-                  <line x1="18" y1="48" x2="62" y2="48" stroke="#FFB300" stroke-width="2"/>
-                  <circle cx="25" cy="32" r="3" fill="#FF6B35"/><circle cx="35" cy="32" r="3" fill="#FFD700"/><circle cx="45" cy="32" r="3" fill="#4CAF50"/>
-                  <circle cx="23" cy="40" r="3" fill="#FF1744"/><circle cx="33" cy="40" r="3" fill="#2196F3"/><circle cx="43" cy="40" r="3" fill="#9C27B0"/>
-                  <circle cx="25" cy="48" r="3" fill="#00BCD4"/><circle cx="35" cy="48" r="3" fill="#FF9800"/><circle cx="45" cy="48" r="3" fill="#8BC34A"/>
-                </svg>
-              </div>
-              <h3 class="card-title-center">Boulier</h3>
-              <svg class="card-arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-block: 136px 40px; }
+.hero::before { content: ""; position: absolute; width: 560px; height: 560px; right: -180px; top: -140px; border-radius: 50%; background: rgba(44, 104, 190, .18); filter: blur(70px); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 460px; height: 460px; left: -160px; top: 60px; border-radius: 50%; background: rgba(229, 179, 63, .24); filter: blur(70px); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; gap: 16px; }
+.hero h1 { font-size: clamp(40px, 5.6vw, 64px); }
+.hero p { color: var(--ink-soft); font-size: 19px; max-width: 36em; }
+
+/* Tool cards */
+.grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px; }
+.tool { grid-column: span 2; background: #fff; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; transition: transform .45s var(--spring), box-shadow .4s var(--ease); }
+.tool:nth-child(4) { grid-column: 2 / span 2; }
+.tool:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(29, 34, 69, .13); }
+.thumb { position: relative; aspect-ratio: 16 / 9; background: var(--t); overflow: hidden; }
+.thumb video { width: 100%; height: 100%; display: block; object-fit: cover; }
+.thumb .free { position: absolute; inset-inline-start: 12px; top: 12px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: #fff; color: var(--ink); box-shadow: 0 4px 12px rgba(29, 34, 69, .12); }
+.thumb .play-hint { position: absolute; inset-inline-end: 12px; bottom: 12px; width: 38px; height: 38px; border-radius: 50%; background: rgba(255, 255, 255, .92); display: grid; place-items: center; transition: opacity .3s, transform .4s var(--spring); }
+.tool.playing .play-hint { opacity: 0; transform: scale(.6); }
+.body { padding: 20px 22px 22px; display: grid; gap: 10px; flex: 1; align-content: start; }
+.body h2 { font-size: 26px; display: flex; align-items: center; gap: 12px; }
+.body h2 i { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 6px var(--t); }
+.body p { color: var(--ink-soft); font-size: 16px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 8px; }
+
+/* Free version box + EdTech */
+.free-box { background: var(--ink); color: #fff; border-radius: 30px; padding: 44px 44px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.free-box h2 { font-size: clamp(26px, 3vw, 34px); margin-bottom: 18px; }
+.free-box ul { list-style: none; padding: 0; display: grid; gap: 12px; }
+.free-box li { display: flex; gap: 12px; color: #DCDFF0; }
+.free-box li::before { content: ""; flex: none; width: 12px; height: 12px; margin-top: 7px; border-radius: 50%; background: var(--c); }
+.free-box .side { display: grid; gap: 18px; justify-items: start; }
+.free-box .side p { color: #fff; font-weight: 500; font-size: 18px; }
+.edtech { background: #fff; border: 1px solid var(--line); border-radius: 26px; padding: 26px 30px; display: flex; gap: 26px; align-items: center; }
+.edtech img { flex: none; width: 120px; height: auto; }
+.edtech h2 { font-size: 26px; margin-bottom: 6px; }
+.edtech p { color: var(--ink-soft); }
+
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 980px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tool, .tool:nth-child(4) { grid-column: auto; }
+  .tool:nth-child(5) { grid-column: 1 / -1; }
+  .free-box { grid-template-columns: minmax(0, 1fr); padding: 36px 28px; }
+}
+@media (max-width: 620px) {
+  .hero { padding-block: 104px 24px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .tool:nth-child(5) { grid-column: auto; }
+  .free-box { padding: 30px 22px; border-radius: 24px; }
+  .edtech { flex-direction: column; text-align: center; padding: 24px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+}
+</style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="reveal">Nos outils numériques</h1>
+      <p class="reveal" style="--i: 1">Explorez notre collection d'outils d'apprentissage interactifs conçus pour tous les âges.</p>
+    </div>
+  </section>
+
+  <section style="padding-bottom: 64px">
+    <div class="wrap">
+      <div class="grid">
+        <article class="tool reveal" style="--i: 0; --c: #D3343A; --t: #FBE7E7">
+          <div class="thumb"><video muted loop playsinline preload="metadata" src="/dissipl-preview/assets/videos/demos/abacus-free.mp4#t=6"></video><span class="free">Gratuit</span><span class="play-hint" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5Z" fill="#1D2245"/></svg></span></div>
+          <div class="body">
+            <h2><i></i>Boulier</h2>
+            <p>Un boulier de 7 tiges de 10 perles, des unités aux millions, pour construire, lire et calculer des nombres.</p>
+            <div class="links">
+              <a class="btn red" href="/dissipl-preview/abacus-free"><span>Essayer gratuitement</span> <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn line" href="/dissipl-preview/premium-tools#abacus">Version Premium</a>
             </div>
-          </a>
-
-          <!-- Multiplix Card -->
-          <a href="/dissipl-preview/multiplix-free" class="card gp-link" style="text-decoration:none;color:inherit;">
-            <div class="card-body-center">
-              <div class="circle-icon" style="background: linear-gradient(135deg, #BA68C8 0%, #AB47BC 100%);">
-                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;">
-                  <line x1="28" y1="28" x2="52" y2="52" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
-                  <line x1="52" y1="28" x2="28" y2="52" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <h3 class="card-title-center">Multiplix</h3>
-              <svg class="card-arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </a>
-
-          <!-- Alphabet Mobile Card -->
-          <a href="/dissipl-preview/alpha-mobile-free" class="card gp-link" style="text-decoration:none;color:inherit;">
-            <div class="card-body-center">
-              <div class="circle-icon" style="background: linear-gradient(135deg, #81C784 0%, #66BB6A 100%);">
-                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;">
-                  <rect x="18" y="28" width="13" height="18" rx="2" fill="#fff" opacity="0.95" transform="rotate(-10 24.5 37)"/>
-                  <text x="24.5" y="41" font-size="12" font-weight="bold" fill="#388E3C" text-anchor="middle" font-family="Montserrat">A</text>
-                  <rect x="33.5" y="25" width="13" height="18" rx="2" fill="#fff" opacity="0.95"/>
-                  <text x="40" y="38" font-size="12" font-weight="bold" fill="#388E3C" text-anchor="middle" font-family="Montserrat">B</text>
-                  <rect x="49" y="28" width="13" height="18" rx="2" fill="#fff" opacity="0.95" transform="rotate(10 55.5 37)"/>
-                  <text x="55.5" y="41" font-size="12" font-weight="bold" fill="#388E3C" text-anchor="middle" font-family="Montserrat">C</text>
-                </svg>
-              </div>
-              <h3 class="card-title-center">Alphabet Mobile</h3>
-              <svg class="card-arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </a>
-
-          <!-- Banque de perles Card -->
-          <a href="/dissipl-preview/number-card-free" class="card gp-link" style="text-decoration:none;color:inherit;">
-            <div class="card-body-center">
-              <div class="circle-icon" style="background: linear-gradient(135deg, #64B5F6 0%, #42A5F5 100%);">
-                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:90px;">
-                  <rect x="20" y="22" width="18" height="26" rx="2" fill="#fff" opacity="0.95" transform="rotate(-8 29 35)"/>
-                  <text x="29" y="40" font-size="16" font-weight="bold" fill="#1976D2" text-anchor="middle" font-family="Montserrat">1</text>
-                  <rect x="42" y="22" width="18" height="26" rx="2" fill="#fff" opacity="0.95" transform="rotate(8 51 35)"/>
-                  <text x="51" y="40" font-size="16" font-weight="bold" fill="#1976D2" text-anchor="middle" font-family="Montserrat">2</text>
-                </svg>
-              </div>
-              <h3 class="card-title-center">Banque de perles</h3>
-              <svg class="card-arrow" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Texte explicatif version gratuite -->
-      <div class="page-content mt-4">
-        <div class="content-card accent-blue">
-          <h3>Cette version gratuite vous permet de :</h3>
-          <ul>
-            <li>Manipuler le boulier numérique pour compter, dénombrer, faire des calculs et opérations</li>
-            <li>Manipuler la table de Pythagore pour comprendre le sens de la multiplication et s'entrainer</li>
-            <li>Manipuler l'alphabet mobile pour construire des lettres, des sons, des syllabes, des mots…</li>
-            <li>Manipuler les cartes des nombres pour composer, décomposer des petits ou des grands nombres…</li>
-          </ul>
-          <p class="mt-3">
-            <strong>Pour accéder aux versions complètes avec exercices intégrés selon les niveaux de compétences, veuillez vous abonner aux outils premium</strong>
-          </p>
-          <a href="/dissipl-preview/premium-tools" class="btn btn-primary mt-3" style="display: inline-block; padding: 12px 30px; font-size: 16px; font-weight: 600; color: #fff !important; background: linear-gradient(135deg, #2196F3, #1976D2); border-radius: 8px; text-decoration: none; box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3);">Découvrir les outils Premium →</a>
-        </div>
-      </div>
-
-        <!-- EdTech France Membership -->
-        <div class="content-card accent-blue edtech-member-section">
-          <h2><span class="section-icon blue">🏆</span> Membre EdTech France</h2>
-          <p>
-            DISSIPL est fier d'être membre de l'EdTech France, l'association qui représente et fédère les entreprises françaises de technologies éducatives.
-          </p>
-          <div class="edtech-member-logo-container">
-            <img src="/dissipl-preview/assets/images/Logo_EdTech_Membre_RVB.png" alt="Membre EdTech France" class="edtech-member-logo">
           </div>
+        </article>
+
+        <article class="tool reveal" style="--i: 1; --c: #2C68BE; --t: #E5EDF9">
+          <div class="thumb"><video muted loop playsinline preload="metadata" src="/dissipl-preview/assets/videos/demos/multiplix-free.mp4#t=6"></video><span class="free">Gratuit</span><span class="play-hint" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5Z" fill="#1D2245"/></svg></span></div>
+          <div class="body">
+            <h2><i></i>Multiplix</h2>
+            <p>La table de multiplication Montessori : des barrettes de perles de 1 à 10 pour voir que 3 × 4 = 4 + 4 + 4 = 12.</p>
+            <div class="links">
+              <a class="btn red" href="/dissipl-preview/multiplix-free"><span>Essayer gratuitement</span> <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn line" href="/dissipl-preview/premium-tools#multiplix">Version Premium</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tool reveal" style="--i: 2; --c: #E5B33F; --t: #FBF2DC">
+          <div class="thumb"><video muted loop playsinline preload="metadata" src="/dissipl-preview/assets/videos/demos/alpha-mobile-free.mp4#t=6"></video><span class="free">Gratuit</span><span class="play-hint" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5Z" fill="#1D2245"/></svg></span></div>
+          <div class="body">
+            <h2><i></i>Alpha'Mobile</h2>
+            <p>L'alphabet mobile : toucher ou glisser les lettres pour écrire, en cursive ou en script. Voyelles en bleu, consonnes en rouge.</p>
+            <div class="links">
+              <a class="btn red" href="/dissipl-preview/alpha-mobile-free"><span>Essayer gratuitement</span> <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn line" href="/dissipl-preview/premium-tools#alpha">Version Premium</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tool reveal" style="--i: 0; --c: #3B9257; --t: #E6F3EA">
+          <div class="thumb"><video muted loop playsinline preload="metadata" src="/dissipl-preview/assets/videos/demos/number-card-free.mp4#t=6"></video><span class="free">Gratuit</span><span class="play-hint" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5Z" fill="#1D2245"/></svg></span></div>
+          <div class="body">
+            <h2><i></i>Banque de perles</h2>
+            <p>Les perles dorées et les cartes des nombres : unités, barrettes de dix, carrés de cent et cubes de mille pour comprendre la numération.</p>
+            <div class="links">
+              <a class="btn red" href="/dissipl-preview/number-card-free"><span>Essayer gratuitement</span> <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn line" href="/dissipl-preview/premium-tools#cards">Version Premium</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tool reveal" style="--i: 1; --c: #7A4FC0; --t: #EEE7FA">
+          <div class="thumb"><video muted loop playsinline preload="metadata" src="/dissipl-preview/assets/videos/demos/fraction-circles-free.mp4#t=6"></video><span class="free">Gratuit</span><span class="play-hint" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5Z" fill="#1D2245"/></svg></span></div>
+          <div class="body">
+            <h2><i></i>Cercles de fractions</h2>
+            <p>Des parts de cercle, de l'entier aux dixièmes, avec les cartes nombres et symboles pour écrire les fractions.</p>
+            <div class="links">
+              <a class="btn red" href="/dissipl-preview/fraction-circles-free"><span>Essayer gratuitement</span> <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn line" href="/dissipl-preview/premium-tools#fractions">Version Premium</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-bottom: 40px">
+    <div class="wrap">
+      <div class="free-box reveal">
+        <div>
+          <h2>Cette version gratuite vous permet de :</h2>
+          <ul>
+            <li style="--c: #D3343A">Manipuler le boulier numérique pour compter, dénombrer, faire des calculs et opérations</li>
+            <li style="--c: #2C68BE">Manipuler la table de Pythagore pour comprendre le sens de la multiplication et s'entrainer</li>
+            <li style="--c: #E5B33F">Manipuler l'alphabet mobile pour construire des lettres, des sons, des syllabes, des mots…</li>
+            <li style="--c: #3B9257">Manipuler les cartes des nombres pour composer, décomposer des petits ou des grands nombres…</li>
+            <li style="--c: #A57BE0">Manipuler les cercles de fractions pour découvrir, comparer et additionner des fractions</li>
+          </ul>
+        </div>
+        <div class="side">
+          <p>Pour accéder aux versions complètes avec exercices intégrés selon les niveaux de compétences, veuillez vous abonner aux outils premium</p>
+          <a class="btn red big" href="/dissipl-preview/premium-tools"><span>Découvrir les outils Premium</span> <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
-    </main>
+    </div>
+  </section>
 
-    <div id="footer-placeholder"></div>
-    <script src="/dissipl-preview/js/core/footer.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type="module" src="/dissipl-preview/js/core/header.js?v=20260916-mobile"></script>
-    <script src="/dissipl-preview/js/pages/interactEffectsUI.js"></script>
-  
+  <section style="padding-bottom: 80px">
+    <div class="wrap">
+      <div class="edtech reveal">
+        <img src="/dissipl-preview/assets/images/Logo_EdTech_Membre_RVB.png" alt="Membre EdTech France" width="150" height="150" loading="lazy">
+        <div>
+          <h2>Membre EdTech France</h2>
+          <p>DISSIPL est fier d'être membre de l'EdTech France, l'association qui représente et fédère les entreprises françaises de technologies éducatives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="/dissipl-preview/js/core/footer.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="module" src="/dissipl-preview/js/core/header.js?v=20261023d"></script>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hover = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var tools = document.querySelectorAll('.tool');
+
+  function play(tool, on) {
+    var v = tool.querySelector('video');
+    if (on && !reduce) { var p = v.play(); if (p) p.catch(function () {}); tool.classList.add('playing'); }
+    else { v.pause(); tool.classList.remove('playing'); }
+  }
+
+  if (hover) {
+    // Desktop: the preview plays while the mouse is over the card
+    tools.forEach(function (t) {
+      t.addEventListener('pointerenter', function () { play(t, true); });
+      t.addEventListener('pointerleave', function () { play(t, false); });
+    });
+  } else {
+    // Touch: the card in the middle of the screen plays
+    var vo = new IntersectionObserver(function (es) { es.forEach(function (e) { play(e.target, e.isIntersecting); }); }, { rootMargin: '-35% 0px -35% 0px' });
+    tools.forEach(function (t) { vo.observe(t); });
+  }
+
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) {
+    var el = e.target; el.classList.add('in'); io.unobserve(el);
+    // Drop the reveal classes afterwards so the hover lift can use transform
+    setTimeout(function () { el.classList.remove('reveal', 'in'); }, 1100);
+  } }); }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+</script>
+
 <div id="preview-badge" style="position:fixed;left:12px;bottom:12px;z-index:3000;background:#1D2245;color:#fff;font:600 12px/1.3 Lexend,Verdana,sans-serif;padding:8px 12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;pointer-events:none">
   Version de test · Test version<br><span style="font-weight:400;opacity:.8">Connexion et Premium désactivés ici · Login and Premium disabled here</span>
 </div>
 </body>
 </html>
-

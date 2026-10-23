@@ -1,9 +1,8 @@
 {
   "_lang": "Italiano",
   "meta.title": "DISSIPL - Imparare con le mani per alunni con bisogni educativi speciali",
-  "meta.description": "Strumenti digitali ispirati al materiale Montessori, creati da insegnanti di sostegno per alunni con dislessia, discalculia, ADHD e altri bisogni educativi speciali. Disponibili in 9 lingue.",
+  "meta.description": "Strumenti digitali ispirati al materiale Montessori, creati da un insegnante di sostegno per alunni con dislessia, discalculia, ADHD e altri bisogni educativi speciali. Disponibili in 9 lingue.",
   "skip": "Vai al contenuto",
-
   "nav.home": "Home",
   "nav.tools": "Strumenti",
   "nav.toolsAll": "Tutti gli strumenti",
@@ -20,12 +19,10 @@
   "nav.close": "Chiudi il menu",
   "nav.language": "Lingua",
   "nav.chooseLanguage": "Scegli la lingua",
-
   "auth.signup": "Registrati",
   "auth.login": "Accedi",
   "auth.profile": "Il mio profilo",
   "auth.logout": "Esci",
-
   "m.signup.title": "Registrati",
   "m.email": "Indirizzo email",
   "m.email.ph": "Inserisci la tua email",
@@ -60,7 +57,6 @@
   "m.premium.cta": "Vedi gli abbonamenti",
   "m.close": "Chiudi",
   "m.showpw": "Mostra la password",
-
   "tool.abacus.name": "Abaco",
   "tool.abacus.desc": "Contare, confrontare quantità, fare calcoli e operazioni.",
   "tool.multiplix.name": "Multiplix",
@@ -73,7 +69,6 @@
   "tool.fractions.desc": "Vedere, dividere e confrontare le frazioni spostando i pezzi.",
   "tool.free": "Gratis",
   "tool.try": "Prova",
-
   "chip.dys": "Dislessia e discalculia",
   "chip.adhd": "ADHD",
   "chip.cognitive": "Disturbi cognitivi",
@@ -81,11 +76,10 @@
   "hero.w1": "Toccare,",
   "hero.w2": "spostare,",
   "hero.w3": "capire.",
-  "hero.lead": "Strumenti digitali ispirati al materiale Montessori, creati da insegnanti di sostegno e sperimentati in classe con alunni con bisogni educativi speciali.",
+  "hero.lead": "Strumenti digitali ispirati al materiale Montessori, creati da un insegnante di sostegno e provati in classe con alunni con bisogni educativi speciali.",
   "hero.cta1": "Prova uno strumento gratis",
   "hero.cta2": "Vedi le offerte",
   "hero.note": "Versioni gratuite, senza registrazione · 9 lingue",
-
   "abacus.eyebrow": "L'abaco · tocca a te",
   "abacus.hint": "Tocca una perla",
   "abacus.hLetter": "h",
@@ -109,30 +103,25 @@
   "abacus.youMade": "Hai formato {n}.",
   "abacus.reset": "Ricomincia",
   "abacus.open": "Apri l'abaco vero →",
-
-  "trust.1": "Creato da insegnanti di sostegno",
+  "trust.1": "Creato da un insegnante di sostegno",
   "trust.2": "Sperimentato in classe con alunni in difficoltà",
   "trust.3": "In linea con i programmi scolastici",
   "trust.edtech": "Membro di EdTech France",
-
   "video.eyebrow": "In video",
   "video.title": "DISSIPL in un minuto e mezzo",
   "video.text": "Scopri come gli alunni usano gli strumenti in classe e a casa, e perché gli insegnanti di sostegno li usano ogni giorno.",
   "video.play": "Guarda il video di presentazione",
-
   "tools.eyebrow": "I nostri strumenti",
   "tools.title": "Cinque strumenti da manipolare, gratis per iniziare",
   "tools.text": "La versione gratuita permette ai bambini di esplorare liberamente. La versione Premium aggiunge esercizi integrati per livello di competenza.",
   "tools.premiumCta": "Scopri gli strumenti Premium",
-
   "langs.eyebrow": "Internazionale",
   "langs.title": "Un sito e strumenti in 9 lingue",
   "langs.text": "Ogni strumento segue la lingua scelta: la tastiera, le consegne e gli esercizi. L'arabo si scrive da destra a sinistra, l'hindi in devanagari e il cinese in pinyin con i toni.",
   "langs.hello": "Ciao!",
-
   "story.eyebrow": "Nato in una classe",
   "story.title": "Il materiale della classe, su computer e tablet",
-  "story.text": "DISSIPL è un gruppo di insegnanti di sostegno. I nostri strumenti riprendono il materiale da manipolare che usiamo ogni giorno con alunni con bisogni educativi speciali. Secondo la nostra esperienza, sono utili a tutti gli alunni.",
+  "story.text": "DISSIPL è nato nella classe di un insegnante di sostegno. I nostri strumenti riprendono il materiale da manipolare usato ogni giorno con alunni con bisogni educativi speciali. Questa esperienza mostra che sono utili a tutti gli alunni.",
   "story.t1": "Per gli alunni: imparare in modo diverso, con i propri tempi",
   "story.t2": "Per gli insegnanti: un supporto da proiettare e da usare in gruppo",
   "story.t3": "Per i genitori: capire meglio gli esercizi di scuola",
@@ -140,7 +129,6 @@
   "story.alt1": "Due bambini usano un abaco in classe",
   "story.alt2": "Alfabetario mobile Montessori in legno, consonanti rosse e vocali blu",
   "story.alt3": "Carte dei numeri Montessori e perle dorate",
-
   "method.eyebrow": "Il nostro metodo",
   "method.title": "Si impara prima con le mani",
   "method.text": "Un approccio nato dalla didattica attiva, con il bambino al centro.",
@@ -150,7 +138,6 @@
   "method.s2.text": "Vede che cosa rappresentano numeri, suoni e frazioni, senza fretta.",
   "method.s3.title": "Esercitarsi",
   "method.s3.text": "Gli esercizi Premium seguono le competenze dei programmi, livello per livello.",
-
   "plans.eyebrow": "Offerte",
   "plans.title": "Per la casa, la classe e tutta la scuola",
   "plans.text": "Scegli l'offerta adatta a tuo figlio, alla tua classe o alla tua scuola.",
@@ -174,7 +161,6 @@
   "plans.school.f3": "Fatturazione personalizzata e accompagnamento dedicato",
   "plans.school.cta": "Richiedi un preventivo",
   "plans.note": "Abbonamento annuale: risparmi fino al 30%.",
-
   "voices.eyebrow": "Testimonianze",
   "voices.title": "Cosa dicono alunni e insegnanti",
   "q1": "L'abaco digitale mi aiuta a capire meglio i numeri, perché durante le lezioni normali non riesco sempre a seguire quando il prof parla.",
@@ -203,7 +189,6 @@
   "r12": "Maestra di scuola primaria, classi seconda e quinta",
   "q13": "Mi piace andare su DISSIPL perché mi fa lavorare in un modo diverso.",
   "r13": "Alunno di prima media",
-
   "faq.eyebrow": "FAQ",
   "faq.title": "Hai una domanda?",
   "faq.text": "Scrivici a <a href=\"mailto:contact@dissipl.fr\">contact@dissipl.fr</a> o leggi tutte le FAQ.",
@@ -216,12 +201,10 @@
   "faq.a3": "Gli strumenti sono pensati per alunni con dislessia, discalculia, ADHD o disturbi cognitivi. Secondo la nostra esperienza di insegnanti, possono usarli tutti gli alunni.",
   "faq.q4": "In quali lingue?",
   "faq.a4": "Il sito e gli strumenti sono disponibili in 9 lingue: francese, inglese, tedesco, spagnolo, italiano, portoghese, arabo, hindi e cinese. Scegli la tua in alto nella pagina.",
-
   "cta.title": "Pronto a cambiare il modo in cui imparano i tuoi alunni?",
   "cta.text": "Unisciti agli insegnanti di sostegno che usano DISSIPL. Inizia con uno strumento gratuito.",
   "cta.try": "Prova gratis",
   "cta.contact": "Contattaci",
-
   "footer.tagline": "Imparare con le mani, per alunni con bisogni educativi speciali.",
   "footer.tools": "Strumenti",
   "footer.resources": "Risorse",

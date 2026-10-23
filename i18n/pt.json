@@ -1,9 +1,8 @@
 {
   "_lang": "Português",
   "meta.title": "DISSIPL - Aprender a manipular, para alunos com necessidades educativas especiais",
-  "meta.description": "Ferramentas digitais inspiradas no material Montessori, criadas por professores de educação especial para alunos com dislexia, discalculia, PHDA e outras necessidades educativas especiais. Disponíveis em 9 línguas.",
+  "meta.description": "Ferramentas digitais inspiradas no material Montessori, criadas por um professor de educação especial para alunos com dislexia, discalculia, PHDA e outras necessidades educativas especiais. Disponíveis em 9 línguas.",
   "skip": "Ir para o conteúdo",
-
   "nav.home": "Início",
   "nav.tools": "Ferramentas",
   "nav.toolsAll": "Todas as ferramentas",
@@ -20,12 +19,10 @@
   "nav.close": "Fechar o menu",
   "nav.language": "Língua",
   "nav.chooseLanguage": "Escolher a língua",
-
   "auth.signup": "Registar",
   "auth.login": "Iniciar sessão",
   "auth.profile": "O meu perfil",
   "auth.logout": "Terminar sessão",
-
   "m.signup.title": "Registo",
   "m.email": "Endereço de e-mail",
   "m.email.ph": "Introduza o seu e-mail",
@@ -60,7 +57,6 @@
   "m.premium.cta": "Ver assinaturas",
   "m.close": "Fechar",
   "m.showpw": "Mostrar palavra-passe",
-
   "tool.abacus.name": "Ábaco",
   "tool.abacus.desc": "Contar, comparar quantidades, fazer contas e operações.",
   "tool.multiplix.name": "Multiplix",
@@ -73,7 +69,6 @@
   "tool.fractions.desc": "Ver, partilhar e comparar frações movendo as peças.",
   "tool.free": "Grátis",
   "tool.try": "Experimentar",
-
   "chip.dys": "Dislexia e discalculia",
   "chip.adhd": "PHDA",
   "chip.cognitive": "Perturbações cognitivas",
@@ -81,11 +76,10 @@
   "hero.w1": "Tocar,",
   "hero.w2": "mover,",
   "hero.w3": "compreender.",
-  "hero.lead": "Ferramentas digitais inspiradas no material Montessori, criadas por professores de educação especial e testadas em aula com alunos com necessidades educativas especiais.",
+  "hero.lead": "Ferramentas digitais inspiradas no material Montessori, criadas por um professor de educação especial e testadas em aula com alunos com necessidades educativas especiais.",
   "hero.cta1": "Experimentar uma ferramenta grátis",
   "hero.cta2": "Ver planos",
   "hero.note": "Versões gratuitas sem registo · 9 línguas",
-
   "abacus.eyebrow": "O ábaco · é a tua vez",
   "abacus.hint": "Toca numa conta",
   "abacus.hLetter": "C",
@@ -109,30 +103,25 @@
   "abacus.youMade": "Formaste o {n}.",
   "abacus.reset": "Recomeçar",
   "abacus.open": "Abrir o ábaco completo →",
-
-  "trust.1": "Criado por professores de educação especial",
+  "trust.1": "Criado por um professor de educação especial",
   "trust.2": "Testado em aula com alunos com dificuldades",
   "trust.3": "Alinhado com os programas escolares",
   "trust.edtech": "Membro da EdTech France",
-
   "video.eyebrow": "Em vídeo",
   "video.title": "A DISSIPL em minuto e meio",
   "video.text": "Veja como os alunos usam as ferramentas na sala de aula e em casa, e porque é que os professores de educação especial as utilizam todos os dias.",
   "video.play": "Reproduzir o vídeo de apresentação",
-
   "tools.eyebrow": "As nossas ferramentas",
   "tools.title": "Cinco ferramentas para manipular, grátis para começar",
   "tools.text": "A versão gratuita permite explorar livremente. A versão Premium acrescenta exercícios integrados por nível de competência.",
   "tools.premiumCta": "Conhecer as ferramentas Premium",
-
   "langs.eyebrow": "Internacional",
   "langs.title": "Um site e ferramentas em 9 línguas",
   "langs.text": "Cada ferramenta acompanha a língua escolhida: o teclado, as instruções e os exercícios. O árabe escreve-se da direita para a esquerda, o hindi em devanágari e o chinês em pinyin com os tons.",
   "langs.hello": "Olá!",
-
   "story.eyebrow": "Nascido numa sala de aula",
   "story.title": "O material da sala de aula, no computador e no tablet",
-  "story.text": "A DISSIPL é um grupo de professores de educação especial. As nossas ferramentas recriam o material manipulável que usamos todos os dias com alunos com necessidades educativas especiais. Pela nossa experiência, ajudam todos os alunos.",
+  "story.text": "A DISSIPL nasceu na sala de aula de um professor de educação especial. As nossas ferramentas recriam o material manipulável usado todos os dias com alunos com necessidades educativas especiais. Essa experiência mostra que ajudam todos os alunos.",
   "story.t1": "Para os alunos: aprender de outra forma, ao seu ritmo",
   "story.t2": "Para os professores: um recurso para projetar e usar em grupo",
   "story.t3": "Para os pais: compreender melhor os exercícios da escola",
@@ -140,7 +129,6 @@
   "story.alt1": "Duas crianças a usar um ábaco na sala de aula",
   "story.alt2": "Alfabeto móvel Montessori em madeira, consoantes vermelhas e vogais azuis",
   "story.alt3": "Cartões de números Montessori e contas douradas",
-
   "method.eyebrow": "O nosso método",
   "method.title": "Aprende-se primeiro com as mãos",
   "method.text": "Uma abordagem baseada nas pedagogias ativas, com a criança no centro da sua aprendizagem.",
@@ -150,7 +138,6 @@
   "method.s2.text": "Vê o que representam os números, os sons e as frações, sem pressas.",
   "method.s3.title": "Praticar",
   "method.s3.text": "Os exercícios Premium seguem as competências dos programas, nível a nível.",
-
   "plans.eyebrow": "Planos",
   "plans.title": "Para casa, a sala de aula e toda a escola",
   "plans.text": "Escolha o plano mais adequado ao seu filho, à sua turma ou à sua escola.",
@@ -174,7 +161,6 @@
   "plans.school.f3": "Faturação personalizada e acompanhamento dedicado",
   "plans.school.cta": "Pedir orçamento",
   "plans.note": "Plano anual: poupe até 30 %.",
-
   "voices.eyebrow": "Testemunhos",
   "voices.title": "O que dizem os alunos e os professores",
   "q1": "O ábaco digital ajuda-me a perceber melhor os números, porque nas aulas normais nem sempre consigo acompanhar quando o meu professor fala.",
@@ -203,7 +189,6 @@
   "r12": "Professora do 1.º ciclo, 2.º e 5.º anos",
   "q13": "Gosto de ir à DISSIPL porque me deixa trabalhar de outra maneira.",
   "r13": "Aluna do 6.º ano",
-
   "faq.eyebrow": "Perguntas frequentes",
   "faq.title": "Tem alguma pergunta?",
   "faq.text": "Escreva-nos para <a href=\"mailto:contact@dissipl.fr\">contact@dissipl.fr</a> ou consulte todas as perguntas frequentes.",
@@ -216,12 +201,10 @@
   "faq.a3": "As ferramentas foram pensadas para alunos com dislexia, discalculia, PHDA ou perturbações cognitivas. Pela nossa experiência no ensino, todos os alunos as podem usar.",
   "faq.q4": "Em que línguas está disponível?",
   "faq.a4": "O site e as ferramentas estão disponíveis em 9 línguas: francês, inglês, alemão, espanhol, italiano, português, árabe, hindi e chinês. Escolha a sua no topo da página.",
-
   "cta.title": "Pronto para transformar a forma como os seus alunos aprendem?",
   "cta.text": "Junte-se aos professores de educação especial que usam a DISSIPL. Comece com uma ferramenta gratuita.",
   "cta.try": "Experimentar grátis",
   "cta.contact": "Contacte-nos",
-
   "footer.tagline": "Aprender a manipular, para alunos com necessidades educativas especiais.",
   "footer.tools": "Ferramentas",
   "footer.resources": "Recursos",
