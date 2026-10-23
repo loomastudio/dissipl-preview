@@ -43,7 +43,8 @@ export function initHeaderFx(root = document) {
   /* --- Surligneur qui glisse sous le lien survolé --- */
   function glideTo(el) {
     if (!el || !desktop.matches) { glider.classList.remove("on"); return; }
-    const lb = list.getBoundingClientRect(), b = el.getBoundingClientRect();
+    // Measure from the glider's own container (the nav), not the centred list
+    const lb = glider.offsetParent.getBoundingClientRect(), b = el.getBoundingClientRect();
     glider.style.width = b.width + "px";
     glider.style.transform = `translateX(${b.left - lb.left}px)`;
     glider.classList.add("on");

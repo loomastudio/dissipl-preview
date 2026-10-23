@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     console.log("🚀 Initialisation du header...");
 
-    const mod = await import("/dissipl-preview/js/modules/header.loader.20260819-eyeicon.js?v=20261022-logo");
+    const mod = await import("/dissipl-preview/js/modules/header.loader.20260819-eyeicon.js?v=20261023b");
 
     if (!mod || typeof mod.initHeader !== "function") {
       console.error("❌ initHeader introuvable dans le loader", mod);

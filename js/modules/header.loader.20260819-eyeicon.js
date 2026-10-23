@@ -13,7 +13,7 @@ import {
 import { attachLogoutEvent, checkAuthStatus } from "./header.nav.js?v=20261022-nav";
 import { blockRedirectIfNotPremium } from "./header.premium.js";
 import { initTokenRefresh } from "./header.refresh.js";
-import { initHeaderFx } from "./header.fx.js?v=20261022b";
+import { initHeaderFx } from "./header.fx.js?v=20261023b";
 
 const HEADER_HTML_VERSION = "20261022-logo"; // change cette valeur quand tu modifies headerTest2.html
 
