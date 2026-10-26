@@ -109,7 +109,7 @@
   "trust.edtech": "Member of EdTech France",
   "video.eyebrow": "Watch",
   "video.title": "DISSIPL in a minute and a half",
-  "video.text": "See how students use the tools in class and at home, and why special education teachers use them every day.",
+  "video.text": "Discover the DISSIPL project in video, from its birth in a special education class to the latest hands-on tools.",
   "video.play": "Play the introduction video",
   "tools.eyebrow": "Our tools",
   "tools.title": "Five hands-on tools, free to start",
@@ -126,9 +126,9 @@
   "story.t2": "For teachers: a resource to project and use in groups",
   "story.t3": "For parents: understand school exercises better",
   "story.cta": "Read about our approach",
-  "story.alt1": "Two children using an abacus in class",
-  "story.alt2": "Wooden Montessori moveable alphabet, red consonants and blue vowels",
-  "story.alt3": "Montessori number cards and golden beads",
+  "story.alt1": "A girl fitting the cylinders of a wooden block",
+  "story.alt2": "Wooden moveable alphabet, red and blue cursive letters",
+  "story.alt3": "Numerals and red counters laid out on a mat",
   "method.eyebrow": "Our method",
   "method.title": "Learning starts with the hands",
   "method.text": "An approach rooted in active learning, with the child at the center.",
@@ -218,5 +218,9 @@
   "founder.badge": "Founder offer",
   "founder.first": "First 100 subscribers",
   "founder.note": "Price guaranteed for as long as your subscription continues.",
-  "founder.left": "Places left:"
+  "founder.left": "Places left:",
+  "m.noaccount": "No account yet?",
+  "m.create": "Create an account",
+  "m.hasaccount": "Already have an account?",
+  "m.signup.plannote": "Create your account in 1 minute, then go straight to secure payment."
 }

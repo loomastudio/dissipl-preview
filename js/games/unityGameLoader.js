@@ -106,8 +106,43 @@ export function initUnityGame(opts) {
       }
     }
 
+    // a phone held sideways is wider than tall: the minimum width above must not push the tool below the screen
+    if (h > availableH && availableH >= 200) {
+      h = availableH;
+      w = Math.floor(h * cfg.aspect);
+    }
+
     container.style.width = w + "px";
     container.style.height = h + "px";
+    updateRotateTip();
+  };
+
+  // On a phone held upright the tool is a thin strip: suggest turning it and using full screen
+  let rotateTip = null;
+  let rotateTipClosed = false;
+  const updateRotateTip = () => {
+    const upright = window.innerWidth < 700 && window.innerHeight > window.innerWidth;
+    if (!upright || rotateTipClosed) {
+      if (rotateTip) rotateTip.style.display = "none";
+      return;
+    }
+    if (!rotateTip) {
+      rotateTip = document.createElement("div");
+      rotateTip.className = "unity-rotate-tip";
+      rotateTip.setAttribute("role", "note");
+      rotateTip.style.cssText = "display:flex;align-items:center;gap:10px;margin:0 auto 10px;flex:0 0 calc(100% - 24px);max-width:520px;padding:10px 12px;border-radius:14px;background:#FFF4D6;border:1px solid #E5B33F;color:#5B420C;font:500 14px/1.35 Lexend,Verdana,sans-serif;text-align:start";
+      rotateTip.innerHTML =
+        '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B98516" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M3 8a9 9 0 0 1 3-4M21 16a9 9 0 0 1-3 4"/></svg>' +
+        '<span style="flex:1">Pour plus de confort, tournez votre téléphone et touchez « Plein écran ».</span>' +
+        '<button type="button" aria-label="Fermer" style="flex:none;border:0;background:none;font-size:20px;line-height:1;color:#8A6A2A;cursor:pointer;padding:4px">×</button>';
+      rotateTip.querySelector("button").addEventListener("click", () => {
+        rotateTipClosed = true;
+        rotateTip.style.display = "none";
+      });
+      container.parentNode.insertBefore(rotateTip, container);
+      container.parentNode.style.flexWrap = "wrap";   // the tip on its own line above the tool
+    }
+    rotateTip.style.display = "flex";
   };
 
   window.addEventListener("resize", sizeUnityToAvailableSpace, { passive: true });
@@ -117,6 +152,9 @@ export function initUnityGame(opts) {
   const footerPH = document.getElementById(cfg.footerPlaceholderId);
   if (headerPH) ro.observe(headerPH);
   if (footerPH) ro.observe(footerPH);
+  // the header is injected later (and is fixed, so the placeholder never resizes): measure again once it is there
+  if (headerPH) new MutationObserver(() => sizeUnityToAvailableSpace()).observe(headerPH, { childList: true, subtree: true });
+  [300, 1000, 2500].forEach((ms) => setTimeout(sizeUnityToAvailableSpace, ms));
 
   sizeUnityToAvailableSpace();
 

@@ -109,7 +109,7 @@
   "trust.edtech": "Miembro de EdTech France",
   "video.eyebrow": "En vídeo",
   "video.title": "DISSIPL en un minuto y medio",
-  "video.text": "Descubre cómo los alumnos usan las herramientas en clase y en casa, y por qué los docentes de educación especial las utilizan cada día.",
+  "video.text": "Descubre en vídeo el proyecto DISSIPL, desde su nacimiento en un aula de educación especial hasta las últimas herramientas manipulativas.",
   "video.play": "Reproducir el vídeo de presentación",
   "tools.eyebrow": "Nuestras herramientas",
   "tools.title": "Cinco herramientas para manipular, gratis para empezar",
@@ -126,9 +126,9 @@
   "story.t2": "Para los docentes: un recurso para proyectar y trabajar en grupo",
   "story.t3": "Para las familias: entender mejor los ejercicios del colegio",
   "story.cta": "Conocer nuestra pedagogía",
-  "story.alt1": "Dos niños usan un ábaco en clase",
-  "story.alt2": "Alfabeto móvil Montessori de madera, consonantes rojas y vocales azules",
-  "story.alt3": "Tarjetas de números Montessori y perlas doradas",
+  "story.alt1": "Una alumna encaja los cilindros de un bloque de madera",
+  "story.alt2": "Alfabeto móvil de madera, letras cursivas rojas y azules",
+  "story.alt3": "Números y fichas rojas sobre una alfombra",
   "method.eyebrow": "Nuestro método",
   "method.title": "Se aprende primero con las manos",
   "method.text": "Un enfoque basado en las pedagogías activas, con el niño en el centro de su aprendizaje.",
@@ -218,5 +218,9 @@
   "founder.badge": "Oferta Fundador",
   "founder.first": "100 primeros suscriptores",
   "founder.note": "Precio garantizado mientras continúe su suscripción.",
-  "founder.left": "Plazas restantes:"
+  "founder.left": "Plazas restantes:",
+  "m.noaccount": "¿Aún no tienes cuenta?",
+  "m.create": "Crear una cuenta",
+  "m.hasaccount": "¿Ya tienes una cuenta?",
+  "m.signup.plannote": "Crea tu cuenta en 1 minuto y pasa directamente al pago seguro."
 }

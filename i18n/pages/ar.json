@@ -1040,7 +1040,6 @@
  "Soustractions": "الطرح",
  "Problèmes": "مسائل",
  "Niveaux : jusqu'à 99, 999, 9 999 puis 999 999.": "المستويات: حتى 99، ثم 999، ثم 9 999، ثم 999 999.",
- "La table de multiplication Montessori : des barrettes de perles de 1 à 10 pour voir que 3 × 4 = 4 + 4 + 4 = 12.": "جدول الضرب في مونتيسوري: أشرطة خرز من 1 إلى 10 لنرى أن 3 × 4 = 4 + 4 + 4 = 12.",
  "Manipulation libre des barrettes de perles": "استكشاف حرّ باليد لأشرطة الخرز",
  "Boutons Compter, Tourner (3 × 4 = 4 × 3) et Cacher le résultat": "أزرار العدّ، والتدوير (3 × 4 = 4 × 3)، وإخفاء النتيجة",
  "Perles rouges classiques ou barrettes en couleurs": "خرز أحمر تقليدي أو أشرطة ملوّنة",
@@ -1115,5 +1114,7 @@
  "Prix garanti tant que votre abonnement continue.": "سعر مضمون ما دام اشتراككم مستمرًّا.",
  "Places restantes :": "الأماكن المتبقية:",
  "Accès illimité aux 5 outils premium": "وصول غير محدود إلى الأدوات الخمس المميّزة",
- "✓ Vous êtes déjà abonné": "✓ أنت مشترك بالفعل"
+ "✓ Vous êtes déjà abonné": "✓ أنت مشترك بالفعل",
+ "La table de multiplication : des barrettes de perles de 1 à 10 pour voir que 3 × 4 = 4 + 4 + 4 = 12.": "جدول الضرب: أشرطة خرز من 1 إلى 10 لنرى أن 3 × 4 = 4 + 4 + 4 = 12.",
+ "Pour plus de confort, tournez votre téléphone et touchez « Plein écran ».": "لمزيد من الراحة، أديروا الهاتف أفقيًا والمسوا «ملء الشاشة»."
 }

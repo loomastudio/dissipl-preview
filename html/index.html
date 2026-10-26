@@ -68,8 +68,9 @@ html[lang="ar"] .eyebrow, html[lang="hi"] .eyebrow, html[lang="zh"] .eyebrow { l
 .section-head { display: grid; gap: 14px; max-width: 680px; margin-bottom: 48px; }
 .section-head h2 { font-size: clamp(32px, 4.2vw, 46px); }
 .section-head p { color: var(--ink-soft); font-size: 18px; }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 2000; }
-.skip:focus { left: 12px; color: #fff; }
+/* hidden above the page, not to the side: in Arabic (right to left) a link parked at the left made the whole page scroll sideways */
+.skip { position: absolute; inset-inline-start: 12px; top: -200px; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 2000; }
+.skip:focus { top: 8px; color: #fff; }
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 16px; font-family: var(--body); font-weight: 500; font-size: 17px; line-height: 1.2; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .35s var(--spring), box-shadow .35s var(--ease), background .25s, color .25s; }
@@ -509,10 +510,10 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
     <div class="video-copy">
       <span class="eyebrow reveal" data-i18n="video.eyebrow">En vidéo</span>
       <h2 id="video-title" class="reveal" data-i18n="video.title">DISSIPL en une minute et demie</h2>
-      <p class="reveal" data-i18n="video.text">Découvrez comment les élèves manipulent les outils en classe et à la maison, et pourquoi les enseignants spécialisés les utilisent chaque jour.</p>
+      <p class="reveal" data-i18n="video.text">Découvrez en vidéo le projet DISSIPL, de sa naissance dans une classe spécialisée jusqu'aux derniers outils de manipulation.</p>
     </div>
     <div class="player reveal" id="player">
-      <video id="intro" src="/dissipl-preview/assets/videos/dissipl-intro.mp4#t=15" preload="metadata" playsinline></video>
+      <video id="intro" src="/dissipl-preview/assets/videos/dissipl-intro.mp4#t=3" preload="metadata" playsinline></video>
       <button class="vplay" type="button" id="play" aria-label="Lire la vidéo de présentation" data-i18n-attr="aria-label:video.play">
         <span class="vplay-ring" aria-hidden="true"></span>
         <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" fill="#fff"/></svg>
@@ -613,9 +614,9 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
 <section class="section" aria-labelledby="story-title">
   <div class="wrap story-grid">
     <div class="collage" id="collage">
-      <figure class="p1" data-speed="-0.06"><img src="/dissipl-preview/assets/images/Emplacement_1.jpeg" alt="Deux enfants manipulent un boulier en classe" data-i18n-attr="alt:story.alt1" loading="lazy"></figure>
-      <figure class="p2" data-speed="0.08"><img src="/dissipl-preview/assets/images/alphabet.jpeg" alt="Alphabet mobile Montessori en bois, consonnes rouges et voyelles bleues" data-i18n-attr="alt:story.alt2" loading="lazy"></figure>
-      <figure class="p3" data-speed="0.03"><img src="/dissipl-preview/assets/images/number_cards.jpeg" alt="Cartes des nombres Montessori et perles dorées" data-i18n-attr="alt:story.alt3" loading="lazy"></figure>
+      <figure class="p1" data-speed="-0.06"><img src="/dissipl-preview/assets/images/story-cylinders.jpg" alt="Une élève encastre les cylindres d'un bloc en bois" data-i18n-attr="alt:story.alt1" loading="lazy" style="object-position: 62% center"></figure>
+      <figure class="p2" data-speed="0.08"><img src="/dissipl-preview/assets/images/story-alphabet.jpg" alt="Alphabet mobile en bois, lettres cursives rouges et bleues" data-i18n-attr="alt:story.alt2" loading="lazy"></figure>
+      <figure class="p3" data-speed="0.03"><img src="/dissipl-preview/assets/images/story-numbers.jpg" alt="Chiffres et jetons rouges posés sur un tapis" data-i18n-attr="alt:story.alt3" loading="lazy"></figure>
     </div>
     <div class="story-copy">
       <span class="eyebrow reveal" data-i18n="story.eyebrow">Né dans une classe</span>
@@ -665,7 +666,7 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.parent.f2">Sans engagement, résiliable à tout moment</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B9257" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.parent.f3">Support prioritaire</span></li>
         </ul>
-        <a class="btn btn-line" href="/dissipl-preview/price" data-i18n="plans.parent.cta">Choisir l'offre Parent</a>
+        <a class="btn btn-line" href="/dissipl-preview/price" data-plan="parent" data-i18n="plans.parent.cta">Choisir l'offre Parent</a>
       </article>
       <article class="plan pop reveal" style="--i: 1">
         <span class="ribbon" data-i18n="plans.popular">Populaire</span>
@@ -678,7 +679,7 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.teacher.f2">Jusqu'à 30 comptes élèves</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D3343A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="plans.teacher.f3">Tableaux de bord avancés</span></li>
         </ul>
-        <a class="btn btn-red" href="/dissipl-preview/price" data-i18n="plans.teacher.cta">Choisir l'offre Enseignant</a>
+        <a class="btn btn-red" href="/dissipl-preview/price" data-plan="teacher" data-i18n="plans.teacher.cta">Choisir l'offre Enseignant</a>
       </article>
       <article class="plan reveal" style="--i: 2">
         <div class="who"><span class="ico" style="background: var(--tint-blue)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2C68BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span><h3 data-i18n="plans.school.title">Établissements</h3></div>
@@ -769,11 +770,30 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="module" src="/dissipl-preview/js/core/header.js?v=20261023f"></script>
+<script type="module" src="/dissipl-preview/js/core/header.js?v=20261026c"></script>
 
 <script>
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Plan buttons: not logged in -> the sign-up form opens here; logged in -> straight to payment */
+  var loggedIn = null;
+  fetch('/api/session/status', { credentials: 'include' })
+    .then(function (r) { return r.json(); })
+    .then(function (d) { loggedIn = !!(d && d.authenticated && d.user); })
+    .catch(function () {});
+  document.querySelectorAll('.plan a[data-plan]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var plan = a.getAttribute('data-plan');
+      if (loggedIn === false && window.dissiplStartSubscription) {
+        e.preventDefault();
+        window.dissiplStartSubscription(plan, 'monthly');
+      } else if (loggedIn) {
+        try { sessionStorage.setItem('dissipl_pending_plan', JSON.stringify({ plan: plan, billing: 'monthly' })); } catch (err) {}
+      }
+      // otherwise (session unknown yet): the link opens the prices page as before
+    });
+  });
 
   /* Translation helper: page script runs before the i18n module, so look it up at call time */
   function T(key, fallback, vars) {

@@ -109,7 +109,7 @@
   "trust.edtech": "EdTech France 成员",
   "video.eyebrow": "看视频",
   "video.title": "一分半钟了解 DISSIPL",
-  "video.text": "看看学生在课堂上和家里怎样使用这些工具，以及特殊教育教师为什么每天都在用。",
+  "video.text": "通过视频了解 DISSIPL 项目：从它在一间特殊教育教室里诞生，到最新的动手操作工具。",
   "video.play": "播放介绍视频",
   "tools.eyebrow": "我们的工具",
   "tools.title": "五个动手工具，免费开始",
@@ -126,9 +126,9 @@
   "story.t2": "对教师：可以投影、适合小组使用的教学资源",
   "story.t3": "对家长：更好地理解学校的练习",
   "story.cta": "了解我们的教学理念",
-  "story.alt1": "两个孩子在课堂上使用计数器",
-  "story.alt2": "蒙台梭利木制活动字母，红色辅音和蓝色元音",
-  "story.alt3": "蒙台梭利数字卡片和金色珠子",
+  "story.alt1": "一个女孩把圆柱体放进木块里",
+  "story.alt2": "木制活动字母，红色和蓝色的手写体字母",
+  "story.alt3": "地毯上的数字和红色圆片",
   "method.eyebrow": "我们的方法",
   "method.title": "学习从双手开始",
   "method.text": "源自主动学习理念的方法，以孩子为中心。",
@@ -218,5 +218,9 @@
   "founder.badge": "创始会员优惠",
   "founder.first": "前 100 位订阅者",
   "founder.note": "只要订阅不中断，价格始终不变。",
-  "founder.left": "剩余名额："
+  "founder.left": "剩余名额：",
+  "m.noaccount": "还没有账户？",
+  "m.create": "创建账户",
+  "m.hasaccount": "已有账户？",
+  "m.signup.plannote": "1 分钟创建账户，然后直接进入安全支付。"
 }

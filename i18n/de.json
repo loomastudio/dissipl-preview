@@ -109,7 +109,7 @@
   "trust.edtech": "Mitglied von EdTech France",
   "video.eyebrow": "Im Video",
   "video.title": "DISSIPL in anderthalb Minuten",
-  "video.text": "Sehen Sie, wie Kinder die Werkzeuge in der Schule und zu Hause nutzen und warum Förderlehrkräfte jeden Tag damit arbeiten.",
+  "video.text": "Entdecken Sie das Projekt DISSIPL im Video – von seinen Anfängen in einer Förderklasse bis zu den neuesten Werkzeugen zum Anfassen.",
   "video.play": "Vorstellungsvideo abspielen",
   "tools.eyebrow": "Unsere Werkzeuge",
   "tools.title": "Fünf Werkzeuge zum Anfassen, kostenlos zum Einstieg",
@@ -126,9 +126,9 @@
   "story.t2": "Für Lehrkräfte: zum Projizieren und für die Gruppenarbeit",
   "story.t3": "Für Eltern: die Hausaufgaben besser verstehen",
   "story.cta": "Mehr über unseren Ansatz",
-  "story.alt1": "Zwei Kinder arbeiten im Unterricht mit einem Abakus",
-  "story.alt2": "Bewegliches Montessori-Alphabet aus Holz, rote Konsonanten und blaue Vokale",
-  "story.alt3": "Montessori-Zahlenkarten und goldene Perlen",
+  "story.alt1": "Ein Mädchen setzt die Zylinder eines Holzblocks ein",
+  "story.alt2": "Bewegliches Holzalphabet, rote und blaue Schreibschriftbuchstaben",
+  "story.alt3": "Ziffern und rote Plättchen auf einem Teppich",
   "method.eyebrow": "Unsere Methode",
   "method.title": "Lernen beginnt mit den Händen",
   "method.text": "Ein Ansatz aus der aktiven Pädagogik, bei dem das Kind im Mittelpunkt steht.",
@@ -218,5 +218,9 @@
   "founder.badge": "Gründerangebot",
   "founder.first": "Die ersten 100 Abonnenten",
   "founder.note": "Garantierter Preis, solange Ihr Abo läuft.",
-  "founder.left": "Freie Plätze:"
+  "founder.left": "Freie Plätze:",
+  "m.noaccount": "Noch kein Konto?",
+  "m.create": "Konto erstellen",
+  "m.hasaccount": "Schon ein Konto?",
+  "m.signup.plannote": "Erstellen Sie Ihr Konto in 1 Minute, danach geht es direkt zur sicheren Zahlung."
 }

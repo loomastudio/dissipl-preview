@@ -302,7 +302,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type="module" src="/dissipl-preview/js/core/header.js?v=20261023f"></script>
+    <script type="module" src="/dissipl-preview/js/core/header.js?v=20261026c"></script>
     <script src="/dissipl-preview/js/pages/interactEffectsUI.js"></script>
 
     <!-- Pricing Toggle & Payment Logic -->
@@ -356,6 +356,16 @@
             if (window.DISSIPL_PREVIEW) showFounder({ active: true, remaining: 100 });
           });
 
+        const PENDING_PLAN = 'dissipl_pending_plan';
+        function takePendingPlan() {
+          try {
+            const raw = sessionStorage.getItem(PENDING_PLAN);
+            sessionStorage.removeItem(PENDING_PLAN);
+            const p = raw ? JSON.parse(raw) : null;
+            return p && (p.plan === 'parent' || p.plan === 'teacher') ? p : null;
+          } catch (err) { return null; }
+        }
+
         // Fetch session status and update buttons accordingly
         fetch('/api/session/status', {
           credentials: 'include'
@@ -373,11 +383,18 @@
               const message = btn.parentElement.querySelector('.subscribed-message');
               if (message) message.style.display = 'none';
 
-              // Add click handler - show registration alert
+              // Not logged in: the sign-up form opens at once; after sign-up the account is
+              // logged in and the page comes back here to start the payment of this plan
               btn.onclick = function(e) {
                 e.preventDefault();
-                alert("Veuillez vous inscrire pour vous abonner.");
-                window.location.href = '/dissipl-preview/?login_required=true&t=' + Date.now();
+                const plan = this.getAttribute('data-plan');
+                const billing = this.getAttribute('data-billing');
+                if (window.dissiplStartSubscription) {
+                  window.dissiplStartSubscription(plan, billing);
+                } else {
+                  try { sessionStorage.setItem(PENDING_PLAN, JSON.stringify({ plan, billing })); } catch (err) {}
+                  window.location.href = '/dissipl-preview/?login_required=true&t=' + Date.now();
+                }
               };
             });
             return;
@@ -433,6 +450,7 @@
               }
             }
 
+            takePendingPlan();   // already subscribed: nothing to continue
             return; // Exit early - Parent/Teacher packages are disabled
           }
 
@@ -509,6 +527,16 @@
                 }
               };
             });
+
+          // Back from the login window: continue with the plan chosen before logging in
+          const pending = takePendingPlan();
+          if (pending) {
+            const btn = document.querySelector('.subscribe-btn[data-plan="' + pending.plan + '"]');
+            if (btn && !btn.disabled) {
+              if (pending.billing) btn.setAttribute('data-billing', pending.billing);
+              btn.click();
+            }
+          }
         })
         .catch(err => {
           console.error('Error fetching session status:', err);

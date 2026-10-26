@@ -3,8 +3,44 @@
  * Rôle : gère l’inscription, la connexion et la récupération de mot de passe.
  */
 
+// === ABONNEMENT : le chemin le plus court ===
+// "S'abonner" (prices page, homepage plans) opens the sign-up form at once; the account is
+// logged in right after sign-up and the chosen plan goes straight on to payment.
+const PENDING_PLAN = "dissipl_pending_plan";
+const PLAN_ROLE = { parent: "user", teacher: "professeur" };
+
+function rememberPlan(plan, billing) {
+  try { sessionStorage.setItem(PENDING_PLAN, JSON.stringify({ plan, billing: billing || "monthly" })); } catch (e) {}
+}
+
+function pendingPlan() {
+  try { return JSON.parse(sessionStorage.getItem(PENDING_PLAN) || "null"); } catch (e) { return null; }
+}
+
+// once logged in: the prices page starts the payment of the remembered plan
+function continueAfterAuth() {
+  const onPrice = /\/price(\.html)?$/.test(location.pathname);
+  if (pendingPlan() && !onPrice) window.location.href = "/dissipl-preview/price";
+  else window.location.reload();
+}
+
+export function startSubscription(plan, billing) {
+  rememberPlan(plan, billing);
+  const role = document.getElementById("signupRole");
+  if (role && PLAN_ROLE[plan]) role.value = PLAN_ROLE[plan];
+  const note = document.getElementById("signupPlanNote");
+  if (note) note.style.display = "block";
+  if (window.jQuery && document.getElementById("signupModal")) {
+    const open = document.querySelector(".modal.show");
+    switchModal(open ? "#" + open.id : null, "#signupModal");
+  } else {
+    window.location.href = "/dissipl-preview/price";
+  }
+}
+
 // === INSCRIPTION ===
 export function setupSignupForm() {
+  window.dissiplStartSubscription = startSubscription;
   const form = document.getElementById("signupForm");
   if (!form) return;
 
@@ -59,7 +95,22 @@ export function setupSignupForm() {
       if (!res.ok)
         throw new Error(data.error || "Erreur lors de l'inscription.");
 
-      alert("✅ Inscription réussie ! Vous pouvez maintenant vous connecter.");
+      // log the new account in at once (no second form to fill in)
+      const login = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ identifiant: email, password }),
+      }).catch(() => null);
+      if (login && login.ok) {
+        if (btn) btn.innerText = "Connexion...";
+        continueAfterAuth();
+        return;
+      }
+      // fallback: the login window, email already filled in
+      const loginId = document.getElementById("loginIdentifiant");
+      if (loginId) loginId.value = email;
+      switchModal("#signupModal", "#loginModal");
     } catch (err) {
       showError(errorBox, err.message || "Erreur inconnue.");
     } finally {
@@ -73,6 +124,15 @@ export function setupSignupForm() {
 
 // === CONNEXION ===
 export function setupLoginForm() {
+  // "Créer un compte" / "Connexion" links that swap the login and sign-up windows
+  document.querySelectorAll("[data-auth-switch]").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const from = link.closest(".modal");
+      switchModal(from ? "#" + from.id : null, link.getAttribute("data-auth-switch"));
+    });
+  });
+
   const form = document.getElementById("loginForm");
   if (!form) return;
 
@@ -102,7 +162,7 @@ export function setupLoginForm() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur inconnue.");
 
-      window.location.reload();
+      continueAfterAuth();
     } catch (err) {
       showError(errorBox, err.message || "Erreur lors de la connexion.");
     }
@@ -156,6 +216,18 @@ export function setupForgotPasswordForm() {
       showError(errorBox, "❌ Une erreur est survenue.");
     }
   });
+}
+
+// closes one window, then opens the other (Bootstrap needs the first one fully closed)
+function switchModal(fromSel, toSel) {
+  if (!window.jQuery) return;
+  const from = fromSel ? $(fromSel) : null;
+  if (from && from.hasClass("show")) {
+    from.one("hidden.bs.modal", () => $(toSel).modal("show"));
+    from.modal("hide");
+  } else {
+    $(toSel).modal("show");
+  }
 }
 
 function showError(el, msg) {

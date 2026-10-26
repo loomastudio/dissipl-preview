@@ -151,6 +151,9 @@ body.dx-lock { overflow: hidden; }
 #signupModal .modal-title, #loginModal .modal-title, #studentLoginModal .modal-title, #forgotPasswordModal .modal-title, #premiumRequiredModal .modal-title { font-family: "Fredoka", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans SC", sans-serif; font-weight: 600; font-size: 26px; color: #1D2245; }
 #signupModal .modal-body, #loginModal .modal-body, #studentLoginModal .modal-body, #forgotPasswordModal .modal-body, #premiumRequiredModal .modal-body { padding: 10px 26px 24px; }
 #signupModal .form-control, #loginModal .form-control, #studentLoginModal .form-control, #forgotPasswordModal .form-control { height: 48px; border-radius: 14px; border-color: #DDE0EC; }
+.plan-note { margin: 0 0 14px; padding: 10px 14px; border-radius: 14px; background: #FFF4D6; border: 1px solid #E5B33F; color: #6B4E12; font-size: 14px; }
+.auth-switch { margin: 14px 0 0; text-align: center; font-size: 15px; color: #5A5F7A; }
+.auth-switch a { color: #D3343A; font-weight: 600; text-decoration: underline; }
 #signupModal .btn-primary, #loginModal .btn-primary, #studentLoginModal .btn-primary, #forgotPasswordModal .btn-primary, #premiumRequiredModal .btn-primary { background: #D3343A; border-color: #D3343A; border-radius: 14px; min-height: 48px; font-weight: 500; }
 .modal.fade .modal-dialog { transition: transform .45s cubic-bezier(.34, 1.56, .64, 1), opacity .3s; transform: translateY(30px) scale(.96); }
 .modal.show .modal-dialog { transform: none; }
@@ -282,6 +285,7 @@ body.dx-lock { overflow: hidden; }
         <button type="button" class="close" data-dismiss="modal" aria-label="Fermer" data-i18n-attr="aria-label:m.close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
+        <p id="signupPlanNote" class="plan-note" style="display:none" data-i18n="m.signup.plannote">Créez votre compte en 1 minute : vous passez ensuite directement au paiement sécurisé.</p>
         <form id="signupForm">
           <div class="form-group">
             <label for="signupEmail" data-i18n="m.email">Adresse email</label>
@@ -323,6 +327,7 @@ body.dx-lock { overflow: hidden; }
           <button type="submit" class="btn btn-primary btn-block mt-3" data-i18n="m.signup.submit">S'inscrire</button>
         </form>
         <div id="signupError" class="alert alert-danger mt-2" style="display:none;"></div>
+        <p class="auth-switch"><span data-i18n="m.hasaccount">Déjà un compte ?</span> <a href="javascript:void(0)" data-auth-switch="#loginModal" data-i18n="m.login.title">Connexion</a></p>
       </div>
     </div>
   </div>
@@ -355,8 +360,9 @@ body.dx-lock { overflow: hidden; }
           <button type="submit" class="btn btn-primary btn-block" data-i18n="m.login.submit">Se connecter</button>
         </form>
       </div>
-      <div class="modal-footer" style="border:0; justify-content:center;">
+      <div class="modal-footer" style="border:0; justify-content:center; flex-direction:column; gap:2px;">
         <button type="button" id="forgotPasswordButton" class="btn btn-link" data-i18n="m.forgot">Mot de passe oublié ?</button>
+        <p class="auth-switch"><span data-i18n="m.noaccount">Pas encore de compte ?</span> <a href="javascript:void(0)" data-auth-switch="#signupModal" data-i18n="m.create">Créer un compte</a></p>
       </div>
     </div>
   </div>
