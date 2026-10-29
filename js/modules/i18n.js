@@ -8,7 +8,8 @@
  *     data-i18n="cle"               → remplace le texte
  *     data-i18n-html="cle"          → remplace le HTML (textes de confiance uniquement)
  *     data-i18n-attr="placeholder:cle;aria-label:cle2"
- * - Le choix est mémorisé (localStorage) ; sinon la langue du navigateur.
+ * - Le choix est mémorisé (localStorage) ; sinon la langue du navigateur (sauf pour les robots des
+ *   moteurs de recherche, qui lisent toujours le site en français).
  * - Événement "dissipl:lang" sur window après chaque changement.
  *
  * Pages sans balisage : /i18n/pages/<code>.json associe chaque phrase française du site
@@ -17,7 +18,7 @@
  * Ne jamais traduire un élément : attribut translate="no".
  */
 
-const I18N_VERSION = "20261026c"; // change cette valeur quand un fichier /i18n/*.json change
+const I18N_VERSION = "20261029b"; // change cette valeur quand un fichier /i18n/*.json change
 const STORE_KEY = "dissipl-lang";
 
 export const LANGS = [
@@ -57,9 +58,14 @@ function storedLang() {
   try { return localStorage.getItem(STORE_KEY); } catch { return null; }
 }
 
+// Search engines and link previews read the site with an English browser: they must see the French site
+// (the reference version), not the English translation chosen from their browser language
+const ROBOT = /bot\b|bot\/|crawl|spider|slurp|google-inspectiontool|googleother|apis-google|mediapartners|lighthouse|facebookexternalhit|whatsapp|telegram|discord|embedly|bingpreview/i;
+
 function detectLang() {
   const fromUrl = new URLSearchParams(location.search).get("lang");
-  const candidates = [fromUrl, storedLang(), ...(navigator.languages || [navigator.language])];
+  const browser = ROBOT.test(navigator.userAgent || "") ? [] : (navigator.languages || [navigator.language]);
+  const candidates = [fromUrl, storedLang(), ...browser];
   for (const c of candidates) {
     if (!c) continue;
     const code = c.toLowerCase().slice(0, 2);

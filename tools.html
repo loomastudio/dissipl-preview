@@ -3,8 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Outils numériques - DISSIPL</title>
-<meta name="description" content="DISSIPL - Découvrez nos outils numériques pédagogiques pour l'apprentissage.">
+<title>Outils de manipulation numérique : boulier, alphabet mobile, fractions - DISSIPL</title>
+<!-- seo -->
+<meta name="description" content="Les 6 outils de manipulation numérique DISSIPL : boulier, Alpha'Mobile, banque de perles, Multiplix, cercles de fractions et symboles de grammaire. Gratuits pour découvrir, en 9 langues.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.dissipl.fr/tools">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DISSIPL">
+<meta property="og:url" content="https://www.dissipl.fr/tools">
+<meta property="og:title" content="Outils de manipulation numérique : boulier, alphabet mobile, fractions - DISSIPL">
+<meta property="og:description" content="Les 6 outils de manipulation numérique DISSIPL : boulier, Alpha'Mobile, banque de perles, Multiplix, cercles de fractions et symboles de grammaire. Gratuits pour découvrir, en 9 langues.">
+<meta property="og:image" content="https://www.dissipl.fr/assets/images/share-dissipl.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Outils de manipulation numérique : boulier, alphabet mobile, fractions - DISSIPL">
+<meta name="twitter:description" content="Les 6 outils de manipulation numérique DISSIPL : boulier, Alpha'Mobile, banque de perles, Multiplix, cercles de fractions et symboles de grammaire. Gratuits pour découvrir, en 9 langues.">
+<meta name="twitter:image" content="https://www.dissipl.fr/assets/images/share-dissipl.jpg">
+<!-- /seo -->
 <link rel="icon" type="image/png" href="/dissipl-preview/assets/images/favicon-32.png">
 <link rel="apple-touch-icon" href="/dissipl-preview/assets/images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,10 +75,9 @@ a:hover { text-decoration: none; }
 /* Tool cards */
 .grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px; }
 .tool { grid-column: span 2; background: #fff; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; transition: transform .45s var(--spring), box-shadow .4s var(--ease); }
-.tool:nth-child(4) { grid-column: 2 / span 2; }
 .tool:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(29, 34, 69, .13); }
 .thumb { position: relative; aspect-ratio: 16 / 9; background: var(--t); overflow: hidden; }
-.thumb video { width: 100%; height: 100%; display: block; object-fit: cover; }
+.thumb video, .thumb img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .thumb .free { position: absolute; inset-inline-start: 12px; top: 12px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: #fff; color: var(--ink); box-shadow: 0 4px 12px rgba(29, 34, 69, .12); }
 .thumb .play-hint { position: absolute; inset-inline-end: 12px; bottom: 12px; width: 38px; height: 38px; border-radius: 50%; background: rgba(255, 255, 255, .92); display: grid; place-items: center; transition: opacity .3s, transform .4s var(--spring); }
 .tool.playing .play-hint { opacity: 0; transform: scale(.6); }
@@ -89,8 +105,7 @@ a:hover { text-decoration: none; }
 
 @media (max-width: 980px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .tool, .tool:nth-child(4) { grid-column: auto; }
-  .tool:nth-child(5) { grid-column: 1 / -1; }
+  .tool { grid-column: auto; }
   .free-box { grid-template-columns: minmax(0, 1fr); padding: 36px 28px; }
 }
 @media (max-width: 620px) {
@@ -179,6 +194,18 @@ a:hover { text-decoration: none; }
             </div>
           </div>
         </article>
+
+        <article class="tool reveal" style="--i: 2; --c: #1D2245; --t: #E9EAF3">
+          <div class="thumb"><img src="/dissipl-preview/assets/images/gramm-mobile-free.jpg" alt="Gramm'Mobile : étiquettes posées sous les symboles de grammaire" loading="lazy" width="1280" height="720"><span class="free">Gratuit</span></div>
+          <div class="body">
+            <h2><i></i>Gramm'Mobile</h2>
+            <p>Les symboles Montessori de grammaire : découvrir les natures de mots, poser les étiquettes sur le nom, le verbe, l'adjectif… avec ou sans les symboles.</p>
+            <div class="links">
+              <a class="btn red" href="/dissipl-preview/gramm-mobile-free"><span>Essayer gratuitement</span> <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn line" href="/dissipl-preview/premium-tools#gramm">Version Premium</a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -223,7 +250,7 @@ a:hover { text-decoration: none; }
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="module" src="/dissipl-preview/js/core/header.js?v=20261026c"></script>
+<script type="module" src="/dissipl-preview/js/core/header.js?v=20261029b"></script>
 
 <script>
 (function () {
