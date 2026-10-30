@@ -9,13 +9,13 @@ import {
   setupSignupForm,
   setupLoginForm,
   setupForgotPasswordForm,
-} from "./header.auth.js?v=20261030a";
+} from "./header.auth.js?v=20261030b";
 import { attachLogoutEvent, checkAuthStatus } from "./header.nav.js?v=20261022-nav";
 import { blockRedirectIfNotPremium } from "./header.premium.js";
 import { initTokenRefresh } from "./header.refresh.js";
 import { initHeaderFx } from "./header.fx.js?v=20261023b";
 
-const HEADER_HTML_VERSION = "20261029-gramm"; // change cette valeur quand tu modifies headerTest2.html
+const HEADER_HTML_VERSION = "20261030-grammaire"; // change cette valeur quand tu modifies headerTest2.html
 
 // Password visibility toggle function (global scope)
 window.togglePasswordVisibility = function(fieldId) {
