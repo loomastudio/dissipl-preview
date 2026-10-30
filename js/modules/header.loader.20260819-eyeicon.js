@@ -9,7 +9,7 @@ import {
   setupSignupForm,
   setupLoginForm,
   setupForgotPasswordForm,
-} from "./header.auth.js?v=20261030b";
+} from "./header.auth.js?v=20261030c";
 import { attachLogoutEvent, checkAuthStatus } from "./header.nav.js?v=20261022-nav";
 import { blockRedirectIfNotPremium } from "./header.premium.js";
 import { initTokenRefresh } from "./header.refresh.js";
