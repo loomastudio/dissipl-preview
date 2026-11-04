@@ -18,7 +18,7 @@
  * Ne jamais traduire un élément : attribut translate="no".
  */
 
-const I18N_VERSION = "20261031a"; // change cette valeur quand un fichier /i18n/*.json change
+const I18N_VERSION = "20261104-geo"; // change cette valeur quand un fichier /i18n/*.json change
 const STORE_KEY = "dissipl-lang";
 
 export const LANGS = [
@@ -63,15 +63,18 @@ function storedLang() {
 const ROBOT = /bot\b|bot\/|crawl|spider|slurp|google-inspectiontool|googleother|apis-google|mediapartners|lighthouse|facebookexternalhit|whatsapp|telegram|discord|embedly|bingpreview/i;
 
 function detectLang() {
+  // dissipl.com is the international address: it opens in English unless the visitor chose another
+  // language (language menu or ?lang=); dissipl.fr follows the browser's language, French by default
+  const international = /(^|\.)dissipl\.com$/i.test(location.hostname);
   const fromUrl = new URLSearchParams(location.search).get("lang");
-  const browser = ROBOT.test(navigator.userAgent || "") ? [] : (navigator.languages || [navigator.language]);
+  const browser = international || ROBOT.test(navigator.userAgent || "") ? [] : (navigator.languages || [navigator.language]);
   const candidates = [fromUrl, storedLang(), ...browser];
   for (const c of candidates) {
     if (!c) continue;
     const code = c.toLowerCase().slice(0, 2);
     if (LANGS.some((l) => l.code === code)) return code;
   }
-  return "fr";
+  return international ? "en" : "fr";
 }
 
 async function loadDict(code) {
