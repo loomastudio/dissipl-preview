@@ -15,7 +15,7 @@ import { blockRedirectIfNotPremium } from "./header.premium.js";
 import { initTokenRefresh } from "./header.refresh.js";
 import { initHeaderFx } from "./header.fx.js?v=20261023b";
 
-const HEADER_HTML_VERSION = "20261104-geo"; // change cette valeur quand tu modifies headerTest2.html
+const HEADER_HTML_VERSION = "20261105-oceans"; // change cette valeur quand tu modifies headerTest2.html
 
 // Password visibility toggle function (global scope)
 window.togglePasswordVisibility = function(fieldId) {
