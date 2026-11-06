@@ -220,11 +220,13 @@
   "footer.privacy": "Privacy",
   "footer.cgu": "Terms of use",
   "founder.badge": "Founder offer",
-  "founder.first": "First 100 subscribers",
   "founder.note": "Price guaranteed for as long as your subscription continues.",
-  "founder.left": "Places left:",
   "m.noaccount": "No account yet?",
   "m.create": "Create an account",
   "m.hasaccount": "Already have an account?",
-  "m.signup.plannote": "Create your account in 1 minute, then go straight to secure payment."
+  "m.signup.plannote": "Create your account in 1 minute, then go straight to secure payment.",
+  "founder.limited": "Limited-time offer",
+  "founder.before": "Only",
+  "founder.after": "days left before the offer ends",
+  "founder.lastDay": "Last day of the offer!"
 }

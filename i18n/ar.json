@@ -220,11 +220,13 @@
   "footer.privacy": "الخصوصية",
   "footer.cgu": "شروط الاستخدام",
   "founder.badge": "عرض المؤسِّسين",
-  "founder.first": "أول 100 مشترك",
   "founder.note": "سعر مضمون ما دام اشتراككم مستمرًّا.",
-  "founder.left": "الأماكن المتبقية:",
   "m.noaccount": "ليس لديك حساب بعد؟",
   "m.create": "إنشاء حساب",
   "m.hasaccount": "لديك حساب بالفعل؟",
-  "m.signup.plannote": "أنشئ حسابك في دقيقة واحدة، ثم انتقل مباشرة إلى الدفع الآمن."
+  "m.signup.plannote": "أنشئ حسابك في دقيقة واحدة، ثم انتقل مباشرة إلى الدفع الآمن.",
+  "founder.limited": "عرض لفترة محدودة",
+  "founder.before": "باقي",
+  "founder.after": "أيام على انتهاء العرض",
+  "founder.lastDay": "اليوم الأخير من العرض!"
 }

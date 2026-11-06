@@ -220,11 +220,13 @@
   "footer.privacy": "Datenschutz",
   "footer.cgu": "Nutzungsbedingungen",
   "founder.badge": "Gründerangebot",
-  "founder.first": "Die ersten 100 Abonnenten",
   "founder.note": "Garantierter Preis, solange Ihr Abo läuft.",
-  "founder.left": "Freie Plätze:",
   "m.noaccount": "Noch kein Konto?",
   "m.create": "Konto erstellen",
   "m.hasaccount": "Schon ein Konto?",
-  "m.signup.plannote": "Erstellen Sie Ihr Konto in 1 Minute, danach geht es direkt zur sicheren Zahlung."
+  "m.signup.plannote": "Erstellen Sie Ihr Konto in 1 Minute, danach geht es direkt zur sicheren Zahlung.",
+  "founder.limited": "Zeitlich begrenztes Angebot",
+  "founder.before": "Nur noch",
+  "founder.after": "Tage bis zum Ende des Angebots",
+  "founder.lastDay": "Letzter Tag des Angebots!"
 }

@@ -220,11 +220,13 @@
   "footer.privacy": "隐私",
   "footer.cgu": "使用条款",
   "founder.badge": "创始会员优惠",
-  "founder.first": "前 100 位订阅者",
   "founder.note": "只要订阅不中断，价格始终不变。",
-  "founder.left": "剩余名额：",
   "m.noaccount": "还没有账户？",
   "m.create": "创建账户",
   "m.hasaccount": "已有账户？",
-  "m.signup.plannote": "1 分钟创建账户，然后直接进入安全支付。"
+  "m.signup.plannote": "1 分钟创建账户，然后直接进入安全支付。",
+  "founder.limited": "限时优惠",
+  "founder.before": "距优惠结束仅剩",
+  "founder.after": "天",
+  "founder.lastDay": "优惠最后一天！"
 }

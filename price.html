@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tarifs et abonnements : Parent, Enseignant, Établissement - DISSIPL</title>
 <!-- seo -->
-<meta name="description" content="Abonnements DISSIPL : formule Parent 5,99 €/mois, formule Enseignant 9,99 €/mois, établissements sur devis. Offre Fondateur pour les 100 premiers abonnés.">
+<meta name="description" content="Abonnements DISSIPL : formule Parent 5,99 €/mois, formule Enseignant 9,99 €/mois, établissements sur devis.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.dissipl.fr/price">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DISSIPL">
 <meta property="og:url" content="https://www.dissipl.fr/price">
 <meta property="og:title" content="Tarifs et abonnements : Parent, Enseignant, Établissement - DISSIPL">
-<meta property="og:description" content="Abonnements DISSIPL : formule Parent 5,99 €/mois, formule Enseignant 9,99 €/mois, établissements sur devis. Offre Fondateur pour les 100 premiers abonnés.">
+<meta property="og:description" content="Abonnements DISSIPL : formule Parent 5,99 €/mois, formule Enseignant 9,99 €/mois, établissements sur devis.">
 <meta property="og:image" content="https://www.dissipl.fr/assets/images/share-dissipl.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tarifs et abonnements : Parent, Enseignant, Établissement - DISSIPL">
-<meta name="twitter:description" content="Abonnements DISSIPL : formule Parent 5,99 €/mois, formule Enseignant 9,99 €/mois, établissements sur devis. Offre Fondateur pour les 100 premiers abonnés.">
+<meta name="twitter:description" content="Abonnements DISSIPL : formule Parent 5,99 €/mois, formule Enseignant 9,99 €/mois, établissements sur devis.">
 <meta name="twitter:image" content="https://www.dissipl.fr/assets/images/share-dissipl.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DISSIPL Premium","applicationCategory":"EducationalApplication","operatingSystem":"Web (navigateur)","offers":[{"@type":"Offer","name":"Abonnement Parent","price":"5.99","priceCurrency":"EUR","category":"subscription"},{"@type":"Offer","name":"Abonnement Enseignant","price":"9.99","priceCurrency":"EUR","category":"subscription"}]}</script>
 <!-- /seo -->
@@ -139,7 +139,7 @@
         opacity: 0.6;
         cursor: not-allowed;
       }
-      /* Founder offer (first 100 monthly subscribers) */
+      /* Founder offer (monthly subscriptions, until its end date) */
       .founder-only { display: none !important; }
       .founder-on .founder-only { display: block !important; }
       .founder-on .founder-only.inline { display: inline !important; }
@@ -169,6 +169,8 @@
         background: #FFF7E0; border: 1px dashed #E5B33F; color: #6B4E12; font-size: 13.5px; text-align: center;
       }
       .founder-note .left { display: block; margin-top: 4px; font-weight: 700; color: #B5262C; }
+      .founder-days .days-one, .last-day .founder-days .days-many { display: none; }
+      .last-day .founder-days .days-one { display: inline; }
       .founder-banner {
         max-width: 760px; margin: 0 auto 26px; padding: 14px 20px; border-radius: 18px;
         background: linear-gradient(135deg, #FFF4D6, #FFE7A3); border: 1px solid #E5B33F;
@@ -192,9 +194,9 @@
       </section>
 
       <div class="page-content-wide" id="pricing">
-        <!-- Founder offer: shown while places remain (see /api/payment/founder) -->
+        <!-- Founder offer: shown until its end date (see /api/payment/founder) -->
         <div class="founder-banner founder-only">
-          <b>★ Offre Fondateur</b> : pour les 100 premiers abonnés, l'abonnement mensuel est à 3,99€ (Parent) ou 6,99€ (Professeur), un prix garanti tant que votre abonnement continue.
+          <b>★ Offre Fondateur</b> : pour une durée limitée, l'abonnement mensuel est à 3,99€ (Parent) ou 6,99€ (Professeur), un prix garanti tant que votre abonnement continue.
         </div>
 
         <!-- Billing Toggle -->
@@ -214,17 +216,17 @@
             </div>
             <div class="founder-seal founder-only">
               <span class="seal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9Z" fill="#fff"/></svg></span>
-              <span class="label"><b>Offre Fondateur</b><span>100 premiers abonnés</span></span>
+              <span class="label"><b>Offre Fondateur</b><span>Offre limitée dans le temps</span></span>
             </div>
             <span class="pricing-price">
               <span class="monthly-price"><span class="std-price">5,99€</span><span class="founder-only inline"><s class="old-price">5,99€</s>3,99€</span> <small>/mois</small></span>
               <span class="annual-price">50€ <small>/an</small></span>
             </span>
-            <div class="founder-note founder-only">Prix garanti tant que votre abonnement continue.<span class="left">Places restantes : <span class="founder-left">100</span></span></div>
+            <div class="founder-note founder-only">Prix garanti tant que votre abonnement continue.<span class="left founder-days"><span class="days-many">Plus que <span class="founder-left">10</span> jours avant la fin de l'offre</span><span class="days-one">Dernier jour de l'offre !</span></span></div>
             <div class="savings-highlight">Économisez 22€ par an !</div>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
-              <li>Accès illimité aux 5 outils premium</li>
+              <li>Accès illimité aux 7 outils premium</li>
               <li>Sans engagement</li>
               <li>Résiliable à tout moment</li>
               <li>Support prioritaire</li>
@@ -245,13 +247,13 @@
             </div>
             <div class="founder-seal founder-only">
               <span class="seal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9Z" fill="#fff"/></svg></span>
-              <span class="label"><b>Offre Fondateur</b><span>100 premiers abonnés</span></span>
+              <span class="label"><b>Offre Fondateur</b><span>Offre limitée dans le temps</span></span>
             </div>
             <span class="pricing-price">
               <span class="monthly-price"><span class="std-price">9,99€</span><span class="founder-only inline"><s class="old-price">9,99€</s>6,99€</span> <small>/mois</small></span>
               <span class="annual-price">90€ <small>/an</small></span>
             </span>
-            <div class="founder-note founder-only">Prix garanti tant que votre abonnement continue.<span class="left">Places restantes : <span class="founder-left">100</span></span></div>
+            <div class="founder-note founder-only">Prix garanti tant que votre abonnement continue.<span class="left founder-days"><span class="days-many">Plus que <span class="founder-left">10</span> jours avant la fin de l'offre</span><span class="days-one">Dernier jour de l'offre !</span></span></div>
             <div class="savings-highlight">Économisez 30€ par an !</div>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
@@ -360,10 +362,12 @@
           document.getElementById('pricing').classList.toggle('annual', isAnnual);
         });
 
-        // Founder offer: shown while places remain (and always to a founder)
+        // Founder offer: shown until its end date with the days left (and always to a founder, without the countdown)
+        const FOUNDER_END = Date.parse('2026-11-16T00:00:00+01:00');
         function showFounder(f) {
           if (!f || !(f.active || f.isFounder)) return;
-          document.querySelectorAll('.founder-left').forEach(el => { el.textContent = f.remaining; });
+          document.querySelectorAll('.founder-left').forEach(el => { el.textContent = f.daysLeft; });
+          document.getElementById('pricing').classList.toggle('last-day', f.daysLeft === 1);
           if (!f.active) document.querySelectorAll('.founder-note .left').forEach(el => { el.style.display = 'none'; });
           document.getElementById('pricing').classList.add('founder-on');
         }
@@ -372,7 +376,9 @@
           .then(showFounder)
           .catch(() => {
             // static preview (no server): show the offer as it starts
-            if (window.DISSIPL_PREVIEW) showFounder({ active: true, remaining: 100 });
+            if (!window.DISSIPL_PREVIEW) return;
+            const left = Math.max(0, Math.ceil((FOUNDER_END - Date.now()) / 864e5));
+            showFounder({ active: left > 0, daysLeft: left });
           });
 
         const PENDING_PLAN = 'dissipl_pending_plan';

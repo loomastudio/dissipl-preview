@@ -18,7 +18,7 @@
  * Ne jamais traduire un élément : attribut translate="no".
  */
 
-const I18N_VERSION = "20261105-oceans"; // change cette valeur quand un fichier /i18n/*.json change
+const I18N_VERSION = "20261106-founder"; // change cette valeur quand un fichier /i18n/*.json change
 const STORE_KEY = "dissipl-lang";
 
 export const LANGS = [

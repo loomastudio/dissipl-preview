@@ -220,11 +220,13 @@
   "footer.privacy": "Confidentialité",
   "footer.cgu": "CGU",
   "founder.badge": "Offre Fondateur",
-  "founder.first": "100 premiers abonnés",
   "founder.note": "Prix garanti tant que votre abonnement continue.",
-  "founder.left": "Places restantes :",
   "m.noaccount": "Pas encore de compte ?",
   "m.create": "Créer un compte",
   "m.hasaccount": "Déjà un compte ?",
-  "m.signup.plannote": "Créez votre compte en 1 minute : vous passez ensuite directement au paiement sécurisé."
+  "m.signup.plannote": "Créez votre compte en 1 minute : vous passez ensuite directement au paiement sécurisé.",
+  "founder.limited": "Offre limitée dans le temps",
+  "founder.before": "Plus que",
+  "founder.after": "jours avant la fin de l'offre",
+  "founder.lastDay": "Dernier jour de l'offre !"
 }
