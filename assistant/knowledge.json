@@ -1,0 +1,3060 @@
+{
+  "_about": "Base de connaissances de l'assistant pédagogique DISSIPL. Chaque concept : déclencheurs (mots sans accents, en minuscules, français et anglais), outils DISSIPL classés par pertinence pédagogique (ids de catalogue.json, liste vide = pas d'outil adapté), contenu FR/EN et sources (ids de \"sources\"). Pour enrichir l'assistant, ajouter ou corriger une entrée ici, sans toucher au code.",
+  "version": "2026-11-15",
+  "sources": {
+    "men-cp-maths": {
+      "title": "Pour enseigner les nombres, le calcul et la résolution de problèmes au CP",
+      "origin": "Ministère de l'Éducation nationale (France)",
+      "year": 2021,
+      "field": {
+        "fr": "numération, calcul, problèmes",
+        "en": "number, calculation, problem solving"
+      }
+    },
+    "eduscol-fractions": {
+      "title": "Fractions et nombres décimaux au cycle 3",
+      "origin": "Eduscol, Ministère de l'Éducation nationale (France)",
+      "year": 2016,
+      "field": {
+        "fr": "fractions, décimaux",
+        "en": "fractions, decimals"
+      }
+    },
+    "men-cp-lecture": {
+      "title": "Pour enseigner la lecture et l'écriture au CP",
+      "origin": "Ministère de l'Éducation nationale (France)",
+      "year": 2019,
+      "field": {
+        "fr": "lecture, écriture, code",
+        "en": "reading, writing, phonics"
+      }
+    },
+    "dehaene-lecture": {
+      "title": "Les neurones de la lecture",
+      "origin": "Stanislas Dehaene, Odile Jacob",
+      "year": 2007,
+      "field": {
+        "fr": "neurosciences de la lecture",
+        "en": "neuroscience of reading"
+      }
+    },
+    "dehaene-maths": {
+      "title": "La bosse des maths",
+      "origin": "Stanislas Dehaene, Odile Jacob (rééd. 2010)",
+      "year": 1997,
+      "field": {
+        "fr": "neurosciences du nombre",
+        "en": "neuroscience of number"
+      }
+    },
+    "inserm-dys": {
+      "title": "Dyslexie, dysorthographie, dyscalculie : bilan des données scientifiques",
+      "origin": "INSERM, expertise collective (France)",
+      "year": 2007,
+      "field": {
+        "fr": "troubles spécifiques des apprentissages",
+        "en": "specific learning disorders"
+      }
+    },
+    "has-tsla": {
+      "title": "Comment améliorer le parcours de santé d'un enfant avec troubles spécifiques du langage et des apprentissages ?",
+      "origin": "Haute Autorité de Santé (France)",
+      "year": 2018,
+      "field": {
+        "fr": "troubles du langage et des apprentissages",
+        "en": "language and learning disorders"
+      }
+    },
+    "has-tdah": {
+      "title": "Conduite à tenir devant un enfant ou un adolescent susceptible d'avoir un TDAH",
+      "origin": "Haute Autorité de Santé (France)",
+      "year": 2014,
+      "field": {
+        "fr": "attention, TDAH",
+        "en": "attention, ADHD"
+      }
+    },
+    "has-autisme": {
+      "title": "Autisme et autres TED : interventions éducatives et thérapeutiques coordonnées chez l'enfant et l'adolescent",
+      "origin": "Haute Autorité de Santé (France)",
+      "year": 2012,
+      "field": {
+        "fr": "trouble du spectre de l'autisme",
+        "en": "autism spectrum"
+      }
+    },
+    "cap-ecole-inclusive": {
+      "title": "Cap école inclusive",
+      "origin": "Ministère de l'Éducation nationale / Réseau Canopé (France)",
+      "year": 2019,
+      "field": {
+        "fr": "adaptations en classe ordinaire",
+        "en": "adaptations in mainstream classes"
+      }
+    },
+    "eef-send": {
+      "title": "Special Educational Needs in Mainstream Schools",
+      "origin": "Education Endowment Foundation (UK)",
+      "year": 2020,
+      "field": {
+        "fr": "besoins éducatifs particuliers",
+        "en": "special educational needs"
+      }
+    },
+    "eef-maths": {
+      "title": "Improving Mathematics in Key Stages 2 and 3",
+      "origin": "Education Endowment Foundation (UK)",
+      "year": 2017,
+      "field": {
+        "fr": "manipulation et représentations en mathématiques",
+        "en": "manipulatives and representations in maths"
+      }
+    },
+    "cast-udl": {
+      "title": "Universal Design for Learning Guidelines, version 2.2",
+      "origin": "CAST (USA)",
+      "year": 2018,
+      "field": {
+        "fr": "conception universelle des apprentissages",
+        "en": "universal design for learning"
+      }
+    },
+    "montessori": {
+      "title": "The Montessori Method",
+      "origin": "Maria Montessori",
+      "year": 1912,
+      "field": {
+        "fr": "pédagogie de la manipulation",
+        "en": "hands-on learning"
+      }
+    },
+    "wood-bruner": {
+      "title": "The role of tutoring in problem solving (étayage / scaffolding)",
+      "origin": "Wood, Bruner & Ross, Journal of Child Psychology and Psychiatry",
+      "year": 1976,
+      "field": {
+        "fr": "étayage et désétayage",
+        "en": "scaffolding and fading"
+      }
+    },
+    "loi-2005": {
+      "title": "Loi n° 2005-102 pour l'égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées",
+      "origin": "République française",
+      "year": 2005,
+      "field": {
+        "fr": "droit à la scolarisation, adaptations",
+        "en": "right to schooling, adaptations (France)"
+      }
+    },
+    "onu-cdph": {
+      "title": "Convention relative aux droits des personnes handicapées, article 24 (éducation)",
+      "origin": "Nations unies",
+      "year": 2006,
+      "field": {
+        "fr": "éducation inclusive (international)",
+        "en": "inclusive education (international)"
+      }
+    }
+  },
+  "difficultyTypes": [
+    {
+      "id": "understanding",
+      "triggers": [
+        "comprend pas",
+        "comprend rien",
+        "ne comprend",
+        "sens",
+        "pourquoi",
+        "doesn't understand",
+        "does not understand",
+        "dont understand",
+        "don't understand",
+        "meaning",
+        "makes no sense",
+        "sans comprendre",
+        "without understanding",
+        "ce qu il fait",
+        "what he is doing",
+        "what she is doing"
+      ],
+      "name": {
+        "fr": "une difficulté de compréhension",
+        "en": "a difficulty with understanding"
+      },
+      "advice": {
+        "fr": "Revenir au sens avant la technique : faire manipuler, puis faire dire ce que l'on a fait, avant toute écriture.",
+        "en": "Go back to meaning before technique: let the student handle the material, then say what they did, before writing anything."
+      }
+    },
+    {
+      "id": "memory",
+      "triggers": [
+        "memoris",
+        "retenir",
+        "retient",
+        "oublie",
+        "par coeur",
+        "apprendre ses",
+        "memoriz",
+        "memoris",
+        "remember",
+        "forget",
+        "forgets",
+        "by heart",
+        "recall"
+      ],
+      "name": {
+        "fr": "une difficulté de mémorisation",
+        "en": "a difficulty with memorisation"
+      },
+      "advice": {
+        "fr": "Mémoriser ce qui a été compris : peu d'éléments à la fois, des rappels courts et espacés (quelques minutes chaque jour), et une stratégie de secours quand le résultat ne revient pas.",
+        "en": "Memorise what has been understood: few items at a time, short spaced practice (a few minutes daily), and a fallback strategy when the answer does not come."
+      }
+    },
+    {
+      "id": "representation",
+      "triggers": [
+        "se represente",
+        "represent",
+        "visualis",
+        "imagine",
+        "abstrait",
+        "abstract",
+        "picture it",
+        "voir dans sa tete",
+        "image mentale",
+        "mental image"
+      ],
+      "name": {
+        "fr": "une difficulté de représentation",
+        "en": "a difficulty with representation"
+      },
+      "advice": {
+        "fr": "Passer explicitement par les trois étapes : concret (objets), imagé (dessin, schéma), abstrait (chiffres et symboles), et faire des allers-retours entre elles.",
+        "en": "Move explicitly through three stages: concrete (objects), pictorial (drawings, diagrams), abstract (numbers and symbols), going back and forth between them."
+      }
+    },
+    {
+      "id": "manipulation",
+      "triggers": [
+        "manipul",
+        "toucher",
+        "objets",
+        "concret",
+        "hands-on",
+        "hands on",
+        "objects",
+        "touch",
+        "concrete"
+      ],
+      "name": {
+        "fr": "un besoin de manipulation",
+        "en": "a need for hands-on work"
+      },
+      "advice": {
+        "fr": "Partir d'un matériel concret, puis réduire peu à peu le matériel (le cacher, le remplacer par un dessin) pour que la représentation se construise.",
+        "en": "Start with concrete material, then gradually reduce it (hide it, replace it with a drawing) so the mental representation builds up."
+      }
+    },
+    {
+      "id": "language",
+      "triggers": [
+        "vocabulaire",
+        "mots",
+        "langage",
+        "parle",
+        "s exprime",
+        "expliquer",
+        "vocabulary",
+        "words",
+        "speak",
+        "language",
+        "explain"
+      ],
+      "name": {
+        "fr": "une difficulté de langage",
+        "en": "a language difficulty"
+      },
+      "advice": {
+        "fr": "Réduire la charge verbale : phrases courtes, un mot de vocabulaire à la fois, montrer en même temps que l'on dit, et accepter d'autres formes de réponse (montrer, poser, pointer).",
+        "en": "Reduce the verbal load: short sentences, one vocabulary word at a time, show while you say it, and accept other ways of answering (showing, placing, pointing)."
+      }
+    },
+    {
+      "id": "instructions",
+      "triggers": [
+        "consigne",
+        "ce qu on lui demande",
+        "ce qu il faut faire",
+        "instruction",
+        "what to do",
+        "what is asked",
+        "directions"
+      ],
+      "name": {
+        "fr": "une difficulté de compréhension des consignes",
+        "en": "a difficulty understanding instructions"
+      },
+      "advice": {
+        "fr": "Une consigne = une action. Faire reformuler par l'élève, montrer un exemple fait, et garder la consigne visible (écrite ou en pictogramme).",
+        "en": "One instruction = one action. Ask the student to restate it, show a worked example, and keep the instruction visible (written or as a picture)."
+      }
+    },
+    {
+      "id": "transfer",
+      "triggers": [
+        "en exercice",
+        "dans un probleme",
+        "autre situation",
+        "reinvest",
+        "transfer",
+        "nouvelle situation",
+        "sait faire mais",
+        "can do it but",
+        "new situation",
+        "apply",
+        "appliquer"
+      ],
+      "name": {
+        "fr": "une difficulté de transfert dans une nouvelle situation",
+        "en": "a difficulty applying knowledge in a new situation"
+      },
+      "advice": {
+        "fr": "Varier les supports et les contextes pour la même notion, et faire expliciter ce qui reste pareil d'une situation à l'autre.",
+        "en": "Vary the materials and contexts for the same idea, and ask the student to say what stays the same from one situation to another."
+      }
+    }
+  ],
+  "needs": [
+    {
+      "id": "dyslexia",
+      "triggers": [
+        "dyslex",
+        "dysortho"
+      ],
+      "name": {
+        "fr": "dyslexie / dysorthographie",
+        "en": "dyslexia"
+      },
+      "adapt": {
+        "fr": [
+          "Lire les consignes à l'élève ou les proposer à l'oral.",
+          "Police lisible, interligne large, peu de texte par page.",
+          "Évaluer la compréhension sans pénaliser l'orthographe quand ce n'est pas l'objectif.",
+          "Utiliser des codes couleur stables (voyelles/consonnes, syllabes)."
+        ],
+        "en": [
+          "Read instructions aloud or give them orally.",
+          "Readable font, wide line spacing, little text per page.",
+          "Assess understanding without penalising spelling when spelling is not the goal.",
+          "Use consistent colour codes (vowels/consonants, syllables)."
+        ]
+      },
+      "sources": [
+        "inserm-dys",
+        "has-tsla",
+        "cap-ecole-inclusive"
+      ]
+    },
+    {
+      "id": "dyscalculia",
+      "triggers": [
+        "dyscalc"
+      ],
+      "name": {
+        "fr": "dyscalculie",
+        "en": "dyscalculia"
+      },
+      "adapt": {
+        "fr": [
+          "Revenir aux quantités concrètes aussi souvent que nécessaire, sans le vivre comme un retour en arrière.",
+          "Autoriser les supports (bande numérique, tables, matériel) pendant l'apprentissage d'une nouvelle notion.",
+          "Réduire le nombre de calculs et laisser plus de temps."
+        ],
+        "en": [
+          "Return to concrete quantities as often as needed, without treating it as going backwards.",
+          "Allow supports (number line, tables, materials) while a new idea is learned.",
+          "Reduce the number of calculations and allow more time."
+        ]
+      },
+      "sources": [
+        "inserm-dys",
+        "has-tsla",
+        "dehaene-maths"
+      ]
+    },
+    {
+      "id": "dyspraxia",
+      "triggers": [
+        "dyspraxi",
+        "tdc",
+        "trouble de la coordination",
+        "dcd",
+        "coordination",
+        "motricite",
+        "motor"
+      ],
+      "name": {
+        "fr": "dyspraxie / trouble de la coordination",
+        "en": "dyspraxia / coordination difficulties"
+      },
+      "adapt": {
+        "fr": [
+          "Séparer la notion du geste : faire glisser ou toucher plutôt que tracer ou découper.",
+          "Les outils numériques DISSIPL évitent la manipulation fine d'objets petits.",
+          "Limiter la copie et les tableaux à remplir à la main.",
+          "Mise en page aérée, repères visuels clairs."
+        ],
+        "en": [
+          "Separate the idea from the movement: drag or tap rather than draw or cut.",
+          "DISSIPL's digital tools avoid fine handling of small objects.",
+          "Limit copying and hand-filled tables.",
+          "Spacious layout, clear visual landmarks."
+        ]
+      },
+      "sources": [
+        "has-tsla",
+        "cap-ecole-inclusive"
+      ]
+    },
+    {
+      "id": "attention",
+      "triggers": [
+        "tdah",
+        "adhd",
+        "attention",
+        "concentr",
+        "distrait",
+        "agite",
+        "hyperactiv",
+        "focus",
+        "distracted"
+      ],
+      "name": {
+        "fr": "difficultés d'attention",
+        "en": "attention difficulties"
+      },
+      "adapt": {
+        "fr": [
+          "Séquences courtes (5 à 10 minutes) avec un but visible.",
+          "Une seule tâche à l'écran ou sur la table à la fois.",
+          "Retour immédiat sur la réussite (les étoiles et messages des outils DISSIPL y aident).",
+          "Prévoir des moments de mouvement."
+        ],
+        "en": [
+          "Short sessions (5 to 10 minutes) with a visible goal.",
+          "Only one task on screen or on the table at a time.",
+          "Immediate feedback on success (the stars and messages in DISSIPL tools help).",
+          "Plan movement breaks."
+        ]
+      },
+      "sources": [
+        "has-tdah",
+        "cap-ecole-inclusive",
+        "eef-send"
+      ]
+    },
+    {
+      "id": "autism",
+      "triggers": [
+        "autis",
+        "tsa",
+        "asd",
+        "asperger"
+      ],
+      "name": {
+        "fr": "trouble du spectre de l'autisme",
+        "en": "autism spectrum"
+      },
+      "adapt": {
+        "fr": [
+          "Annoncer le déroulement de la séance (emploi du temps visuel).",
+          "Consignes explicites et littérales, un exemple montré.",
+          "Garder la même présentation d'une séance à l'autre ; prévenir des changements.",
+          "Possibilité de couper le son et la musique dans les outils DISSIPL."
+        ],
+        "en": [
+          "Announce the session plan (visual schedule).",
+          "Explicit, literal instructions with a shown example.",
+          "Keep the same layout from one session to the next; warn about changes.",
+          "Sound and music can be turned off in DISSIPL tools."
+        ]
+      },
+      "sources": [
+        "has-autisme",
+        "cap-ecole-inclusive"
+      ]
+    },
+    {
+      "id": "language-disorder",
+      "triggers": [
+        "dysphas",
+        "tdl",
+        "trouble du langage",
+        "language disorder",
+        "dld",
+        "orthophon",
+        "speech"
+      ],
+      "name": {
+        "fr": "trouble du langage oral",
+        "en": "language disorder"
+      },
+      "adapt": {
+        "fr": [
+          "Doubler l'oral par le visuel (geste, image, objet).",
+          "Phrases courtes, débit lent, vocabulaire réutilisé.",
+          "Accepter des réponses non verbales : montrer, poser, choisir."
+        ],
+        "en": [
+          "Pair speech with visuals (gesture, picture, object).",
+          "Short sentences, slow pace, repeated vocabulary.",
+          "Accept non-verbal answers: show, place, choose."
+        ]
+      },
+      "sources": [
+        "has-tsla",
+        "cap-ecole-inclusive"
+      ]
+    },
+    {
+      "id": "intellectual",
+      "triggers": [
+        "deficience intellectuelle",
+        "handicap mental",
+        "intellectual disability",
+        "learning disability",
+        "trisomie",
+        "down syndrome"
+      ],
+      "name": {
+        "fr": "déficience intellectuelle",
+        "en": "intellectual disability"
+      },
+      "adapt": {
+        "fr": [
+          "Petits pas, beaucoup de répétitions variées, la même notion dans plusieurs contextes.",
+          "Rester longtemps sur le concret ; ne pas se presser vers l'abstrait.",
+          "Viser des objectifs fonctionnels et observables."
+        ],
+        "en": [
+          "Small steps, lots of varied repetition, the same idea in several contexts.",
+          "Stay with the concrete for a long time; do not rush to the abstract.",
+          "Aim for functional, observable goals."
+        ]
+      },
+      "sources": [
+        "cap-ecole-inclusive",
+        "eef-send"
+      ]
+    },
+    {
+      "id": "memory-difficulty",
+      "triggers": [
+        "memoire de travail",
+        "working memory",
+        "trouble de la memoire"
+      ],
+      "name": {
+        "fr": "difficultés de mémoire de travail",
+        "en": "working memory difficulties"
+      },
+      "adapt": {
+        "fr": [
+          "Laisser les étapes visibles (matériel, écrit, schéma) pour ne pas tout garder en tête.",
+          "Une information nouvelle à la fois.",
+          "Aide-mémoire autorisés pendant l'apprentissage."
+        ],
+        "en": [
+          "Keep the steps visible (material, notes, diagram) so the student need not hold everything in mind.",
+          "One new piece of information at a time.",
+          "Allow memory aids while learning."
+        ]
+      },
+      "sources": [
+        "eef-send",
+        "cast-udl"
+      ]
+    },
+    {
+      "id": "sensory",
+      "triggers": [
+        "malvoyant",
+        "deficience visuelle",
+        "visually impaired",
+        "malentendant",
+        "sourd",
+        "deaf",
+        "hearing",
+        "vision"
+      ],
+      "name": {
+        "fr": "besoins sensoriels (vue, audition)",
+        "en": "sensory needs (sight, hearing)"
+      },
+      "adapt": {
+        "fr": [
+          "Vision : agrandir (mode plein écran, taille ×2 ×3 dans la Banque de perles), contrastes forts.",
+          "Audition : doubler toute information sonore par l'écrit ou le geste ; les outils DISSIPL ne demandent pas d'entendre pour réussir, sauf « J'entends, je trace ».",
+          "Se rapprocher des recommandations des professionnels qui suivent l'élève."
+        ],
+        "en": [
+          "Sight: enlarge (full-screen mode, ×2 ×3 size in the Bead bank), strong contrast.",
+          "Hearing: pair all sound information with text or gesture; DISSIPL tools do not require hearing to succeed, except \"I hear, I write\".",
+          "Follow the advice of the professionals who support the student."
+        ]
+      },
+      "sources": [
+        "cast-udl",
+        "cap-ecole-inclusive"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "id": "place-value",
+      "triggers": [
+        "unite",
+        "dizaine",
+        "centaine",
+        "millier",
+        "valeur de position",
+        "numeration",
+        "position des chiffres",
+        "valeur des chiffres",
+        "chiffre des",
+        "place value",
+        "units",
+        "tens",
+        "hundreds",
+        "thousands",
+        "value of the digit",
+        "digit value",
+        "base 10",
+        "base dix"
+      ],
+      "domain": {
+        "fr": "Numération décimale",
+        "en": "Decimal number system"
+      },
+      "name": {
+        "fr": "la valeur de position (unités, dizaines, centaines)",
+        "en": "place value (units, tens, hundreds)"
+      },
+      "understanding": {
+        "fr": "Dans notre système, la valeur d'un chiffre dépend de sa place : dans 345, le 3 vaut trois centaines. Réciter la suite des nombres ne suffit pas à le comprendre : il faut avoir vu que dix unités forment une dizaine et que l'on peut échanger l'un contre l'autre.",
+        "en": "In our system, a digit's value depends on its place: in 345, the 3 is worth three hundreds. Reciting the number sequence is not enough to understand it: the student must see that ten units make one ten and that one can be exchanged for the other."
+      },
+      "obstacles": {
+        "fr": [
+          "L'élève lit les chiffres un par un (« trois, quatre, cinq »).",
+          "La dizaine n'est pas encore vue comme un groupe de dix unités.",
+          "Le zéro (305) est mal compris.",
+          "En français, les nombres de 70 à 99 brouillent le lien entre le mot et l'écriture."
+        ],
+        "en": [
+          "The student reads the digits one by one (\"three, four, five\").",
+          "A ten is not yet seen as a group of ten units.",
+          "Zero (305) is not understood.",
+          "Number words (especially \"teens\") hide the link between the word and the written form."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Dénombrer de façon fiable une collection jusqu'à 10 (un objet = un mot-nombre)."
+        ],
+        "en": [
+          "Reliably counting a set up to 10 (one object = one number word)."
+        ]
+      },
+      "objective": {
+        "fr": "Pour un nombre à 2 ou 3 chiffres, l'élève sait montrer avec du matériel combien il y a de centaines, de dizaines et d'unités, et dire ce que vaut chaque chiffre.",
+        "en": "For a 2- or 3-digit number, the student can show with material how many hundreds, tens and units there are, and say what each digit is worth."
+      },
+      "approach": {
+        "fr": "Faire construire les groupements par l'élève lui-même : compter dix unités, les échanger contre une dizaine, puis lire le nombre. Le passage par l'échange est la clé : c'est lui qui donne du sens à la position.",
+        "en": "Have the student build the groupings themselves: count ten units, exchange them for one ten, then read the number. The exchange is the key: it is what gives meaning to the position."
+      },
+      "manipulation": {
+        "fr": "Avec des objets (allumettes, cubes) : faire des paquets de dix, attachés par un élastique. Puis avec les perles dorées : unités, barrettes de dix, carrés de cent. Poser les cartes des nombres l'une sur l'autre : 300, 40 et 5 forment 345.",
+        "en": "With objects (sticks, cubes): make bundles of ten held by a rubber band. Then with golden beads: units, ten-bars, hundred squares. Layer the number cards: 300, 40 and 5 make 345."
+      },
+      "alt": {
+        "fr": "Approche par la monnaie fictive : pièces de 1, billets de 10 et de 100. « Combien de billets de 10 pour payer 47 € ? » L'échange 10 pièces = 1 billet est familier pour beaucoup d'élèves.",
+        "en": "Pretend money approach: 1 coins, 10 notes and 100 notes. \"How many 10 notes to pay 47?\" Exchanging 10 coins for 1 note is familiar to many students."
+      },
+      "steps": {
+        "fr": [
+          "Grouper par dix des objets réels et dire « 3 paquets de dix et 4 tout seuls ».",
+          "Faire la même chose avec les perles dorées (barrettes de dix).",
+          "Associer la quantité aux cartes des nombres (30 + 4 = 34).",
+          "Passer aux centaines : dix barrettes = un carré de cent.",
+          "Lire et écrire des nombres avec zéro (305, 340) en vérifiant avec le matériel.",
+          "Passer au boulier : la place remplace la taille de l'objet."
+        ],
+        "en": [
+          "Group real objects in tens and say \"3 bundles of ten and 4 on their own\".",
+          "Do the same with golden beads (ten-bars).",
+          "Match the quantity with the number cards (30 + 4 = 34).",
+          "Move to hundreds: ten bars = one hundred square.",
+          "Read and write numbers with zero (305, 340), checking with the material.",
+          "Move to the abacus: position replaces the size of the object."
+        ]
+      },
+      "simpler": {
+        "fr": "Rester sur les nombres jusqu'à 20 : « 1 dizaine et 3 unités ». Faire et défaire le paquet de dix plusieurs fois.",
+        "en": "Stay with numbers up to 20: \"1 ten and 3 units\". Make and undo the bundle of ten several times."
+      },
+      "next": {
+        "fr": "Décomposer un même nombre de plusieurs façons : 345 = 3 centaines 4 dizaines 5 unités = 34 dizaines 5 unités. Puis additions avec échange.",
+        "en": "Decompose the same number in several ways: 345 = 3 hundreds 4 tens 5 units = 34 tens 5 units. Then additions with exchanges."
+      },
+      "check": {
+        "fr": "Donner 46 et demander : « Montre-moi le 4. » S'il montre 4 perles au lieu de 4 dizaines, la notion n'est pas encore acquise. Autre test : « Combien de dizaines dans 46 ? Et si j'ajoute une dizaine ? »",
+        "en": "Give 46 and ask: \"Show me the 4.\" If they show 4 beads instead of 4 tens, the idea is not yet understood. Another test: \"How many tens in 46? And if I add one ten?\""
+      },
+      "tools": [
+        "number-card",
+        "abacus"
+      ],
+      "toolUse": {
+        "number-card": {
+          "fr": {
+            "why": "Les perles dorées rendent visible qu'une dizaine est faite de dix unités, et les cartes superposées montrent la place de chaque chiffre.",
+            "start": "Ouvrir la manipulation libre, poser 3 barrettes de dix et 4 unités, puis composer 34 avec les cartes.",
+            "say": "« Apporte-moi 34. Combien de barrettes de dix ? Combien de perles toutes seules ? »",
+            "develop": "Activité « La Banque » niveau 2 (10 à 99), puis niveau 3 (100 à 999). Le niveau monte tout seul.",
+            "observe": "L'élève prend-il directement des barrettes de dix, ou compte-t-il les perles une par une ?"
+          },
+          "en": {
+            "why": "Golden beads make it visible that a ten is made of ten units, and layered cards show the place of each digit.",
+            "start": "Open free play, lay 3 ten-bars and 4 units, then make 34 with the cards.",
+            "say": "\"Bring me 34. How many ten-bars? How many single beads?\"",
+            "develop": "\"The Bank\" activity level 2 (10 to 99), then level 3 (100 to 999). The level goes up automatically.",
+            "observe": "Does the student take ten-bars straight away, or count beads one by one?"
+          }
+        },
+        "abacus": {
+          "fr": {
+            "why": "Le boulier montre que c'est la place qui donne la valeur : une perle sur la tige des dizaines vaut dix.",
+            "start": "En manipulation libre, faire 9 unités puis ajouter 1 : utiliser le bouton « 10 = 1 » pour voir l'échange.",
+            "say": "« Montre 47 sur le boulier. Que se passe-t-il si j'ajoute 3 unités ? »",
+            "develop": "Exercice « Construire un nombre », niveaux 1 à 4 (jusqu'à 99, puis 999…).",
+            "observe": "L'élève sait-il dire, sans compter, combien vaut une perle selon sa tige ?"
+          },
+          "en": {
+            "why": "The abacus shows that position gives value: one bead on the tens rod is worth ten.",
+            "start": "In free play, make 9 units then add 1: use the \"10 = 1\" button to see the exchange.",
+            "say": "\"Show 47 on the abacus. What happens if I add 3 units?\"",
+            "develop": "\"Build a number\" exercise, levels 1 to 4 (up to 99, then 999…).",
+            "observe": "Can the student say, without counting, what a bead is worth on its rod?"
+          }
+        }
+      },
+      "sources": [
+        "men-cp-maths",
+        "dehaene-maths",
+        "montessori",
+        "eef-maths"
+      ]
+    },
+    {
+      "id": "counting",
+      "triggers": [
+        "compter",
+        "denombr",
+        "quantite",
+        "nombres jusqu",
+        "petits nombres",
+        "comprend pas les nombres",
+        "suite numerique",
+        "comptine",
+        "count",
+        "counting",
+        "quantity",
+        "quantities",
+        "number sense",
+        "numbers up to",
+        "understand numbers",
+        "sens du nombre"
+      ],
+      "domain": {
+        "fr": "Construction du nombre",
+        "en": "Number sense"
+      },
+      "name": {
+        "fr": "la construction du nombre (quantités, dénombrement)",
+        "en": "number sense (quantities and counting)"
+      },
+      "understanding": {
+        "fr": "Comprendre un nombre, c'est savoir qu'il désigne une quantité : le dernier mot prononcé en comptant donne le nombre d'objets. Un élève peut réciter la comptine très loin sans avoir construit ce lien.",
+        "en": "Understanding a number means knowing it stands for a quantity: the last word said when counting gives how many objects there are. A student can recite numbers very far without having made this link."
+      },
+      "obstacles": {
+        "fr": [
+          "La comptine est récitée sans correspondance un objet = un mot.",
+          "L'élève recompte tout au lieu de reconnaître de petites quantités.",
+          "Le lien entre la quantité, le mot et le chiffre écrit n'est pas fait."
+        ],
+        "en": [
+          "Numbers are recited without one-to-one correspondence.",
+          "The student recounts everything instead of recognising small amounts.",
+          "The link between quantity, word and written number is missing."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Connaître la comptine jusqu'à 10."
+        ],
+        "en": [
+          "Knowing the number words up to 10."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait aller chercher une quantité demandée jusqu'à 10 (puis 20), et associer cette quantité au chiffre écrit.",
+        "en": "The student can fetch a requested quantity up to 10 (then 20) and match it with the written number."
+      },
+      "approach": {
+        "fr": "Partir de jeux « Apporte-moi… » : l'élève va chercher une quantité à distance, ce qui l'oblige à garder le nombre en tête et à s'arrêter au bon moment. Travailler aussi la reconnaissance rapide des petites quantités (dés, doigts).",
+        "en": "Start with \"Bring me…\" games: the student fetches a quantity from a distance, which makes them keep the number in mind and stop at the right moment. Also work on quick recognition of small amounts (dice, fingers)."
+      },
+      "manipulation": {
+        "fr": "Jetons, perles, cubes : « Apporte-moi 6 perles. » Puis associer la collection à une carte chiffre, et inversement.",
+        "en": "Counters, beads, cubes: \"Bring me 6 beads.\" Then match the set with a number card, and the other way round."
+      },
+      "alt": {
+        "fr": "Approche par les configurations : cartes à points (comme les dés), doigts, boîtes de 5 et de 10 cases. L'élève reconnaît « 5 et 2 » sans compter un par un.",
+        "en": "Pattern approach: dot cards (like dice), fingers, five- and ten-frames. The student recognises \"5 and 2\" without counting one by one."
+      },
+      "steps": {
+        "fr": [
+          "Reconnaître sans compter 1, 2, 3 objets.",
+          "Dénombrer jusqu'à 5 en touchant chaque objet.",
+          "Aller chercher une quantité demandée jusqu'à 10.",
+          "Associer quantité, mot et chiffre.",
+          "Comparer deux quantités (plus, moins, autant).",
+          "Décomposer : 7, c'est 5 et 2."
+        ],
+        "en": [
+          "Recognise 1, 2, 3 objects without counting.",
+          "Count up to 5 touching each object.",
+          "Fetch a requested quantity up to 10.",
+          "Match quantity, word and numeral.",
+          "Compare two quantities (more, fewer, the same).",
+          "Decompose: 7 is 5 and 2."
+        ]
+      },
+      "simpler": {
+        "fr": "Revenir à 1, 2, 3 avec des objets très différents, et un seul objet bougé à la fois.",
+        "en": "Go back to 1, 2, 3 with very different objects, moving only one object at a time."
+      },
+      "next": {
+        "fr": "Passer à la dizaine : grouper 10 objets et compter « dix, onze, douze… ».",
+        "en": "Move to tens: group 10 objects and count \"ten, eleven, twelve…\"."
+      },
+      "check": {
+        "fr": "Après qu'il a compté 7 jetons, demander « Combien y en a-t-il ? » S'il recompte depuis le début, le lien entre le dernier mot et la quantité n'est pas encore installé.",
+        "en": "After they count 7 counters, ask \"How many are there?\" If they count again from the start, the link between the last word and the quantity is not yet established."
+      },
+      "tools": [
+        "number-card"
+      ],
+      "toolUse": {
+        "number-card": {
+          "fr": {
+            "why": "L'activité « La Banque » reprend exactement le jeu « Apporte-moi… » de la pédagogie Montessori.",
+            "start": "Activité « La Banque », niveau 1 (nombres de 1 à 9).",
+            "say": "« Apporte-moi 6 perles. »",
+            "develop": "Rester au niveau 1 jusqu'à ce que l'élève réussisse sans recompter, puis niveau 2.",
+            "observe": "S'arrête-t-il au bon nombre ? Sait-il dire combien il en a pris sans recompter ?"
+          },
+          "en": {
+            "why": "\"The Bank\" activity is exactly the Montessori \"Bring me…\" game.",
+            "start": "\"The Bank\" activity, level 1 (numbers 1 to 9).",
+            "say": "\"Bring me 6 beads.\"",
+            "develop": "Stay on level 1 until the student succeeds without recounting, then level 2.",
+            "observe": "Do they stop at the right number? Can they say how many they took without recounting?"
+          }
+        }
+      },
+      "sources": [
+        "men-cp-maths",
+        "dehaene-maths",
+        "montessori"
+      ]
+    },
+    {
+      "id": "decomposition",
+      "triggers": [
+        "decompos",
+        "compos",
+        "decomposition",
+        "complement",
+        "complements a 10",
+        "faire 10",
+        "decompose",
+        "compose",
+        "number bonds",
+        "make 10",
+        "partition"
+      ],
+      "domain": {
+        "fr": "Numération et calcul",
+        "en": "Number and calculation"
+      },
+      "name": {
+        "fr": "la composition et la décomposition des nombres",
+        "en": "composing and decomposing numbers"
+      },
+      "understanding": {
+        "fr": "Un même nombre peut s'écrire de plusieurs façons : 8 = 5 + 3 = 4 + 4 ; 345 = 300 + 40 + 5. Savoir décomposer est la base du calcul mental et des échanges.",
+        "en": "The same number can be written in several ways: 8 = 5 + 3 = 4 + 4; 345 = 300 + 40 + 5. Decomposing is the basis of mental calculation and of exchanges."
+      },
+      "obstacles": {
+        "fr": [
+          "L'élève ne connaît qu'une écriture d'un nombre.",
+          "Les compléments à 10 ne sont pas automatisés.",
+          "Il ne voit pas que 34 = 2 dizaines et 14 unités."
+        ],
+        "en": [
+          "The student only knows one way to write a number.",
+          "Number bonds to 10 are not automatic.",
+          "They do not see that 34 = 2 tens and 14 units."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Dénombrer jusqu'à 10."
+        ],
+        "en": [
+          "Counting to 10."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait trouver au moins trois décompositions d'un nombre et les montrer avec du matériel.",
+        "en": "The student can find at least three decompositions of a number and show them with material."
+      },
+      "approach": {
+        "fr": "Partir d'une collection fixe que l'on partage de toutes les façons possibles, et noter chaque partage. Puis travailler les décompositions canoniques (centaines, dizaines, unités).",
+        "en": "Start from a fixed set that is split in every possible way, writing down each split. Then work on place-value decompositions (hundreds, tens, units)."
+      },
+      "manipulation": {
+        "fr": "8 jetons dans une boîte à deux compartiments : changer la répartition et dire « 6 et 2, 5 et 3… ». Pour les grands nombres, cartes des nombres superposables.",
+        "en": "8 counters in a two-part box: change the split and say \"6 and 2, 5 and 3…\". For larger numbers, layered number cards."
+      },
+      "alt": {
+        "fr": "Jeu de la « maison des nombres » : chaque étage de la maison de 10 contient une décomposition différente.",
+        "en": "\"Number house\" game: each floor of the house of 10 holds a different decomposition."
+      },
+      "steps": {
+        "fr": [
+          "Décompositions de 5 avec les doigts.",
+          "Décompositions de 10 (compléments).",
+          "Décompositions de 20 en utilisant 10.",
+          "Décomposition en dizaines et unités (34 = 30 + 4).",
+          "Décompositions non canoniques (34 = 20 + 14)."
+        ],
+        "en": [
+          "Decomposing 5 with fingers.",
+          "Decomposing 10 (number bonds).",
+          "Decomposing 20 using 10.",
+          "Tens and units (34 = 30 + 4).",
+          "Non-standard splits (34 = 20 + 14)."
+        ]
+      },
+      "simpler": {
+        "fr": "Travailler uniquement 5 avec du matériel, sans écrire.",
+        "en": "Work only on 5 with material, without writing."
+      },
+      "next": {
+        "fr": "Utiliser les décompositions pour calculer : 8 + 5 = 8 + 2 + 3.",
+        "en": "Use decompositions to calculate: 8 + 5 = 8 + 2 + 3."
+      },
+      "check": {
+        "fr": "« Trouve une autre façon de faire 8 » : l'élève propose-t-il une décomposition nouvelle, ou répète-t-il la même ?",
+        "en": "\"Find another way to make 8\": does the student propose a new split or repeat the same one?"
+      },
+      "tools": [
+        "number-card",
+        "abacus"
+      ],
+      "toolUse": {
+        "number-card": {
+          "fr": {
+            "why": "Les cartes des nombres se superposent (300 + 40 + 5) et se séparent : la décomposition se voit et se touche.",
+            "start": "Composer 345 avec les cartes, puis les écarter pour montrer 300, 40 et 5.",
+            "say": "« De quoi est fait 345 ? Montre-moi chaque partie avec les perles. »",
+            "develop": "Activité « Les additions » : chaque addition est une composition de nombres.",
+            "observe": "L'élève sait-il associer chaque carte à la bonne quantité de perles ?"
+          },
+          "en": {
+            "why": "Number cards can be layered (300 + 40 + 5) and separated: the decomposition can be seen and touched.",
+            "start": "Make 345 with the cards, then pull them apart to show 300, 40 and 5.",
+            "say": "\"What is 345 made of? Show me each part with the beads.\"",
+            "develop": "\"Additions\" activity: each addition is a composition of numbers.",
+            "observe": "Can the student match each card with the right quantity of beads?"
+          }
+        },
+        "abacus": {
+          "fr": {
+            "why": "Sur le boulier, on voit que 34 peut se faire avec 3 dizaines et 4 unités, ou 2 dizaines et 14 unités avant échange.",
+            "start": "Faire 34 avec 2 perles de dizaines et 14 unités, puis échanger.",
+            "say": "« Est-ce toujours 34 ? Que se passe-t-il quand on échange ? »",
+            "develop": "Exercice « Construire un nombre ».",
+            "observe": "L'élève accepte-t-il que les deux écritures soient le même nombre ?"
+          },
+          "en": {
+            "why": "On the abacus, 34 can be made with 3 tens and 4 units, or 2 tens and 14 units before exchanging.",
+            "start": "Make 34 with 2 tens beads and 14 units, then exchange.",
+            "say": "\"Is it still 34? What happens when we exchange?\"",
+            "develop": "\"Build a number\" exercise.",
+            "observe": "Does the student accept that both forms are the same number?"
+          }
+        }
+      },
+      "sources": [
+        "men-cp-maths",
+        "montessori"
+      ]
+    },
+    {
+      "id": "add-sub",
+      "triggers": [
+        "addition",
+        "soustraction",
+        "retenue",
+        "calcul pose",
+        "poser une operation",
+        "additionner",
+        "soustraire",
+        "calcul mental",
+        "subtraction",
+        "carry",
+        "carrying",
+        "borrow",
+        "regroup",
+        "column",
+        "add up",
+        "adding",
+        "subtracting",
+        "mental math"
+      ],
+      "domain": {
+        "fr": "Calcul et opérations",
+        "en": "Calculation and operations"
+      },
+      "name": {
+        "fr": "l'addition et la soustraction (avec retenue)",
+        "en": "addition and subtraction (with regrouping)"
+      },
+      "understanding": {
+        "fr": "La retenue n'est pas une règle à appliquer : c'est un échange de dix unités contre une dizaine (ou l'inverse pour la soustraction). Sans cette compréhension, l'élève applique une technique qu'il ne peut ni vérifier ni corriger.",
+        "en": "Carrying is not a rule to apply: it is exchanging ten units for one ten (or the reverse for subtraction). Without that understanding, the student applies a procedure they cannot check or fix."
+      },
+      "obstacles": {
+        "fr": [
+          "La retenue est oubliée ou posée au mauvais endroit.",
+          "En soustraction, l'élève fait « le plus grand moins le plus petit » dans chaque colonne.",
+          "Les chiffres ne sont pas alignés selon leur valeur."
+        ],
+        "en": [
+          "The carried digit is forgotten or put in the wrong place.",
+          "In subtraction, the student does \"bigger minus smaller\" in each column.",
+          "Digits are not aligned by place value."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Comprendre la valeur de position (dizaine = 10 unités).",
+          "Connaître les compléments à 10."
+        ],
+        "en": [
+          "Understanding place value (one ten = 10 units).",
+          "Knowing number bonds to 10."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait expliquer avec du matériel pourquoi on « retient 1 » dans 27 + 15.",
+        "en": "The student can explain with material why we \"carry 1\" in 27 + 15."
+      },
+      "approach": {
+        "fr": "Faire chaque opération d'abord avec le matériel, en écrivant en parallèle ce que l'on fait. La technique écrite vient décrire la manipulation, pas la remplacer.",
+        "en": "Do each operation first with material, writing down in parallel what is done. The written method describes the manipulation rather than replacing it."
+      },
+      "manipulation": {
+        "fr": "27 + 15 avec les perles : 2 dizaines et 7 unités, plus 1 dizaine et 5 unités = 12 unités, on échange 10 unités contre 1 dizaine.",
+        "en": "27 + 15 with beads: 2 tens and 7 units, plus 1 ten and 5 units = 12 units; exchange 10 units for 1 ten."
+      },
+      "alt": {
+        "fr": "Calcul en ligne en passant par la dizaine : 27 + 15 = 27 + 3 + 12 = 30 + 12, sur une droite numérique dessinée.",
+        "en": "Mental strategy via the next ten: 27 + 15 = 27 + 3 + 12 = 30 + 12, on a drawn number line."
+      },
+      "steps": {
+        "fr": [
+          "Additions sans retenue avec matériel.",
+          "Additions avec un échange, matériel puis écrit en parallèle.",
+          "Soustractions sans échange.",
+          "Soustractions avec échange (casser une dizaine).",
+          "Technique écrite seule, vérifiée avec le matériel en cas de doute.",
+          "Problèmes simples utilisant ces opérations."
+        ],
+        "en": [
+          "Additions without regrouping, with material.",
+          "Additions with one exchange, material then written in parallel.",
+          "Subtractions without exchange.",
+          "Subtractions with exchange (break a ten).",
+          "Written method alone, checked with material when in doubt.",
+          "Simple word problems using these operations."
+        ]
+      },
+      "simpler": {
+        "fr": "Rester sur des additions dont la somme des unités fait juste 10 (6 + 4, 16 + 4).",
+        "en": "Stay with additions where the units add up to exactly 10 (6 + 4, 16 + 4)."
+      },
+      "next": {
+        "fr": "Additions avec deux échanges (unités et dizaines), puis estimation du résultat avant de calculer.",
+        "en": "Additions with two exchanges (units and tens), then estimating the result before calculating."
+      },
+      "check": {
+        "fr": "Montrer une erreur fréquente (27 + 15 = 312) et demander à l'élève de dire, avec le matériel, ce qui ne va pas.",
+        "en": "Show a common error (27 + 15 = 312) and ask the student to explain, with material, what is wrong."
+      },
+      "tools": [
+        "abacus",
+        "number-card"
+      ],
+      "toolUse": {
+        "abacus": {
+          "fr": {
+            "why": "Le boulier montre l'échange au moment où la tige des unités dépasse 9 : la retenue devient visible.",
+            "start": "Exercice « Additions », niveau 1 (jusqu'à 99), avec l'aide pas à pas.",
+            "say": "« Pose 27, ajoute 15. Que fais-tu quand il y a plus de 9 perles sur une tige ? »",
+            "develop": "Niveaux 2 à 4, puis exercices « Soustractions » et « Problèmes ».",
+            "observe": "L'élève anticipe-t-il l'échange avant de poser les perles ?"
+          },
+          "en": {
+            "why": "The abacus shows the exchange as soon as the units rod goes past 9: carrying becomes visible.",
+            "start": "\"Additions\" exercise, level 1 (up to 99), with step-by-step help.",
+            "say": "\"Put 27, add 15. What do you do when there are more than 9 beads on a rod?\"",
+            "develop": "Levels 2 to 4, then \"Subtractions\" and \"Problems\" exercises.",
+            "observe": "Does the student anticipate the exchange before placing the beads?"
+          }
+        },
+        "number-card": {
+          "fr": {
+            "why": "Avec les perles dorées, les quantités restent concrètes : 10 unités se transforment réellement en une barrette.",
+            "start": "Activité « Les additions », niveau 2.",
+            "say": "« Mets ensemble les deux nombres. As-tu plus de 9 unités ? Échange. »",
+            "develop": "Niveaux 3 et 4.",
+            "observe": "Utilise-t-il le bouton d'échange au bon moment ?"
+          },
+          "en": {
+            "why": "With golden beads, quantities stay concrete: 10 units really turn into one bar.",
+            "start": "\"Additions\" activity, level 2.",
+            "say": "\"Put both numbers together. Do you have more than 9 units? Exchange.\"",
+            "develop": "Levels 3 and 4.",
+            "observe": "Do they use the exchange button at the right time?"
+          }
+        }
+      },
+      "sources": [
+        "men-cp-maths",
+        "eef-maths",
+        "montessori"
+      ]
+    },
+    {
+      "id": "multiplication",
+      "triggers": [
+        "multipli",
+        "fois",
+        "produit",
+        "times",
+        "multiply",
+        "multiplication"
+      ],
+      "domain": {
+        "fr": "Multiplication et division",
+        "en": "Multiplication and division"
+      },
+      "name": {
+        "fr": "le sens de la multiplication",
+        "en": "the meaning of multiplication"
+      },
+      "understanding": {
+        "fr": "Multiplier, c'est ajouter plusieurs fois le même nombre : 3 × 4, c'est trois groupes de quatre. Quand ce sens n'est pas construit, les tables deviennent une liste de mots à retenir sans appui.",
+        "en": "Multiplying means adding the same number several times: 3 × 4 is three groups of four. When this meaning is not built, tables become a list of words to memorise with nothing to fall back on."
+      },
+      "obstacles": {
+        "fr": [
+          "L'élève confond 3 × 4 et 3 + 4.",
+          "Il ne sait pas que 3 × 4 = 4 × 3 et doit donc tout apprendre deux fois.",
+          "Il ne voit pas le lien entre multiplication et addition répétée."
+        ],
+        "en": [
+          "The student confuses 3 × 4 with 3 + 4.",
+          "They do not know that 3 × 4 = 4 × 3 and so must learn everything twice.",
+          "They do not see the link between multiplication and repeated addition."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Additionner des petits nombres.",
+          "Compter de 2 en 2, de 5 en 5, de 10 en 10."
+        ],
+        "en": [
+          "Adding small numbers.",
+          "Counting in 2s, 5s and 10s."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait construire une multiplication avec du matériel (n groupes de m), l'écrire sous forme d'addition répétée et trouver le résultat.",
+        "en": "The student can build a multiplication with material (n groups of m), write it as repeated addition and find the result."
+      },
+      "approach": {
+        "fr": "Construire chaque produit avec des barrettes de perles, dire « 3 fois 4, c'est 4 + 4 + 4 », puis tourner pour découvrir que 3 × 4 = 4 × 3. Les tables sont ensuite mémorisées à partir de ce qui a été compris.",
+        "en": "Build each product with bead bars, say \"3 times 4 is 4 + 4 + 4\", then turn to discover that 3 × 4 = 4 × 3. Tables are then memorised from what has been understood."
+      },
+      "manipulation": {
+        "fr": "Barrettes de perles de même couleur posées en lignes, ou objets en rangées (boîtes d'œufs, quadrillage).",
+        "en": "Same-colour bead bars laid in rows, or objects in arrays (egg boxes, grid paper)."
+      },
+      "alt": {
+        "fr": "Approche par les situations de la vie : « 4 paquets de 6 gâteaux », dessinés en groupes avant d'être écrits.",
+        "en": "Real-life situations: \"4 packs of 6 biscuits\", drawn as groups before being written."
+      },
+      "steps": {
+        "fr": [
+          "Construire 2 × 3, 3 × 2 avec du matériel et compter.",
+          "Écrire l'addition répétée correspondante.",
+          "Tourner : 3 × 4 = 4 × 3.",
+          "Construire une table entière (table de 2, 5, 10 d'abord).",
+          "Cacher le résultat et le retrouver.",
+          "Facteur manquant : 3 × ? = 12."
+        ],
+        "en": [
+          "Build 2 × 3 and 3 × 2 with material and count.",
+          "Write the matching repeated addition.",
+          "Turn: 3 × 4 = 4 × 3.",
+          "Build a whole table (2, 5 and 10 first).",
+          "Hide the result and find it again.",
+          "Missing factor: 3 × ? = 12."
+        ]
+      },
+      "simpler": {
+        "fr": "Rester sur les tables de 2 et de 10, avec des barrettes visibles et le résultat affiché.",
+        "en": "Stay with the 2 and 10 tables, with bars visible and the result shown."
+      },
+      "next": {
+        "fr": "Passer au facteur manquant (lien avec la division) puis au niveau Expert de Multiplix, sans aide.",
+        "en": "Move to the missing factor (link with division) then Multiplix's Expert level, with no help."
+      },
+      "check": {
+        "fr": "Demander : « Dessine 4 × 3 » puis « Est-ce la même chose que 3 × 4 ? Pourquoi ? » L'élève qui a compris peut justifier en tournant son dessin.",
+        "en": "Ask: \"Draw 4 × 3\" then \"Is it the same as 3 × 4? Why?\" A student who understands can justify by turning the drawing."
+      },
+      "tools": [
+        "multiplix"
+      ],
+      "toolUse": {
+        "multiplix": {
+          "fr": {
+            "why": "Multiplix reprend la table de multiplication Montessori : la multiplication se construit, se compte et se tourne.",
+            "start": "Manipulation libre : poser 3 barrettes de 4 et appuyer sur « Compter ».",
+            "say": "« Pose 3 barrettes de 4. Combien de perles ? Maintenant appuie sur Tourner : qu'est-ce qui a changé ? »",
+            "develop": "Exercice « Construire la multiplication » (3 niveaux), puis « Calculer le résultat ».",
+            "observe": "L'élève dit-il « 3 fois 4 » en montrant les barrettes ? Utilise-t-il la commutativité sans y être invité ?"
+          },
+          "en": {
+            "why": "Multiplix is the Montessori multiplication board: multiplication is built, counted and turned.",
+            "start": "Free play: lay 3 bars of 4 and press \"Count\".",
+            "say": "\"Lay 3 bars of 4. How many beads? Now press Turn: what changed?\"",
+            "develop": "\"Build the multiplication\" exercise (3 levels), then \"Calculate the result\".",
+            "observe": "Does the student say \"3 times 4\" while pointing at the bars? Do they use commutativity without being prompted?"
+          }
+        }
+      },
+      "sources": [
+        "eef-maths",
+        "montessori",
+        "dehaene-maths"
+      ]
+    },
+    {
+      "id": "times-tables",
+      "triggers": [
+        "tables de multiplication",
+        "table de",
+        "tables",
+        "times tables",
+        "times table",
+        "multiplication tables",
+        "multiplication facts"
+      ],
+      "domain": {
+        "fr": "Multiplication et division",
+        "en": "Multiplication and division"
+      },
+      "name": {
+        "fr": "la mémorisation des tables de multiplication",
+        "en": "memorising the times tables"
+      },
+      "understanding": {
+        "fr": "Mémoriser les tables est plus facile quand l'élève sait reconstruire un résultat oublié. Grâce à la commutativité, il n'y a en réalité qu'une quarantaine de résultats à retenir, pas cent.",
+        "en": "Times tables are easier to memorise when the student can rebuild a forgotten result. Thanks to commutativity there are really only about forty facts to learn, not a hundred."
+      },
+      "obstacles": {
+        "fr": [
+          "Les tables sont apprises comme une comptine récitée dans l'ordre.",
+          "L'élève ne sait pas retrouver un résultat oublié.",
+          "La charge de mémoire est trop lourde (tout d'un coup)."
+        ],
+        "en": [
+          "Tables are learned as a chant recited in order.",
+          "The student cannot rebuild a forgotten fact.",
+          "The memory load is too heavy (everything at once)."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Avoir compris le sens de la multiplication."
+        ],
+        "en": [
+          "Understanding what multiplication means."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève donne en moins de 3 secondes les résultats d'une table choisie, et sait retrouver un résultat oublié à partir d'un résultat connu.",
+        "en": "The student gives the facts of a chosen table within 3 seconds, and can rebuild a forgotten fact from a known one."
+      },
+      "approach": {
+        "fr": "Peu à la fois, souvent, et dans le désordre : 5 minutes par jour sur quelques résultats. Enseigner des stratégies de secours : 6 × 7 = 5 × 7 + 7 ; 9 × n = 10 × n − n.",
+        "en": "A little at a time, often, and out of order: 5 minutes a day on a few facts. Teach fallback strategies: 6 × 7 = 5 × 7 + 7; 9 × n = 10 × n − n."
+      },
+      "manipulation": {
+        "fr": "Construire le résultat oublié avec des barrettes, puis le cacher et le redire. Cartes-questions avec réponse au dos.",
+        "en": "Build the forgotten fact with bars, then hide it and say it again. Flash cards with the answer on the back."
+      },
+      "alt": {
+        "fr": "Tableau de Pythagore à compléter progressivement : l'élève colorie les cases qu'il connaît et voit ce qu'il lui reste (souvent bien moins qu'il ne croit).",
+        "en": "A multiplication grid filled in gradually: the student colours the facts they know and sees what remains (often far less than they think)."
+      },
+      "steps": {
+        "fr": [
+          "Tables de 2, 5 et 10.",
+          "Utiliser la commutativité pour réduire la liste.",
+          "Tables de 3 et 4.",
+          "Doubles et « doubles des doubles » (× 2, × 4, × 8).",
+          "Tables de 6 à 9 avec stratégies de secours.",
+          "Rappel rapide dans le désordre, sans aide."
+        ],
+        "en": [
+          "Tables of 2, 5 and 10.",
+          "Use commutativity to shorten the list.",
+          "Tables of 3 and 4.",
+          "Doubles and \"doubles of doubles\" (× 2, × 4, × 8).",
+          "Tables of 6 to 9 with fallback strategies.",
+          "Quick recall out of order, with no help."
+        ]
+      },
+      "simpler": {
+        "fr": "Une seule table, en ne retenant que 3 résultats nouveaux par semaine.",
+        "en": "One table only, learning just 3 new facts a week."
+      },
+      "next": {
+        "fr": "Utiliser les tables pour la division (combien de fois 6 dans 42 ?).",
+        "en": "Use the tables for division (how many 6s in 42?)."
+      },
+      "check": {
+        "fr": "Demander un résultat oublié et observer : l'élève reste-t-il bloqué ou utilise-t-il une stratégie (« 7 × 8, c'est 7 × 7 + 7 ») ?",
+        "en": "Ask a forgotten fact and watch: does the student freeze, or use a strategy (\"7 × 8 is 7 × 7 + 7\")?"
+      },
+      "tools": [
+        "multiplix"
+      ],
+      "toolUse": {
+        "multiplix": {
+          "fr": {
+            "why": "Multiplix permet de reconstruire un résultat oublié et de s'entraîner dans le désordre, sans répétition, jusqu'au niveau Expert sans aide.",
+            "start": "Exercice « Calculer le résultat », niveau 1 (tables de 1 à 5).",
+            "say": "« Trouve le résultat. Si tu ne sais plus, construis-le avec les barrettes. »",
+            "develop": "Niveau 2 (tables de 6 à 10), niveau 3 (toutes), puis Expert où l'élève tape la réponse.",
+            "observe": "Combien de temps met-il ? Construit-il encore, ou répond-il de mémoire ?"
+          },
+          "en": {
+            "why": "Multiplix lets the student rebuild a forgotten fact and practise out of order without repeats, up to the Expert level with no help.",
+            "start": "\"Calculate the result\" exercise, level 1 (tables 1 to 5).",
+            "say": "\"Find the result. If you can't remember, build it with the bars.\"",
+            "develop": "Level 2 (tables 6-10), level 3 (all), then Expert where the student types the answer.",
+            "observe": "How long do they take? Do they still build, or answer from memory?"
+          }
+        }
+      },
+      "sources": [
+        "eef-maths",
+        "dehaene-maths",
+        "cast-udl"
+      ]
+    },
+    {
+      "id": "division",
+      "triggers": [
+        "division",
+        "diviser",
+        "partage",
+        "partager",
+        "quotient",
+        "divide",
+        "sharing",
+        "share equally",
+        "how many groups"
+      ],
+      "domain": {
+        "fr": "Multiplication et division",
+        "en": "Multiplication and division"
+      },
+      "name": {
+        "fr": "le sens de la division",
+        "en": "the meaning of division"
+      },
+      "understanding": {
+        "fr": "La division répond à deux questions différentes : partager équitablement (12 bonbons pour 3 enfants : combien chacun ?) ou faire des groupes (combien de paquets de 3 dans 12 ?). Elle est l'opération inverse de la multiplication.",
+        "en": "Division answers two different questions: sharing equally (12 sweets for 3 children: how many each?) or grouping (how many groups of 3 in 12?). It is the inverse of multiplication."
+      },
+      "obstacles": {
+        "fr": [
+          "L'élève ne fait pas le lien avec la multiplication.",
+          "Le reste n'a pas de sens pour lui.",
+          "Il confond partage et groupement."
+        ],
+        "en": [
+          "The student does not link it with multiplication.",
+          "The remainder makes no sense to them.",
+          "They confuse sharing and grouping."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Sens de la multiplication.",
+          "Quelques tables connues."
+        ],
+        "en": [
+          "Meaning of multiplication.",
+          "Some known tables."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait résoudre un partage avec du matériel, l'écrire sous forme de multiplication à trou (3 × ? = 12) et sous forme de division.",
+        "en": "The student can solve a sharing problem with material and write it as a missing-factor multiplication (3 × ? = 12) and as a division."
+      },
+      "approach": {
+        "fr": "Partager réellement des objets, puis relier : « 3 parts de 4 », donc 3 × 4 = 12, donc 12 : 3 = 4.",
+        "en": "Really share objects, then link: \"3 shares of 4\", so 3 × 4 = 12, so 12 ÷ 3 = 4."
+      },
+      "manipulation": {
+        "fr": "Distribuer des jetons dans des assiettes une par une, puis compter chaque assiette. Faire des cas avec un reste.",
+        "en": "Deal counters into plates one by one, then count each plate. Include cases with a remainder."
+      },
+      "alt": {
+        "fr": "Groupement : « Combien de boîtes de 6 œufs faut-il pour 30 œufs ? » avec de vraies boîtes.",
+        "en": "Grouping: \"How many boxes of 6 eggs do we need for 30 eggs?\" with real boxes."
+      },
+      "steps": {
+        "fr": [
+          "Partager sans reste avec des objets.",
+          "Écrire la multiplication correspondante.",
+          "Facteur manquant : 3 × ? = 12.",
+          "Partages avec reste.",
+          "Écriture de la division."
+        ],
+        "en": [
+          "Share with no remainder using objects.",
+          "Write the matching multiplication.",
+          "Missing factor: 3 × ? = 12.",
+          "Sharing with a remainder.",
+          "Writing the division."
+        ]
+      },
+      "simpler": {
+        "fr": "Partager seulement entre 2 (moitié), avec des nombres pairs.",
+        "en": "Share only between 2 (halving), with even numbers."
+      },
+      "next": {
+        "fr": "Problèmes où l'élève doit choisir entre partage et groupement.",
+        "en": "Problems where the student chooses between sharing and grouping."
+      },
+      "check": {
+        "fr": "« 14 bonbons pour 4 enfants » : l'élève sait-il dire ce que deviennent les 2 bonbons qui restent ?",
+        "en": "\"14 sweets for 4 children\": can the student say what happens to the 2 left over?"
+      },
+      "tools": [
+        "multiplix"
+      ],
+      "toolUse": {
+        "multiplix": {
+          "fr": {
+            "why": "Le niveau Expert de Multiplix pose des questions « ? × 4 = 20 » et « 20 : 4 = ? » : la division y est vue comme l'inverse de la multiplication.",
+            "start": "D'abord en manipulation libre : poser des barrettes de 4 jusqu'à faire 20, et compter les barrettes.",
+            "say": "« Combien de barrettes de 4 faut-il pour faire 20 ? »",
+            "develop": "Niveau Expert de « Calculer » quand les tables sont connues.",
+            "observe": "L'élève passe-t-il de la multiplication à la division sans reconstruire à chaque fois ?"
+          },
+          "en": {
+            "why": "Multiplix's Expert level asks \"? × 4 = 20\" and \"20 ÷ 4 = ?\": division is seen as the inverse of multiplication.",
+            "start": "First in free play: lay bars of 4 until you make 20, then count the bars.",
+            "say": "\"How many bars of 4 do we need to make 20?\"",
+            "develop": "\"Calculate\" Expert level once tables are known.",
+            "observe": "Does the student switch from multiplication to division without rebuilding every time?"
+          }
+        }
+      },
+      "sources": [
+        "men-cp-maths",
+        "eef-maths"
+      ]
+    },
+    {
+      "id": "fractions",
+      "triggers": [
+        "fraction",
+        "moitie",
+        "quart",
+        "tiers",
+        "numerateur",
+        "denominateur",
+        "equivalent",
+        "half",
+        "quarter",
+        "third",
+        "numerator",
+        "denominator",
+        "parts egales",
+        "equal parts"
+      ],
+      "domain": {
+        "fr": "Fractions",
+        "en": "Fractions"
+      },
+      "name": {
+        "fr": "les fractions",
+        "en": "fractions"
+      },
+      "understanding": {
+        "fr": "Une fraction désigne une ou plusieurs parts d'un entier partagé en parts égales. Le dénominateur dit en combien de parts on partage, le numérateur combien on en prend. Beaucoup d'élèves voient d'abord « deux nombres l'un sur l'autre ».",
+        "en": "A fraction names one or more parts of a whole split into equal parts. The denominator says how many parts the whole is split into, the numerator how many are taken. Many students first see \"two numbers on top of each other\"."
+      },
+      "obstacles": {
+        "fr": [
+          "L'élève pense que 1/8 est plus grand que 1/4 « parce que 8 est plus grand que 4 ».",
+          "Les parts ne sont pas égales dans ses dessins.",
+          "Il additionne numérateurs et dénominateurs (1/2 + 1/4 = 2/6)."
+        ],
+        "en": [
+          "The student thinks 1/8 is bigger than 1/4 \"because 8 is bigger than 4\".",
+          "Parts are not equal in their drawings.",
+          "They add numerators and denominators (1/2 + 1/4 = 2/6)."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Notion de moitié.",
+          "Comparer des longueurs ou des aires simples."
+        ],
+        "en": [
+          "Idea of a half.",
+          "Comparing simple lengths or areas."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait montrer une fraction simple avec du matériel, la nommer, et expliquer pourquoi 1/4 est plus petit que 1/2.",
+        "en": "The student can show a simple fraction with material, name it, and explain why 1/4 is smaller than 1/2."
+      },
+      "approach": {
+        "fr": "Partager des entiers identiques en parts égales, nommer les parts (« un quart ») avant de les écrire, et comparer les parts en les superposant.",
+        "en": "Share identical wholes into equal parts, name the parts (\"one quarter\") before writing them, and compare parts by overlaying them."
+      },
+      "manipulation": {
+        "fr": "Plier des bandes de papier ou des disques ; partager une pizza dessinée ; cercles de fractions où chaque taille de part a sa couleur.",
+        "en": "Fold paper strips or discs; share a drawn pizza; fraction circles where each piece size has its colour."
+      },
+      "alt": {
+        "fr": "Bandes de fractions (le mur des fractions) : des bandes de même longueur partagées en 2, 3, 4… parts, alignées les unes sous les autres pour comparer.",
+        "en": "Fraction strips (fraction wall): strips of the same length split into 2, 3, 4… parts, lined up under each other to compare."
+      },
+      "steps": {
+        "fr": [
+          "Partager un entier en 2, puis en 4, en parts égales.",
+          "Nommer les parts (demi, tiers, quart) à l'oral.",
+          "Écrire la fraction.",
+          "Comparer des fractions de même numérateur (1/2, 1/3, 1/4).",
+          "Fractions équivalentes (2/4 = 1/2).",
+          "Additionner des fractions de même dénominateur, puis différents."
+        ],
+        "en": [
+          "Split a whole into 2, then 4, equal parts.",
+          "Name the parts (half, third, quarter) orally.",
+          "Write the fraction.",
+          "Compare unit fractions (1/2, 1/3, 1/4).",
+          "Equivalent fractions (2/4 = 1/2).",
+          "Add fractions with the same denominator, then different ones."
+        ]
+      },
+      "simpler": {
+        "fr": "Travailler uniquement demi et quart, avec du matériel, sans écriture chiffrée.",
+        "en": "Work only on halves and quarters, with material, without written fractions."
+      },
+      "next": {
+        "fr": "Placer des fractions sur une droite graduée, puis passer aux fractions décimales (1/10, 1/100) et aux nombres décimaux.",
+        "en": "Place fractions on a number line, then move to decimal fractions (1/10, 1/100) and decimals."
+      },
+      "check": {
+        "fr": "« Préfères-tu 1/3 ou 1/5 d'un gâteau ? Pourquoi ? » L'élève qui a compris parle de la taille des parts, pas du nombre 5.",
+        "en": "\"Would you rather have 1/3 or 1/5 of a cake? Why?\" A student who understands talks about the size of the parts, not the number 5."
+      },
+      "tools": [
+        "fraction-circles"
+      ],
+      "toolUse": {
+        "fraction-circles": {
+          "fr": {
+            "why": "Les cercles de fractions montrent des parts égales d'un même entier, avec une couleur par taille : on compare en superposant.",
+            "start": "Manipulation libre : remplir un cercle avec des demis, un autre avec des quarts.",
+            "say": "« Combien de quarts pour faire un demi ? Pose-les pour vérifier. »",
+            "develop": "Exercices « Nommer », « Comparer », puis « Fractions équivalentes » et « Additionner ».",
+            "observe": "L'élève explique-t-il ses comparaisons par la taille des parts ?"
+          },
+          "en": {
+            "why": "Fraction circles show equal parts of the same whole, one colour per size: compare by overlaying.",
+            "start": "Free play: fill one circle with halves and another with quarters.",
+            "say": "\"How many quarters make one half? Put them in to check.\"",
+            "develop": "\"Name\", \"Compare\" exercises, then \"Equivalent fractions\" and \"Add\".",
+            "observe": "Does the student explain comparisons by the size of the parts?"
+          }
+        }
+      },
+      "sources": [
+        "eduscol-fractions",
+        "eef-maths",
+        "montessori"
+      ]
+    },
+    {
+      "id": "letter-sound",
+      "triggers": [
+        "lettre",
+        "sons",
+        "phonem",
+        "graphem",
+        "confond",
+        "b et d",
+        "p et q",
+        "correspondance",
+        "decodage",
+        "dechiffr",
+        "syllab",
+        "letter",
+        "sound",
+        "phonics",
+        "decod",
+        "confuses",
+        "b and d",
+        "le son",
+        "les sons"
+      ],
+      "domain": {
+        "fr": "Lecture et écriture : le code",
+        "en": "Reading and writing: phonics"
+      },
+      "name": {
+        "fr": "les correspondances lettres-sons",
+        "en": "letter-sound correspondences"
+      },
+      "understanding": {
+        "fr": "Pour lire, l'élève doit associer chaque lettre ou groupe de lettres (graphème) au son qu'il représente (phonème), puis fusionner les sons. Les confusions viennent souvent de sons proches (p/b, f/v) ou de lettres en miroir (b/d).",
+        "en": "To read, the student must link each letter or letter group (grapheme) with the sound it stands for (phoneme), then blend the sounds. Confusions often come from similar sounds (p/b, f/v) or mirror-image letters (b/d)."
+      },
+      "obstacles": {
+        "fr": [
+          "Confusions visuelles (b/d, p/q, m/n).",
+          "Confusions auditives (p/b, t/d, f/v, ch/j).",
+          "L'élève connaît le nom des lettres mais pas leur son.",
+          "La fusion des sons en syllabe n'est pas acquise."
+        ],
+        "en": [
+          "Visual confusions (b/d, p/q, m/n).",
+          "Auditory confusions (p/b, t/d, f/v).",
+          "The student knows letter names but not their sounds.",
+          "Blending sounds into syllables is not yet secure."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Entendre les syllabes d'un mot.",
+          "Repérer le premier son d'un mot."
+        ],
+        "en": [
+          "Hearing the syllables in a word.",
+          "Identifying the first sound of a word."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait associer un son entendu à la lettre correspondante et écrire des mots simples de 3 ou 4 sons.",
+        "en": "The student can match a heard sound with its letter and write simple words of 3 or 4 sounds."
+      },
+      "approach": {
+        "fr": "Enseignement explicite et progressif du code : un son à la fois, toujours dans le même ordre (entendre, voir, dire, écrire), et beaucoup d'encodage (écrire des mots) car écrire aide à lire.",
+        "en": "Explicit, step-by-step teaching of the code: one sound at a time, always in the same order (hear, see, say, write), and lots of encoding (writing words), because writing helps reading."
+      },
+      "manipulation": {
+        "fr": "Lettres rugueuses ou lettres mobiles : l'élève compose le mot entendu sans avoir à tracer. Pour b/d : une seule des deux lettres travaillée à la fois, avec un geste ou un mot-repère.",
+        "en": "Sandpaper letters or a moveable alphabet: the student builds the word heard without having to write. For b/d: work on only one of the two at a time, with a gesture or key word."
+      },
+      "alt": {
+        "fr": "Gestes associés aux sons (méthode gestuelle) : chaque son a un geste de la main qui aide à le retrouver et à le distinguer d'un son proche.",
+        "en": "Gestures linked to sounds: each sound has a hand gesture that helps recall it and tell it apart from a similar sound."
+      },
+      "steps": {
+        "fr": [
+          "Repérer un son dans des mots dits à l'oral.",
+          "Associer ce son à sa lettre.",
+          "Fusionner consonne + voyelle (syllabe).",
+          "Encoder des mots de 2 syllabes simples.",
+          "Lire puis écrire de courtes phrases.",
+          "Graphèmes complexes (ou, on, ch…)."
+        ],
+        "en": [
+          "Spot a sound in spoken words.",
+          "Link the sound with its letter.",
+          "Blend consonant + vowel (syllable).",
+          "Encode two-syllable simple words.",
+          "Read then write short sentences.",
+          "Complex graphemes (sh, ch, oo…)."
+        ]
+      },
+      "simpler": {
+        "fr": "Travailler uniquement les voyelles, puis 2 ou 3 consonnes qui se prolongent (m, l, s, f).",
+        "en": "Work only on vowels, then 2 or 3 continuous consonants (m, l, s, f)."
+      },
+      "next": {
+        "fr": "Mots plus longs, puis phrases dictées ; lecture de textes courts déchiffrables.",
+        "en": "Longer words, then dictated sentences; reading short decodable texts."
+      },
+      "check": {
+        "fr": "Dicter un mot inventé (« mipa ») : s'il l'écrit correctement, il utilise le code et ne se contente pas d'une mémoire visuelle.",
+        "en": "Dictate a made-up word (\"mip\"): if they write it correctly, they are using the code, not just visual memory."
+      },
+      "tools": [
+        "alpha-mobile"
+      ],
+      "toolUse": {
+        "alpha-mobile": {
+          "fr": {
+            "why": "Alpha'Mobile reprend l'alphabet mobile Montessori : l'élève écrit en assemblant des lettres, sans la difficulté du tracé. Voyelles et consonnes ont des couleurs différentes.",
+            "start": "Exercice « J'entends, je trace » ou manipulation libre avec un mot court dit par l'adulte.",
+            "say": "« Écoute : “lune”. Quel est le premier son ? Trouve la lettre. »",
+            "develop": "Exercices « Lettre manquante » puis « Lettres mélangées », du niveau 1 (mots courts) au niveau 3 (phrases).",
+            "observe": "L'élève dit-il les sons à voix basse en écrivant ? Corrige-t-il seul en réécoutant ?"
+          },
+          "en": {
+            "why": "Alpha'Mobile is the Montessori moveable alphabet: the student writes by assembling letters, without the difficulty of handwriting. Vowels and consonants have different colours.",
+            "start": "\"I hear, I write\" exercise, or free play with a short word said by the adult.",
+            "say": "\"Listen: 'sun'. What is the first sound? Find the letter.\"",
+            "develop": "\"Missing letter\" then \"Scrambled letters\" exercises, from level 1 (short words) to level 3 (sentences).",
+            "observe": "Does the student say the sounds quietly while writing? Do they self-correct after listening again?"
+          }
+        }
+      },
+      "sources": [
+        "men-cp-lecture",
+        "dehaene-lecture",
+        "inserm-dys",
+        "montessori"
+      ]
+    },
+    {
+      "id": "phonological",
+      "triggers": [
+        "conscience phonologique",
+        "phonologi",
+        "rime",
+        "entendre les sons",
+        "segmenter",
+        "syllabes",
+        "rhyme",
+        "phonological",
+        "phonemic awareness",
+        "hear the sounds",
+        "segment"
+      ],
+      "domain": {
+        "fr": "Langage oral et conscience phonologique",
+        "en": "Oral language and phonological awareness"
+      },
+      "name": {
+        "fr": "la conscience phonologique",
+        "en": "phonological awareness"
+      },
+      "understanding": {
+        "fr": "La conscience phonologique, c'est la capacité à entendre et manipuler les unités sonores de la langue (syllabes, rimes, sons) indépendamment du sens. C'est un prérequis essentiel à l'apprentissage du code.",
+        "en": "Phonological awareness is the ability to hear and manipulate the sound units of language (syllables, rhymes, sounds) independently of meaning. It is an essential prerequisite for learning to read."
+      },
+      "obstacles": {
+        "fr": [
+          "L'élève ne sépare pas les syllabes.",
+          "Il pense au sens et non au son (« train » est plus long que « coccinelle »).",
+          "Il n'isole pas le premier son."
+        ],
+        "en": [
+          "The student cannot separate syllables.",
+          "They think of meaning rather than sound (\"train\" is longer than \"caterpillar\").",
+          "They cannot isolate the first sound."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Attention auditive (écouter un mot jusqu'au bout)."
+        ],
+        "en": [
+          "Auditory attention (listening to a whole word)."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait découper un mot en syllabes et dire si un son donné est présent dans un mot.",
+        "en": "The student can split a word into syllables and say whether a given sound is in a word."
+      },
+      "approach": {
+        "fr": "Jeux oraux courts et quotidiens, du plus grand au plus petit : syllabes, puis rimes, puis sons. Le visuel (jetons, cases) aide à « voir » les sons.",
+        "en": "Short daily oral games, from larger to smaller units: syllables, then rhymes, then sounds. Visuals (counters, boxes) help \"see\" the sounds."
+      },
+      "manipulation": {
+        "fr": "Frapper les syllabes, poser un jeton par syllabe puis par son ; cases (boîtes d'Elkonin) où l'on pousse un jeton pour chaque son entendu.",
+        "en": "Clap the syllables, place one counter per syllable then per sound; sound boxes (Elkonin boxes) where a counter is pushed for each sound heard."
+      },
+      "alt": {
+        "fr": "Jeu du « pareil / pas pareil » avec des images : trier des images selon leur premier son.",
+        "en": "\"Same / not the same\" picture game: sort pictures by their first sound."
+      },
+      "steps": {
+        "fr": [
+          "Frapper les syllabes de mots familiers.",
+          "Trouver des mots qui riment.",
+          "Repérer la syllabe d'attaque.",
+          "Isoler le premier son.",
+          "Segmenter un mot court en sons.",
+          "Fusionner des sons pour retrouver un mot."
+        ],
+        "en": [
+          "Clap the syllables of familiar words.",
+          "Find rhyming words.",
+          "Identify the first syllable.",
+          "Isolate the first sound.",
+          "Segment a short word into sounds.",
+          "Blend sounds to find a word."
+        ]
+      },
+      "simpler": {
+        "fr": "Rester sur les syllabes avec le prénom des enfants de la classe (sans les écrire nulle part).",
+        "en": "Stay with syllables using familiar words from daily life."
+      },
+      "next": {
+        "fr": "Associer les sons isolés à des lettres (correspondance lettre-son).",
+        "en": "Link the isolated sounds with letters (letter-sound correspondence)."
+      },
+      "check": {
+        "fr": "« Dans “moto”, combien de syllabes ? Quel est le premier son ? » Puis la même question avec un mot non travaillé.",
+        "en": "\"In 'rabbit', how many syllables? What is the first sound?\" Then the same with a word not practised."
+      },
+      "tools": [
+        "alpha-mobile"
+      ],
+      "toolUse": {
+        "alpha-mobile": {
+          "fr": {
+            "why": "Une fois les sons isolés à l'oral, Alpha'Mobile permet de les associer aux lettres sans tracer, avec la lecture à voix haute pour vérifier.",
+            "start": "Après les jeux oraux : l'adulte dit un mot de 2 sons, l'élève cherche la première lettre.",
+            "say": "« Tu entends “o” dans “moto” ? Trouve la lettre qui fait “o”. »",
+            "develop": "Exercice « J'entends, je trace », niveau 1.",
+            "observe": "L'élève dit-il le son (et non le nom de la lettre) ?"
+          },
+          "en": {
+            "why": "Once sounds are isolated orally, Alpha'Mobile links them to letters without handwriting, with read-aloud to check.",
+            "start": "After the oral games: the adult says a 2-sound word, the student finds the first letter.",
+            "say": "\"Do you hear 'o' in 'go'? Find the letter that says 'o'.\"",
+            "develop": "\"I hear, I write\" exercise, level 1.",
+            "observe": "Does the student say the sound (not the letter name)?"
+          }
+        }
+      },
+      "sources": [
+        "men-cp-lecture",
+        "dehaene-lecture",
+        "has-tsla"
+      ]
+    },
+    {
+      "id": "spelling-writing",
+      "triggers": [
+        "orthographe",
+        "ecrire des mots",
+        "ecrit mal",
+        "dictee",
+        "copie",
+        "copier",
+        "ecriture",
+        "graphisme",
+        "tracer",
+        "tenir son crayon",
+        "spelling",
+        "spell",
+        "handwriting",
+        "writing words",
+        "copying",
+        "dictation",
+        "hold the pencil",
+        "write"
+      ],
+      "domain": {
+        "fr": "Écriture",
+        "en": "Writing"
+      },
+      "name": {
+        "fr": "l'écriture des mots (orthographe et geste)",
+        "en": "writing words (spelling and handwriting)"
+      },
+      "understanding": {
+        "fr": "Écrire un mot demande deux choses à la fois : savoir quelles lettres écrire (encodage, orthographe) et savoir les tracer (geste graphique). Quand le geste coûte beaucoup d'effort, il reste peu d'attention pour l'orthographe.",
+        "en": "Writing a word requires two things at once: knowing which letters to write (encoding, spelling) and forming them (handwriting). When handwriting takes a lot of effort, little attention is left for spelling."
+      },
+      "obstacles": {
+        "fr": [
+          "Geste lent ou douloureux.",
+          "Lettres oubliées ou inversées.",
+          "Copie lettre par lettre au lieu de mot par mot."
+        ],
+        "en": [
+          "Slow or painful handwriting.",
+          "Letters missed or reversed.",
+          "Copying letter by letter instead of word by word."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Connaître les correspondances lettres-sons de base."
+        ],
+        "en": [
+          "Knowing basic letter-sound correspondences."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait écrire correctement des mots simples, d'abord sans contrainte de tracé, puis à la main.",
+        "en": "The student can write simple words correctly, first without handwriting, then by hand."
+      },
+      "approach": {
+        "fr": "Séparer les deux difficultés : travailler l'orthographe sans tracer (lettres mobiles, clavier), et le geste à part, en séances courtes.",
+        "en": "Separate the two difficulties: work on spelling without handwriting (moveable letters, keyboard), and on handwriting separately, in short sessions."
+      },
+      "manipulation": {
+        "fr": "Lettres mobiles pour composer le mot ; tracé dans le sable ou sur lettres rugueuses pour le geste.",
+        "en": "Moveable letters to build the word; tracing in sand or on sandpaper letters for the movement."
+      },
+      "alt": {
+        "fr": "Copie différée : regarder le mot, le dire, le cacher, l'écrire, vérifier.",
+        "en": "Look, say, cover, write, check."
+      },
+      "steps": {
+        "fr": [
+          "Composer des mots courts avec des lettres mobiles.",
+          "Vérifier en écoutant le mot lu.",
+          "Tracer les lettres une par une.",
+          "Copier des mots entiers.",
+          "Écrire sous la dictée.",
+          "Écrire de courtes phrases."
+        ],
+        "en": [
+          "Build short words with moveable letters.",
+          "Check by listening to the word read aloud.",
+          "Trace letters one at a time.",
+          "Copy whole words.",
+          "Write from dictation.",
+          "Write short sentences."
+        ]
+      },
+      "simpler": {
+        "fr": "Uniquement des mots de 3 lettres, en lettres mobiles, sans tracer.",
+        "en": "Only 3-letter words, with moveable letters, no handwriting."
+      },
+      "next": {
+        "fr": "Phrases complètes, puis petites productions d'écrit.",
+        "en": "Full sentences, then short pieces of writing."
+      },
+      "check": {
+        "fr": "Comparer le même mot écrit avec les lettres mobiles et à la main : si l'orthographe est juste avec les lettres mobiles et fausse à la main, la difficulté vient surtout du geste.",
+        "en": "Compare the same word built with moveable letters and written by hand: if spelling is right with letters but wrong by hand, the difficulty is mostly the handwriting."
+      },
+      "tools": [
+        "alpha-mobile"
+      ],
+      "toolUse": {
+        "alpha-mobile": {
+          "fr": {
+            "why": "Alpha'Mobile sépare l'orthographe du geste (glisser les lettres) et propose aussi un exercice de tracé.",
+            "start": "Exercice « Recopier », niveau 1, puis « Tracer les lettres ».",
+            "say": "« Écris le mot avec les lettres, puis écoute-le pour vérifier. »",
+            "develop": "Niveaux 2 et 3 (mots longs puis phrases).",
+            "observe": "Les erreurs sont-elles les mêmes avec les lettres mobiles et à la main ?"
+          },
+          "en": {
+            "why": "Alpha'Mobile separates spelling from handwriting (drag the letters) and also offers a tracing exercise.",
+            "start": "\"Copy\" exercise, level 1, then \"Trace the letters\".",
+            "say": "\"Write the word with the letters, then listen to it to check.\"",
+            "develop": "Levels 2 and 3 (long words then sentences).",
+            "observe": "Are the errors the same with moveable letters and by hand?"
+          }
+        }
+      },
+      "sources": [
+        "men-cp-lecture",
+        "has-tsla",
+        "montessori"
+      ]
+    },
+    {
+      "id": "reading-comprehension",
+      "triggers": [
+        "comprehension de texte",
+        "comprend pas ce qu il lit",
+        "lit mais",
+        "lecture fluide",
+        "fluence",
+        "lit lentement",
+        "reading comprehension",
+        "understand what he reads",
+        "understand what she reads",
+        "reads slowly",
+        "fluency",
+        "lire un texte"
+      ],
+      "domain": {
+        "fr": "Lecture : compréhension et fluence",
+        "en": "Reading: comprehension and fluency"
+      },
+      "name": {
+        "fr": "la compréhension de lecture et la fluence",
+        "en": "reading comprehension and fluency"
+      },
+      "understanding": {
+        "fr": "Comprendre un texte demande un déchiffrage assez rapide pour libérer l'attention, du vocabulaire, et des stratégies (se faire des images, relier les informations). Il faut d'abord savoir si la difficulté vient du déchiffrage ou de la compréhension.",
+        "en": "Understanding a text needs decoding fast enough to free attention, vocabulary, and strategies (making mental pictures, linking information). First find out whether the difficulty is decoding or comprehension."
+      },
+      "obstacles": {
+        "fr": [
+          "Le déchiffrage est si lent que le début de la phrase est oublié.",
+          "Vocabulaire inconnu.",
+          "Les inférences (ce qui n'est pas écrit) ne sont pas faites."
+        ],
+        "en": [
+          "Decoding is so slow the start of the sentence is forgotten.",
+          "Unknown vocabulary.",
+          "Inferences (what is not written) are not made."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Code de base acquis."
+        ],
+        "en": [
+          "Basic phonics secure."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait raconter avec ses mots un court texte lu, et répondre à une question dont la réponse n'est pas écrite telle quelle.",
+        "en": "The student can retell a short text in their own words and answer a question whose answer is not written word for word."
+      },
+      "approach": {
+        "fr": "Tester d'abord la compréhension à l'oral (texte lu par l'adulte). Si elle est bonne, travailler la fluence (relectures courtes et chronométrées). Sinon, travailler le vocabulaire et les stratégies de compréhension explicitement.",
+        "en": "First test comprehension orally (text read by the adult). If it is good, work on fluency (short timed rereadings). If not, explicitly teach vocabulary and comprehension strategies."
+      },
+      "manipulation": {
+        "fr": "Faire jouer ou mimer la scène avec des figurines ; dessiner ce que l'on a compris ; remettre des images du texte dans l'ordre.",
+        "en": "Act out the scene with figures; draw what was understood; put pictures from the text in order."
+      },
+      "alt": {
+        "fr": "Lecture partagée : l'adulte lit un paragraphe, l'élève le suivant, puis chacun pose une question à l'autre.",
+        "en": "Shared reading: the adult reads one paragraph, the student the next, then each asks the other a question."
+      },
+      "steps": {
+        "fr": [
+          "Compréhension à l'oral d'un texte lu par l'adulte.",
+          "Relectures répétées d'un texte court pour la fluence.",
+          "Vocabulaire expliqué avant la lecture.",
+          "Questions littérales puis inférentielles.",
+          "Résumer le texte en une phrase."
+        ],
+        "en": [
+          "Oral comprehension of a text read by the adult.",
+          "Repeated rereading of a short text for fluency.",
+          "Vocabulary explained before reading.",
+          "Literal then inferential questions.",
+          "Summarise the text in one sentence."
+        ]
+      },
+      "simpler": {
+        "fr": "Phrases isolées avec image, puis textes de 3 phrases.",
+        "en": "Single sentences with a picture, then 3-sentence texts."
+      },
+      "next": {
+        "fr": "Textes plus longs, documentaires, consignes de mathématiques.",
+        "en": "Longer texts, non-fiction, maths instructions."
+      },
+      "check": {
+        "fr": "Poser une question dont la réponse n'est pas écrite (« Pourquoi le personnage est-il triste ? ») et demander de justifier avec le texte.",
+        "en": "Ask a question whose answer is not written (\"Why is the character sad?\") and ask them to justify from the text."
+      },
+      "tools": [],
+      "sources": [
+        "men-cp-lecture",
+        "dehaene-lecture",
+        "eef-send"
+      ]
+    },
+    {
+      "id": "grammar",
+      "triggers": [
+        "grammaire",
+        "nature des mots",
+        "classe grammaticale",
+        "nom commun",
+        "verbe",
+        "adjectif",
+        "determinant",
+        "phrase",
+        "conjug",
+        "grammar",
+        "parts of speech",
+        "noun",
+        "verb",
+        "adjective",
+        "sentence",
+        "word class"
+      ],
+      "domain": {
+        "fr": "Grammaire",
+        "en": "Grammar"
+      },
+      "name": {
+        "fr": "la grammaire (natures de mots, phrase)",
+        "en": "grammar (word classes, sentences)"
+      },
+      "understanding": {
+        "fr": "Reconnaître la nature d'un mot, c'est comprendre son rôle : le nom désigne, le verbe dit ce qui se passe, l'adjectif précise. Les définitions abstraites sont difficiles ; un support visuel stable et des manipulations aident beaucoup.",
+        "en": "Recognising a word's class means understanding its role: a noun names, a verb tells what happens, an adjective describes. Abstract definitions are hard; a stable visual support and hands-on work help a lot."
+      },
+      "obstacles": {
+        "fr": [
+          "L'élève confond le nom et l'adjectif.",
+          "Il reconnaît le verbe seulement à l'infinitif.",
+          "Les définitions sont récitées sans être utilisées."
+        ],
+        "en": [
+          "The student confuses nouns and adjectives.",
+          "They only recognise verbs in the infinitive.",
+          "Definitions are recited without being used."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Lire des phrases simples (ou les entendre)."
+        ],
+        "en": [
+          "Reading simple sentences (or hearing them)."
+        ]
+      },
+      "objective": {
+        "fr": "Dans une phrase simple, l'élève sait trouver le nom, le verbe et le déterminant, et justifier par un test (« je peux mettre le / la devant »).",
+        "en": "In a simple sentence, the student can find the noun, the verb and the article, and justify with a test (\"I can put 'the' in front\")."
+      },
+      "approach": {
+        "fr": "Faire agir les mots : jouer le verbe, montrer l'objet désigné par le nom, changer l'adjectif pour voir ce qui change. Puis associer chaque nature à un symbole visuel stable.",
+        "en": "Make words act: act out the verb, point to the object named by the noun, change the adjective to see what changes. Then link each class to a stable visual symbol."
+      },
+      "manipulation": {
+        "fr": "Étiquettes de mots à trier ; symboles Montessori de grammaire (triangle noir pour le nom, rond rouge pour le verbe…) posés sur les mots.",
+        "en": "Word labels to sort; Montessori grammar symbols (black triangle for nouns, red circle for verbs…) placed on words."
+      },
+      "alt": {
+        "fr": "Phrases « à transformer » : remplacer un mot par un autre de même nature et voir si la phrase reste correcte.",
+        "en": "Sentence transformation: replace a word with another of the same class and see whether the sentence still works."
+      },
+      "steps": {
+        "fr": [
+          "Nom et déterminant.",
+          "Verbe (ce que l'on fait).",
+          "Adjectif.",
+          "Analyser une phrase de 4 mots.",
+          "Construire une phrase à partir d'étiquettes.",
+          "Ajouter d'autres natures (pronom, adverbe, préposition…)."
+        ],
+        "en": [
+          "Noun and article.",
+          "Verb (what someone does).",
+          "Adjective.",
+          "Analyse a 4-word sentence.",
+          "Build a sentence from labels.",
+          "Add other classes (pronoun, adverb, preposition…)."
+        ]
+      },
+      "simpler": {
+        "fr": "Uniquement nom et verbe, avec des phrases de 2 ou 3 mots illustrées.",
+        "en": "Only nouns and verbs, with illustrated 2- or 3-word sentences."
+      },
+      "next": {
+        "fr": "Les fonctions (sujet, complément), puis l'accord dans le groupe nominal.",
+        "en": "Functions (subject, object), then agreement within the noun phrase."
+      },
+      "check": {
+        "fr": "Donner une phrase nouvelle et demander de poser les symboles : l'élève justifie-t-il par un test, ou devine-t-il ?",
+        "en": "Give a new sentence and ask them to place the symbols: do they justify with a test, or guess?"
+      },
+      "tools": [
+        "grammaire-mobile"
+      ],
+      "toolUse": {
+        "grammaire-mobile": {
+          "fr": {
+            "why": "Grammaire Mobile utilise les 9 symboles Montessori : forme et couleur restent les mêmes, ce qui donne un repère visuel stable.",
+            "start": "Découvrir les symboles du nom, du déterminant et du verbe (définition et exemples).",
+            "say": "« Pose le bon symbole sur chaque mot. Pourquoi as-tu mis un triangle sur “chat” ? »",
+            "develop": "Exercices « Trier les mots », « Analyser une phrase », « Construire une phrase », niveaux 1 à 4. Possible sans les symboles.",
+            "observe": "L'élève donne-t-il une raison, ou choisit-il au hasard ?"
+          },
+          "en": {
+            "why": "Grammar Mobile uses the 9 Montessori symbols: shape and colour never change, giving a stable visual landmark.",
+            "start": "Discover the noun, article and verb symbols (definition and examples).",
+            "say": "\"Put the right symbol on each word. Why did you put a triangle on 'cat'?\"",
+            "develop": "\"Sort the words\", \"Analyse a sentence\", \"Build a sentence\" exercises, levels 1 to 4. Can be done without symbols.",
+            "observe": "Does the student give a reason, or choose at random?"
+          }
+        }
+      },
+      "sources": [
+        "montessori",
+        "cap-ecole-inclusive"
+      ]
+    },
+    {
+      "id": "geography",
+      "triggers": [
+        "geograph",
+        "continent",
+        "ocean",
+        "planisphere",
+        "country",
+        "countries",
+        "map",
+        "world map",
+        "globe",
+        "carte du monde",
+        "cartes de geographie",
+        "les pays",
+        "du monde"
+      ],
+      "domain": {
+        "fr": "Géographie",
+        "en": "Geography"
+      },
+      "name": {
+        "fr": "la géographie (continents, océans, cartes)",
+        "en": "geography (continents, oceans, maps)"
+      },
+      "understanding": {
+        "fr": "Se repérer sur une carte demande de comprendre qu'elle représente le monde vu d'en haut, en plus petit, et de mémoriser des noms et des formes.",
+        "en": "Reading a map means understanding that it shows the world seen from above, smaller, and memorising names and shapes."
+      },
+      "obstacles": {
+        "fr": [
+          "Confusion entre continents et pays.",
+          "Les noms sont retenus sans les formes ni la position.",
+          "La carte reste abstraite."
+        ],
+        "en": [
+          "Confusing continents and countries.",
+          "Names are learned without shapes or positions.",
+          "The map stays abstract."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Aucun."
+        ],
+        "en": [
+          "None."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait nommer et montrer les continents et les océans sur un planisphère.",
+        "en": "The student can name and point to the continents and oceans on a world map."
+      },
+      "approach": {
+        "fr": "Partir du globe (le monde est une boule), puis du planisphère ; manipuler les continents comme les pièces d'un puzzle ; présenter les noms en trois temps (« voici… », « montre-moi… », « qu'est-ce que c'est ? »).",
+        "en": "Start from the globe (the world is a ball), then the flat map; handle continents like puzzle pieces; present names in three steps (\"this is…\", \"show me…\", \"what is this?\")."
+      },
+      "manipulation": {
+        "fr": "Puzzle des continents, globe, coloriage ; chansons des continents.",
+        "en": "Continent puzzle, globe, colouring; continent songs."
+      },
+      "alt": {
+        "fr": "Partir du lieu de vie de l'élève (sa ville, son pays) et élargir pas à pas.",
+        "en": "Start from where the student lives (town, country) and widen step by step."
+      },
+      "steps": {
+        "fr": [
+          "Terre et eau sur le globe.",
+          "Les continents.",
+          "Les océans.",
+          "Les pays d'un continent.",
+          "Situer des pays connus (vacances, origines)."
+        ],
+        "en": [
+          "Land and water on the globe.",
+          "The continents.",
+          "The oceans.",
+          "The countries of one continent.",
+          "Locate familiar countries."
+        ]
+      },
+      "simpler": {
+        "fr": "Trois continents seulement, avec le puzzle.",
+        "en": "Only three continents, with the puzzle."
+      },
+      "next": {
+        "fr": "Les pays de l'Europe, les mers, puis le relief.",
+        "en": "The countries of one continent, seas, then relief."
+      },
+      "check": {
+        "fr": "Faire reconstituer le puzzle du monde sans modèle, puis montrer un océan nommé par l'adulte.",
+        "en": "Have the student rebuild the world puzzle without a model, then point to an ocean named by the adult."
+      },
+      "tools": [
+        "geo-mobile"
+      ],
+      "toolUse": {
+        "geo-mobile": {
+          "fr": {
+            "why": "Géo Mobile reprend les cartes puzzles Montessori : on touche pour entendre le nom, puis on reconstitue la carte.",
+            "start": "Carte du monde : toucher chaque continent pour entendre son nom.",
+            "say": "« Montre-moi l'Afrique. Remets-la à sa place. »",
+            "develop": "Cartes des continents puis des océans et des mers (9 cartes).",
+            "observe": "L'élève place-t-il les pièces par la forme et la position, ou par essais au hasard ?"
+          },
+          "en": {
+            "why": "Geo Mobile is the Montessori puzzle maps: touch to hear the name, then rebuild the map.",
+            "start": "World map: touch each continent to hear its name.",
+            "say": "\"Show me Africa. Put it back in its place.\"",
+            "develop": "Continent maps, then oceans and seas (9 maps).",
+            "observe": "Does the student place pieces by shape and position, or by random trial?"
+          }
+        }
+      },
+      "sources": [
+        "montessori"
+      ]
+    },
+    {
+      "id": "geometry",
+      "triggers": [
+        "geometri",
+        "triangle",
+        "carre",
+        "rectangle",
+        "cercle",
+        "angle",
+        "symetri",
+        "perimetre",
+        "aire",
+        "geometry",
+        "shape",
+        "square",
+        "symmetry",
+        "perimeter",
+        "area",
+        "formes geometriques",
+        "les formes"
+      ],
+      "domain": {
+        "fr": "Géométrie",
+        "en": "Geometry"
+      },
+      "name": {
+        "fr": "la géométrie (formes, mesures)",
+        "en": "geometry (shapes, measures)"
+      },
+      "understanding": {
+        "fr": "Reconnaître une forme, c'est dépasser son apparence globale pour voir ses propriétés (côtés, angles droits). Un carré tourné reste un carré.",
+        "en": "Recognising a shape means going beyond its overall look to its properties (sides, right angles). A turned square is still a square."
+      },
+      "obstacles": {
+        "fr": [
+          "Un carré posé sur la pointe n'est plus reconnu.",
+          "Confusion périmètre / aire.",
+          "Difficultés motrices avec règle et équerre."
+        ],
+        "en": [
+          "A square standing on a corner is no longer recognised.",
+          "Perimeter / area confusion.",
+          "Motor difficulties with ruler and set square."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Vocabulaire spatial de base."
+        ],
+        "en": [
+          "Basic spatial vocabulary."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève reconnaît une forme quelle que soit sa position et la justifie par ses propriétés.",
+        "en": "The student recognises a shape in any position and justifies it by its properties."
+      },
+      "approach": {
+        "fr": "Toucher et comparer de vraies formes, les tourner, compter côtés et coins, avant de tracer. Séparer la notion du tracé pour les élèves qui ont des difficultés motrices.",
+        "en": "Touch and compare real shapes, turn them, count sides and corners, before drawing. Separate the idea from drawing for students with motor difficulties."
+      },
+      "manipulation": {
+        "fr": "Formes en carton ou en bois, géoplan avec élastiques, pliages.",
+        "en": "Cardboard or wooden shapes, geoboard with rubber bands, paper folding."
+      },
+      "alt": {
+        "fr": "Jeu du portrait : l'élève décrit une forme cachée par ses propriétés, l'autre la devine.",
+        "en": "Guess-the-shape game: the student describes a hidden shape by its properties, the other guesses."
+      },
+      "steps": {
+        "fr": [
+          "Trier des formes réelles.",
+          "Nommer et compter côtés et sommets.",
+          "Reconnaître dans toutes les positions.",
+          "Reproduire sur géoplan.",
+          "Tracer avec instruments (avec aides si besoin)."
+        ],
+        "en": [
+          "Sort real shapes.",
+          "Name and count sides and corners.",
+          "Recognise in any position.",
+          "Reproduce on a geoboard.",
+          "Draw with instruments (with aids if needed)."
+        ]
+      },
+      "simpler": {
+        "fr": "Carré, rond, triangle seulement, en objets à toucher.",
+        "en": "Square, circle, triangle only, as objects to touch."
+      },
+      "next": {
+        "fr": "Propriétés (angles droits, côtés égaux), puis périmètre.",
+        "en": "Properties (right angles, equal sides), then perimeter."
+      },
+      "check": {
+        "fr": "Montrer un carré tourné de 45° : l'élève dit-il « losange » ou justifie-t-il que c'est un carré ?",
+        "en": "Show a square turned 45°: does the student say \"diamond\" or justify that it is a square?"
+      },
+      "tools": [],
+      "sources": [
+        "eef-maths",
+        "montessori"
+      ]
+    },
+    {
+      "id": "problem-solving",
+      "triggers": [
+        "probleme",
+        "enonce",
+        "resoudre",
+        "quelle operation",
+        "probleme de maths",
+        "word problem",
+        "problem solving",
+        "which operation",
+        "story problem"
+      ],
+      "domain": {
+        "fr": "Résolution de problèmes",
+        "en": "Problem solving"
+      },
+      "name": {
+        "fr": "la résolution de problèmes",
+        "en": "problem solving"
+      },
+      "understanding": {
+        "fr": "Résoudre un problème, c'est comprendre une situation, se la représenter, puis choisir l'opération. Les difficultés viennent souvent de la lecture de l'énoncé ou de la représentation, plus que du calcul.",
+        "en": "Solving a problem means understanding a situation, representing it, then choosing the operation. Difficulties often come from reading the problem or representing it, more than calculating."
+      },
+      "obstacles": {
+        "fr": [
+          "L'élève choisit l'opération au hasard ou d'après un mot (« de plus » = addition).",
+          "La lecture de l'énoncé est trop coûteuse.",
+          "Il ne fait pas de schéma."
+        ],
+        "en": [
+          "The student picks the operation at random or from a keyword (\"more\" = add).",
+          "Reading the problem is too demanding.",
+          "They do not draw a diagram."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Sens des opérations concernées."
+        ],
+        "en": [
+          "Meaning of the operations involved."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait représenter un problème simple (objets ou schéma en barres) avant de choisir l'opération.",
+        "en": "The student can represent a simple problem (objects or bar model) before choosing the operation."
+      },
+      "approach": {
+        "fr": "Lire l'énoncé à l'élève si besoin, le faire raconter ou jouer, puis le représenter (objets, dessin, schéma en barres). Classer les problèmes par type de situation, pas par mot-clé.",
+        "en": "Read the problem to the student if needed, have them retell or act it out, then represent it (objects, drawing, bar model). Group problems by type of situation, not by keyword."
+      },
+      "manipulation": {
+        "fr": "Jouer la situation avec des objets ; schéma en barres (bandes de papier représentant les quantités).",
+        "en": "Act out the situation with objects; bar model (paper strips representing quantities)."
+      },
+      "alt": {
+        "fr": "Problèmes sans question : l'élève invente la question possible, ce qui oblige à comprendre la situation.",
+        "en": "Problems without a question: the student makes up a possible question, which requires understanding the situation."
+      },
+      "steps": {
+        "fr": [
+          "Problèmes joués avec des objets.",
+          "Problèmes dessinés.",
+          "Schéma en barres.",
+          "Problèmes à deux étapes.",
+          "Problèmes avec données inutiles."
+        ],
+        "en": [
+          "Problems acted out with objects.",
+          "Drawn problems.",
+          "Bar models.",
+          "Two-step problems.",
+          "Problems with extra information."
+        ]
+      },
+      "simpler": {
+        "fr": "Problèmes oraux d'une phrase, avec des nombres jusqu'à 10 et des objets.",
+        "en": "One-sentence oral problems with numbers up to 10 and objects."
+      },
+      "next": {
+        "fr": "Problèmes de comparaison et à plusieurs étapes.",
+        "en": "Comparison and multi-step problems."
+      },
+      "check": {
+        "fr": "Demander à l'élève d'expliquer son schéma avant de calculer : sa représentation correspond-elle à l'histoire ?",
+        "en": "Ask the student to explain their diagram before calculating: does the representation match the story?"
+      },
+      "tools": [],
+      "partialTools": [
+        "abacus",
+        "number-card",
+        "multiplix"
+      ],
+      "sources": [
+        "men-cp-maths",
+        "eef-maths"
+      ]
+    },
+    {
+      "id": "instructions",
+      "triggers": [
+        "consigne",
+        "comprend pas ce qu on lui demande",
+        "ne sait pas quoi faire",
+        "instructions",
+        "directions",
+        "doesn't know what to do",
+        "does not know what to do"
+      ],
+      "domain": {
+        "fr": "Compréhension des consignes",
+        "en": "Understanding instructions"
+      },
+      "name": {
+        "fr": "la compréhension des consignes",
+        "en": "understanding instructions"
+      },
+      "understanding": {
+        "fr": "Une consigne mélange souvent plusieurs actions et un vocabulaire scolaire (entoure, souligne, complète). L'élève peut savoir faire la tâche mais ne pas comprendre ce qu'on lui demande.",
+        "en": "An instruction often mixes several actions with school vocabulary (circle, underline, complete). The student may be able to do the task but not understand what is asked."
+      },
+      "obstacles": {
+        "fr": [
+          "Plusieurs actions dans une même consigne.",
+          "Verbes de consigne inconnus.",
+          "L'élève commence avant d'avoir tout lu."
+        ],
+        "en": [
+          "Several actions in one instruction.",
+          "Unknown instruction verbs.",
+          "The student starts before reading it all."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Aucun."
+        ],
+        "en": [
+          "None."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait reformuler une consigne simple avec ses mots avant de commencer.",
+        "en": "The student can restate a simple instruction in their own words before starting."
+      },
+      "approach": {
+        "fr": "Une consigne = une action ; verbes de consigne enseignés explicitement avec un pictogramme ; reformulation par l'élève ; exemple fait ensemble.",
+        "en": "One instruction = one action; instruction verbs taught explicitly with a picture; restating by the student; worked example together."
+      },
+      "manipulation": {
+        "fr": "Cartes-pictogrammes des verbes de consigne (entoure, relie, colorie) ; l'élève choisit la carte qui correspond.",
+        "en": "Picture cards for instruction verbs (circle, match, colour); the student picks the matching card."
+      },
+      "alt": {
+        "fr": "Jeu du « robot » : l'élève exécute exactement la consigne donnée, puis la donne à son tour à un camarade.",
+        "en": "\"Robot\" game: the student carries out exactly the instruction given, then gives it to a classmate."
+      },
+      "steps": {
+        "fr": [
+          "Consignes orales d'une action.",
+          "Consignes écrites d'une action avec pictogramme.",
+          "Consignes de deux actions.",
+          "Reformulation systématique.",
+          "Consignes sans pictogramme."
+        ],
+        "en": [
+          "Oral one-step instructions.",
+          "Written one-step instructions with a picture.",
+          "Two-step instructions.",
+          "Systematic restating.",
+          "Instructions without pictures."
+        ]
+      },
+      "simpler": {
+        "fr": "Une seule action, dite et montrée en même temps.",
+        "en": "One single action, said and shown at the same time."
+      },
+      "next": {
+        "fr": "Consignes de plusieurs étapes que l'élève découpe lui-même.",
+        "en": "Multi-step instructions that the student breaks down themselves."
+      },
+      "check": {
+        "fr": "« Explique-moi ce que tu vas faire » avant de commencer : la reformulation contient-elle toutes les actions ?",
+        "en": "\"Tell me what you are going to do\" before starting: does the restatement include all the actions?"
+      },
+      "tools": [],
+      "sources": [
+        "cap-ecole-inclusive",
+        "cast-udl"
+      ]
+    },
+    {
+      "id": "time",
+      "triggers": [
+        "heure",
+        "lire l heure",
+        "duree",
+        "calendrier",
+        "jours de la semaine",
+        "hier",
+        "demain",
+        "time",
+        "clock",
+        "tell the time",
+        "calendar",
+        "days of the week",
+        "months",
+        "yesterday",
+        "tomorrow",
+        "notion du temps",
+        "le temps qui passe",
+        "les mois"
+      ],
+      "domain": {
+        "fr": "Structuration du temps",
+        "en": "Understanding time"
+      },
+      "name": {
+        "fr": "la structuration du temps (heure, durées, calendrier)",
+        "en": "time (clock, durations, calendar)"
+      },
+      "understanding": {
+        "fr": "Le temps ne se voit pas et ne se touche pas : il faut le rendre visible (frise, sablier, horloge à aiguilles). Lire l'heure demande aussi de comprendre deux échelles différentes sur un même cadran.",
+        "en": "Time cannot be seen or touched: it must be made visible (timeline, sand timer, analogue clock). Telling the time also requires understanding two different scales on the same clock face."
+      },
+      "obstacles": {
+        "fr": [
+          "Confusion entre les deux aiguilles.",
+          "Hier / demain mal situés.",
+          "Durées non perçues."
+        ],
+        "en": [
+          "Confusing the two hands.",
+          "Yesterday / tomorrow not placed correctly.",
+          "Durations not perceived."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Compter jusqu'à 60 de 5 en 5 (pour les minutes)."
+        ],
+        "en": [
+          "Counting to 60 in 5s (for minutes)."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait situer les événements de sa journée sur une frise et lire les heures entières.",
+        "en": "The student can place the day's events on a timeline and read o'clock times."
+      },
+      "approach": {
+        "fr": "Rendre le temps visible : frise de la journée avec photos, sablier pour les durées, horloge avec une seule aiguille au début.",
+        "en": "Make time visible: a day timeline with photos, sand timer for durations, a one-hand clock to start."
+      },
+      "manipulation": {
+        "fr": "Horloge à aiguilles manipulable ; frise avec images à remettre dans l'ordre.",
+        "en": "Movable-hand clock; timeline with pictures to put in order."
+      },
+      "alt": {
+        "fr": "Partir des routines de l'élève (lever, école, repas) pour construire avant / après.",
+        "en": "Start from the student's routines (getting up, school, meals) to build before / after."
+      },
+      "steps": {
+        "fr": [
+          "Avant / après avec des images.",
+          "Frise de la journée.",
+          "Jours de la semaine.",
+          "Heures entières (petite aiguille seule).",
+          "Demi-heures et quarts.",
+          "Minutes."
+        ],
+        "en": [
+          "Before / after with pictures.",
+          "Day timeline.",
+          "Days of the week.",
+          "O'clock (hour hand only).",
+          "Half and quarter hours.",
+          "Minutes."
+        ]
+      },
+      "simpler": {
+        "fr": "Avant / après avec 3 images de la journée.",
+        "en": "Before / after with 3 pictures of the day."
+      },
+      "next": {
+        "fr": "Calculer des durées simples.",
+        "en": "Calculate simple durations."
+      },
+      "check": {
+        "fr": "Montrer une heure sur l'horloge et demander ce que l'on fait habituellement à ce moment-là.",
+        "en": "Show a time on the clock and ask what usually happens at that time."
+      },
+      "tools": [],
+      "sources": [
+        "cap-ecole-inclusive"
+      ]
+    },
+    {
+      "id": "spatial",
+      "triggers": [
+        "gauche",
+        "droite",
+        "se reperer",
+        "espace",
+        "orientation",
+        "devant derriere",
+        "repere",
+        "left",
+        "right",
+        "spatial",
+        "orientation",
+        "position words"
+      ],
+      "domain": {
+        "fr": "Repérage dans l'espace",
+        "en": "Spatial orientation"
+      },
+      "name": {
+        "fr": "le repérage dans l'espace (gauche, droite, positions)",
+        "en": "spatial orientation (left, right, positions)"
+      },
+      "understanding": {
+        "fr": "Se repérer dans l'espace demande un vocabulaire (sur, sous, à gauche de) et la capacité à changer de point de vue. Gauche et droite sont particulièrement difficiles car elles dépendent de l'observateur.",
+        "en": "Spatial orientation needs vocabulary (on, under, to the left of) and the ability to change viewpoint. Left and right are especially hard because they depend on the observer."
+      },
+      "obstacles": {
+        "fr": [
+          "Confusion gauche / droite.",
+          "Difficulté à reproduire un modèle.",
+          "Le point de vue d'un autre n'est pas pris en compte."
+        ],
+        "en": [
+          "Left / right confusion.",
+          "Difficulty copying a model.",
+          "Another person's viewpoint is not taken into account."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Connaissance de son propre corps."
+        ],
+        "en": [
+          "Knowing one's own body."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait placer un objet à la position demandée par rapport à lui, puis par rapport à un autre objet.",
+        "en": "The student can place an object in a requested position relative to themselves, then relative to another object."
+      },
+      "approach": {
+        "fr": "Partir du corps (parcours, jeux moteurs), puis des objets, puis du dessin. Un repère permanent (bracelet au poignet droit) aide pour gauche / droite.",
+        "en": "Start with the body (movement games), then objects, then drawings. A permanent marker (a band on the right wrist) helps with left / right."
+      },
+      "manipulation": {
+        "fr": "Parcours avec consignes de position ; placer des objets sur une table selon une consigne ; reproduire des assemblages de cubes.",
+        "en": "Obstacle courses with position instructions; placing objects on a table as instructed; copying cube constructions."
+      },
+      "alt": {
+        "fr": "Plans simples de la classe ou de la chambre, puis jeux de chasse au trésor.",
+        "en": "Simple plans of the classroom or bedroom, then treasure-hunt games."
+      },
+      "steps": {
+        "fr": [
+          "Positions par rapport à son corps.",
+          "Positions entre objets.",
+          "Gauche / droite pour soi.",
+          "Lire un plan simple.",
+          "Gauche / droite d'un autre point de vue."
+        ],
+        "en": [
+          "Positions relative to one's body.",
+          "Positions between objects.",
+          "Left / right for oneself.",
+          "Read a simple plan.",
+          "Left / right from another viewpoint."
+        ]
+      },
+      "simpler": {
+        "fr": "Sur / sous / dans avec des objets réels.",
+        "en": "On / under / in with real objects."
+      },
+      "next": {
+        "fr": "Se repérer sur une carte.",
+        "en": "Find your way on a map."
+      },
+      "check": {
+        "fr": "« Mets le crayon à gauche du cahier » puis la même consigne face à l'élève.",
+        "en": "\"Put the pencil to the left of the book\", then the same instruction facing the student."
+      },
+      "tools": [],
+      "partialTools": [
+        "geo-mobile"
+      ],
+      "sources": [
+        "cap-ecole-inclusive"
+      ]
+    },
+    {
+      "id": "attention-work",
+      "triggers": [
+        "concentr",
+        "distrait",
+        "attention",
+        "se disperse",
+        "agite",
+        "ne tient pas en place",
+        "decroche",
+        "focus",
+        "distracted",
+        "can't sit still",
+        "cannot sit still",
+        "loses interest",
+        "fidget"
+      ],
+      "domain": {
+        "fr": "Attention et organisation du travail",
+        "en": "Attention and organising work"
+      },
+      "name": {
+        "fr": "l'attention pendant le travail",
+        "en": "attention during work"
+      },
+      "understanding": {
+        "fr": "Le manque d'attention n'est pas un manque de volonté. On peut aménager la tâche pour qu'elle demande moins d'attention à la fois : plus courte, plus claire, avec un retour rapide.",
+        "en": "Lack of attention is not lack of will. The task can be arranged so it needs less attention at once: shorter, clearer, with quick feedback."
+      },
+      "obstacles": {
+        "fr": [
+          "Tâches trop longues.",
+          "Trop d'informations visibles en même temps.",
+          "Pas de retour sur la réussite avant la fin."
+        ],
+        "en": [
+          "Tasks that are too long.",
+          "Too much information visible at once.",
+          "No feedback on success before the end."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Aucun."
+        ],
+        "en": [
+          "None."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève mène à bien une tâche courte (5 à 10 minutes) avec un but clair, puis une deuxième.",
+        "en": "The student completes a short task (5 to 10 minutes) with a clear goal, then a second one."
+      },
+      "approach": {
+        "fr": "Découper le travail en courtes séquences avec un but visible, une seule chose à la fois sur la table ou l'écran, des pauses de mouvement prévues, et un retour immédiat.",
+        "en": "Break work into short sessions with a visible goal, only one thing on the table or screen, planned movement breaks, and immediate feedback."
+      },
+      "manipulation": {
+        "fr": "Activités où l'élève agit (manipuler, déplacer) plutôt que d'écouter longtemps ; minuteur visuel.",
+        "en": "Activities where the student acts (handling, moving) rather than listening for long; visual timer."
+      },
+      "alt": {
+        "fr": "Contrat de travail simple : 3 tâches courtes à cocher, au choix de l'ordre.",
+        "en": "Simple work plan: 3 short tasks to tick off, in any order."
+      },
+      "steps": {
+        "fr": [
+          "Tâche de 5 minutes avec minuteur.",
+          "Pause de mouvement.",
+          "Deuxième tâche courte.",
+          "Allonger progressivement.",
+          "L'élève choisit lui-même l'ordre des tâches."
+        ],
+        "en": [
+          "5-minute task with a timer.",
+          "Movement break.",
+          "Second short task.",
+          "Gradually lengthen.",
+          "The student chooses the task order."
+        ]
+      },
+      "simpler": {
+        "fr": "Une seule tâche de 3 minutes, réussite garantie.",
+        "en": "One single 3-minute task, guaranteed success."
+      },
+      "next": {
+        "fr": "Apprendre à l'élève à repérer lui-même quand il décroche.",
+        "en": "Teach the student to notice when their attention drifts."
+      },
+      "check": {
+        "fr": "Observer combien de temps l'élève reste sur une tâche courte bien découpée, comparé à une tâche longue.",
+        "en": "Observe how long the student stays on a well-divided short task compared with a long one."
+      },
+      "tools": [],
+      "sources": [
+        "has-tdah",
+        "cap-ecole-inclusive",
+        "eef-send"
+      ]
+    },
+    {
+      "id": "history-science",
+      "triggers": [
+        "histoire",
+        "sciences",
+        "science",
+        "history",
+        "biologie",
+        "biology",
+        "experiment",
+        "vivant",
+        "living things"
+      ],
+      "domain": {
+        "fr": "Histoire et sciences",
+        "en": "History and science"
+      },
+      "name": {
+        "fr": "l'histoire et les sciences",
+        "en": "history and science"
+      },
+      "understanding": {
+        "fr": "En histoire et en sciences, la difficulté vient souvent de la lecture des documents et du vocabulaire, plus que de la notion elle-même. Les expériences et les frises rendent ces notions concrètes.",
+        "en": "In history and science, difficulty often comes from reading documents and vocabulary rather than the concept itself. Experiments and timelines make these ideas concrete."
+      },
+      "obstacles": {
+        "fr": [
+          "Textes trop longs.",
+          "Vocabulaire spécifique.",
+          "Notions de temps long (siècles)."
+        ],
+        "en": [
+          "Texts that are too long.",
+          "Specialist vocabulary.",
+          "Long time scales (centuries)."
+        ]
+      },
+      "prerequisites": {
+        "fr": [
+          "Variable selon la notion."
+        ],
+        "en": [
+          "Depends on the topic."
+        ]
+      },
+      "objective": {
+        "fr": "L'élève sait expliquer une notion avec ses mots en s'appuyant sur une expérience, une image ou une frise.",
+        "en": "The student can explain an idea in their own words using an experiment, a picture or a timeline."
+      },
+      "approach": {
+        "fr": "Partir de l'expérience ou de l'objet ; réduire et lire les textes à l'élève ; frise chronologique visuelle ; vocabulaire illustré.",
+        "en": "Start from the experiment or object; shorten texts and read them to the student; visual timeline; illustrated vocabulary."
+      },
+      "manipulation": {
+        "fr": "Expériences simples, objets, maquettes ; frise avec images à placer.",
+        "en": "Simple experiments, objects, models; timeline with pictures to place."
+      },
+      "alt": {
+        "fr": "Carte mentale illustrée construite avec l'élève.",
+        "en": "Illustrated mind map built with the student."
+      },
+      "steps": {
+        "fr": [
+          "Observer ou manipuler.",
+          "Dire ce que l'on a vu.",
+          "Associer un mot de vocabulaire à une image.",
+          "Lire un court texte adapté.",
+          "Expliquer à quelqu'un d'autre."
+        ],
+        "en": [
+          "Observe or handle.",
+          "Say what was seen.",
+          "Link a vocabulary word with a picture.",
+          "Read a short adapted text.",
+          "Explain to someone else."
+        ]
+      },
+      "simpler": {
+        "fr": "Seulement l'observation et le dessin, sans texte.",
+        "en": "Only observing and drawing, no text."
+      },
+      "next": {
+        "fr": "Comparer deux documents.",
+        "en": "Compare two documents."
+      },
+      "check": {
+        "fr": "Demander à l'élève d'expliquer la notion à quelqu'un qui ne la connaît pas.",
+        "en": "Ask the student to explain the idea to someone who does not know it."
+      },
+      "tools": [],
+      "sources": [
+        "cast-udl",
+        "cap-ecole-inclusive"
+      ]
+    }
+  ]
+}

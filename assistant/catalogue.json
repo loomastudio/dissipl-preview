@@ -1,0 +1,160 @@
+{
+  "_about": "Catalogue des outils DISSIPL pour l'assistant pédagogique. Pour ajouter un outil : copier une fiche, la remplir, mettre \"validated\": true. L'assistant la prend en compte sans changer son code. Les concepts (knowledge.json) citent les outils par leur \"id\".",
+  "version": "2026-11-15",
+  "tools": [
+    {
+      "id": "abacus",
+      "validated": true,
+      "name": { "fr": "Boulier", "en": "Digital abacus" },
+      "domain": { "fr": "Numération et calcul", "en": "Number and calculation" },
+      "summary": {
+        "fr": "Un boulier de 7 tiges de 10 perles, des unités aux millions, pour construire, lire et calculer des nombres. Chaque rang a sa couleur et le bouton « 10 = 1 » montre l'échange.",
+        "en": "An abacus with 7 rods of 10 beads, from units to millions, to build, read and calculate numbers. Each place has its colour and the \"10 = 1\" button shows the exchange."
+      },
+      "concepts": { "fr": ["valeur de position", "unités, dizaines, centaines", "échanges 10 contre 1", "addition et soustraction avec retenue", "lecture et écriture des grands nombres"], "en": ["place value", "units, tens, hundreds", "exchanging 10 for 1", "addition and subtraction with regrouping", "reading and writing large numbers"] },
+      "objectives": { "fr": ["Associer la position d'un chiffre à sa valeur", "Comprendre qu'une dizaine vaut dix unités", "Donner du sens à la retenue"], "en": ["Link a digit's position to its value", "Understand that one ten is worth ten units", "Make sense of carrying and borrowing"] },
+      "skills": { "fr": ["dénombrer", "grouper par 10", "lire et écrire un nombre", "calculer en colonnes"], "en": ["counting", "grouping in tens", "reading and writing a number", "column calculation"] },
+      "prerequisites": { "fr": ["Compter jusqu'à 10 de manière stable (un objet = un nombre)"], "en": ["Counting reliably to 10 (one object = one number)"] },
+      "manipulations": { "fr": ["poser et enlever des perles", "échanger 10 perles contre 1 du rang suivant", "lire le nombre formé"], "en": ["adding and removing beads", "exchanging 10 beads for 1 on the next rod", "reading the number made"] },
+      "levels": { "fr": "4 niveaux par exercice : jusqu'à 99, 999, 9 999 puis 999 999. Exercices : construire un nombre, additions, soustractions, problèmes.", "en": "4 levels per exercise: up to 99, 999, 9,999 then 999,999. Exercises: build a number, additions, subtractions, problems." },
+      "audiences": { "fr": "Du CP au collège ; élèves qui récitent la suite des nombres sans comprendre la valeur des chiffres ; ULIS, SEGPA, IME, maison.", "en": "From age 6 to lower secondary; students who recite numbers without understanding digit values; specialist settings and home." },
+      "limits": { "fr": "Le boulier est déjà une représentation abstraite (une perle d'un rang vaut 10 du rang d'avant) : pour un élève qui ne voit pas encore la dizaine comme un groupe de 10, commencer par la Banque de perles.", "en": "The abacus is already abstract (one bead on a rod is worth 10 on the previous one): for a student who does not yet see a ten as a group of 10, start with the Bead bank." },
+      "languages": ["fr", "en", "de", "es", "it", "pt", "ar", "hi", "zh"],
+      "status": { "fr": "Version gratuite + Premium (exercices)", "en": "Free version + Premium (exercises)" },
+      "url": { "free": "/abacus-free", "premium": "/abacus-premium" },
+      "tutorial": "/tutoriels"
+    },
+    {
+      "id": "number-card",
+      "validated": true,
+      "name": { "fr": "Banque de perles", "en": "Bead bank" },
+      "domain": { "fr": "Numération", "en": "Number" },
+      "summary": {
+        "fr": "Les perles dorées et les cartes des nombres Montessori : unités, barrettes de dix, carrés de cent et cubes de mille, pour voir et toucher les quantités et les groupements.",
+        "en": "The Montessori golden beads and number cards: units, ten-bars, hundred squares and thousand cubes, to see and touch quantities and groupings."
+      },
+      "concepts": { "fr": ["quantité et nombre", "groupements par 10, 100, 1000", "composition et décomposition des nombres", "cartes des nombres superposées", "addition avec échanges"], "en": ["quantity and number", "grouping in 10s, 100s, 1000s", "composing and decomposing numbers", "layered number cards", "addition with exchanges"] },
+      "objectives": { "fr": ["Associer une quantité à son écriture chiffrée", "Composer un nombre avec des unités, dizaines, centaines et milliers", "Comprendre l'échange de 10 unités contre 1 dizaine"], "en": ["Match a quantity with its written number", "Compose a number from units, tens, hundreds and thousands", "Understand exchanging 10 units for 1 ten"] },
+      "skills": { "fr": ["dénombrer", "grouper", "décomposer", "lire et écrire les nombres"], "en": ["counting", "grouping", "decomposing", "reading and writing numbers"] },
+      "prerequisites": { "fr": ["Aucun pour le niveau 1 (nombres de 1 à 9)"], "en": ["None for level 1 (numbers 1 to 9)"] },
+      "manipulations": { "fr": ["« Apporte-moi le nombre… » : aller chercher la bonne quantité à la banque", "poser les cartes des nombres l'une sur l'autre (300 + 40 + 5 = 345)", "échanger, vérifier, ranger"], "en": ["\"Bring me the number…\": fetch the right quantity from the bank", "layering the number cards (300 + 40 + 5 = 345)", "exchanging, checking, tidying"] },
+      "levels": { "fr": "4 niveaux : de 1 à 9, de 10 à 99, de 100 à 999, puis 1 000 et plus. Activités « La Banque » et « Les additions ».", "en": "4 levels: 1 to 9, 10 to 99, 100 to 999, then 1,000 and over. Activities \"The Bank\" and \"Additions\"." },
+      "audiences": { "fr": "Dès la maternelle (grande section) jusqu'au cycle 3 ; élèves qui ont besoin de voir et toucher les quantités ; ULIS, SEGPA, IME, maison.", "en": "From age 5 to 11; students who need to see and touch quantities; specialist settings and home." },
+      "limits": { "fr": "Ne travaille pas la multiplication ni les fractions. Les très grands nombres (au-delà de 9 999) se travaillent mieux sur le Boulier.", "en": "Does not cover multiplication or fractions. Very large numbers (beyond 9,999) are better on the Abacus." },
+      "languages": ["fr", "en", "de", "es", "it", "pt", "ar", "hi", "zh"],
+      "status": { "fr": "Gratuit (Premium ajoute indices, étoiles et ambiance)", "en": "Free (Premium adds hints, stars and atmosphere)" },
+      "url": { "free": "/number-card-free", "premium": "/number-card-premium" },
+      "tutorial": "/tutoriels"
+    },
+    {
+      "id": "multiplix",
+      "validated": true,
+      "name": { "fr": "Multiplix", "en": "Multiplix" },
+      "domain": { "fr": "Multiplication et division", "en": "Multiplication and division" },
+      "summary": {
+        "fr": "La table de multiplication Montessori : des barrettes de perles de 1 à 10 sur un plateau, pour voir que 3 × 4 = 4 + 4 + 4 = 12. Boutons Compter, Tourner (3 × 4 = 4 × 3) et Cacher le résultat.",
+        "en": "The Montessori multiplication board: bead bars from 1 to 10 on a board, to see that 3 × 4 = 4 + 4 + 4 = 12. Count, Turn (3 × 4 = 4 × 3) and Hide result buttons."
+      },
+      "concepts": { "fr": ["sens de la multiplication (addition répétée)", "commutativité", "tables de 1 à 10", "facteur manquant et division"], "en": ["meaning of multiplication (repeated addition)", "commutativity", "times tables 1 to 10", "missing factor and division"] },
+      "objectives": { "fr": ["Comprendre qu'une multiplication est une addition répétée", "Construire puis mémoriser les tables", "Trouver un facteur manquant (lien avec la division)"], "en": ["Understand multiplication as repeated addition", "Build then memorise the tables", "Find a missing factor (link with division)"] },
+      "skills": { "fr": ["dénombrer par groupes", "additionner", "mémoriser", "raisonner sur un facteur manquant"], "en": ["counting in groups", "adding", "memorising", "reasoning about a missing factor"] },
+      "prerequisites": { "fr": ["Compter jusqu'à 100", "Comprendre l'addition"], "en": ["Counting to 100", "Understanding addition"] },
+      "manipulations": { "fr": ["poser n barrettes de la même longueur", "compter les perles", "tourner le plateau pour voir 3 × 4 = 4 × 3", "cacher le résultat pour s'entraîner"], "en": ["laying n bars of the same length", "counting the beads", "turning the board to see 3 × 4 = 4 × 3", "hiding the result to practise"] },
+      "levels": { "fr": "Exercices « Construire » (3 niveaux) et « Calculer » (4 niveaux : tables de 1 à 5, de 6 à 10, toutes les tables, puis Expert où l'élève tape la réponse sans aide).", "en": "\"Build\" (3 levels) and \"Calculate\" (4 levels: tables 1-5, 6-10, all tables, then Expert where the student types the answer with no help)." },
+      "audiences": { "fr": "Du CE1 au collège ; élèves qui récitent les tables sans les comprendre ou qui n'arrivent pas à les mémoriser ; ULIS, SEGPA, maison.", "en": "From age 7 to lower secondary; students who recite tables without understanding them or cannot memorise them; specialist settings and home." },
+      "limits": { "fr": "Produits jusqu'à 10 × 10. Ne travaille pas la multiplication posée à plusieurs chiffres.", "en": "Products up to 10 × 10. Does not cover written multi-digit multiplication." },
+      "languages": ["fr", "en", "de", "es", "it", "pt", "ar", "hi", "zh"],
+      "status": { "fr": "Version gratuite + Premium (exercices)", "en": "Free version + Premium (exercises)" },
+      "url": { "free": "/multiplix-free", "premium": "/multiplix-premium" },
+      "tutorial": "/tutoriels"
+    },
+    {
+      "id": "fraction-circles",
+      "validated": true,
+      "name": { "fr": "Cercles de fractions", "en": "Fraction circles" },
+      "domain": { "fr": "Fractions", "en": "Fractions" },
+      "summary": {
+        "fr": "Des parts de cercle, de l'entier aux dixièmes, avec les cartes nombres et symboles pour écrire les fractions. Une couleur par taille de part ; message « … = 1 » quand un cercle est complet.",
+        "en": "Circle pieces from the whole to tenths, with number and symbol cards to write fractions. One colour per piece size; a \"… = 1\" message when a circle is complete."
+      },
+      "concepts": { "fr": ["partage d'un entier en parts égales", "nommer et écrire une fraction", "comparer des fractions", "fractions équivalentes", "additionner des fractions"], "en": ["sharing a whole into equal parts", "naming and writing a fraction", "comparing fractions", "equivalent fractions", "adding fractions"] },
+      "objectives": { "fr": ["Comprendre qu'une fraction est une part d'un entier partagé en parts égales", "Comprendre le rôle du dénominateur et du numérateur", "Voir que 2/4 = 1/2"], "en": ["Understand a fraction as part of a whole split into equal parts", "Understand the roles of denominator and numerator", "See that 2/4 = 1/2"] },
+      "skills": { "fr": ["partager", "comparer", "nommer", "écrire une fraction"], "en": ["sharing", "comparing", "naming", "writing a fraction"] },
+      "prerequisites": { "fr": ["Notion de moitié", "Compter jusqu'à 10"], "en": ["Idea of a half", "Counting to 10"] },
+      "manipulations": { "fr": ["poser des parts dans un cercle", "remplir un cercle avec des parts plus petites", "superposer pour comparer", "écrire la fraction avec les cartes"], "en": ["placing pieces in a circle", "filling a circle with smaller pieces", "overlaying to compare", "writing the fraction with cards"] },
+      "levels": { "fr": "5 exercices de 10 questions de plus en plus difficiles : nommer, colorier, comparer, fractions équivalentes, additionner.", "en": "5 exercises of 10 increasingly hard questions: name, colour, compare, equivalent fractions, add." },
+      "audiences": { "fr": "Du CE2 au collège ; élèves pour qui la fraction reste un « chiffre au-dessus d'un autre » ; ULIS, SEGPA, maison.", "en": "From age 8 to lower secondary; students for whom a fraction is still \"a number on top of another\"; specialist settings and home." },
+      "limits": { "fr": "Fractions jusqu'aux dixièmes et inférieures ou égales à 1 par cercle. Ne travaille pas les fractions sur une droite graduée ni les décimaux.", "en": "Fractions up to tenths, at most 1 per circle. Does not cover fractions on a number line or decimals." },
+      "languages": ["fr", "en", "de", "es", "it", "pt", "ar", "hi", "zh"],
+      "status": { "fr": "Version gratuite + Premium (exercices)", "en": "Free version + Premium (exercises)" },
+      "url": { "free": "/fraction-circles-free", "premium": "/fraction-circles-premium" },
+      "tutorial": "/tutoriels"
+    },
+    {
+      "id": "alpha-mobile",
+      "validated": true,
+      "name": { "fr": "Alpha'Mobile", "en": "Alpha'Mobile" },
+      "domain": { "fr": "Lecture et écriture", "en": "Reading and writing" },
+      "summary": {
+        "fr": "L'alphabet mobile Montessori : toucher ou glisser les lettres pour écrire des mots, en cursive ou en script, sans avoir à tracer. Voyelles en bleu, consonnes en rouge, lecture à voix haute.",
+        "en": "The Montessori moveable alphabet: tap or drag letters to write words, in cursive or print, without having to form the letters by hand. Vowels in blue, consonants in red, read-aloud."
+      },
+      "concepts": { "fr": ["correspondance lettre-son (grapho-phonologie)", "encodage de mots", "ordre des lettres dans un mot", "tracé des lettres"], "en": ["letter-sound correspondence (phonics)", "encoding words", "letter order in a word", "letter formation"] },
+      "objectives": { "fr": ["Associer un son à une lettre ou un groupe de lettres", "Écrire un mot entendu en assemblant les lettres", "Séparer l'orthographe du geste d'écriture"], "en": ["Match a sound with a letter or group of letters", "Write a word heard by assembling letters", "Separate spelling from handwriting"] },
+      "skills": { "fr": ["conscience phonologique", "encodage", "discrimination visuelle des lettres", "graphisme"], "en": ["phonological awareness", "encoding", "visual letter discrimination", "handwriting"] },
+      "prerequisites": { "fr": ["Entendre et isoler quelques sons dans un mot (au moins le premier son)"], "en": ["Hearing and isolating some sounds in a word (at least the first sound)"] },
+      "manipulations": { "fr": ["glisser les lettres pour composer un mot", "écouter la lecture du mot", "lettre manquante, lettres mélangées", "tracer les lettres", "« J'entends, je trace »"], "en": ["dragging letters to build a word", "listening to the word read aloud", "missing letter, scrambled letters", "tracing letters", "\"I hear, I write\""] },
+      "levels": { "fr": "5 exercices de 3 niveaux : des mots courts aux mots longs, puis aux phrases. 9 langues : les lettres et les sons suivent la langue choisie.", "en": "5 exercises with 3 levels: from short words to long words, then sentences. 9 languages: letters and sounds follow the chosen language." },
+      "audiences": { "fr": "De la grande section au CE2, et plus tard pour les élèves qui ont des difficultés avec le geste d'écriture ou la correspondance lettre-son ; ULIS, IME, maison.", "en": "From age 5 to 8, and later for students with handwriting or letter-sound difficulties; specialist settings and home." },
+      "limits": { "fr": "Travaille le code (encodage), pas la compréhension de texte. Ne remplace pas un entraînement à la lecture de textes.", "en": "Works on the code (encoding), not text comprehension. Does not replace practice reading texts." },
+      "languages": ["fr", "en", "de", "es", "it", "pt", "ar", "hi", "zh"],
+      "status": { "fr": "Version gratuite + Premium (exercices, lecture à voix haute)", "en": "Free version + Premium (exercises, read-aloud)" },
+      "url": { "free": "/alpha-mobile-free", "premium": "/alpha-mobile-premium" },
+      "tutorial": "/tutoriels"
+    },
+    {
+      "id": "grammaire-mobile",
+      "validated": true,
+      "name": { "fr": "Grammaire Mobile", "en": "Grammar Mobile" },
+      "domain": { "fr": "Grammaire", "en": "Grammar" },
+      "summary": {
+        "fr": "Les 9 symboles Montessori de grammaire (nom, verbe, adjectif, déterminant…) avec forme, couleur, définition et exemples ; poser les étiquettes de mots sur les symboles, avec ou sans symboles.",
+        "en": "The 9 Montessori grammar symbols (noun, verb, adjective, article…) with shape, colour, definition and examples; placing word labels on the symbols, with or without symbols."
+      },
+      "concepts": { "fr": ["natures de mots (classes grammaticales)", "rôle des mots dans la phrase", "construction de phrases"], "en": ["word classes (parts of speech)", "role of words in a sentence", "building sentences"] },
+      "objectives": { "fr": ["Reconnaître le nom, le verbe, l'adjectif…", "Analyser une phrase simple", "Construire une phrase correcte"], "en": ["Recognise nouns, verbs, adjectives…", "Analyse a simple sentence", "Build a correct sentence"] },
+      "skills": { "fr": ["catégoriser", "analyser", "verbaliser une règle"], "en": ["categorising", "analysing", "putting a rule into words"] },
+      "prerequisites": { "fr": ["Lire des mots simples (ou les entendre lus par l'adulte)"], "en": ["Reading simple words (or hearing them read by the adult)"] },
+      "manipulations": { "fr": ["trier les mots par nature", "analyser une phrase", "construire une phrase"], "en": ["sorting words by class", "analysing a sentence", "building a sentence"] },
+      "levels": { "fr": "3 exercices de 4 niveaux, des 3 premières natures aux 9. En français, anglais, espagnol, portugais et italien.", "en": "3 exercises with 4 levels, from the first 3 word classes to all 9. In French, English, Spanish, Portuguese and Italian." },
+      "audiences": { "fr": "Du CE1 à la 6e ; élèves qui ont besoin d'un support visuel stable pour la grammaire ; ULIS, SEGPA, maison.", "en": "From age 7 to 11; students who need a stable visual support for grammar; specialist settings and home." },
+      "limits": { "fr": "Natures des mots, pas encore les fonctions (sujet, COD…) ni la conjugaison.", "en": "Word classes, not yet functions (subject, object…) or verb conjugation." },
+      "languages": ["fr", "en", "es", "pt", "it"],
+      "status": { "fr": "Version gratuite + Premium (exercices)", "en": "Free version + Premium (exercises)" },
+      "url": { "free": "/grammaire-mobile-free", "premium": "/grammaire-mobile-premium" },
+      "tutorial": "/tutoriels"
+    },
+    {
+      "id": "geo-mobile",
+      "validated": true,
+      "name": { "fr": "Géo Mobile", "en": "Geo Mobile" },
+      "domain": { "fr": "Géographie", "en": "Geography" },
+      "summary": {
+        "fr": "Les cartes puzzles Montessori des continents et des pays, et les cartes des océans et des mers : découvrir les noms en touchant la carte, puis reconstituer le monde et chaque continent pièce par pièce.",
+        "en": "The Montessori puzzle maps of continents and countries, and maps of oceans and seas: discover names by touching the map, then rebuild the world and each continent piece by piece."
+      },
+      "concepts": { "fr": ["continents et océans", "pays", "se repérer sur une carte", "vocabulaire géographique"], "en": ["continents and oceans", "countries", "finding places on a map", "geography vocabulary"] },
+      "objectives": { "fr": ["Nommer et situer les continents et les océans", "Reconstituer une carte", "Se repérer sur un planisphère"], "en": ["Name and locate continents and oceans", "Rebuild a map", "Find your way on a world map"] },
+      "skills": { "fr": ["mémoire visuelle", "repérage spatial", "vocabulaire"], "en": ["visual memory", "spatial orientation", "vocabulary"] },
+      "prerequisites": { "fr": ["Aucun"], "en": ["None"] },
+      "manipulations": { "fr": ["toucher pour entendre et lire le nom", "reconstituer le puzzle pièce par pièce"], "en": ["touch to hear and read the name", "rebuild the puzzle piece by piece"] },
+      "levels": { "fr": "9 cartes : monde, continents, pays, océans et mers.", "en": "9 maps: world, continents, countries, oceans and seas." },
+      "audiences": { "fr": "Du CP au collège ; élèves qui apprennent mieux en manipulant et en voyant ; ULIS, IME, maison.", "en": "From age 6 to lower secondary; students who learn better by handling and seeing; specialist settings and home." },
+      "limits": { "fr": "Carte politique et physique de base : pas de relief, de climat ni d'histoire.", "en": "Basic political and physical maps: no relief, climate or history." },
+      "languages": ["fr", "en", "de", "es", "it", "pt", "ar", "hi", "zh"],
+      "status": { "fr": "Version gratuite + Premium", "en": "Free version + Premium" },
+      "url": { "free": "/geo-mobile-free", "premium": "/geo-mobile-premium" },
+      "tutorial": "/tutoriels"
+    }
+  ]
+}
