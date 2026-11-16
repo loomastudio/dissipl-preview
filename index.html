@@ -1042,7 +1042,23 @@ footer.site { margin-top: 104px; background: #fff; border-top: 1px solid var(--l
     var s = Math.round(intro.duration);
     if (isFinite(s)) document.getElementById('introDur').textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
-  if (intro.readyState >= 1) showDuration(); else intro.addEventListener('loadedmetadata', showDuration);
+  intro.addEventListener('loadedmetadata', showDuration);
+  if (intro.readyState >= 1) showDuration();
+
+  /* French video for the French site, the English one for every other language */
+  function introFor(code) {
+    var src = code === 'fr' ? '/dissipl-preview/assets/videos/dissipl-intro.mp4' : '/dissipl-preview/assets/videos/dissipl-intro-en.mp4';
+    if (intro.getAttribute('src').split('#')[0] === src) return;
+    if (!intro.paused) intro.pause();
+    player.classList.remove('playing'); intro.controls = false;
+    document.getElementById('introDur').textContent = '';
+    intro.setAttribute('src', src + '#t=3');
+    intro.load();
+  }
+  var storedLang = null;
+  try { storedLang = localStorage.getItem('dissipl-lang'); } catch (e) {}
+  if (storedLang) introFor(storedLang);
+  window.addEventListener('dissipl:lang', function (e) { introFor(e.detail && e.detail.lang); });
 
   /* Prices in the visitor's number format (always in euros) */
   function formatPrices() {
