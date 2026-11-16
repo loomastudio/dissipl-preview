@@ -3,12 +3,12 @@
 // Le bouton est léger ; l'assistant (assistant.js + sa base de connaissances) ne se charge qu'à l'ouverture.
 // Comme sur la page /assistant, tout reste dans le navigateur : rien n'est envoyé ni enregistré.
 
-const VERSION = "20261116";
+const VERSION = "20261117";
 const base = new URL("/dissipl-preview/", import.meta.url).pathname;
 
 const TXT = {
-  fr: { open: "Une question ? L'assistant pédagogique vous répond", title: "Assistant pédagogique DISSIPL", full: "Ouvrir en grand", close: "Fermer", placeholder: "Écrivez votre question…", send: "Envoyer", newChat: "Nouvelle conversation" },
-  en: { open: "A question? The teaching assistant answers", title: "DISSIPL teaching assistant", full: "Open full page", close: "Close", placeholder: "Type your question…", send: "Send", newChat: "New conversation" },
+  fr: { short: "Assistant pédagogique", open: "Une question ? L'assistant pédagogique vous répond", title: "Assistant pédagogique DISSIPL", full: "Ouvrir en grand", close: "Fermer", placeholder: "Écrivez votre question…", send: "Envoyer", newChat: "Nouvelle conversation" },
+  en: { short: "Teaching assistant", open: "A question? The teaching assistant answers", title: "DISSIPL teaching assistant", full: "Open full page", close: "Close", placeholder: "Type your question…", send: "Send", newChat: "New conversation" },
 };
 const lang = () => {
   let c = "fr";
@@ -43,8 +43,9 @@ document.body.appendChild(panel);
 
 function texts() {
   const t = TXT[lang()];
-  launch.innerHTML = `<span class="asw-dot" aria-hidden="true"></span>${icon}<span class="asw-label">${t.open}</span>`;
+  launch.innerHTML = `<span class="asw-dot" aria-hidden="true"></span>${icon}<span class="asw-label">${t.short}</span>`;
   launch.setAttribute("aria-label", t.open);
+  launch.title = t.open;
   panel.setAttribute("aria-label", t.title);
   panel.querySelector("strong").textContent = t.title;
   panel.querySelector(".asw-full").textContent = t.full;

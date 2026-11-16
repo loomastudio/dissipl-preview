@@ -90,11 +90,11 @@
 .as-details { margin-top: 6px; border-top: 2px solid #F0E8DF; padding-top: 12px; }
 
 /* ---- fenêtre de discussion (accueil) ---- */
-.asw-launch { position: fixed; right: 20px; bottom: 20px; z-index: 2500; display: flex; align-items: center; gap: 10px; border: 0; border-radius: 999px; padding: 12px 18px 12px 14px; background: var(--color-primary, #D32F2F); color: #fff; font: 600 .95rem Lexend, Nunito, Verdana, sans-serif; box-shadow: 0 12px 30px rgba(211,47,47,.35); cursor: pointer; max-width: calc(100vw - 40px); }
+.asw-launch { position: fixed; right: 20px; bottom: 20px; z-index: 2500; display: flex; align-items: center; gap: 7px; border: 0; border-radius: 999px; padding: 7px 13px 7px 10px; background: var(--color-primary, #D32F2F); color: #fff; font: 600 .8rem Lexend, Nunito, Verdana, sans-serif; box-shadow: 0 8px 20px rgba(211,47,47,.3); cursor: pointer; max-width: calc(100vw - 40px); }
 .asw-launch:hover { background: var(--color-primary-dark, #B71C1C); }
 .asw-launch:focus-visible { outline: 3px solid #2C68BE; outline-offset: 3px; }
-.asw-launch svg { flex: 0 0 auto; }
-.asw-launch .asw-dot { width: 9px; height: 9px; border-radius: 50%; background: #7CE08A; box-shadow: 0 0 0 3px rgba(255,255,255,.35); }
+.asw-launch svg { flex: 0 0 auto; width: 17px; height: 17px; }
+.asw-launch .asw-dot { width: 7px; height: 7px; border-radius: 50%; background: #7CE08A; box-shadow: 0 0 0 3px rgba(255,255,255,.35); }
 .asw-panel { position: fixed; right: 20px; bottom: 20px; z-index: 2600; width: 400px; max-width: calc(100vw - 24px); height: min(640px, calc(100vh - 110px)); display: flex; flex-direction: column; background: #FFF8F0; border-radius: 22px; box-shadow: 0 24px 70px rgba(31,31,61,.28); overflow: hidden; font-family: var(--font-body); color: var(--color-text-primary);
   /* l'accueil n'a pas la feuille de style des autres pages : on donne les couleurs et polices ici */
   --font-body: Lexend, Nunito, Verdana, sans-serif; --font-heading: Fredoka, 'Trebuchet MS', sans-serif;
@@ -117,6 +117,6 @@
 .asw-form button { background: var(--color-primary, #D32F2F); color: #fff; border: 0; border-radius: 12px; padding: 10px 14px; font-weight: 700; cursor: pointer; }
 @media (max-width: 520px) {
   .asw-panel { right: 0; bottom: 0; width: 100vw; max-width: 100vw; height: 100dvh; border-radius: 0; }
-  .asw-launch { right: 12px; bottom: 12px; padding: 12px; }
+  .asw-launch { right: 12px; bottom: 12px; padding: 10px; }
   .asw-launch .asw-label { display: none; }
 }
