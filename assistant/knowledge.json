@@ -355,6 +355,29 @@
         "inserm-dys",
         "has-tsla",
         "cap-ecole-inclusive"
+      ],
+      "tools": [
+        {
+          "id": "alpha-mobile",
+          "why": {
+            "fr": "voyelles et consonnes en couleurs, lecture à voix haute, et l'élève écrit en glissant les lettres, sans la difficulté du tracé",
+            "en": "vowels and consonants in colour, read-aloud, and the student writes by dragging letters, without the difficulty of handwriting"
+          }
+        },
+        {
+          "id": "grammaire-mobile",
+          "why": {
+            "fr": "des symboles visuels stables pour la grammaire, avec peu de texte à lire",
+            "en": "stable visual symbols for grammar, with little text to read"
+          }
+        }
+      ],
+      "concepts": [
+        "letter-sound",
+        "phonological",
+        "spelling-writing",
+        "reading-comprehension",
+        "grammar"
       ]
     },
     {
@@ -382,6 +405,46 @@
         "inserm-dys",
         "has-tsla",
         "dehaene-maths"
+      ],
+      "tools": [
+        {
+          "id": "number-card",
+          "why": {
+            "fr": "voir et toucher les quantités : unités, barrettes de dix, carrés de cent",
+            "en": "see and touch quantities: units, ten-bars, hundred squares"
+          }
+        },
+        {
+          "id": "abacus",
+          "why": {
+            "fr": "la valeur de position et les échanges « 10 = 1 » deviennent visibles",
+            "en": "place value and \"10 = 1\" exchanges become visible"
+          }
+        },
+        {
+          "id": "multiplix",
+          "why": {
+            "fr": "la multiplication se construit avec des perles : un résultat oublié se retrouve",
+            "en": "multiplication is built with beads: a forgotten fact can be rebuilt"
+          }
+        },
+        {
+          "id": "fraction-circles",
+          "why": {
+            "fr": "les fractions se manipulent et se comparent en superposant les parts",
+            "en": "fractions are handled and compared by overlaying pieces"
+          }
+        }
+      ],
+      "concepts": [
+        "counting",
+        "place-value",
+        "decomposition",
+        "add-sub",
+        "multiplication",
+        "times-tables",
+        "fractions",
+        "problem-solving"
       ]
     },
     {
@@ -416,6 +479,36 @@
       "sources": [
         "has-tsla",
         "cap-ecole-inclusive"
+      ],
+      "tools": [
+        {
+          "id": "alpha-mobile",
+          "why": {
+            "fr": "écrire des mots en glissant les lettres, sans tracer",
+            "en": "write words by dragging letters, without handwriting"
+          }
+        },
+        {
+          "id": "number-card",
+          "why": {
+            "fr": "manipuler les quantités sans petits objets à saisir",
+            "en": "handle quantities without small objects to pick up"
+          }
+        },
+        {
+          "id": "geo-mobile",
+          "why": {
+            "fr": "reconstituer des cartes sans découper ni colorier",
+            "en": "rebuild maps without cutting or colouring"
+          }
+        }
+      ],
+      "concepts": [
+        "spelling-writing",
+        "counting",
+        "place-value",
+        "geometry",
+        "spatial"
       ]
     },
     {
@@ -453,6 +546,35 @@
         "has-tdah",
         "cap-ecole-inclusive",
         "eef-send"
+      ],
+      "tools": [
+        {
+          "id": "multiplix",
+          "why": {
+            "fr": "des séries courtes, un retour immédiat et un niveau Expert motivant",
+            "en": "short series, immediate feedback and a motivating Expert level"
+          }
+        },
+        {
+          "id": "number-card",
+          "why": {
+            "fr": "des étoiles et un niveau qui monte tout seul",
+            "en": "stars and a level that goes up automatically"
+          }
+        },
+        {
+          "id": "fraction-circles",
+          "why": {
+            "fr": "des séries de 10 questions, avec un meilleur score à battre",
+            "en": "series of 10 questions, with a best score to beat"
+          }
+        }
+      ],
+      "concepts": [
+        "attention-work",
+        "instructions",
+        "times-tables",
+        "place-value"
       ]
     },
     {
@@ -484,6 +606,36 @@
       "sources": [
         "has-autisme",
         "cap-ecole-inclusive"
+      ],
+      "tools": [
+        {
+          "id": "number-card",
+          "why": {
+            "fr": "une présentation stable et prévisible, son et musique désactivables",
+            "en": "a stable, predictable layout; sound and music can be turned off"
+          }
+        },
+        {
+          "id": "geo-mobile",
+          "why": {
+            "fr": "des cartes puzzles très visuelles, sans consigne longue",
+            "en": "very visual puzzle maps, without long instructions"
+          }
+        },
+        {
+          "id": "grammaire-mobile",
+          "why": {
+            "fr": "des symboles qui ne changent jamais : un repère visuel fixe",
+            "en": "symbols that never change: a fixed visual landmark"
+          }
+        }
+      ],
+      "concepts": [
+        "counting",
+        "geography",
+        "grammar",
+        "instructions",
+        "time"
       ]
     },
     {
@@ -516,6 +668,28 @@
       "sources": [
         "has-tsla",
         "cap-ecole-inclusive"
+      ],
+      "tools": [
+        {
+          "id": "alpha-mobile",
+          "why": {
+            "fr": "les sons sont entendus, vus et assemblés avec des lettres",
+            "en": "sounds are heard, seen and assembled with letters"
+          }
+        },
+        {
+          "id": "grammaire-mobile",
+          "why": {
+            "fr": "la grammaire passe par des symboles, pas par de longues explications",
+            "en": "grammar goes through symbols, not long explanations"
+          }
+        }
+      ],
+      "concepts": [
+        "phonological",
+        "letter-sound",
+        "grammar",
+        "instructions"
       ]
     },
     {
@@ -547,6 +721,35 @@
       "sources": [
         "cap-ecole-inclusive",
         "eef-send"
+      ],
+      "tools": [
+        {
+          "id": "number-card",
+          "why": {
+            "fr": "rester longtemps sur le concret, avec des niveaux très progressifs",
+            "en": "stay with the concrete for a long time, with very gradual levels"
+          }
+        },
+        {
+          "id": "abacus",
+          "why": {
+            "fr": "les mêmes nombres sous une autre forme, pour varier sans changer de notion",
+            "en": "the same numbers in another form, to vary without changing concept"
+          }
+        },
+        {
+          "id": "alpha-mobile",
+          "why": {
+            "fr": "écrire ses premiers mots sans la difficulté du tracé",
+            "en": "write first words without the difficulty of handwriting"
+          }
+        }
+      ],
+      "concepts": [
+        "counting",
+        "decomposition",
+        "letter-sound",
+        "time"
       ]
     },
     {
@@ -575,6 +778,27 @@
       "sources": [
         "eef-send",
         "cast-udl"
+      ],
+      "tools": [
+        {
+          "id": "multiplix",
+          "why": {
+            "fr": "reconstruire un résultat oublié au lieu de le chercher en mémoire",
+            "en": "rebuild a forgotten fact instead of searching memory"
+          }
+        },
+        {
+          "id": "abacus",
+          "why": {
+            "fr": "toutes les étapes du calcul restent visibles",
+            "en": "every step of the calculation stays visible"
+          }
+        }
+      ],
+      "concepts": [
+        "times-tables",
+        "add-sub",
+        "instructions"
       ]
     },
     {
@@ -608,6 +832,26 @@
       "sources": [
         "cast-udl",
         "cap-ecole-inclusive"
+      ],
+      "tools": [
+        {
+          "id": "number-card",
+          "why": {
+            "fr": "taille ×2 ×3 et couleurs au choix",
+            "en": "size ×2 ×3 and adjustable colours"
+          }
+        },
+        {
+          "id": "geo-mobile",
+          "why": {
+            "fr": "touche la carte pour entendre et lire le nom",
+            "en": "touch the map to hear and read the name"
+          }
+        }
+      ],
+      "concepts": [
+        "counting",
+        "geography"
       ]
     }
   ],

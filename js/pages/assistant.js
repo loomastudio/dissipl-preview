@@ -4,7 +4,7 @@
 // Le contenu vient de /assistant/knowledge.json (concepts, besoins, sources) et
 // /assistant/catalogue.json (fiches des outils) : on les enrichit sans toucher à ce code.
 
-const DATA_VERSION = "20261115";
+const DATA_VERSION = "20261116";
 const CONTACT = "contact@dissipl.fr";
 // racine du site ("/" sur dissipl.fr, "/dissipl-preview/" sur le lien de test)
 const ROOT = new URL("/dissipl-preview/", import.meta.url).pathname;
@@ -282,10 +282,14 @@ function maskPersonal(raw, L) {
 const DIAG_RE = /\b(diagnos\w*|est[- ]il|est[- ]elle|est[- ]ce qu.?il est|a[- ]t[- ]il (un|une|des)|a[- ]t[- ]elle (un|une|des)|is (he|she|my (child|son|daughter)|the (child|student)) (dyslexic|autistic|dyspraxic|adhd|dyscalculic)|does (he|she|my (child|son|daughter)) have|test (pour|for) (la |l )?(dys|adhd|tdah|autis))/i;
 const MED_RE = /\b(m[ée]dicament|ritaline|m[ée]thylph[ée]nidate|traitement m[ée]dical|posologie|medication|ritalin|methylphenidate|dosage|prescri)\w*/i;
 
+// « DISSIPL peut-il l'aider ? », « quel outil ? » : on répond d'abord oui / non, directement
+const HELP_RE = / (peut|peuvent|pourrait|pourraient) (vraiment |reellement )?(l |lui |les |m )?aider | dissipl (peut|est) | vos outils | quel outil | quels outils | outil (adapte|pour) | can dissipl | could dissipl | which tool | what tool | your tools | (help|helps) (him|her|my|them) | is dissipl /;
+
 const FEEDBACK = {
-  worked: ["ca a marche", "ca marche", "ca a fonctionne", "il a compris", "elle a compris", "c est bon", "it worked", "it works", "he understood", "she understood", "got it"],
+  worked: ["ca a marche", "ca marche", "ca a fonctionne", "il a compris", "elle a compris", "it worked", "it works", "he understood", "she understood", "got it"],
   notUnderstood: ["pas compris", "comprend toujours pas", "n a pas compris", "ca ne marche pas", "ca marche pas", "didn t understand", "did not understand", "still doesn t", "not working", "doesn t work"],
   tooHard: ["trop difficile", "trop dur", "trop complique", "too difficult", "too hard", "too complicated"],
+  enough: ["ca suffit", "c est suffisant", "c est bon merci", "merci beaucoup", "on s arrete", "that s enough", "thank you", "thanks", "we can stop"],
   another: ["autre proposition", "autre idee", "autre chose", "une autre", "another suggestion", "another idea", "something else", "different approach"],
 };
 
@@ -328,8 +332,97 @@ function analyse(raw) {
     diag: DIAG_RE.test(raw), medical: MED_RE.test(raw),
     level: detectLevel(raw), profile: detectProfile(t),
     greeting: /^ (bonjour|salut|hello|hi|coucou|bonsoir|hey)( [a-z]+)? $/.test(t),
+    help: HELP_RE.test(t),
   };
 }
+
+// ------------------------------------------------------------------ ton de la conversation (plus humain)
+
+Object.assign(UI.fr, {
+  helloWidget: "Bonjour, je suis l'assistant pédagogique DISSIPL. Je réponds à vos questions sur les élèves à besoins éducatifs particuliers : décrivez-moi la difficulté, je vous propose une piste et l'outil adapté.",
+  widgetNotice: "Pas de diagnostic médical. N'écrivez ni nom ni adresse : rien n'est enregistré.",
+  widgetOpen: "Une question ? L'assistant pédagogique vous répond",
+  widgetTitle: "Assistant pédagogique DISSIPL",
+  widgetFull: "Ouvrir en grand",
+  close: "Fermer",
+  yes: "Oui, bien sûr !",
+  openers: ["Merci pour cette description, elle m'aide beaucoup.", "C'est une difficulté très fréquente, et il existe de bonnes pistes.", "Je comprends tout à fait.", "Bonne question !"],
+  openersParent: ["Je comprends, et c'est très bien de vous en soucier.", "Vous avez raison de vous poser la question.", "Merci, beaucoup de parents se posent cette question."],
+  itIs: "Ici, la notion en jeu est {name}.",
+  advice: "Mon conseil :",
+  bestTool: "L'outil DISSIPL le plus adapté est {tool} : {why}",
+  alsoTool: "{tool} peut aussi servir : {why}",
+  noToolShort: "Pour être honnête, je n'ai pas encore d'outil DISSIPL vraiment adapté à cette difficulté, mais voici une piste à mettre en place autrement.",
+  needYes: "DISSIPL a été pensé pour accompagner des élèves comme {who}, notamment en cas de {need}. Voici les outils les plus utiles :",
+  needIntroSoft: "Merci de me le préciser. Pour {need}, voici les outils DISSIPL qui aident le plus :",
+  whoParent: "votre enfant", whoStudent: "votre élève",
+  needAsk: "Pour vous proposer une activité précise, dites-moi ce qui lui pose le plus de difficulté :",
+  more: { activity: "Une activité concrète", steps: "Les étapes", check: "Comment vérifier", tool: "Comment utiliser l'outil", adapt: "Adaptations", sources: "Sources" },
+  moreTitle: "Je peux détailler :",
+  fbOpen: {
+    worked: ["Bravo, c'est une belle réussite !", "Très bien, l'élève progresse !", "Excellent, on peut passer à la suite."],
+    notUnderstood: ["Pas d'inquiétude, c'est très courant.", "D'accord, merci de me le dire : c'est utile pour ajuster."],
+    tooHard: ["Vous avez raison d'alléger : mieux vaut réussir une tâche plus simple.", "Bonne idée de simplifier."],
+    another: ["Bien sûr, voici une autre idée.", "Avec plaisir, essayons autrement."],
+  },
+  stepOf: "Étape {n} sur {total}",
+  stepNow: "On passe à l'étape suivante :",
+  stepBack: "Revenons à une étape plus simple :",
+  goFurther: "Toutes les étapes sont franchies. Pour aller plus loin :",
+  doneTitle: "La notion semble bien acquise !",
+  doneText: "Vous pouvez vous arrêter là pour {name} : revenez-y de temps en temps en révision, quelques minutes suffisent. Si vous voulez, on peut travailler une notion voisine :",
+  doneNoRelated: "Vous pouvez vous arrêter là : revenez-y de temps en temps en révision. N'hésitez pas à me poser une autre question.",
+  enoughText: "Avec plaisir ! Vous pouvez revenir quand vous voulez, ou me poser une autre question.",
+  altDone: "Je vous ai donné mes deux approches principales. Une autre piste : changer de représentation (objets, dessin, geste, oral) ou proposer la notion dans une situation de la vie quotidienne de l'élève.",
+  newQuestion: "Poser une autre question",
+  altNone: "Je n'ai pas d'autre proposition pour cette notion pour le moment. Vous pouvez me poser une autre question, ou travailler une notion voisine :",
+});
+UI.fr.fb = { worked: "Ça a marché", notUnderstood: "L'élève n'a pas compris", tooHard: "C'est trop difficile", another: "Une autre proposition", enough: "C'est bon, merci" };
+
+Object.assign(UI.en, {
+  helloWidget: "Hello, I am the DISSIPL teaching assistant. I answer your questions about students with special educational needs: tell me the difficulty and I will suggest an approach and the right tool.",
+  widgetNotice: "No medical diagnosis. Please write no names or addresses: nothing is saved.",
+  widgetOpen: "A question? The teaching assistant answers",
+  widgetTitle: "DISSIPL teaching assistant",
+  widgetFull: "Open full page",
+  close: "Close",
+  yes: "Yes, of course!",
+  openers: ["Thank you for describing it, that really helps.", "This is a very common difficulty, and there are good ways forward.", "I completely understand.", "Good question!"],
+  openersParent: ["I understand, and it is great that you are looking into it.", "You are right to ask.", "Thank you, many parents ask this."],
+  itIs: "The concept at stake here is {name}.",
+  advice: "My advice:",
+  bestTool: "The most suitable DISSIPL tool is {tool}: {why}",
+  alsoTool: "{tool} can also help: {why}",
+  noToolShort: "To be honest, I do not yet have a DISSIPL tool that really fits this difficulty, but here is an approach you can use another way.",
+  needYes: "DISSIPL was designed to support students like {who}, including with {need}. Here are the most useful tools:",
+  needIntroSoft: "Thank you for telling me. For {need}, these DISSIPL tools help most:",
+  whoParent: "your child", whoStudent: "your student",
+  needAsk: "To suggest a specific activity, tell me what is hardest for them:",
+  more: { activity: "A concrete activity", steps: "The steps", check: "How to check", tool: "How to use the tool", adapt: "Adaptations", sources: "Sources" },
+  moreTitle: "I can go into detail:",
+  fbOpen: {
+    worked: ["Well done, that is a real success!", "Great, the student is making progress!", "Excellent, we can move on."],
+    notUnderstood: ["Don't worry, this is very common.", "All right, thank you for telling me: it helps me adjust."],
+    tooHard: ["You are right to make it lighter: succeeding at a simpler task is better.", "Good idea to simplify."],
+    another: ["Of course, here is another idea.", "Happy to, let's try another way."],
+  },
+  stepOf: "Step {n} of {total}",
+  stepNow: "Let's move to the next step:",
+  stepBack: "Let's go back to a simpler step:",
+  goFurther: "All the steps are done. To go further:",
+  doneTitle: "The concept looks well understood!",
+  doneText: "You can stop here for {name}: come back to it now and then for review, a few minutes is enough. If you like, we can work on a related concept:",
+  doneNoRelated: "You can stop here: come back to it now and then for review. Feel free to ask me another question.",
+  enoughText: "My pleasure! Come back whenever you like, or ask me another question.",
+  altDone: "I have given you my two main approaches. Another idea: change the representation (objects, drawing, gesture, speech) or present the concept in a situation from the student's daily life.",
+  newQuestion: "Ask another question",
+  altNone: "I have no other suggestion for this concept for now. You can ask me another question, or work on a related concept:",
+});
+UI.en.fb = { worked: "It worked", notUnderstood: "The student did not understand", tooHard: "It is too difficult", another: "Another suggestion", enough: "That's enough, thanks" };
+
+let pickCount = 0;
+/** une formule parmi plusieurs, pour ne pas répéter toujours la même */
+const pick = (list) => list[(pickCount++) % list.length];
 
 // ------------------------------------------------------------------ construction des réponses
 
@@ -338,6 +431,16 @@ const tool = (id) => CAT.find((x) => x.id === id);
 const ul = (items) => "<ul>" + items.map((i) => `<li>${esc(i)}</li>`).join("") + "</ul>";
 const ol = (items) => "<ol>" + items.map((i) => `<li>${esc(i)}</li>`).join("") + "</ol>";
 const block = (title, html, cls = "") => `<section class="as-sec ${cls}"><h4>${esc(title)}</h4>${html}</section>`;
+const firstSentence = (s) => String(s).split(/(?<=[.!?])\s/)[0];
+const lowerFirst = (s) => s.charAt(0).toLowerCase() + s.slice(1);
+
+function toolButtons(tl, L, withTutorial = true) {
+  return `<div class="as-links">
+      <a class="as-btn red" href="${esc(href(tl.url.free))}" target="_blank" rel="noopener">${esc(L.openFree)} →</a>
+      <a class="as-btn line" href="${esc(href(tl.url.premium))}" target="_blank" rel="noopener">${esc(L.openPremium)}</a>
+      ${withTutorial ? `<a class="as-btn line" href="${esc(href(tl.tutorial))}" target="_blank" rel="noopener">${esc(L.tutorial)}</a>` : ""}
+    </div>`;
+}
 
 function toolCard(c, id, lang, L, primary) {
   const tl = tool(id);
@@ -350,11 +453,7 @@ function toolCard(c, id, lang, L, primary) {
     <div class="as-tool-head"><strong>${esc(primary ? tl.name[lang] : L.otherTool + " : " + tl.name[lang])}</strong><em>${esc(tl.status[lang])}</em></div>
     ${rows}
     <p class="as-limit"><span>⚠</span> ${esc(tl.limits[lang])}</p>
-    <div class="as-links">
-      <a class="as-btn red" href="${esc(href(tl.url.free))}" target="_blank" rel="noopener">${esc(L.openFree)} →</a>
-      <a class="as-btn line" href="${esc(href(tl.url.premium))}" target="_blank" rel="noopener">${esc(L.openPremium)}</a>
-      <a class="as-btn line" href="${esc(href(tl.tutorial))}" target="_blank" rel="noopener">${esc(L.tutorial)}</a>
-    </div>
+    ${toolButtons(tl, L)}
   </div>`;
 }
 
@@ -366,7 +465,6 @@ function toolSection(c, lang, L, which) {
     if (partial.length) html += `<p>${esc(L.partialTool)} ${partial.map((p) => `<a href="${esc(href(p.url.free))}" target="_blank" rel="noopener">${esc(p.name[lang])}</a>`).join(", ")}</p>`;
     return html;
   }
-  // which = 1 : on met en avant le deuxième outil (pour « une autre proposition »)
   const order = which && list.length > 1 ? [list[1], list[0]] : list;
   return order.map((id, i) => toolCard(c, id, lang, L, i === 0)).join("");
 }
@@ -389,7 +487,31 @@ function profileTip(L) {
   return { parent: L.parentTip, teacher: L.teacherTip, specialist: L.specialistTip, pro: L.proTip }[state.profile] || "";
 }
 
-/** Réponse complète (sections A à F de la demande + outil + adaptations + sources). */
+function alerts(a, L) {
+  let html = "";
+  if (a.medical) html += `<p class="as-alert">${esc(L.medical)}</p>`;
+  if (a.diag) html += `<p class="as-alert">${esc(L.diagnosis)}</p>`;
+  return html;
+}
+
+/** La réponse directe, en tête : une phrase humaine, la notion, le conseil, et l'outil (ou l'aveu qu'il n'y en a pas). */
+function leadHtml(c, a, lang) {
+  const L = UI[lang];
+  const opener = a.help ? L.yes : pick(state.profile === "parent" ? L.openersParent : L.openers);
+  let html = `<p class="as-lead"><strong>${esc(opener)}</strong> ${esc(fill(L.itIs, { name: c.name[lang] }))} ${esc(firstSentence(c.understanding[lang]))}</p>`;
+  html += `<p><strong>${esc(L.advice)}</strong> ${esc(firstSentence(c.approach[lang]))}</p>`;
+  const list = c.tools.filter((id) => tool(id));
+  if (list.length) {
+    const tl = tool(list[0]);
+    const why = c.toolUse?.[list[0]]?.[lang]?.why || tl.summary[lang];
+    html += `<div class="as-best"><p>${a.help ? "" : "👉 "}${fill(esc(L.bestTool), { tool: `<strong>${esc(tl.name[lang])}</strong>`, why: esc(why.startsWith(tl.name[lang]) ? why : lowerFirst(why)) })}</p>${toolButtons(tl, L, false)}</div>`;
+  } else {
+    html += `<p class="as-notool">${esc(L.noToolShort)}</p>`;
+  }
+  return html;
+}
+
+/** Réponse complète (page) : la réponse directe, puis les sections A à F, l'outil, les adaptations, les sources. */
 function buildAnswer(c, a, lang, maskedQuestion) {
   const L = UI[lang];
   const parent = state.profile === "parent";
@@ -397,7 +519,6 @@ function buildAnswer(c, a, lang, maskedQuestion) {
   const level = a.level || state.level;
   const typeNames = a.types.map((d) => d.name[lang]);
 
-  // 1. compréhension : ce qui a été dit (faits) / hypothèses
   let understood = `<dl class="as-dl">
     <dt>${esc(L.concept)}</dt><dd>${esc(c.name[lang])} <span class="as-small">(${esc(c.domain[lang])})</span></dd>
     <dt>${esc(L.typeLabel)}</dt><dd>${esc(typeNames.length ? typeNames.join(", ") : L.unknownType)}</dd>
@@ -409,16 +530,14 @@ function buildAnswer(c, a, lang, maskedQuestion) {
   if (!parent) understood += `<h5>${esc(L.sec.prereq)}</h5>${ul(c.prerequisites[lang])}`;
   if (!level) understood += `<p class="as-small as-warn">${esc(L.levelMissing)}</p>`;
 
-  // 3. proposition + conseils selon le type de difficulté et le profil
   let proposal = `<p>${esc(c.approach[lang])}</p>`;
   if (a.types.length) proposal += ul(a.types.map((d) => d.advice[lang]));
   const tip = profileTip(L);
   if (tip) proposal += `<p class="as-tip">${esc(tip)}</p>`;
 
-  let html = "";
-  if (a.medical) html += `<p class="as-alert">${esc(L.medical)}</p>`;
-  if (a.diag) html += `<p class="as-alert">${esc(L.diagnosis)}</p>`;
+  let html = alerts(a, L) + leadHtml(c, a, lang);
   if (a.alsoAbout) html += `<p class="as-small">${esc(fill(L.alsoAbout, { name: a.alsoAbout.name[lang] }))}</p>`;
+  html += `<div class="as-details">`;
   html += block(S.understood, understood);
   html += block(S.objective, `<p>${esc(c.objective[lang])}</p>`);
   html += block(S.proposal, proposal);
@@ -427,65 +546,175 @@ function buildAnswer(c, a, lang, maskedQuestion) {
   html += block(S.check, `<p>${esc(c.check[lang])}</p>`);
   html += block(S.tool, toolSection(c, lang, L, 0), "as-toolsec");
   html += needsSection(a.needs, lang, L);
-  html += sourcesSection([...c.sources, ...a.needs.flatMap((n) => n.sources), ...(a.types.length && c.id !== "attention-work" ? [] : [])], lang, L);
+  html += sourcesSection([...c.sources, ...a.needs.flatMap((n) => n.sources)], lang, L);
+  html += `</div>`;
   return html;
 }
 
-/** Retour de l'utilisateur sur la dernière proposition (spécification : « ça a marché », « trop difficile »…). */
+/** Réponse courte (fenêtre de discussion) : la réponse directe ; les détails viennent ensuite, à la demande. */
+function buildShort(c, a, lang) {
+  const L = UI[lang];
+  let html = alerts(a, L) + leadHtml(c, a, lang);
+  const tip = profileTip(L);
+  if (tip) html += `<p class="as-tip">${esc(tip)}</p>`;
+  return html;
+}
+
+/** Une partie des détails, quand l'utilisateur la demande dans la fenêtre de discussion. */
+function buildDetail(key, lang) {
+  const L = UI[lang];
+  const ctx = state.last;
+  const c = concept(ctx.conceptId);
+  const needs = KB.needs.filter((n) => ctx.needs.includes(n.id));
+  switch (key) {
+    case "activity": return `<p><strong>${esc(L.sec.objective)}</strong> — ${esc(c.objective[lang])}</p><p>${esc(c.manipulation[lang])}</p>`;
+    case "steps": return `<p>${esc(L.sec.progression)}</p>${ol(c.steps[lang])}`;
+    case "check": return `<p>${esc(c.check[lang])}</p>`;
+    case "tool": return toolSection(c, lang, L, 0);
+    case "adapt": return needsSection(needs, lang, L);
+    case "sources": return sourcesSection([...c.sources, ...needs.flatMap((n) => n.sources)], lang, L).replace("<details", "<details open");
+  }
+  return "";
+}
+
+/** Notions voisines : celles qui partagent un outil, sinon le même domaine. */
+function related(c) {
+  const byTool = KB.concepts.filter((x) => x.id !== c.id && x.tools.some((t) => c.tools.includes(t)));
+  const byDomain = KB.concepts.filter((x) => x.id !== c.id && x.domain.fr === c.domain.fr);
+  return [...new Set([...byTool, ...byDomain])].slice(0, 3);
+}
+
+/**
+ * Retour de l'utilisateur. On avance dans la progression à chaque « ça a marché » (étape 2, 3…),
+ * puis « pour aller plus loin », puis on conclut : la notion est acquise, on propose de s'arrêter
+ * ou de passer à une notion voisine. Jamais deux fois la même proposition.
+ */
 function buildFeedback(kind, lang) {
   const L = UI[lang];
   const ctx = state.last;
   const c = concept(ctx.conceptId);
   const name = c.name[lang];
-  let html = `<p><strong>${esc(fill(L.fbAnswer[kind], { name }))}</strong></p>`;
+  const steps = c.steps[lang];
+  const total = steps.length;
+  let html = "";
+  let finished = false;
+  let chipsAfter = null;
+
+  if (kind === "enough") {
+    ctx.finished = true;
+    return { html: `<p>${esc(L.enoughText)}</p>`, finished: true };
+  }
+  html += `<p class="as-lead"><strong>${esc(pick(L.fbOpen[kind]))}</strong></p>`;
+
   if (kind === "worked") {
-    html += block(L.nextStep, `<p>${esc(c.next[lang])}</p>`);
-    html += block(UI[lang].sec.check, `<p>${esc(c.check[lang])}</p>`);
-    const use = c.toolUse?.[c.tools[0]]?.[lang];
-    if (use) html += block(tool(c.tools[0]).name[lang], `<p>${esc(use.develop)}</p>`);
+    ctx.stage = (ctx.stage ?? 0) + 1;
+    if (ctx.stage < total) {
+      html += `<p>${esc(L.stepNow)}</p>`;
+      html += block(fill(L.stepOf, { n: ctx.stage + 1, total }), `<p>${esc(steps[ctx.stage])}</p>`);
+      if (ctx.stage === 1) {
+        const use = c.toolUse?.[c.tools[0]]?.[lang];
+        if (use) html += block(tool(c.tools[0]).name[lang], `<p>${esc(use.develop)}</p>`);
+      }
+      if (ctx.stage === total - 1) html += block(UI[lang].sec.check, `<p>${esc(c.check[lang])}</p>`);
+    } else if (ctx.stage === total) {
+      html += `<p>${esc(L.goFurther)}</p>` + block(L.nextStep, `<p>${esc(c.next[lang])}</p>`);
+    } else {
+      // tout est fait : on conclut au lieu de reproposer la même chose
+      const rel = related(c);
+      html = `<p class="as-lead"><strong>${esc(L.doneTitle)}</strong></p>`;
+      html += `<p>${esc(rel.length ? fill(L.doneText, { name }) : L.doneNoRelated)}</p>`;
+      finished = true;
+      ctx.finished = true;
+      chipsAfter = rel.map((r) => ({ label: r.name[lang], onClick: () => send(r.name[lang], { forceConcept: r.id, lang }) }));
+    }
   } else if (kind === "notUnderstood") {
+    ctx.stage = Math.max(0, (ctx.stage ?? 0) - 1);
     html += block(L.prereqCheck, ul(c.prerequisites[lang]));
     html += block(L.simpler, `<p>${esc(c.simpler[lang])}</p>`);
-    html += block(L.altApproach, `<p>${esc(c.alt[lang])}</p>`);
+    if (!ctx.altShown) { html += block(L.altApproach, `<p>${esc(c.alt[lang])}</p>`); ctx.altShown = true; }
     html += block(L.scaffold, `<p>${esc(L.scaffoldText)}</p>`);
   } else if (kind === "tooHard") {
+    ctx.stage = Math.max(0, (ctx.stage ?? 0) - 1);
+    html += `<p>${esc(L.stepBack)}</p>`;
+    html += block(fill(L.stepOf, { n: ctx.stage + 1, total }), `<p>${esc(steps[ctx.stage])}</p>`);
     html += block(L.simpler, `<p>${esc(c.simpler[lang])}</p>`);
     html += block(L.scaffold, `<p>${esc(L.scaffoldText)}</p>`);
-    html += block(L.progression || UI[lang].sec.progression, ol(c.steps[lang].slice(0, 2)));
   } else {
-    html += block(L.altApproach, `<p>${esc(c.alt[lang])}</p>`);
-    if (c.tools.length > 1) html += block(UI[lang].sec.tool, toolSection(c, lang, L, 1), "as-toolsec");
+    ctx.anotherCount = (ctx.anotherCount ?? 0) + 1;
+    if (ctx.anotherCount === 1 && !ctx.altShown) {
+      html += block(L.altApproach, `<p>${esc(c.alt[lang])}</p>`);
+      ctx.altShown = true;
+      if (c.tools.length > 1) { html += block(UI[lang].sec.tool, toolSection(c, lang, L, 1), "as-toolsec"); ctx.secondToolShown = true; }
+    } else if (ctx.anotherCount <= 2 && c.tools.length > 1 && !ctx.secondToolShown) {
+      html += block(UI[lang].sec.tool, toolSection(c, lang, L, 1), "as-toolsec");
+      ctx.secondToolShown = true;
+    } else if (ctx.altDoneShown) {
+      html = `<p>${esc(L.altNone)}</p>`;
+      finished = true;
+      const rel = related(c);
+      if (rel.length) chipsAfter = rel.map((r) => ({ label: r.name[lang], onClick: () => send(r.name[lang], { forceConcept: r.id, lang }) }));
+      return { html, finished, chipsAfter };
+    } else {
+      ctx.altDoneShown = true;
+      html += `<p>${esc(L.altDone)}</p>`;
+      const rel = related(c);
+      if (rel.length) chipsAfter = rel.map((r) => ({ label: r.name[lang], onClick: () => send(r.name[lang], { forceConcept: r.id, lang }) }));
+    }
   }
   html += sourcesSection([...c.sources, ...(kind !== "worked" ? ["wood-bruner"] : [])], lang, L);
+  return { html, finished, chipsAfter };
+}
+
+/** Un trouble est cité sans notion précise (« ma fille est dyscalculique, DISSIPL peut-il l'aider ? ») : on répond oui, avec les outils. */
+function buildNeedAnswer(needs, a, lang) {
+  const L = UI[lang];
+  const names = needs.map((n) => n.name[lang]).join(", ");
+  const who = state.profile === "parent" ? L.whoParent : L.whoStudent;
+  let html = alerts(a, L);
+  html += `<p class="as-lead"><strong>${esc(a.help || !a.diag ? L.yes : pick(L.openers))}</strong> ${esc(fill(a.help ? L.needYes : L.needIntroSoft, { who, need: names }))}</p>`;
+  const seen = new Set();
+  let items = "";
+  for (const n of needs) for (const t of n.tools || []) {
+    const tl = tool(t.id);
+    if (!tl || seen.has(t.id)) continue;
+    seen.add(t.id);
+    items += `<div class="as-mini"><div><strong>${esc(tl.name[lang])}</strong> — ${esc(t.why[lang])}</div>
+      <a class="as-btn red" href="${esc(href(tl.url.free))}" target="_blank" rel="noopener">${esc(L.openFree)} →</a></div>`;
+  }
+  html += items;
   return html;
 }
 
-// ------------------------------------------------------------------ interface
+// ------------------------------------------------------------------ interface (page complète ou fenêtre de discussion)
 
 const $ = (sel) => document.querySelector(sel);
-let log, input;
+let log, input, compact = false, scrollBox = null;
+
+function chipRow(chips, title, extraCls = "") {
+  const row = document.createElement("div");
+  row.className = "as-chips " + extraCls;
+  if (title) row.insertAdjacentHTML("beforeend", `<span class="as-chips-title">${esc(title)}</span>`);
+  for (const ch of chips) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "as-chip" + (ch.cls ? " " + ch.cls : "");
+    b.textContent = ch.label;
+    b.addEventListener("click", ch.onClick);
+    row.appendChild(b);
+  }
+  return row;
+}
 
 function addMessage(who, html, opts = {}) {
   const L = UI[state.lang];
+  // les puces des messages précédents ne servent plus : on les retire pour garder une conversation lisible
+  if (who === "user") log.querySelectorAll(".as-chips").forEach((r) => r.remove());
   const wrap = document.createElement("div");
   wrap.className = "as-msg " + (who === "user" ? "as-user" : "as-bot");
   wrap.innerHTML = `<div class="as-who">${esc(who === "user" ? L.you : L.bot)}</div><div class="as-bubble">${html}</div>`;
   const bubble = wrap.querySelector(".as-bubble");
   if (opts.disclaimer) bubble.insertAdjacentHTML("beforeend", `<p class="as-disclaimer">${esc(L.disclaimer)}</p>`);
-  if (opts.chips?.length) {
-    const row = document.createElement("div");
-    row.className = "as-chips";
-    if (opts.chipsTitle) row.insertAdjacentHTML("beforeend", `<span class="as-chips-title">${esc(opts.chipsTitle)}</span>`);
-    for (const ch of opts.chips) {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "as-chip" + (ch.cls ? " " + ch.cls : "");
-      b.textContent = ch.label;
-      b.addEventListener("click", ch.onClick);
-      row.appendChild(b);
-    }
-    bubble.appendChild(row);
-  }
+  for (const group of opts.chipGroups || []) if (group.chips.length) bubble.appendChild(chipRow(group.chips, group.title, group.cls));
   if (opts.report) {
     const r = document.createElement("button");
     r.type = "button";
@@ -495,7 +724,8 @@ function addMessage(who, html, opts = {}) {
     bubble.appendChild(r);
   }
   log.appendChild(wrap);
-  wrap.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (scrollBox) scrollBox.scrollTop = wrap.offsetTop - 8;
+  else wrap.scrollIntoView({ behavior: "smooth", block: "start" });
   return wrap;
 }
 
@@ -504,28 +734,49 @@ function feedbackChips(lang) {
   return Object.keys(L.fb).map((k) => ({ label: L.fb[k], cls: "as-fb", onClick: () => send(L.fb[k], { feedback: k, lang }) }));
 }
 
+function moreChips(lang) {
+  const L = UI[lang];
+  const ctx = state.last;
+  const c = concept(ctx.conceptId);
+  const keys = ["activity", "steps", "check"];
+  if (c.tools.length) keys.push("tool");
+  if (ctx.needs.length) keys.push("adapt");
+  keys.push("sources");
+  return keys.filter((k) => !ctx.shown.includes(k)).map((k) => ({ label: L.more[k], onClick: () => send(L.more[k], { detail: k, lang }) }));
+}
+
 function followChips(c, a, lang) {
   const L = UI[lang];
   const chips = [];
-  if (!a.level && !state.level) chips.push({ label: L.follow.level, onClick: () => $("#asLevel").focus() });
-  chips.push({ label: L.follow.next, onClick: () => send(L.fb.worked, { feedback: "worked", lang }) });
+  if (!compact && !a.level && !state.level && $("#asLevel")) chips.push({ label: L.follow.level, onClick: () => $("#asLevel").focus() });
   if (!a.needs.some((n) => n.id === "dyslexia") && /lecture|reading|ecriture|writing|grammaire|grammar/i.test(c.domain.en + c.domain.fr))
     chips.push({ label: L.follow.dys, onClick: () => send(L.follow.dys + " (" + c.name[lang] + ")", { forceConcept: c.id, addNeed: "dyslexia", lang }) });
   if (!a.needs.some((n) => n.id === "attention"))
     chips.push({ label: L.follow.attention, onClick: () => send(L.follow.attention + " (" + c.name[lang] + ")", { forceConcept: c.id, addNeed: "attention", lang }) });
   if (state.profile !== "parent")
-    chips.push({ label: L.follow.parentVersion, onClick: () => { setProfile("parent"); send(L.follow.parentVersion + " (" + c.name[lang] + ")", { forceConcept: c.id, lang }); } });
+    chips.push({ label: L.follow.parentVersion, onClick: () => { setProfile("parent", true); send(L.follow.parentVersion + " (" + c.name[lang] + ")", { forceConcept: c.id, lang }); } });
   return chips;
 }
 
-function domainChips(lang, text) {
-  return KB.concepts.map((c) => ({ label: c.name[lang], onClick: () => send(c.name[lang], { forceConcept: c.id, carry: text, lang }) }));
+function conceptChips(list, lang, text) {
+  return list.map((c) => ({ label: c.name[lang], onClick: () => send(c.name[lang], { forceConcept: c.id, carry: text, lang }) }));
+}
+
+function answerChips(lang, c, a, second, full) {
+  const L = UI[lang];
+  const groups = [];
+  if (compact) groups.push({ title: L.moreTitle, chips: moreChips(lang) });
+  const fb = feedbackChips(lang);
+  if (second) fb.push({ label: fill(L.switchTo, { name: second.name[lang] }), onClick: () => send(second.name[lang], { forceConcept: second.id, carry: full, lang }) });
+  groups.push({ chips: fb });
+  if (!compact) groups.push({ title: L.followTitle, chips: followChips(c, a, lang), cls: "as-follow" });
+  return groups;
 }
 
 /** Point d'entrée : une question tapée, un exemple, une puce. */
 function send(raw, opts = {}) {
   raw = String(raw || "").trim();
-  if (!raw) return;
+  if (!raw || !KB) return;
   const lang = opts.lang || detectLang(raw);
   state.lang = lang;
   const L = UI[lang];
@@ -533,71 +784,91 @@ function send(raw, opts = {}) {
   addMessage("user", esc(masked.text));
   if (masked.found) addMessage("bot", `<p class="as-alert">${esc(L.privacyWarn)}</p>`);
 
-  // l'analyse porte sur le texte masqué, plus la question laissée en attente
+  // un détail demandé dans la fenêtre de discussion
+  if (opts.detail && state.last) {
+    state.last.shown.push(opts.detail);
+    const groups = [{ title: L.moreTitle, chips: moreChips(lang) }, { chips: feedbackChips(lang) }];
+    addMessage("bot", buildDetail(opts.detail, lang), { chipGroups: groups });
+    return;
+  }
+
   // une puce de notion (forceConcept) : seul le texte de l'utilisateur compte, pas l'intitulé de la puce
   const full = opts.forceConcept ? (opts.carry || "") : (opts.carry ? opts.carry + " " : "") + masked.text;
   const a = analyse(full);
   if (opts.addNeed) { const n = KB.needs.find((x) => x.id === opts.addNeed); if (n && !a.needs.includes(n)) a.needs.push(n); }
-  if (a.profile && !state.profile) setProfile(a.profile, true);
+  // le message dit qui écrit (« ma fille », « mes élèves ») : on suit cette indication
+  if (a.profile) setProfile(a.profile, true);
 
   // 1) retour sur la proposition précédente
   const fb = opts.feedback || (!a.ranked.length && a.feedback);
-  if (fb && state.last) {
-    addMessage("bot", buildFeedback(fb, lang), { disclaimer: true, chips: feedbackChips(lang), report: { ...state.last, kind: fb } });
+  if (fb && state.last && !state.last.finished) {
+    const r = buildFeedback(fb, lang);
+    const groups = [];
+    if (r.chipsAfter?.length) groups.push({ chips: r.chipsAfter });
+    if (!r.finished) {
+      if (compact) groups.push({ title: L.moreTitle, chips: moreChips(lang) });
+      groups.push({ chips: feedbackChips(lang) });
+    }
+    addMessage("bot", r.html, { disclaimer: fb !== "enough", chipGroups: groups, report: { ...state.last, kind: fb } });
     return;
   }
+  if (fb && (fb === "enough" || state.last?.finished)) { addMessage("bot", `<p>${esc(L.enoughText)}</p>`); return; }
 
   // 2) quelle notion ?
   let c = opts.forceConcept ? concept(opts.forceConcept) : a.ranked[0]?.c;
-  if (!c && a.needs.some((n) => n.id === "attention")) c = concept("attention-work");
+  if (!c && a.needs.some((n) => n.id === "attention") && !a.help) c = concept("attention-work");
 
   if (!c) {
-    let html = "";
-    if (a.medical) html += `<p class="as-alert">${esc(L.medical)}</p>`;
-    if (a.diag) html += `<p class="as-alert">${esc(L.diagnosis)}</p>`;
     if (a.greeting) {
-      addMessage("bot", html + `<p>${esc(L.greeting)}</p>`, { chips: L.examples.slice(0, 3).map((e) => ({ label: e, onClick: () => send(e, { lang }) })) });
+      addMessage("bot", `<p>${esc(compact ? L.helloWidget : L.greeting)}</p>`, { chipGroups: [{ chips: L.examples.slice(0, 3).map((e) => ({ label: e, onClick: () => send(e, { lang }) })) }] });
       return;
     }
-    if (a.needs.length) {
-      html += needsSection(a.needs, lang, L) + sourcesSection(a.needs.flatMap((n) => n.sources), lang, L);
-      html += `<p><strong>${esc(L.askNeed)}</strong></p>`;
-    } else html += `<p><strong>${esc(L.ask)}</strong></p>`;
     state.pendingText = full;
-    addMessage("bot", html, { disclaimer: a.needs.length > 0 || a.diag, chips: domainChips(lang, full), chipsTitle: L.domains });
+    if (a.needs.length) {
+      // un trouble cité sans notion : oui, voici les outils, puis quelle notion ?
+      let html = buildNeedAnswer(a.needs, a, lang);
+      html += `<p><strong>${esc(L.needAsk)}</strong></p>`;
+      const ids = [...new Set(a.needs.flatMap((n) => n.concepts || []))];
+      const groups = [{ chips: conceptChips(ids.map(concept).filter(Boolean), lang, full) }];
+      if (compact) {
+        groups.push({ chips: [{ label: L.more.adapt, onClick: () => { addMessage("user", esc(L.more.adapt)); addMessage("bot", needsSection(a.needs, lang, L)); } }] });
+      } else html += needsSection(a.needs, lang, L) + sourcesSection(a.needs.flatMap((n) => n.sources), lang, L);
+      addMessage("bot", html, { disclaimer: true, chipGroups: groups });
+      return;
+    }
+    const html = alerts(a, L) + `<p><strong>${esc(L.ask)}</strong></p>`;
+    addMessage("bot", html, { disclaimer: a.diag || a.medical, chipGroups: [{ title: L.domains, chips: conceptChips(KB.concepts, lang, full) }] });
     return;
   }
 
   // une autre notion proche ? on la signale et on propose d'y passer
   const second = !opts.forceConcept && a.ranked[1] && a.ranked[1].s >= a.ranked[0].s * 0.75 ? a.ranked[1].c : null;
-  a.alsoAbout = second;
+  a.alsoAbout = compact ? null : second;
   const question = opts.forceConcept && opts.carry ? maskPersonal(opts.carry, L).text : (opts.forceConcept ? "" : masked.text);
-  const html = buildAnswer(c, a, lang, question);
-  state.last = { conceptId: c.id, lang, profile: state.profile, level: a.level || state.level, needs: a.needs.map((n) => n.id) };
+  state.last = { conceptId: c.id, lang, profile: state.profile, level: a.level || state.level, needs: a.needs.map((n) => n.id), stage: 0, shown: [] };
   state.pendingText = "";
-  const chips = [...feedbackChips(lang)];
-  if (second) chips.push({ label: fill(L.switchTo, { name: second.name[lang] }), onClick: () => send(second.name[lang], { forceConcept: second.id, carry: full, lang }) });
-  const msg = addMessage("bot", html, { disclaimer: true, chips, report: state.last });
-  const follow = followChips(c, a, lang);
-  if (follow.length) {
-    const row = document.createElement("div");
-    row.className = "as-chips as-follow";
-    row.insertAdjacentHTML("beforeend", `<span class="as-chips-title">${esc(L.followTitle)}</span>`);
-    for (const ch of follow) {
-      const b = document.createElement("button");
-      b.type = "button"; b.className = "as-chip"; b.textContent = ch.label;
-      b.addEventListener("click", ch.onClick);
-      row.appendChild(b);
-    }
-    msg.querySelector(".as-bubble").insertBefore(row, msg.querySelector(".as-report"));
-  }
+  const html = compact ? buildShort(c, a, lang) : buildAnswer(c, a, lang, question);
+  addMessage("bot", html, { disclaimer: true, chipGroups: answerChips(lang, c, a, second, full), report: state.last });
 }
 
 // ------------------------------------------------------------------ signalement (ouvre la messagerie : l'utilisateur voit tout)
 
+function reportDialog() {
+  let dlg = $("#asReport");
+  if (dlg) return dlg;
+  dlg = document.createElement("dialog");
+  dlg.id = "asReport";
+  dlg.innerHTML = `<h3></h3><p class="as-small"></p><textarea maxlength="1000"></textarea>
+    <div class="as-dlg-btns"><button type="button" class="as-close">✕</button><button type="button" class="as-send-report"></button></div>`;
+  document.body.appendChild(dlg);
+  dlg.querySelector(".as-close").addEventListener("click", () => dlg.close());
+  return dlg;
+}
+
 function openReport(ctx) {
   const L = UI[state.lang];
-  const dlg = $("#asReport");
+  const dlg = reportDialog();
+  dlg.querySelector(".as-close").onclick = () => dlg.close();
   dlg.querySelector("h3").textContent = L.reportTitle;
   dlg.querySelector("p").textContent = L.reportHelp;
   const ta = dlg.querySelector("textarea");
@@ -608,14 +879,14 @@ function openReport(ctx) {
   btn.onclick = () => {
     const note = maskPersonal(ta.value, L).text;
     const body = [
-      note,
-      "",
-      "---",
+      note, "", "---",
       "Concept: " + (ctx.conceptId || "-"),
       "Feedback: " + (ctx.kind || "-"),
+      "Step: " + (ctx.stage ?? "-"),
       "Profile: " + (ctx.profile || "-"),
       "Level: " + (ctx.level || "-"),
       "Language: " + (ctx.lang || state.lang),
+      "Where: " + (compact ? "chat window" : "assistant page"),
       "Knowledge base: " + KB.version,
     ].join("\n");
     window.location.href = `mailto:${CONTACT}?subject=${encodeURIComponent(L.reportSubject)}&body=${encodeURIComponent(body)}`;
@@ -632,6 +903,7 @@ function setProfile(p, silent) {
 }
 
 function renderChrome() {
+  if (!$("#asTitle")) return;
   const L = UI[state.lang];
   $("#asTitle").textContent = L.title;
   $("#asSubtitle").textContent = L.subtitle;
@@ -659,26 +931,13 @@ function renderChrome() {
   for (const e of L.examples) {
     const b = document.createElement("button");
     b.type = "button"; b.className = "as-chip"; b.textContent = e;
-    b.addEventListener("click", () => send(e, { lang: state.lang }));
+    b.addEventListener("click", () => { $("#asExamplesWrap").hidden = true; send(e, { lang: state.lang }); });
     ex.appendChild(b);
   }
 }
 
-function newConversation() {
-  log.innerHTML = "";
-  state.last = null;
-  state.pendingText = "";
-  state.lang = pageLang();
-  $("#asExamplesWrap").hidden = false;
-  input.value = "";
-  input.focus();
-}
-
-async function init() {
-  log = $("#asLog");
-  input = $("#asInput");
-  state.lang = pageLang();
-  renderChrome();
+async function loadData() {
+  if (KB) return true;
   try {
     const [k, c] = await Promise.all([
       fetch(`${ROOT}assistant/knowledge.json?v=${DATA_VERSION}`).then((r) => r.json()),
@@ -686,25 +945,67 @@ async function init() {
     ]);
     KB = k;
     CAT = c.tools.filter((t) => t.validated);
+    return true;
   } catch (e) {
     console.error("[assistant] base de connaissances introuvable", e);
-    $("#asForm").insertAdjacentHTML("beforebegin", `<p class="as-alert">Le chargement a échoué. Rechargez la page. / Loading failed. Please reload the page.</p>`);
-    return;
+    return false;
   }
-  $("#asForm").addEventListener("submit", (ev) => {
+}
+
+function resetConversation() {
+  log.innerHTML = "";
+  if (compact) state.profile = null;   // fenêtre de discussion : pas de sélecteur de profil, on repart de zéro
+  state.last = null;
+  state.pendingText = "";
+  state.lang = pageLang();
+}
+
+/**
+ * Branche l'assistant sur une conversation : la page /assistant (réponses complètes)
+ * ou la fenêtre de discussion de l'accueil (compact : réponse courte, détails à la demande).
+ */
+export async function mount(opts) {
+  log = opts.log;
+  input = opts.input;
+  compact = !!opts.compact;
+  scrollBox = opts.scrollBox || null;
+  state.lang = pageLang();
+  const ok = await loadData();
+  if (!ok) {
+    opts.form.insertAdjacentHTML("beforebegin", `<p class="as-alert">Le chargement a échoué. Rechargez la page. / Loading failed. Please reload the page.</p>`);
+    return null;
+  }
+  opts.form.addEventListener("submit", (ev) => {
     ev.preventDefault();
     const v = input.value;
     input.value = "";
-    $("#asExamplesWrap").hidden = true;
+    opts.onSend?.();
     send(v);
   });
   input.addEventListener("keydown", (ev) => {
-    if (ev.key === "Enter" && !ev.shiftKey) { ev.preventDefault(); $("#asForm").requestSubmit(); }
+    if (ev.key === "Enter" && !ev.shiftKey) { ev.preventDefault(); opts.form.requestSubmit(); }
   });
+  return {
+    send, reset: resetConversation, UI,
+    lang: () => state.lang,
+    greet: () => {
+      const L = UI[state.lang];
+      addMessage("bot", `<p>${esc(L.helloWidget)}</p><p class="as-small">${esc(L.widgetNotice)}</p>`, {
+        chipGroups: [{ chips: L.examples.slice(0, 3).map((e) => ({ label: e, onClick: () => send(e, { lang: state.lang }) })) }],
+      });
+    },
+  };
+}
+
+async function initPage() {
+  log = $("#asLog");
+  input = $("#asInput");
+  state.lang = pageLang();
+  renderChrome();
+  const api = await mount({ log, input, form: $("#asForm"), onSend: () => { $("#asExamplesWrap").hidden = true; } });
+  if (!api) return;
   $("#asLevel").addEventListener("change", (ev) => { state.level = ev.target.value; });
-  $("#asNew").addEventListener("click", newConversation);
-  $("#asExamples").addEventListener("click", () => { $("#asExamplesWrap").hidden = true; });
-  document.querySelector("#asReport .as-close").addEventListener("click", () => $("#asReport").close());
+  $("#asNew").addEventListener("click", () => { resetConversation(); $("#asExamplesWrap").hidden = false; input.value = ""; input.focus(); });
   // le sélecteur de langue du site : on change l'interface (la conversation reste)
   window.addEventListener("dissipl:lang", () => { state.lang = pageLang(); renderChrome(); });
 }
@@ -712,5 +1013,7 @@ async function init() {
 // pour les tests automatiques
 window.DissiplAssistant = { analyse: (t) => analyse(t), send, state };
 
-if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
-else init();
+if (document.getElementById("asLog")) {
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initPage);
+  else initPage();
+}
