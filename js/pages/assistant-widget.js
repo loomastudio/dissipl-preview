@@ -3,7 +3,7 @@
 // Le bouton est léger ; l'assistant (assistant.js + sa base de connaissances) ne se charge qu'à l'ouverture.
 // Comme sur la page /assistant, tout reste dans le navigateur : rien n'est envoyé ni enregistré.
 
-const VERSION = "20261117";
+const VERSION = "20261118";
 const base = new URL("/dissipl-preview/", import.meta.url).pathname;
 
 const TXT = {

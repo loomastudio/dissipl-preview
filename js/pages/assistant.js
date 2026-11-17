@@ -1,10 +1,10 @@
 // js/pages/assistant.js
 // Assistant pédagogique DISSIPL : tout se passe dans le navigateur.
 // Aucune question n'est envoyée à un serveur ni enregistrée ; aucune IA externe n'est appelée.
-// Le contenu vient de /assistant/knowledge.json (concepts, besoins, sources) et
-// /assistant/catalogue.json (fiches des outils) : on les enrichit sans toucher à ce code.
+// Le contenu vient de /assistant-data/knowledge.json (concepts, besoins, sources) et
+// /assistant-data/catalogue.json (fiches des outils) : on les enrichit sans toucher à ce code.
 
-const DATA_VERSION = "20261116";
+const DATA_VERSION = "20261117";
 const CONTACT = "contact@dissipl.fr";
 // racine du site ("/" sur dissipl.fr, "/dissipl-preview/" sur le lien de test)
 const ROOT = new URL("/dissipl-preview/", import.meta.url).pathname;
@@ -940,8 +940,8 @@ async function loadData() {
   if (KB) return true;
   try {
     const [k, c] = await Promise.all([
-      fetch(`${ROOT}assistant/knowledge.json?v=${DATA_VERSION}`).then((r) => r.json()),
-      fetch(`${ROOT}assistant/catalogue.json?v=${DATA_VERSION}`).then((r) => r.json()),
+      fetch(`${ROOT}assistant-data/knowledge.json?v=${DATA_VERSION}`).then((r) => r.json()),
+      fetch(`${ROOT}assistant-data/catalogue.json?v=${DATA_VERSION}`).then((r) => r.json()),
     ]);
     KB = k;
     CAT = c.tools.filter((t) => t.validated);
